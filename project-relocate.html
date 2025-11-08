@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study - Relocate">
+    <title>Relocate: Simplifying Local Recreation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/branding/sleepycat.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/sleepycat.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/sleepycat.png">
+    <style>
+        body {
+            background: #0a0e1a;
+            color: #e2e8f0;
+        }
+
+        .case-study-hero {
+            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 50%, #050a14 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 6rem;
+        }
+
+        .case-study-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 70% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content,
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-eyebrow {
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+        }
+
+        .project-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .project-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .meta-item:hover {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .meta-item strong {
+            display: block;
+            color: #60a5fa;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item span {
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin-top: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 100px rgba(59, 130, 246, 0.5);
+        }
+
+        .hero-summary {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            text-align: center;
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #0a0e1a 0%, #0f0f0f 100%);
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 20px rgba(59, 130, 246, 0.3);
+            text-align: left;
+        }
+
+        .section h3 {
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .section h4 {
+            color: #ffffff;
+        }
+
+        .section-intro {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 1200px;
+            margin: 0.5rem 0 3rem 0;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .section-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            padding: 1.5rem;
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-note strong {
+            color: #60a5fa;
+        }
+
+        .features-grid,
+        .pain-points-grid,
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reflection-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reflection-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .reflection-card:hover {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .reflection-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.5));
+        }
+
+        .reflection-card h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .reflection-card p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .feature-card,
+        .pain-point-card,
+        .persona-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover,
+        .pain-point-card:hover,
+        .persona-card:hover {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #60a5fa;
+            margin-bottom: 1rem;
+            display: block;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+        }
+
+        .feature-card h3,
+        .pain-point-card h4,
+        .persona-title {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p,
+        .pain-point-card p,
+        .persona-bio {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .data-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .data-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .data-card:hover {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .data-card strong {
+            display: block;
+            font-size: 2.5rem;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+        }
+
+        .data-card span {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .persona-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            background: transparent;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .accordion-item summary {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .accordion-title {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .accordion-meta {
+            color: #60a5fa;
+            font-size: 0.9rem;
+        }
+
+        .accordion-body {
+            padding: 0 1.5rem 1.5rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .highlight-list li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+        }
+
+        .highlight-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .highlight-list strong {
+            color: #60a5fa;
+        }
+
+        .insight-callouts {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .insight-callouts {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .insight-callouts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .insight-callout {
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .insight-callout:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.6);
+        }
+
+        .insight-callout-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.35);
+        }
+
+        .insight-callout h4 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-callout p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .solution-tabs {
+            background: transparent;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 1.75rem 2rem 2.25rem;
+            margin-top: 2rem;
+        }
+
+        .tab-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-control {
+            padding: 0.75rem 1.5rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-control:hover,
+        .tab-control.active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            color: #60a5fa;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .tab-panel-visual {
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .tab-panel-visual img {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            box-shadow: 0 18px 34px rgba(15, 23, 42, 0.35);
+        }
+
+        .tab-panel-visual.single-image {
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1rem 1.5rem;
+        }
+
+        .tab-panel-visual.single-image img {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .tab-panel-detail {
+            flex: 1;
+        }
+
+        .tab-panel-detail h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .tab-panel-detail p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .two-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .two-column ul li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        .two-column ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .two-column ul li strong {
+            color: #60a5fa;
+        }
+
+        .design-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .design-screen {
+            position: relative;
+            z-index: 1;
+        }
+
+        .design-screen img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .design-screen img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 130, 246, 0.4);
+        }
+
+        .design-caption h4 {
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .design-caption p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .project-navigation {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
+            position: relative;
+        }
+
+        .nav-projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-projects a {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            display: block;
+            font-size: 1.25rem;
+        }
+
+        .nav-projects a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(59, 130, 246, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .design-system-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .design-system-card {
+            background: linear-gradient(150deg, rgba(15, 23, 42, 0.7) 0%, rgba(17, 24, 39, 0.6) 60%, rgba(32, 41, 64, 0.55) 100%);
+            border: 1px solid rgba(96, 165, 250, 0.18);
+            border-left: 4px solid rgba(96, 165, 250, 0.55);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .design-system-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.48);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .design-system-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(96, 165, 250, 0.18);
+            color: #60a5fa;
+            font-size: 1.5rem;
+            box-shadow: 0 0 18px rgba(96, 165, 250, 0.25);
+        }
+
+        .design-system-card h3 {
+            margin: 0;
+        }
+
+        .design-system-card p {
+            margin: 0;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .design-system-card p strong {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .prototype-embed-section {
+            position: relative;
+            z-index: 1;
+            margin-top: 6rem;
+        }
+
+        .prototype-embed-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 65%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(59, 130, 246, 0.25);
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        .prototype-embed-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .artifact-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin: 0 auto 1.25rem;
+            max-width: 720px;
+        }
+
+        .artifact-gallery img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+            object-fit: cover;
+        }
+
+        .artifact-item > img {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 0.75rem;
+            display: block;
+            border-radius: 18px;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.32);
+            object-fit: cover;
+            max-height: 360px;
+            height: auto;
+        }
+
+        .artifact-gallery figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .artifact-gallery figcaption {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .insight-figure {
+            margin: 2rem auto 0;
+            max-width: 720px;
+            text-align: center;
+        }
+
+        .insight-figure img {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+        }
+
+        .insight-figure figcaption {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-subtitle {
+                font-size: 1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .two-column,
+            .nav-projects,
+            .features-grid,
+            .pain-points-grid,
+            .persona-grid,
+            .data-cards,
+            .design-showcase,
+            .design-system-showcase,
+            .artifact-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .reflection-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-summary {
+                font-size: 1rem;
+            }
+
+            .project-meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-controls {
+                flex-direction: column;
+            }
+
+            .tab-panel-visual {
+                flex-direction: column;
+            }
+
+            .tab-panel-visual img {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .prototype-embed-wrapper {
+                padding-top: 120%;
+            }
+
+            .artifact-gallery {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .artifact-gallery figure {
+                margin: 0;
+            }
+
+            .artifact-item > img {
+                max-width: 100%;
+            }
+        }
+
+        .user-lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.75rem;
+            margin-top: 2rem;
+        }
+
+        .user-lesson-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.35);
+        }
+
+        .user-lesson-icon {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 18px rgba(96, 165, 250, 0.5));
+        }
+
+        .user-lesson-card h3 {
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .user-lesson-card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <a href="index.html" class="nav-logo" data-icon="sleepy-cat">
+                        <span class="nav-logo-text">
+                            <span class="nav-logo-graphic" aria-hidden="true">
+                                <img src="assets/images/branding/sleepycat.png" alt="">
+                            </span>
+                            <span class="sr-only">Home</span>
+                        </span>
+                        <span class="nav-logo-icon" aria-hidden="true">
+                            <span class="nav-logo-graphic nav-logo-graphic--compact">
+                                <img src="assets/images/branding/sleepycat.png" alt="">
+                            </span>
+                        </span>
+                    </a>
+                    <a href="about.html" class="nav-link" data-icon="👤">
+                        <span class="nav-link-text">about</span>
+                        <span class="nav-link-icon"><img src="assets/images/branding/tdesign--user-filled.svg" alt=""></span>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="nav-link" data-icon="📄" target="_blank" rel="noopener">
+                        <span class="nav-link-text">resume</span>
+                        <span class="nav-link-icon"><img src="assets/images/branding/mingcute--paper-fill.svg" alt=""></span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="nav-link" data-icon="✉️">
+                        <span class="nav-link-text">contact</span>
+                        <span class="nav-link-icon"><img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt=""></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero case-study-hero">
+        <div class="hero-content">
+            <p class="project-eyebrow">GBDA210 · September to November 2024</p>
+            <h1 class="project-title">Relocate: Simplifying Local Recreation</h1>
+            <p class="project-subtitle">Transforming a confusing recreation booking process into a seamless, user-friendly experience.</p>
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <strong>Timeline</strong>
+                    <span>September to November 2024</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Team</strong>
+                    <span>1 PM · 2 Researchers · 3 Designers</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Role</strong>
+                    <span>Project Manager · UX Researcher · UX/UI Designer</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Tools</strong>
+                    <span>Figma</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/images/relocate/relocate-hero.png" alt="High-fidelity Relocate experience mockups">
+        </div>
+        <p class="project-intro hero-summary">Recreation keeps communities healthy, yet most local platforms are clunky, vague about facility status, and downright frustrating. I guided Relocate through a five-phase design thinking process, aligning research, design, and usability testing to deliver clarity, accessibility, and confidence at every touchpoint.</p>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>What we built</h2>
+            <p class="section-intro">A recreation platform that finally meets people where they are, whether they're booking a league or discovering a new neighborhood.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">01</div>
+                    <h3>Design Leadership</h3>
+                    <p>Simplified navigation and flows so athletes, families, and explorers can reach the right facility fast.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">02</div>
+                    <h3>Research Ops</h3>
+                    <p>Ran five interviews and audited four portals to anchor decisions in clear, comparable insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">03</div>
+                    <h3>Team Stewardship</h3>
+                    <p>Facilitated focused workshops, aligned three designers around milestones, and told the story as we iterated.</p>
+                </div>
+            </div>
+            <p class="section-note"><strong>How might we design a recreation platform that meets people where they are?</strong></p>
+            <figure class="insight-figure">
+                <img src="assets/images/relocate/relocate-process-flow.png" alt="Journey map synthesizing interview findings across the Relocate service">
+                <figcaption>This research journey mapped 50+ survey responses and interviews, highlighting exactly where discovery, booking, and upkeep signals fell apart.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Where the cracks showed</h2>
+            <p class="section-intro">Combining user stories with market data showed exactly where people gave up and why.</p>
+            <div class="research-accordion">
+                <details class="accordion-item" open>
+                    <summary>
+                        <span class="accordion-title">User research</span>
+                        <span class="accordion-meta">Interviews & stories</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p>Recreation keeps people active, social, and grounded, yet the tools that exist today often swing too far toward either casual drop-ins or competitive leagues. That leaves a lot of people feeling unsupported.</p>
+                        <p>We ran 10+ in-depth interviews and gathered 50+ survey responses across students, parents, and league organizers. Here’s what kept coming up.</p>
+                        <div class="insight-callouts">
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🧼</div>
+                                <h4>Maintenance</h4>
+                                <p>Unsanitary washrooms and uneven upkeep pushed people to abandon otherwise convenient facilities.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🧭</div>
+                                <h4>Website overload</h4>
+                                <p>Outdated navigation hid key info behind endless links, forcing calls or in-person visits just to book.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">♿</div>
+                                <h4>Activity gaps</h4>
+                                <p>Few accessible or low-commitment options existed, and packed time slots drained the joy from returning.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">📅</div>
+                                <h4>Organizational cracks</h4>
+                                <p>Schedule changes, overbookings, and surprise closures left users out of the loop.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🤝</div>
+                                <h4>Community friction</h4>
+                                <p>People wanted to find “their” crew, but inconsistent skill levels and unreliable info made connection hard.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🧾</div>
+                                <h4>Expectation gap</h4>
+                                <p>42% of interviewees expected drop-in options with gear info baked in. Most portals still hide those features.</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                <details class="accordion-item">
+                    <summary>
+                        <span class="accordion-title">Design sprints</span>
+                        <span class="accordion-meta">5-phase loop · 40+ sketch explorations</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p>Our empathize→test loop let us pressure test ideas quickly. Workshop artifacts became guardrails so every iteration stayed anchored to real needs.</p>
+                        <div class="insight-callouts">
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">✏️</div>
+                                <h4>Crazy 8s</h4>
+                                <p>Generated layout variations that pushed beyond map-first assumptions and surfaced new booking patterns.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🎯</div>
+                                <h4>Storyboard dives</h4>
+                                <p>Translated personas into day-in-the-life journeys to validate which flows deserved top billing.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🧪</div>
+                                <h4>Lightning critiques</h4>
+                                <p>Weekly share-outs let the team stress test concepts early, keeping fidelity in check while we aligned on priorities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                <details class="accordion-item">
+                    <summary>
+                        <span class="accordion-title">Usability tests & critiques</span>
+                        <span class="accordion-meta">5 moderated sessions · continuous feedback</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p>We validated each iteration with moderated usability tests, async critiques, and quick quant pulses so we could course-correct before build.</p>
+                        <div class="insight-callouts">
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🧪</div>
+                                <h4>Moderated tests</h4>
+                                <p>Five live sessions confirmed the schedule step was the breaking point and revealed where guidance was missing.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">📊</div>
+                                <h4>Quant pulses</h4>
+                                <p>Legacy analytics showed a 62% abandon rate before slot selection, echoing survey frustration around time sinks.</p>
+                            </div>
+                            <div class="insight-callout">
+                                <div class="insight-callout-icon">🛠️</div>
+                                <h4>Critique loops</h4>
+                                <p>Weekly heuristic reviews and support-ticket deep dives kept maintenance alerts and facility updates front-and-center.</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+            <div class="solution-tabs" data-tab-switcher style="background: transparent; border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; padding: 1.75rem 2rem 2.25rem; margin-top: 3rem;">
+                <h3 class="solution-tabs-title">In their own words</h3>
+                <p class="solution-tabs-subtitle">Five conversations revealed the friction behind every failed booking.</p>
+                <div class="tab-controls" role="tablist" aria-label="User quotes">
+                    <button class="tab-control active" role="tab" aria-selected="true" aria-controls="quote-athlete" data-tab-target="quote-athlete">The Athlete</button>
+                    <button class="tab-control" role="tab" aria-selected="false" aria-controls="quote-parent" data-tab-target="quote-parent">The Parent</button>
+                    <button class="tab-control" role="tab" aria-selected="false" aria-controls="quote-newcomer" data-tab-target="quote-newcomer">The Newcomer</button>
+                </div>
+                <div class="tab-panels">
+                     <div class="tab-panel active" id="quote-athlete" role="tabpanel">
+                        <div class="tab-panel-visual single-image">
+                            <img src="assets/images/relocate/Timmy.png" alt="Timmy, the athlete persona for Relocate saying &quot;I drive across town only to find locked doors.&quot;">
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="quote-parent" role="tabpanel" hidden>
+                        <div class="tab-panel-visual single-image">
+                            <img src="assets/images/relocate/Lisa.png" alt="Lisa, the parent persona for Relocate saying &quot;Schedules are buried in PDFs. I don't know where to start.&quot;">
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="quote-newcomer" role="tabpanel" hidden>
+                        <div class="tab-panel-visual single-image">
+                            <img src="assets/images/relocate/Peter.png" alt="Peter, the newcomer persona for Relocate saying &quot;I want filters for accessibility, but there's nothing.&quot;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Who this is for</h2>
+            <p class="section-intro">Three personas kept us focused on real needs instead of the wish list municipalities usually bring to the table.</p>
+            <div class="persona-grid">
+                <div class="persona-card">
+                    <div class="persona-title">🏀 Timmy · The Athlete</div>
+                    <div class="persona-bio">Needs dependable tools to secure recurring practices and monitor facility status for his team.</div>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-title">🗺️ Peter · The Explorer</div>
+                    <div class="persona-bio">Wants effortless discovery of new activities with filters he can trust and itineraries he can share.</div>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-title">📝 Lisa · The Planner</div>
+                    <div class="persona-bio">Coordinates family schedules and accessibility needs, demanding clarity and timely reminders.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section overview">
+        <div class="container">
+            <h2>What kept people from booking</h2>
+            <p class="section-intro">These pain points came up in every single conversation.</p>
+            <div class="data-cards">
+                <div class="data-card">
+                    <strong>5</strong>
+                    <span>User interviews</span>
+                </div>
+                <div class="data-card">
+                    <strong>4</strong>
+                    <span>Platforms audited</span>
+                </div>
+                <div class="data-card">
+                    <strong>3</strong>
+                    <span>Personas crafted</span>
+                </div>
+                <div class="data-card">
+                    <strong>1</strong>
+                    <span>Unified booking flow</span>
+                </div>
+                <div class="data-card">
+                    <strong>6</strong>
+                    <span>Core feature bets</span>
+                </div>
+                <div class="data-card">
+                    <strong>∞</strong>
+                    <span>Potential community impact</span>
+                </div>
+            </div>
+            <div class="pain-points-grid">
+                <div class="pain-point-card">
+                    <h4>Maintenance blind spots</h4>
+                    <p>Facility upkeep updates lived on social media or PDF bulletins, forcing users to gamble on availability every visit.</p>
+                </div>
+                <div class="pain-point-card">
+                    <h4>Navigation sprawl</h4>
+                    <p>Legacy IA forced people through redundant forms and unclear labels, especially painful on mobile.</p>
+                </div>
+                <div class="pain-point-card">
+                    <h4>Planning overhead</h4>
+                    <p>Comparing schedules meant juggling tabs, PDFs, and phone calls before any slot could be confirmed.</p>
+                </div>
+                <div class="pain-point-card">
+                    <h4>Inclusion in the dark</h4>
+                    <p>Filters for accessibility, cost, and language were missing, limiting participation for families and newcomers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>The solutions we bet on</h2>
+            <p class="section-intro">Nine features emerged from research, each one addressing a specific pain point.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏟️</div>
+                    <h3>Facilities status & upkeep</h3>
+                    <p>Live maintenance banners keep visitors informed before they leave home.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Streamlined navigation</h3>
+                    <p>Guided search lets people browse by facility, activity, or neighborhood vibe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗓️</div>
+                    <h3>One-glance schedules</h3>
+                    <p>Color-coded schedules show availability, bookings, and upkeep in one panel.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Inclusive filters</h3>
+                    <p>Filters for accessibility, cost, and equipment make selection effortless.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Discover local recreation</h3>
+                    <p>Map overlays pair facility info with neighborhood cues for quicker planning.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Feedback loops</h3>
+                    <p>Inline prompts collect feedback so municipalities can act on real demand.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧭</div>
+                    <h3>Guided onboarding</h3>
+                    <p>Goal-setting during signup tailors recommendations to each user’s intent.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Insights dashboards</h3>
+                    <p>Lightweight analytics show municipalities which programs need more support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>How we got there</h2>
+            <p class="section-intro">From rough sketches to tested prototypes, every iteration taught us something new.</p>
+            <div class="artifact-showcase">
+                <div class="artifact-item">
+                    <div class="artifact-caption">
+                        <div class="artifact-gallery">
+                            <figure>
+                                <img src="assets/images/relocate/relocate-paper-1.jpg" alt="Paper prototype sketches for the Relocate intake flow">
+                                <figcaption>Mapping the core intake flow and success criteria on paper.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/images/relocate/relocate-paper-2.png" alt="Paper prototype showing booking filters laid out for testing">
+                                <figcaption>Testing filter clarity before committing to UI components.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="assets/images/relocate/relocate-paper-3.jpg" alt="Observed paper prototype session highlighting navigation issues">
+                                <figcaption>Documenting navigation hiccups we observed in walk-throughs.</figcaption>
+                            </figure>
+                        </div>
+                        <h3>Paper prototypes</h3>
+                        <p>Quick pen-and-paper explorations helped us test flows without getting attached to pixels. We learned users wanted clear tasks before customization.</p>
+                    </div>
+                </div>
+                <div class="artifact-item">
+                    <img src="assets/images/relocate/relocate-highfi-screens.png" alt="Relocate low-fidelity wireframes used for early usability tests">
+                    <div class="artifact-caption">
+                        <h3>Low-fi prototype</h3>
+                        <p>Clickable wireframes walked users through filters, search, and discovery so we could validate the core flow before styling.</p>
+                    </div>
+                </div>
+                <div class="artifact-item">
+                    <img src="assets/images/relocate/relocate-wireframe.png" alt="High-fidelity Relocate screens with polished UI and motion">
+                    <div class="artifact-caption">
+                        <h3>High-fidelity prototype</h3>
+                        <p>High-fidelity screens locked in the bright palette, bold typography, and clarified navigation we scoped after M2 feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>The details that made it work</h2>
+            <p class="section-intro">Moving from sketches to polish meant dialing in the look, smoothing the flows, and making sure every core feature pulled its weight.</p>
+            <div class="design-system-showcase">
+                <div class="design-system-card">
+                    <div class="design-system-icon">🎨</div>
+                    <h3>Palette & type upgrades</h3>
+                    <p><strong>High-energy palette.</strong> Bright accents paired with deep blues keep CTAs in focus without overwhelming.</p>
+                    <p><strong>Readable hierarchy.</strong> Bold, minimal typography makes scanning effortless across dense schedules.</p>
+                    <p><strong>Accessible contrast.</strong> Every combination now meets WCAG AA so the interface stays inclusive.</p>
+                </div>
+                <div class="design-system-card">
+                    <div class="design-system-icon">🧭</div>
+                    <h3>Navigation refinements</h3>
+                    <p><strong>Clear paths.</strong> Rebuilt buttons and wayfinding so the next step is always obvious.</p>
+                    <p><strong>Consistent language.</strong> Aligned spacing and iconography to reduce relearning between flows.</p>
+                    <p><strong>Friction-free flows.</strong> Simplified interactions we saw in walkthroughs to keep momentum high.</p>
+                </div>
+                <div class="design-system-card">
+                    <div class="design-system-icon">🛠️</div>
+                    <h3>Feature essentials</h3>
+                    <p><strong>Integrated discovery.</strong> Filters, search, and location services work together to surface the right facility fast.</p>
+                    <p><strong>Calm management.</strong> Notifications and schedules keep every booking, alert, and update in one hub.</p>
+                    <p><strong>Informed decisions.</strong> Facility pages surface amenities, reviews, and distance so choices feel confident.</p>
+                </div>
+            </div>
+            <p class="section-note">Usability sessions called out three fixes we shipped: make the map/list toggle unmistakable, label the bookings view as "Your Bookings," and give filters prime placement so people always know how to narrow results.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>What users taught us</h2>
+            <p class="section-intro">Testing showed us exactly which moments delighted users and which ones needed a tweak.</p>
+            <div class="user-lessons-grid">
+                <div class="user-lesson-card">
+                    <div class="user-lesson-icon">🗺️</div>
+                    <h3>Map toggle clarity</h3>
+                    <p>The map/list switch sat too quietly in the corner. We elevated it with contrast and microcopy so explorers could hop views instantly.</p>
+                </div>
+                <div class="user-lesson-card">
+                    <div class="user-lesson-icon">🗂️</div>
+                    <h3>Your bookings, clearly</h3>
+                    <p>Testers wondered if the schedule was theirs or a template. A “Your Bookings” title and persistent state solved the ambiguity.</p>
+                </div>
+                <div class="user-lesson-card">
+                    <div class="user-lesson-icon">🔍</div>
+                    <h3>Filters up front</h3>
+                    <p>Filters hid in the overflow, so users skipped the most powerful tool. We surfaced them beside search for faster refinement.</p>
+                </div>
+                <div class="user-lesson-card">
+                    <div class="user-lesson-icon">⚡</div>
+                    <h3>Smoother motion</h3>
+                    <p>Early animations felt jittery. We simplified transitions so interactions feel polished without delaying flows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section prototype-embed-section">
+        <div class="container">
+            <h2>Walk the Relocate Prototype</h2>
+            <p class="section-intro">Preview the end-to-end experience, from discovery to booking confirmation, in the live Figma prototype.</p>
+            <div class="prototype-embed-wrapper">
+                <!-- Replace the placeholder URL with the live Relocate Figma prototype link -->
+                <iframe src="https://www.figma.com/embed?embed_host=ux-portfolio&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FlkE5bh37HtcuFfzTDGtYZo%2FMilestones%3Fnode-id%3D564-7535%26viewport%3D4821%252C1430%252C0.47%26t%3DzOvQ3z3UyxL9Eypr-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D564%253A7535" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="section-note" style="margin-top: 2rem;">Want more room? <a href="https://www.figma.com/proto/lkE5bh37HtcuFfzTDGtYZo/Milestones?node-id=564-7535&viewport=4821%2C1430%2C0.47&t=zOvQ3z3UyxL9Eypr-0&scaling=contain&content-scaling=fixed&starting-point-node-id=564%3A7535" target="_blank" rel="noopener">Open the prototype in a new tab ↗</a></p>
+        </div>
+    </section>
+
+    <section class="section reflection-section">
+        <div class="container">
+            <h2>What stuck with me</h2>
+            <p class="section-intro">Beyond the final designs, this project taught me how to lead through ambiguity and advocate for users at every turn.</p>
+            <div class="reflection-cards">
+                <div class="reflection-card">
+                    <div class="reflection-icon">🎯</div>
+                    <h3>Strategy & systems</h3>
+                    <p>Keeping research artifacts visible helped us balance municipal constraints with a fresher, community-forward UI that users actually wanted.</p>
+                </div>
+                <div class="reflection-card">
+                    <div class="reflection-icon">💬</div>
+                    <h3>Advocacy works</h3>
+                    <p>Sharing verbatim quotes persuaded stakeholders to prioritize accessibility and inclusive programming early, proving that user voices drive decisions.</p>
+                </div>
+                <div class="reflection-card">
+                    <div class="reflection-icon">🔄</div>
+                    <h3>Iteration is everything</h3>
+                    <p>Weekly workshops on recreation context raised shared understanding and sped up critique cycles, making each iteration sharper than the last.</p>
+                </div>
+                <div class="reflection-card">
+                    <div class="reflection-icon">🚀</div>
+                    <h3>Community features</h3>
+                    <p>Next up: social discovery, leaderboards, and mentorship programs to deepen engagement and turn bookings into lasting connections.</p>
+                </div>
+                <div class="reflection-card">
+                    <div class="reflection-icon">📡</div>
+                    <h3>Real-time data</h3>
+                    <p>Integrating live maintenance and occupancy feeds will keep bookings accurate and rebuild trust in the system.</p>
+                </div>
+                <div class="reflection-card">
+                    <div class="reflection-icon">♿</div>
+                    <h3>Accessibility first</h3>
+                    <p>A full WCAG review and filter clarity testing will ensure no one gets left behind as the platform scales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-navigation">
+        <div class="nav-projects">
+            <a href="project-pulse.html">← Previous Project</a>
+            <a href="project-resonate.html">Next Project →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <p class="footer-location">made in canada</p>
+                <div class="footer-contact">
+                    <a href="about.html" class="footer-contact-link">About</a>
+                    <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
+                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-tagline">let's make something beautiful.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="transitions.js"></script>
+    
+    <!-- Dark Theme Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll-triggered fade-in animations with performance optimization
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        // Use requestAnimationFrame for smooth animations
+                        requestAnimationFrame(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            entry.target.classList.add('animated');
+                        });
+                        // Unobserve after animation to improve performance
+                        fadeInObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe fade-in elements with optimized stagger
+            const fadeElements = document.querySelectorAll('.feature-card, .pain-point-card, .persona-card, .data-card, .design-screen, .accordion-item, .reflection-card, .artifact-item');
+            fadeElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
+                element.style.willChange = 'opacity, transform';
+                fadeInObserver.observe(element);
+            });
+
+            // Tab switcher functionality
+            const tabSwitcher = document.querySelector('[data-tab-switcher]');
+            if (tabSwitcher) {
+                const controls = tabSwitcher.querySelectorAll('.tab-control');
+                const panels = tabSwitcher.querySelectorAll('.tab-panel');
+
+                controls.forEach(control => {
+                    control.addEventListener('click', () => {
+                        const targetId = control.dataset.tabTarget;
+                        
+                        // Update active states
+                        controls.forEach(c => {
+                            c.classList.remove('active');
+                            c.setAttribute('aria-selected', 'false');
+                        });
+                        control.classList.add('active');
+                        control.setAttribute('aria-selected', 'true');
+
+                        // Show target panel
+                        panels.forEach(panel => {
+                            panel.classList.remove('active');
+                            panel.hidden = true;
+                        });
+                        const targetPanel = document.getElementById(targetId);
+                        if (targetPanel) {
+                            targetPanel.classList.add('active');
+                            targetPanel.hidden = false;
+                        }
+                    });
+                });
+            }
+
+            // Enhanced hover effects for navigation links
+            const navLinks = document.querySelectorAll('.nav-projects a');
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    link.style.background = 'rgba(255, 255, 255, 0.15)';
+                    link.style.transform = 'translateY(-8px)';
+                });
+                link.addEventListener('mouseleave', () => {
+                    link.style.background = 'rgba(255, 255, 255, 0.05)';
+                    link.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Click to expand images
+            document.querySelectorAll('.design-screen img, .hero-image img, .quote-panel-content img').forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => {
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.95);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        cursor: pointer;
+                        animation: fadeIn 0.3s ease;
+                    `;
+                    
+                    const expandedImg = document.createElement('img');
+                    expandedImg.src = img.src;
+                    expandedImg.alt = img.alt;
+                    expandedImg.style.cssText = `
+                        max-width: 90%;
+                        max-height: 90%;
+                        border-radius: 16px;
+                        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 100px rgba(59, 130, 246, 0.5);
+                        border: 2px solid rgba(59, 130, 246, 0.5);
+                    `;
+                    
+                    modal.appendChild(expandedImg);
+                    document.body.appendChild(modal);
+                    
+                    modal.addEventListener('click', () => {
+                        modal.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => modal.remove(), 300);
+                    });
+                });
+            });
+
+            // Optimized parallax effect on hero with passive listener
+            let ticking = false;
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                // Only update if scroll changed significantly
+                if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
+                    window.requestAnimationFrame(() => {
+                        const hero = document.querySelector('.case-study-hero');
+                        
+                        if (hero && scrolled < window.innerHeight) {
+                            hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+                            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.2;
+                        }
+                        
+                        lastScroll = scrolled;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            console.log('✨ Relocate: Dark theme activated with enhanced interactions!');
+        });
+
+        // Add fade animations to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+
