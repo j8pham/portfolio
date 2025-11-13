@@ -1,99 +1,42 @@
-# UX Portfolio Case Study Template
+## 👋 Hey there!
 
-A clean, modern, and comprehensive template for showcasing UX design case studies in your portfolio.
+Welcome to my design portfolio repo! This is where I keep all the work I’m proud of — from UX case studies to product concepts, prototypes, and the random ideas that kept me up at 2AM (the best ones always do).
 
-## Features
+If you’re poking around, you’ll find the code and structure behind my actual portfolio site. The design work itself lives on the site, but the process, structure, and fun bits live here.
 
-- **Modern Design**: Clean, minimalist design that puts your work front and center
-- **Comprehensive Sections**: All essential sections for a complete UX case study
-- **Responsive**: Fully responsive design that looks great on all devices
-- **Easy to Customize**: Well-organized HTML and CSS for easy customization
+## 🌟 What You’ll Find
 
-## Structure
+- Fully responsive portfolio built with HTML / CSS / JS.
+- My UX/UI design case studies — research, flows, wireframes, final designs.
+- Branding, visuals, and the creative decisions that make the site feel like me.
+- A few easter eggs… maybe. 👀
 
-The template includes the following sections:
+## 📁 Structure
 
-1. **Hero Section** - Project title, subtitle, and key metadata
-2. **Overview** - Challenge, solution, and impact with key metrics
-3. **Research & Discovery** - User research, personas, and competitive analysis
-4. **Design Process** - Ideation, wireframing, user flows, and prototyping
-5. **Final Design** - High-fidelity mockups with design explanations
-6. **Key Features** - Highlighted features and their benefits
-7. **Design System** (Optional) - Colors, typography, and components
-8. **Lessons Learned** - Reflection on the project
-9. **Project Navigation** - Links to previous/next projects
+Nothing complicated — just clean, organized files that power the portfolio:
+/assets – images, illustrations, logos
+/css – styles that keep everything pretty
+/js – the sprinkle of interactivity
+/pages – each section of the portfolio
 
-## Getting Started
+If you're a designer checking out my process, or a recruiter checking if I can design and build real stuff… hi 👋 you’re in the right place.
 
-1. Clone or download this template
-2. Open `index.html` in a code editor
-3. Replace placeholder content with your own project details
-4. Add your images to the project directory
-5. Update image paths in the HTML
-6. Customize colors, fonts, and spacing in `styles.css`
+## 🚀 Running It Locally
 
-## Customization
+Clone the repo
+git clone https://github.com/yourusername/yourrepo.git
+cd yourrepo
+open index.html
+(Or run it with your favorite local server.)
 
-### Colors
+## 🧠 Design Philosophy
 
-Edit the CSS variables in `styles.css`:
+I like building experiences that feel:
+- Clean and intuitive
+- Human, not corporate
+- Fun to explore without being cluttered
+- Structured enough to scale as I grow
 
-```css
-:root {
-    --primary-color: #000000;
-    --secondary-color: #333333;
-    --text-color: #333333;
-    --text-light: #666666;
-    --bg-light: #f5f5f5;
-    --bg-white: #ffffff;
-}
-```
+## 💬 Connect With Me
 
-### Typography
-
-Change the font family by updating:
-
-```css
---font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-```
-
-### Images
-
-Replace placeholder images with your own:
-- `placeholder-hero.jpg` - Hero section image
-- `placeholder-wireframe-*.jpg` - Wireframe images
-- `placeholder-user-flow.jpg` - User flow diagram
-- `placeholder-prototype.jpg` - Prototype screenshot
-- `placeholder-screen-*.jpg` - Final design screenshots
-
-## Tips for Writing a Great Case Study
-
-1. **Start with the problem** - Clearly define the challenge
-2. **Show your process** - Demonstrate how you think and work
-3. **Use visuals** - Images, diagrams, and mockups tell your story
-4. **Quantify results** - Use metrics to show impact
-5. **Tell a story** - Make it engaging and easy to follow
-6. **Be honest** - Include challenges and how you overcame them
-
-## Best Practices
-
-- Keep text concise and scannable
-- Use high-quality images
-- Ensure all images are optimized for web
-- Test on multiple devices and browsers
-- Include actual metrics and results when possible
-- Show your design process, not just final designs
-
-## Browser Support
-
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Responsive design works on mobile, tablet, and desktop
-
-## License
-
-Feel free to use this template for your portfolio. Credit is appreciated but not required.
-
-## Credits
-
-Template inspired by modern UX portfolio case studies and best practices in the industry.
-
+If you want to chat about design, collabs, or literally anything from volleyball to food recs, feel free to reach out. Thanks for stopping by!
