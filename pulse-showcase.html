@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse - Visual Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat-256x256.png">
+    <style>
+        body {
+            background: #0a0e1a;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .showcase-section {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        /* Visual variety for sections */
+        .section-hero {
+            background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.08) 0%, #0a0e1a 70%);
+            text-align: center;
+        }
+
+        .section-problem {
+            background: linear-gradient(180deg, #0a0e1a 0%, rgba(239, 68, 68, 0.05) 50%, #0a0e1a 100%);
+        }
+
+        .section-research {
+            background: #080b14;
+        }
+
+        .section-journey {
+            background: linear-gradient(135deg, #0a0e1a 0%, #0f172a 100%);
+        }
+
+        .section-solution {
+            background: radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.1) 0%, #0a0e1a 60%);
+        }
+
+        .section-split-layout {
+            background: #0b101d;
+        }
+
+        .container-showcase {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Split layout helper */
+        .layout-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .layout-split.reverse .text-column {
+            order: 2;
+        }
+        
+        .layout-split.reverse .visual-column {
+            order: 1;
+        }
+
+        .text-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .act-label {
+            color: #5eead4;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(20, 184, 166, 0.1);
+            border-radius: 99px;
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Default Story Beat */
+        .story-beat {
+            font-size: 1.35rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-top: 2rem;
+        }
+
+        /* 1. Scene Setter (Hero) - Large, serif, centered */
+        .beat-scene-setter {
+            font-size: 1.75rem;
+            color: #e2e8f0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* 2. Conclusion (Problem) - Boxed with accent border */
+        .beat-conclusion {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #ef4444; /* Red for problem */
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+            font-size: 1.25rem;
+        }
+
+        /* 3. Insight (Research) - Minimal, clean sans-serif */
+        .beat-insight {
+            border-left: 3px solid #5eead4;
+            padding-left: 2rem;
+            font-size: 1.25rem;
+            color: #cbd5e1;
+        }
+
+        /* 4. Mission (Opportunity) - Bold, impactful */
+        .beat-mission {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #cbd5e1;
+            text-align: center;
+            margin: 2.5rem auto 0;
+            max-width: 700px;
+            line-height: 1.6;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 5. Annotation (Side notes for pillars) */
+        .beat-annotation {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        /* 6. Impact Quote - Large quote style */
+        .beat-impact-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #cbd5e1;
+            border-left: 4px solid #f59e0b; /* Amber */
+            padding-left: 2rem;
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%);
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+        }
+
+        /* Visual Containers */
+        .visual-container {
+            margin: 0;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .visual-container:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .visual-padding {
+            padding: 3rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Bento Box Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            width: 100%;
+        }
+
+        .bento-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            border-color: rgba(45, 212, 191, 0.3);
+        }
+
+        .bento-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-wide {
+            grid-column: span 2;
+        }
+
+        .bento-full {
+            grid-column: span 4;
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .bento-wide {
+                grid-column: span 2;
+            }
+            .bento-full {
+                grid-column: span 2;
+            }
+        }
+
+        /* Card Styles */
+        .icon-card {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .icon-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .icon-large {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(45, 212, 191, 0.2));
+        }
+
+        .label-large {
+            font-size: 1.25rem;
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        /* Timeline Styles */
+        .timeline-simple {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-marker {
+            width: 48px;
+            height: 48px;
+            background: rgba(45, 212, 191, 0.1);
+            color: #2dd4bf;
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* Quote Styles */
+        .quote-card {
+            font-size: 1.5rem;
+            color: #f1f5f9;
+            font-weight: 300;
+            line-height: 1.6;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: rgba(45, 212, 191, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        /* Pillar Chips */
+        .pillar-chip {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            border-radius: 100px;
+            color: #2dd4bf;
+            font-weight: 600;
+            margin: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .screen-mockup {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screen-mockup:hover {
+            transform: scale(1.02);
+        }
+
+        /* List Styles */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 1.25rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            color: #2dd4bf;
+            font-weight: bold;
+            margin-right: 1rem;
+            background: rgba(45, 212, 191, 0.1);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        /* Bullet list styles for Act III */
+        .bullet-list {
+            text-align: left;
+            color: #94a3b8;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .bg-gradient-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(20, 184, 166, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .showcase-section:hover .bg-gradient-effect {
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .layout-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .layout-split.reverse .text-column { order: 1; }
+            .layout-split.reverse .visual-column { order: 2; }
+            h2 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            h2 { font-size: 2rem; }
+            .beat-scene-setter { font-size: 1.25rem; }
+            .showcase-section { padding: 4rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Act I -->
+    <section class="showcase-section section-hero">
+        <div class="container-showcase">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <span class="act-label">Act I: Problem</span>
+                <h2>You walk into the ER at 11:30pm...</h2>
+                
+                <div class="visual-container visual-padding" style="margin-top: 3rem; min-height: 400px; background-image: url('assets/images/pulse showcase/unnamed.jpg'); background-size: cover; background-position: center;">
+                </div>
+
+                <!-- Style 1: Scene Setter -->
+                <p class="beat-scene-setter">
+                    "Imagine you're walking into the ER late at night with someone you care about. You're scared, you don't know where to go, and everyone looks busy. There's no clear starting point. That's the moment we focused on."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-problem">
+        <div class="container-showcase">
+            <span class="act-label" style="background: rgba(239, 68, 68, 0.1); color: #f87171; border-color: rgba(239, 68, 68, 0.2);">The Problem</span>
+            <h2 style="max-width: 800px;">The first 10 minutes are chaos</h2>
+            
+            <div class="visual-container visual-padding">
+                <div class="grid-3">
+                    <div class="icon-card">
+                        <span class="icon-large">😕</span>
+                        <div class="label-large">Confused patient</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">"Where do I go first?"</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">🤯</span>
+                        <div class="label-large">Overloaded nurse</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Juggling care and admin</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">📝</span>
+                        <div class="label-large">Messy paperwork</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Illegible and incomplete</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style 2: Conclusion Box -->
+            <div class="beat-conclusion">
+                We found that the <strong>first 10 minutes</strong> after a patient arrives are often the most confusing. Patients don't know what to do, nurses juggle care and admin tasks, and important details are captured in a messy way.
+            </div>
+        </div>
+    </section>
+
+    <!-- Act II -->
+    <section class="showcase-section section-research">
+        <div class="container-showcase">
+            <div class="layout-split">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Act II: Research & Insight</span>
+                        <h2>Understanding the ER entry experience</h2>
+                    </div>
+                    <!-- Style 3: Insight/Annotation -->
+                    <p class="beat-annotation">
+                        We started by reading about ED overcrowding, then spoke with two healthcare professionals to ground our ideas. We mapped the journey from 'walk in' to "first interaction with staff," and looked for <strong>friction points</strong> we could realistically improve.
+                    </p>
+                </div>
+                <div class="visual-column">
+                    <div class="timeline-simple">
+                        <div class="timeline-step">
+                            <span class="step-marker">1</span>
+                            <div>
+                                <strong style="color: white; display: block; margin-bottom: 0.25rem;">Secondary Research</strong>
+                                <span style="color: #94a3b8;">ED overcrowding statistics</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="step-marker">2</span>
+                            <div>
+                                <strong style="color: white; display: block; margin-bottom: 0.25rem;">Expert Interviews</strong>
+                                <span style="color: #94a3b8;">Conversations with 2 healthcare pros</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="step-marker">3</span>
+                            <div>
+                                <strong style="color: white; display: block; margin-bottom: 0.25rem;">Mapping & Testing</strong>
+                                <span style="color: #94a3b8;">Journey mapping friction points</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem;">
+                <div class="visual-container visual-padding">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                        <div class="icon-card" style="text-align: center; padding: 1.5rem;">
+                            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">👥</span>
+                            <div style="color: #fff; font-weight: 600; margin-bottom: 0.5rem;">Team coordination</div>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Led team of four designers</p>
+                        </div>
+                        <div class="icon-card" style="text-align: center; padding: 1.5rem;">
+                            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">🔍</span>
+                            <div style="color: #fff; font-weight: 600; margin-bottom: 0.5rem;">Field research</div>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Facilitated research sessions</p>
+                        </div>
+                        <div class="icon-card" style="text-align: center; padding: 1.5rem;">
+                            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">📐</span>
+                            <div style="color: #fff; font-weight: 600; margin-bottom: 0.5rem;">Service design</div>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Led blueprinting workshops</p>
+                        </div>
+                        <div class="icon-card" style="text-align: center; padding: 1.5rem;">
+                            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">🎨</span>
+                            <div style="color: #fff; font-weight: 600; margin-bottom: 0.5rem;">Interaction design</div>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Owned design direction</p>
+                        </div>
+                        <div class="icon-card" style="text-align: center; padding: 1.5rem;">
+                            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">🔧</span>
+                            <div style="color: #fff; font-weight: 600; margin-bottom: 0.5rem;">Prototyping</div>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Built prototypes</p>
+                        </div>
+                        <div class="icon-card" style="text-align: center; padding: 1.5rem;">
+                            <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">✓</span>
+                            <div style="color: #fff; font-weight: 600; margin-bottom: 0.5rem;">Validation</div>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin: 0;">Coordinated with healthcare pros</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="visual-container visual-padding" style="margin-top: 3rem;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">From paper to pixels</h3>
+                    <p style="color: #94a3b8;">Our prototyping journey</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                    <div style="text-align: center;">
+                        <img src="assets/images/pulse/pulse-paper-1.png" alt="Paper Prototype 1" class="screen-mockup">
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="assets/images/pulse/pulse-paper-2.png" alt="Paper Prototype 2" class="screen-mockup">
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="assets/images/pulse/pulse-paper-3.png" alt="Paper Prototype 3" class="screen-mockup">
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="assets/images/pulse/pulse-highfi-1.png" alt="High Fidelity Prototype" class="screen-mockup">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-journey">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Journey Map</span>
+                <h2>The journey from ‘door’ to ‘first interaction’</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚪</div>
+                        <div style="color: white; font-weight: 600;">Enter</div>
+                    </div>
+                    <div style="color: #5eead4; font-size: 1.5rem;">→</div>
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">👀</div>
+                        <div style="color: white; font-weight: 600;">Look around</div>
+                    </div>
+                    <div style="color: #5eead4; font-size: 1.5rem;">→</div>
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">❓</div>
+                        <div style="color: white; font-weight: 600;">Ask or wait</div>
+                    </div>
+                    <div style="color: #5eead4; font-size: 1.5rem;">→</div>
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📋</div>
+                        <div style="color: white; font-weight: 600;">Fill forms</div>
+                    </div>
+                    <div style="color: #5eead4; font-size: 1.5rem;">→</div>
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">👩‍⚕️</div>
+                        <div style="color: white; font-weight: 600;">See nurse</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; color: #94a3b8; font-style: italic;">Wait... what happens here? Uncertainty at every step.</p>
+            </div>
+
+            <!-- Style 3: Insight (Side-bar) -->
+            <div style="margin-top: 3rem; display: flex; justify-content: center;">
+                <p class="beat-insight" style="max-width: 700px;">
+                    The journey looks simple on paper, but in reality each step is full of uncertainty. The biggest gap: there's no <strong>clear, guided starting point</strong> that works for both patients and staff.
+                </p>
+            </div>
+            
+            <div class="visual-container visual-padding" style="margin-top: 3rem;">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                    <div style="text-align: center;">
+                        <img src="assets/images/pulse/pulse-bodystorm-1.png" alt="Bodystorm 1" class="screen-mockup">
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="assets/images/pulse/pulse-bodystorm-2.png" alt="Bodystorm 2" class="screen-mockup">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div class="layout-split reverse">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Key Insights</span>
+                        <h2>What we heard</h2>
+                    </div>
+                    <!-- Style 3: Insight (Annotation) -->
+                    <p class="beat-annotation">
+                        From our research, three themes kept coming up: Patients are hesitant and overwhelmed. Forms are confusing and often incomplete. Staff lose time fixing that, instead of focusing on care. Those became the backbone for our <strong>design direction</strong>.
+                    </p>
+                </div>
+                <div class="visual-column">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="quote-card">
+                            People are scared to bother staff with 'small' questions.
+                        </div>
+                        <div class="quote-card">
+                            Forms come back incomplete or illegible.
+                        </div>
+                        <div class="quote-card">
+                            Triage decisions are delayed by missing information.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-split-layout">
+        <div class="container-showcase">
+            <div class="visual-container visual-padding">
+                <div style="display: flex; gap: 2rem; align-items: start; max-width: 900px; margin: 0 auto; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px; text-align: left;">
+                        <span class="act-label">Opportunity</span>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; text-align: left;">Our opportunity and design pillars</h2>
+                        <p style="font-size: 1.4rem; line-height: 1.6; color: #fff; text-align: left;">
+                            Create a <strong>guided check-in experience</strong> that reduces anxiety for patients and delivers clean, actionable information for staff.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; flex-shrink: 0;">
+                        <div style="text-align: left;">
+                            <div class="pillar-chip" style="margin: 0.5rem 0.5rem 0.5rem 0;">Calm Under Pressure</div>
+                            <div class="pillar-chip" style="margin: 0.5rem 0.5rem 0.5rem 0;">No One Left Guessing</div>
+                            <div class="pillar-chip" style="margin: 0.5rem 0.5rem 0.5rem 0;">Help Staff Help Faster</div>
+                            <div class="pillar-chip" style="margin: 0.5rem 0.5rem 0.5rem 0;">Accessible by Default</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style 4: Mission Statement -->
+            <p class="beat-mission">
+                To stay focused, we defined four design pillars. We used them as a filter during every decision and iteration. If a screen didn't support these, we changed it.
+            </p>
+        </div>
+    </section>
+
+    <!-- Act III -->
+    <section class="showcase-section section-solution">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="act-label">Act III: The Solution</span>
+                <h2>Pulse: a calmer way to check in</h2>
+                <div style="max-width: 600px; margin: 1rem auto 0;">
+                    <p class="beat-annotation" style="margin-bottom: 1rem;">
+                        Pulse is a check-in kiosk placed at the ER entrance. It guides patients through a short, focused flow, flags critical information for staff, and clearly tells patients what will happen next. Throughout the design process, we had to conform to <strong>hospital standard design</strong> by following their simple design system and keeping it inline with their current systems.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div style="max-width: 1000px; margin: 0 auto;">
+                    <img src="assets/images/pulse/pulse-hero-mockup.png" alt="Pulse Kiosk Mockup" class="screen-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Pillar 1</span>
+                <h2>Reduce cognitive load</h2>
+            </div>
+            
+            <div class="layout-split" style="margin-bottom: 3rem;">
+                <div class="text-column" style="display: flex; align-items: center;">
+                    <ul class="feature-list">
+                        <li>Large primary action for clarity</li>
+                        <li>Visible language options immediately</li>
+                        <li>Clear emergency bypass option</li>
+                    </ul>
+                </div>
+                <div class="visual-column" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 1rem;">
+                    <video src="assets/images/pulse showcase/Showreel_-Mobile-screens-[remix].mp4" class="screen-mockup" style="display: block; width: 100%; max-width: 100%; height: auto; object-fit: contain; min-width: 600px; transform: scale(1.15);" autoplay loop muted playsinline></video>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p class="beat-annotation" style="margin-bottom: 1rem;">
+                    To reduce cognitive load, the first screen had to be <strong>obvious and reassuring</strong>.
+                </p>
+                <ul style="text-align: left; color: #94a3b8; list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.75rem;">✓ One dominant action for clarity</li>
+                    <li style="margin-bottom: 0.75rem;">✓ Visible language options immediately available</li>
+                    <li style="margin-bottom: 0.75rem;">✓ Clear line for life-threatening cases to never block urgent care</li>
+                    <li style="margin-bottom: 0.75rem;">✓ Simple, high-contrast layout for stressed and tired people</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-split-layout">
+        <div class="container-showcase">
+            <div class="layout-split reverse">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Pillar 2</span>
+                        <h2>Show status & next steps</h2>
+                    </div>
+                    <p class="beat-annotation" style="margin-bottom: 1rem;">
+                        To make sure <strong>no one feels lost</strong>, every step shows progress and next steps.
+                    </p>
+                    <ul style="text-align: left; color: #94a3b8; list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;">✓ Shows where you are in the process</li>
+                        <li style="margin-bottom: 0.75rem;">✓ Questions broken into small chunks with plain language</li>
+                        <li style="margin-bottom: 0.75rem;">✓ Each screen focused on a single decision</li>
+                    </ul>
+                </div>
+                <div class="visual-column">
+                    <img src="assets/images/pulse/pulse-screen-confirmation.png" alt="Priority Screen" class="screen-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div class="layout-split">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Pillar 3</span>
+                        <h2>Structure info for triage</h2>
+                    </div>
+                    <p class="beat-annotation" style="margin-bottom: 1rem;">
+                        For staff, we prioritized <strong>structured information</strong> over generic form dumps.
+                    </p>
+                    <ul style="text-align: left; color: #94a3b8; list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;">✓ Risk flags automatically tagged and surfaced</li>
+                        <li style="margin-bottom: 0.75rem;">✓ Critical symptoms like chest pain highlighted immediately</li>
+                        <li style="margin-bottom: 0.75rem;">✓ Integrates with existing triage tools for quick action</li>
+                    </ul>
+                </div>
+                <div class="visual-column">
+                    <div class="visual-container" style="padding: 2rem;">
+                        <div style="background: #0f172a; padding: 1.5rem; border-radius: 12px; border: 1px solid #334155;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <div style="color: #5eead4; font-weight: bold; letter-spacing: 0.05em;">TRIAGE DASHBOARD</div>
+                                <div style="font-size: 0.8rem; color: #64748b;">LIVE FEED</div>
+                            </div>
+                            
+                            <div style="background: #1e293b; padding: 1rem; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="color: #fff; font-weight: 600;">Patient #8049</span>
+                                    <span style="color: #cbd5e1; font-size: 0.9rem;">0 min ago</span>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <span style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🚩 Chest Pain</span>
+                                    <span style="background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">⚠️ Pain: 8/10</span>
+                                </div>
+                            </div>
+                            
+                            <div style="background: #1e293b; padding: 1rem; border-radius: 8px; border-left: 4px solid #3b82f6; opacity: 0.6;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="color: #fff; font-weight: 600;">Patient #8048</span>
+                                    <span style="color: #cbd5e1; font-size: 0.9rem;">2 min ago</span>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <span style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">Flu Symptoms</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="text-align: center; color: #94a3b8; font-size: 0.9rem; margin-top: 1rem;">Data structured for immediate triage decision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-split-layout">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Pillar 4</span>
+                <h2>Inclusive by design</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div class="grid-3">
+                    <div class="icon-card">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">👆</span>
+                        <div class="label-large">Large targets</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Easy to tap for shaky hands</p>
+                    </div>
+                    <div class="icon-card">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🌓</span>
+                        <div class="label-large">High contrast</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Readable in harsh lighting</p>
+                    </div>
+                    <div class="icon-card">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🗣️</span>
+                        <div class="label-large">Plain language</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">No confusing medical jargon</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="beat-annotation" style="margin: 2rem auto 0; text-align: center; max-width: 800px;">
+                We designed with <strong>accessibility as a starting point</strong>, not an add-on. Large targets, high contrast, and plain language support people who are older, in pain, or in a rush. We also had to conform to <strong>hospital standard design</strong> by following their simple design system and keeping it inline with their current systems, ensuring consistency across all hospital interfaces. In future iterations, I'd push this further with screen reader support, height considerations for the physical kiosk, and more language options.
+            </p>
+        </div>
+    </section>
+
+    <!-- Act IV -->
+    <section class="showcase-section section-hero">
+        <div class="container-showcase">
+            <span class="act-label">Act IV: Results & Iteration</span>
+            <h2>How the pillars changed the design</h2>
+            
+            <div class="visual-container visual-padding">
+                <div class="grid-2">
+                    <div style="opacity: 0.5; border: 2px dashed #475569; padding: 2rem; border-radius: 16px;">
+                        <h3 style="color: #94a3b8; margin-bottom: 1rem;">Before</h3>
+                        <ul style="text-align: left; color: #94a3b8; list-style: disc; padding-left: 1.5rem;">
+                            <li style="margin-bottom: 0.5rem;">Busy screens</li>
+                            <li style="margin-bottom: 0.5rem;">Long paragraphs of text</li>
+                            <li style="margin-bottom: 0.5rem;">Overwhelming options</li>
+                        </ul>
+                    </div>
+                    <div style="border: 2px solid #2dd4bf; padding: 2rem; border-radius: 16px; background: rgba(45, 212, 191, 0.05);">
+                        <h3 style="color: #2dd4bf; margin-bottom: 1rem;">After</h3>
+                         <ul style="text-align: left; color: #fff; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">✓ Simplified flows</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Clear progress indicators</li>
+                            <li style="margin-bottom: 0.5rem;">✓ One question per screen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p class="beat-annotation" style="margin: 3rem auto 0; text-align: center; max-width: 800px;">
+                These pillars weren't just theory. Here's a quick example: in our first version, we tried to collect everything on one screen. When we evaluated it against reducing cognitive load and showing clear status and next steps, we realized it was <strong>overwhelming</strong>. So we split the flow into smaller steps, added progress, and simplified the copy. Each iteration passed through the lens of: does this <strong>reduce stress</strong> and help <strong>staff act faster</strong>? Along the way, we worked within hospital design standards, following their simple design system to ensure seamless integration with existing systems.
+            </p>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div class="layout-split">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Impact</span>
+                        <h2>What we heard and why it matters</h2>
+                    </div>
+                    <!-- Style 6: Impact Quote -->
+                    <p class="beat-impact-quote">
+                        When we showed this to healthcare professionals, they appreciated that the kiosk wasn't replacing their judgment, just reducing <strong>admin noise</strong>. They liked the structured intake and emphasis on clarity. Even as a concept, we see potential for: cleaner data, less repeated questioning, and patients feeling more confident they're 'in the system'.
+                    </p>
+                </div>
+                <div class="visual-column">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="quote-card">
+                            "This doesn't replace my judgment, it just reduces the admin noise."
+                        </div>
+                        <div class="quote-card">
+                            "I like that the data comes in structured. No more bad handwriting."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Act V -->
+    <section class="showcase-section section-research">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Act V: Reflection</span>
+                <h2>Next steps if this were real</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div class="grid-3">
+                    <div class="icon-card">
+                        <span class="icon-large">🧪</span>
+                        <div class="label-large">Usability testing</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">With real patients</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">♿</span>
+                        <div class="label-large">Deeper accessibility</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Screen readers & height</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">🔌</span>
+                        <div class="label-large">Integration</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Connecting to hospital OS</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="beat-annotation" style="margin: 2rem auto 0; text-align: center; max-width: 800px;">
+                If this were going live, my next steps would be: usability testing with real ER patients and caregivers, deeper accessibility work, and planning for edge cases like kiosk downtime or lineups. I'm proud of the direction, but it's definitely not finished. I see it as a <strong>strong starting point</strong> that needs <strong>real-world testing</strong>.
+            </p>
+        </div>
+    </section>
+
+    <section class="showcase-section section-hero">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Results</span>
+                <h2>What we achieved</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div class="bento-grid">
+                    <div class="bento-card bento-large">
+                        <span class="icon-large">⏱️</span>
+                        <div class="label-large">127 seconds</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Projected time saved per patient through automated data collection</p>
+                    </div>
+                    <div class="bento-card">
+                        <span class="icon-large">⚡</span>
+                        <div class="label-large">20-25%</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Faster intake</p>
+                    </div>
+                    <div class="bento-card">
+                        <span class="icon-large">✓</span>
+                        <div class="label-large">100%</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Healthcare validation</p>
+                    </div>
+                    <div class="bento-card bento-wide">
+                        <span class="icon-large">📊</span>
+                        <div class="label-large">30%</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Fewer errors</p>
+                    </div>
+                    <div class="bento-card bento-full">
+                        <span class="icon-large">💚</span>
+                        <div class="label-large">Improved patient comfort</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Through transparent wait times and neutral language</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-hero" style="min-height: 60vh;">
+        <div class="container-showcase">
+            <span class="act-label">Closing</span>
+            <h2>Designing for less stress, more support</h2>
+            
+            <div class="visual-container" style="text-align: center; max-width: 900px; margin: 3rem auto; padding: 4rem 3rem;">
+               <div style="font-size: 6rem; line-height: 1;">🤝</div>
+               <p style="color: #fff; margin-top: 1rem; font-size: 1.5rem; font-weight: 600;">Empathy + Efficiency</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 3rem auto 0;">
+                <div class="icon-card" style="text-align: left; padding: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;">Care under pressure</h3>
+                    <p style="color: #cbd5e1; line-height: 1.6; margin: 0;">I care about situations where people are already under pressure, and design can genuinely reduce that load.</p>
+                </div>
+                <div class="icon-card" style="text-align: left; padding: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;">Clarity first</h3>
+                    <p style="color: #cbd5e1; line-height: 1.6; margin: 0;">The pillars I used here, specifically calm, clarity, helpful to staff, and accessible by default, are things I want to bring into other products too.</p>
+                </div>
+                <div class="icon-card" style="text-align: left; padding: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;">Real impact</h3>
+                    <p style="color: #cbd5e1; line-height: 1.6; margin: 0;">This project solidified something for me: design can make a <strong>genuine difference</strong> when the stakes are real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+    <script>
+        // Simple fade-in animation on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.showcase-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(section);
+            });
+
+            // Mouse movement parallax effect for backgrounds
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                document.documentElement.style.setProperty('--x', `${x * 100}%`);
+                document.documentElement.style.setProperty('--y', `${y * 100}%`);
+            });
+        });
+    </script>
+</body>
+</html>
