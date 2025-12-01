@@ -63,6 +63,11 @@ function initCircularProgressNav() {
     
     let currentSectionData = sections[0];
     
+    // Initialize progress text to 0 (Overview section)
+    if (progressText) {
+        progressText.textContent = sections[0].index;
+    }
+    
     // Calculate circumference for the progress ring
     const radius = 16; // matches SVG r="16"
     const circumference = radius * 2 * Math.PI;

@@ -1,0 +1,13 @@
+{
+  "name": "ux-portfolio",
+  "version": "1.0.0",
+  "description": "UX Portfolio Template",
+  "scripts": {
+    "serve": "npx serve -l 8000",
+    "dev": "npx serve -l 8000"
+  },
+  "keywords": ["portfolio", "ux", "design"],
+  "author": "",
+  "license": "MIT"
+}
+

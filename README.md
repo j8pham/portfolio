@@ -23,11 +23,31 @@ If you're a designer checking out my process, or a recruiter checking if I can d
 
 ## 🚀 Running It Locally
 
-Clone the repo
-git clone https://github.com/yourusername/yourrepo.git
-cd yourrepo
-open index.html
-(Or run it with your favorite local server.)
+Since this site uses absolute paths (for GitHub Pages compatibility), you need to run a local server instead of opening files directly.
+
+### Quick Start (Easiest)
+
+**Option 1: Using the provided script**
+```bash
+./serve.sh
+```
+Then open http://localhost:8000 in your browser
+
+**Option 2: Using Python (if installed)**
+```bash
+python3 -m http.server 8000
+```
+Then open http://localhost:8000 in your browser
+
+**Option 3: Using Node.js (if installed)**
+```bash
+npm run serve
+```
+Then open http://localhost:8000 in your browser
+
+### Why a server?
+
+Absolute paths (`/main.css`) work great on GitHub Pages but require a local HTTP server when developing. This is actually a best practice for web development!
 
 ## 🧠 Design Philosophy
 
