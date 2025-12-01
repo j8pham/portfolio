@@ -3,2126 +3,618 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case Study - Secure Your Future">
-    <title>Secure Your Future</title>
+    <meta name="description" content="Secure Your Future Case Study - Milestone-first financial planning">
+    <title>Secure Your Future | Case Study</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="case-study-styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/sleepycat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #0a0e1a;
-            color: #e2e8f0;
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            scroll-padding-top: 90px;
-        }
-
-        nav,
-        section,
-        footer {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-
-        .case-study-hero {
-            background-image: linear-gradient(135deg, rgba(5, 10, 20, 0.92) 0%, rgba(15, 15, 15, 0.88) 50%, rgba(5, 10, 20, 0.92) 100%), url('assets/images/syf/syf-hero-mockup.png');
-            background-size: cover, cover;
-            background-position: center, center;
-            background-repeat: no-repeat;
-            position: relative;
-            overflow: hidden;
-            padding: 9rem 2rem 6rem;
-            margin-bottom: 4rem;
-        }
-
-        .case-study-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
-                        radial-gradient(circle at 70% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-content,
-        .hero-image {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-inner {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            align-items: flex-start;
-        }
-
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .project-eyebrow {
-            color: #60a5fa;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
-        }
-
-        .project-title {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 2px 30px rgba(59, 130, 246, 0.4);
-        }
-
-        .hero-lede {
-            font-size: 1.4rem;
-            color: #cbd5e1;
-            line-height: 1.8;
-            max-width: 640px;
-        }
-
-        .hero-metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.75rem;
-            width: 100%;
-        }
-
-        .hero-metric {
-            padding: 1.75rem;
-            background: rgba(15, 23, 42, 0.68);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            border: 1px solid rgba(59, 130, 246, 0.28);
-            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.42);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-        }
-
-        .hero-metric:hover {
-            background: rgba(15, 23, 42, 0.92);
-            border-color: rgba(59, 130, 246, 0.55);
-            transform: translateY(-6px);
-            box-shadow: 0 14px 44px rgba(59, 130, 246, 0.35);
-        }
-
-        .metric-icon {
-            font-size: 2rem;
-            line-height: 1;
-            color: #93c5fd;
-        }
-
-        .metric-label {
-            display: block;
-            color: #60a5fa;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .metric-value {
-            color: #ffffff;
-            font-size: 1.55rem;
-            font-weight: 600;
-        }
-
-        .metric-note {
-            color: #e2e8f0;
-            font-size: 0.98rem;
-            line-height: 1.6;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .hero-actions a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.5rem;
-            border-radius: 999px;
-            background: rgba(59, 130, 246, 0.2);
-            color: #ffffff;
-            font-weight: 600;
-            border: 1px solid rgba(96, 165, 250, 0.4);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .hero-actions a:hover {
-            background: rgba(59, 130, 246, 0.35);
-            border-color: rgba(96, 165, 250, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .hero-visual {
-            display: none;
-        }
-
-        .hero-meta-list {
-            list-style: none;
-            margin: 0;
-            padding: 1.75rem;
-            display: grid;
-            gap: 1.1rem;
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(59, 130, 246, 0.28);
-            border-radius: 20px;
-            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
-        }
-
-        .hero-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .meta-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-            color: #60a5fa;
-        }
-
-        .meta-value {
-            color: #e2e8f0;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .hero-note {
-            font-size: 0.85rem;
-            color: rgba(203, 213, 225, 0.85);
-            margin-top: 0.5rem;
-            line-height: 1.5;
-        }
-
-        .section-intro-text {
-            max-width: 1400px;
-            margin: 0 auto 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-intro-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-            text-shadow: 0 2px 20px rgba(59, 130, 246, 0.3);
-            text-align: left;
-        }
-
-        .section-intro-text h3 {
-            text-align: left;
-            color: #ffffff;
-        }
-
-        .section-intro-text p {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            line-height: 1.7;
-            text-align: left;
-            margin-top: 0.5rem;
-        }
-
-        .snapshot-section {
-            position: relative;
-            padding: 5rem 2rem 5.5rem;
-            background: linear-gradient(180deg, #081020 0%, #0b1530 100%);
-            scroll-margin-top: 140px;
-            overflow: visible;
-        }
-
-        .snapshot-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            gap: 2rem;
-        }
-
-        .snapshot-heading {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: left;
-        }
-
-        .snapshot-badge {
-            align-self: flex-start;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.45rem 0.95rem;
-            border-radius: 999px;
-            background: rgba(59, 130, 246, 0.18);
-            border: 1px solid rgba(59, 130, 246, 0.38);
-            color: #93c5fd;
-            font-size: 0.8rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .snapshot-heading h2 {
-            font-size: 1.9rem;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .snapshot-heading p {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            max-width: 760px;
-            line-height: 1.7;
-        }
-
-        .snapshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .snapshot-card {
-            padding: 2.5rem;
-            background: rgba(15, 23, 42, 0.74);
-            border: 1px solid rgba(59, 130, 246, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
-        }
-
-        .snapshot-card h3 {
-            font-size: 1.35rem;
-            color: #ffffff;
-            margin-bottom: 1.25rem;
-        }
-
-        .snapshot-card ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .snapshot-card li {
-            color: #dce8f2;
-            font-size: 1rem;
-            line-height: 1.65;
-            position: relative;
-            padding-left: 1.85rem;
-        }
-
-        .snapshot-card li::before {
-            content: "•";
-            position: absolute;
-            left: 0.6rem;
-            color: #8fd3ff;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .snapshot-points {
-            display: grid;
-            gap: 1.15rem;
-        }
-
-        .snapshot-point {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.25rem 1.35rem;
-            background: rgba(11, 34, 54, 0.7);
-            border: 1px solid rgba(96, 165, 250, 0.45);
-            border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(4, 15, 27, 0.5);
-        }
-
-        .snapshot-point-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(96, 165, 250, 0.32), rgba(125, 211, 252, 0.12));
-            color: #e0f2fe;
-            font-size: 1.35rem;
-            border: 1px solid rgba(96, 165, 250, 0.55);
-        }
-
-        .snapshot-point-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .snapshot-point-content h4 {
-            margin: 0;
-            font-size: 1.08rem;
-            color: #f5fbff;
-        }
-
-        .snapshot-point-content p {
-            margin: 0;
-            color: #dce8f2;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        .step-list {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .step-item {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            font-size: 0.95rem;
-            color: #60a5fa;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-        }
-
-        .step-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .step-content strong {
-            color: #ffffff;
-            font-size: 1.05rem;
-        }
-
-        .step-content span {
-            color: #cbd5e1;
-            font-size: 0.96rem;
-            line-height: 1.7;
-        }
-
-        .visual-story-section {
-            background: #0a0e1a;
-            padding: 6rem 2rem;
-            margin: 0;
-            position: relative;
-        }
-
-        .split-visual-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .split-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
-
-        .split-text p {
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .split-text strong {
-            color: #60a5fa;
-        }
-
-        .split-image {
-            position: relative;
-        }
-
-        .split-image img {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .split-image img:hover {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 130, 246, 0.4);
-            transform: scale(1.02);
-        }
-
-        .pain-points-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .pain-card {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .pain-card:hover {
-            transform: translateY(-8px);
-            background: rgba(30, 41, 59, 0.9);
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .pain-card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
-        }
-
-        .pain-card h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .pain-card p {
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        .quote-highlight {
-            text-align: center;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: #60a5fa;
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2.5rem;
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-            position: relative;
-            z-index: 1;
-        }
-
-        .quote-highlight::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 6rem;
-            color: rgba(59, 130, 246, 0.3);
-            font-family: Georgia, serif;
-        }
-
-        .research-showcase {
-            background: #0a0e1a;
-            padding: 6rem 2rem;
-            color: white;
-            position: relative;
-        }
-
-        .cooperators-mission {
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cooperators-mission img {
-            height: 60px;
-            margin-bottom: 2rem;
-            filter: brightness(0) invert(1);
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)); }
-            50% { filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(59, 130, 246, 0.8)); }
-        }
-
-        .cooperators-mission blockquote {
-            font-size: 1.75rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        .data-insights {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .insight-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .insight-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .insight-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .insight-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .persona-showcase {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 4rem auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .persona-visual {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .persona-visual:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .persona-avatar-placeholder {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .persona-visual:hover .persona-avatar-placeholder {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.5);
-        }
-
-        .persona-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .persona-quote {
-            font-style: italic;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .venn-insight {
-            max-width: 600px;
-            margin: 4rem auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .venn-placeholder {
-            width: 100%;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-top: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .venn-placeholder:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .solution-journey {
-            padding: 6rem 2rem;
-            background: #0a0e1a;
-            position: relative;
-        }
-
-        .journey-step {
-            max-width: 1000px;
-            margin: 0 auto 6rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .journey-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .journey-step:last-child {
-            margin-bottom: 0;
-        }
-
-        .step-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
-
-        .step-visual {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .step-visual:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 130, 246, 0.4);
-        }
-
-        .step-caption {
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            line-height: 1.7;
-            text-align: center;
-        }
-
-        .design-system-showcase {
-            padding: 6rem 2rem;
-            background: #0a0e1a;
-            position: relative;
-        }
-
-        .ds-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 4rem auto 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ds-card {
-            padding: 2rem;
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            min-height: 100%;
-        }
-
-        .ds-card:hover {
-            background: rgba(30, 41, 59, 0.9);
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.2);
-        }
-
-        .ds-card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
-
-        .ds-card p {
-            color: #cbd5e1;
-        }
-
-        .color-swatches {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .color-swatch {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .color-swatch:hover {
-            transform: scale(1.2) rotate(5deg);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-        }
-
-        .swatch-blue { background: #1D4ED8; }
-        .swatch-sky { background: #38BDF8; }
-        .swatch-slate { background: #0F172A; border: 1px solid #3b82f6; }
-        .swatch-light { background: #F8FAFC; border: 1px solid #3b82f6; }
-
-        .typography-sample h5 {
-            font-size: 1.75rem;
-            margin: 1rem 0;
-            color: #ffffff;
-        }
-
-        .icon-set {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            font-size: 2.5rem;
-        }
-
-        .icon-set span {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
-        }
-
-        .icon-set span:hover {
-            transform: scale(1.3) rotate(10deg);
-            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
-        }
-
-        .testing-section {
-            padding: 6rem 2rem;
-            background: #0a0e1a;
-            position: relative;
-        }
-
-        .testing-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1400px;
-            margin: 4rem auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testing-layout h3 {
-            color: #ffffff;
-        }
-
-        .testing-layout p {
-            color: #cbd5e1;
-        }
-
-        .testing-layout ul li {
-            color: #cbd5e1;
-        }
-
-        .quote-stack-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .user-quote {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            font-size: 1.25rem;
-            font-style: italic;
-            color: #60a5fa;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .user-quote::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            font-size: 4rem;
-            color: rgba(59, 130, 246, 0.3);
-            font-family: Georgia, serif;
-        }
-
-        .user-quote:hover {
-            background: rgba(30, 41, 59, 0.9);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateX(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .testing-metrics-grid {
-            max-width: 1000px;
-            margin: 4rem auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testing-metrics-grid h3 {
-            color: #ffffff;
-        }
-
-        .metric-item {
-            margin-bottom: 2rem;
-        }
-
-        .metric-label-text {
-            font-size: 1.125rem;
-            margin-bottom: 0.75rem;
-            color: #e2e8f0;
-        }
-
-        .metric-bar-bg {
-            width: 100%;
-            height: 40px;
-            background: rgba(30, 41, 59, 0.6);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .metric-bar-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6 0%, #1e40af 100%);
-            display: flex;
-            align-items: center;
-            padding-left: 1rem;
-            color: white;
-            font-weight: 600;
-            transition: width 1.5s ease;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-        }
-
-        .impact-section {
-            padding: 6rem 2rem;
-            background: #0a0e1a;
-            position: relative;
-        }
-
-        .impact-comparison {
-            max-width: 1200px;
-            margin: 4rem auto;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .comparison-table th {
-            background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
-            color: white;
-            padding: 1.5rem;
-            text-align: left;
-            font-size: 1.125rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .comparison-table td {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            font-size: 1rem;
-            color: #cbd5e1;
-            transition: all 0.3s ease;
-        }
-
-        .comparison-table tr:hover td {
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .impact-highlights-box {
-            max-width: 1000px;
-            margin: 4rem auto;
-            padding: 3rem;
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .impact-highlights-box h4 {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #60a5fa;
-        }
-
-        .impact-highlights-box ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .impact-highlights-box li {
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .impact-highlights-box li:hover {
-            color: #ffffff;
-            transform: translateX(10px);
-        }
-
-        .impact-highlights-box li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #60a5fa;
-            font-weight: bold;
-        }
-
-        .impact-highlights-box li strong {
-            color: #60a5fa;
-        }
-
-        .prototype-embed-section {
-            position: relative;
-            z-index: 1;
-            margin-top: 6rem;
-        }
-
-        .prototype-embed-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 65%;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(59, 130, 246, 0.25);
-            background: rgba(15, 23, 42, 0.6);
-        }
-
-        .prototype-embed-wrapper iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .project-navigation {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-projects {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-projects a {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-            display: block;
-            font-size: 1.25rem;
-        }
-
-        .nav-projects a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(59, 130, 246, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                scroll-snap-type: none;
-            }
+        /* SYF-specific accent - Blue theme throughout (matches index.html) */
+        :root {
+            --cs-story-accent: #3b82f6;
+            --cs-challenge-accent: #ef4444;
+            --cs-research-accent: #3b82f6;
+            --cs-solution-accent: #3b82f6;
+            --cs-design-accent: #3b82f6;
+            --cs-conclusion-accent: #3b82f6;
             
-            .case-study-hero {
-                padding: 7rem 1.5rem 8rem;
-                margin-top: 5rem;
-                overflow: visible;
-                min-height: auto;
-            }
-
-            .hero-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .snapshot-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-title {
-                font-size: 2rem;
-            }
-
-            .hero-lede {
-                font-size: 1rem;
-            }
-
-            .section-intro-text h2,
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .split-visual-layout,
-            .pain-points-container,
-            .data-insights,
-            .persona-showcase,
-            .testing-layout,
-            .impact-comparison,
-            .nav-projects {
-                grid-template-columns: 1fr;
-            }
-
-            .split-visual-layout {
-                flex-direction: column !important;
-            }
-
-            .ds-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .visual-story-section > div[style*="grid-template-columns: repeat(3, 1fr)"] {
-                grid-template-columns: 1fr !important;
-            }
-
-            .hero-summary {
-                font-size: 1rem;
-                padding: 0 0.5rem;
-            }
-
-            .project-meta-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .prototype-embed-wrapper {
-                padding-top: 120%;
-            }
-
-            .impact-comparison {
-                overflow-x: auto;
-            }
-
-            .comparison-table {
-                min-width: 640px;
-            }
-
-            .snapshot-point {
-                grid-template-columns: auto 1fr;
-            }
-
-            .snapshot-point-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 1.2rem;
-            }
-
-            .snapshot-point-content h4 {
-                font-size: 1rem;
-            }
-
-            .snapshot-point-content p {
-                font-size: 0.95rem;
-            }
-        }
-
-        .snapshot-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .snapshot-step {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.6rem;
-            background: rgba(8, 22, 36, 0.82);
-            border: 1px solid rgba(148, 197, 255, 0.45);
-            border-radius: 18px;
-            box-shadow: 0 14px 36px rgba(4, 14, 24, 0.48);
-            overflow: hidden;
-        }
-
-        .snapshot-step::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.7), rgba(14, 165, 233, 0.4));
-        }
-
-        .snapshot-step-icon {
-            align-self: flex-start;
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(96, 165, 250, 0.32), rgba(125, 211, 252, 0.14));
-            border: 1px solid rgba(96, 165, 250, 0.55);
-            color: #e0f2ff;
-            font-weight: 600;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body {
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body h4 {
-            margin: 0;
-            font-size: 1.08rem;
-            color: #f5fbff;
-        }
-
-        .snapshot-step-body p {
-            margin: 0;
-            color: #cfe7ff;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        @media (max-width: 768px) {
-            .snapshot-steps {
-                grid-template-columns: 1fr;
-            }
-
-            .snapshot-step {
-                padding: 1.4rem;
-            }
-
-            .snapshot-step-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 1rem;
-            }
-
-            .snapshot-step-body h4 {
-                font-size: 1.02rem;
-            }
-
-            .snapshot-step-body p {
-                font-size: 0.95rem;
-            }
+            /* Project theme - Blue primary */
+            --cs-primary: #3b82f6;
+            --cs-primary-soft: rgba(59, 130, 246, 0.1);
+            --cs-primary-glow: rgba(59, 130, 246, 0.4);
         }
     </style>
 </head>
-<body>
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="index.html" class="nav-logo" data-icon="sleepy-cat">
-                        <span class="nav-logo-text">
-                            <span class="nav-logo-graphic" aria-hidden="true">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                            <span class="sr-only">Home</span>
+<body class="case-study-page" data-project="syf">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fun Cat Navigation -->
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/material-symbols--home-rounded.svg" alt="">
                         </span>
-                        <span class="nav-logo-icon" aria-hidden="true">
-                            <span class="nav-logo-graphic nav-logo-graphic--compact">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                        </span>
+                        <span class="menu-label">home</span>
                     </a>
-                    <a href="about.html" class="nav-link" data-icon="👤">
-                        <span class="nav-link-text">about</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/tdesign--user-filled.svg" alt=""></span>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
                     </a>
                 </div>
-                <div class="nav-right">
-                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="nav-link" data-icon="📄" target="_blank" rel="noopener">
-                        <span class="nav-link-text">resume</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/mingcute--paper-fill.svg" alt=""></span>
-                    </a>
-                    <a href="mailto:pham.jason@outlook.com" class="nav-link" data-icon="✉️">
-                        <span class="nav-link-text">contact</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt=""></span>
-                    </a>
-                </div>
+                
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="case-study-hero">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <p class="project-eyebrow">🏔️ Co-operators Design Jam 2025 · 1 week</p>
-                <h1 class="project-title">Secure Your Future: milestone-first financial planning</h1>
-                <p class="hero-lede">I led a sprint to reimagine onboarding for Canadians planning life milestones. The result is a planner that speaks human-first, hands advisors rich context, and moves prospects from anxious to confident in minutes.</p>
+    <!-- Decorative Floating Elements -->
+    <div class="cs-decorative-elements" aria-hidden="true">
+        <span class="floating-element" aria-hidden="true">🏔️</span>
+        <span class="floating-element" aria-hidden="true">📈</span>
+    </div>
 
-                <div class="hero-metrics-grid">
-                    <div class="hero-metric">
-                        <span class="metric-icon">🚀</span>
-                        <span class="metric-label">Outcome</span>
-                        <span class="metric-value">+65% qualified leads</span>
-                        <p class="metric-note">We traded stiff intake forms for an interactive milestone planner, so more people raised their hands ready to chat with an advisor.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">✅</span>
-                        <span class="metric-label">Usability</span>
-                        <span class="metric-value">100% task success</span>
-                        <p class="metric-note">Moderated usability sessions showed everyone could finish the flow without second guessing what came next. New grads and retirees both moved through with confidence.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">🤝</span>
-                        <span class="metric-label">Adoption signal</span>
-                        <span class="metric-value">5 advisor teams</span>
-                        <p class="metric-note">They asked to pilot after seeing how the story, tone, and mapped goals teed them up for warmer conversations.</p>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="https://www.figma.com/proto/u3BQavf3MBRNbzncgwzsph/UX-UI-Design-Jam-Group-3?node-id=179-1509&viewport=403%2C551%2C0.04&t=svmEi5LHozqqLpzx-0&scaling=contain&content-scaling=fixed&starting-point-node-id=179%3A1509" target="_blank" rel="noopener">View clickable prototype ↗</a>
-                    <a href="#snapshot">Jump to snapshot ↓</a>
-                </div>
+    <!-- Floating Section Navigation -->
+    <nav class="case-study-nav" id="caseStudyNav" aria-label="Case study sections">
+        <!-- Current section pill -->
+        <div class="nav-current-section" id="navCurrentSection">
+            <div class="nav-progress-ring">
+                <svg viewBox="0 0 40 40">
+                    <circle class="progress-ring-bg" cx="20" cy="20" r="16"/>
+                    <circle class="progress-ring-circle" cx="20" cy="20" r="16"/>
+                </svg>
+                <span class="progress-percentage">1</span>
             </div>
+            <span class="nav-current-label">Overview</span>
+            <span class="nav-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </span>
+        </div>
+        <!-- Section list popup -->
+        <ul class="nav-section-list">
+            <li><a href="#overview" class="nav-section-link active" data-section="overview"><span class="nav-section-num">1</span><span class="nav-label">Overview</span></a></li>
+            <li><a href="#story" class="nav-section-link" data-section="story"><span class="nav-section-num">2</span><span class="nav-label">Story</span></a></li>
+            <li><a href="#challenge" class="nav-section-link" data-section="challenge"><span class="nav-section-num">3</span><span class="nav-label">Challenge</span></a></li>
+            <li><a href="#research" class="nav-section-link" data-section="research"><span class="nav-section-num">4</span><span class="nav-label">Research</span></a></li>
+            <li><a href="#solution" class="nav-section-link" data-section="solution"><span class="nav-section-num">5</span><span class="nav-label">Solution</span></a></li>
+            <li><a href="#design" class="nav-section-link" data-section="design"><span class="nav-section-num">6</span><span class="nav-label">Design</span></a></li>
+            <li><a href="#reflection" class="nav-section-link" data-section="reflection"><span class="nav-section-num">7</span><span class="nav-label">Reflection</span></a></li>
+        </ul>
+    </nav>
 
-            <div class="hero-visual">
-                <div class="hero-visual-frame">
-                    <img src="assets/images/syf/syf-hero-mockup.png" alt="Secure Your Future milestone planner mockups">
+    <main class="case-study-main" id="main" role="main">
+        <!-- Hero Section -->
+        <section class="cs-hero" id="overview" aria-labelledby="hero-title">
+            <div class="hero-content-wrapper">
+                <div class="hero-badge">
+                    <span class="badge-icon" aria-hidden="true">🏔️</span>
+                    <span class="badge-text">Co-operators Design Jam 2025</span>
+                    <span class="badge-divider" aria-hidden="true">·</span>
+                    <span class="badge-time">6 min read</span>
                 </div>
-                <ul class="hero-meta-list">
-                    <li class="hero-meta-item">
+
+                <h1 class="hero-title" id="hero-title">Turning <span class="hero-highlight">Financial Anxiety</span> Into Confident Planning</h1>
+                
+                <p class="hero-tagline">
+                    I led a one-week sprint to reimagine onboarding for Canadians planning life milestones. 
+                    The result is a planner that speaks human-first, hands advisors rich context, and moves 
+                    prospects from anxious to confident in minutes.
+                </p>
+
+                <div class="hero-meta-grid">
+                    <div class="meta-item">
                         <span class="meta-label">Role</span>
-                        <span class="meta-value">Lead UX designer and researcher</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">Lead UX Designer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">1 Week Sprint</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Team</span>
-                        <span class="meta-value">5 designers collaborating with Co-operators SMEs</span>
-                    </li>
-                    <li class="hero-meta-item">
-                        <span class="meta-label">Contributions</span>
-                        <span class="meta-value">Research synthesis, opportunity framing, service blueprint, interaction design, usability facilitation</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">5 Designers</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Tools</span>
                         <span class="meta-value">Figma, FigJam, Miro</span>
-                    </li>
-                </ul>
-                <p class="hero-note">Built in one week during Co-operators Design Jam 2025.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Snapshot -->
-    <section class="snapshot-section" id="snapshot">
-        <div class="snapshot-inner">
-            <div class="snapshot-heading">
-                <span class="snapshot-badge">Quick read</span>
-                <h2>Milestone-first Overview</h2>
-                <p>The problem sounded simple: help Canadians plan with confidence. The work required reframing financial planning around life moments, then proving the experience earned trust for both customers and advisors.</p>
+            <div class="hero-mockup">
+                <div class="mockup-wrapper">
+                    <img src="assets/images/syf/syf-hero-mockup.png" alt="Secure Your Future milestone planner mockup" class="mockup-image">
+                </div>
+                <p class="visual-caption">Secure Your Future milestone planner interface</p>
             </div>
-            <div class="snapshot-grid">
-                <div class="snapshot-card">
-                    <h3>✨ What mattered most</h3>
-                    <div class="snapshot-points">
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">👥</span>
-                            <div class="snapshot-point-content">
-                                <h4>Who we served</h4>
-                                <p>Canadians juggling first homes, growing families, and retirement pivots without wanting a finance degree.</p>
+
+            <div class="hero-tldr">
+                <div class="tldr-label">
+                    <span class="tldr-icon">⚡</span>
+                    <span>TL;DR</span>
+                </div>
+                <div class="tldr-content">
+                    <p>
+                        People don't wake up thinking "I need insurance." They think about buying a home, 
+                        starting a family, or retiring comfortably. We flipped the script: <strong>start 
+                        with life goals, not policy questions</strong>. The result: +65% qualified leads 
+                        and 100% task success in testing.
+                    </p>
+                </div>
+                <div class="tldr-metrics">
+                    <div class="tldr-metric">
+                        <span class="metric-value">+65%</span>
+                        <span class="metric-label">Qualified Leads</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">100%</span>
+                        <span class="metric-label">Task Success</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">5</span>
+                        <span class="metric-label">Pilot Teams</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="cs-section cs-story" id="story" data-accent="story">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">The Story</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="story-opening">
+                    <p class="lead-text">
+                        Most Canadians feel overwhelmed by financial planning. We reframed the process 
+                        around <em>life moments</em> so folks can imagine a future version of themselves 
+                        before anyone talks numbers.
+                    </p>
+                </div>
+
+                <div class="story-narrative">
+                    <p>
+                        People don't wake up thinking "I need insurance." They think about buying a home, 
+                        starting a family, or retiring comfortably. But traditional financial planning 
+                        forced them to speak a <span class="story-highlight">foreign language</span> first. <span class="story-highlight">Product-first portals</span> led with 
+                        policy questions before users even understood how coverage supported their lives.
+                    </p>
+                    <p>
+                        I led the concept-to-prototype journey, stitching together research synthesis, 
+                        experience mapping, and interaction design to build a planner that <span class="story-highlight">earns trust</span> 
+                        before it asks for details.
+                    </p>
+                </div>
+
+                <blockquote class="story-quote">
+                    <p>"Users don't plan by product. They plan by life event."</p>
+                    <cite>— Team Insight</cite>
+                </blockquote>
+            </div>
+
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <span class="placeholder-icon">🗺️</span>
+                    <p class="placeholder-label">User journey map showing emotional arc from anxiety to confidence</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenge Section -->
+        <section class="cs-section cs-challenge" id="challenge" data-accent="challenge">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">The Challenge</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="challenge-statement">
+                    <div class="hmw-label">How Might We</div>
+                    <p class="hmw-question">
+                        Help Canadians feel confident about financial planning by starting with their 
+                        dreams instead of intimidating policy jargon?
+                    </p>
+                </div>
+
+                <div class="pain-points-grid">
+                    <div class="pain-point-card">
+                        <span class="pain-icon">📚</span>
+                        <h4>Too Much Jargon</h4>
+                        <p>Portals led with policy questions before users understood how coverage supported their lives. The language felt cold and transactional.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">🎯</span>
+                        <h4>No Personalization</h4>
+                        <p>Dense terminology and long forms chipped away at confidence before value was visible. Everyone got the same experience, regardless of goals.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">❄️</span>
+                        <h4>Cold Handoffs</h4>
+                        <p>Advisors received little context about users' dreams and priorities, so outreach felt generic instead of tailored and empathetic.</p>
+                    </div>
+                </div>
+
+                <div class="design-pillars">
+                    <h3>Design Pillars</h3>
+                    <div class="pillars-grid">
+                        <div class="pillar-card">
+                            <span class="pillar-icon">🌄</span>
+                            <h4>Start With Goals</h4>
+                            <p>Users pick the milestones they care about. Their priorities lead, not ours.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <span class="pillar-icon">🧭</span>
+                            <h4>Guide With Clarity</h4>
+                            <p>Plain language and visual timelines make progress tangible without overwhelming.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <span class="pillar-icon">🤝</span>
+                            <h4>Empower Advisors</h4>
+                            <p>Goal context travels with every lead so follow-up feels informed and empathetic.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section class="cs-section cs-research" id="research" data-accent="research">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Research & Discovery</h2>
+            </div>
+
+            <div class="section-content">
+                <p class="section-intro">
+                    We talked to Canadians across life stages and worked with Co-operators advisors 
+                    to understand what makes financial planning feel approachable.
+                </p>
+
+                <div class="research-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">30%</span>
+                        <span class="stat-label">Of Canadians are underinsured</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">1 in 3</span>
+                        <span class="stat-label">Feel confident about finances</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">70%</span>
+                        <span class="stat-label">Expect mobile-first simplicity</span>
+                    </div>
+                </div>
+
+                <div class="personas-section">
+                    <h3>Three Personas Guided Our Decisions</h3>
+                    <div class="personas-grid">
+                        <div class="persona-card">
+                            <span class="persona-emoji">👩‍🎓</span>
+                            <h4>Paige, 22</h4>
+                            <span class="persona-role">Early Career</span>
+                            <p>"I just need someone to explain where to start."</p>
+                        </div>
+                        <div class="persona-card">
+                            <span class="persona-emoji">👩‍💼</span>
+                            <h4>Farah, 39</h4>
+                            <span class="persona-role">Mid-Career</span>
+                            <p>"I'm juggling goals and I need clarity fast."</p>
+                        </div>
+                        <div class="persona-card">
+                            <span class="persona-emoji">👵</span>
+                            <h4>Irene, 62</h4>
+                            <span class="persona-role">Pre-Retirement</span>
+                            <p>"I want reassurance I've saved enough."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <span class="placeholder-icon">📊</span>
+                    <p class="placeholder-label">Research synthesis or competitive analysis visualization</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="cs-section cs-solution" id="solution" data-accent="solution">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">The Solution</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="solution-overview">
+                    <h3>Five Screens That Translate Dreams Into Action</h3>
+                    <p>
+                        Each step in the flow was designed to build trust before asking for commitment. 
+                        The milestone-first approach flips traditional financial planning on its head.
+                    </p>
+                </div>
+
+                <div class="solution-flow">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <div class="flow-content">
+                            <h4>A Warm Welcome, Not a Sales Pitch</h4>
+                            <p>The mountain path hints at steady growth and the journey ahead. A single "Get Started" button invites people in without pushing products.</p>
+                            <span class="flow-rationale">UX Principle: Reduce cognitive load by offering one clear action</span>
+                        </div>
+                        <div class="flow-visual">
+                            <img src="assets/images/syf/syf-landing-hero.png" alt="Landing page with mountain illustration">
+                        </div>
+                    </div>
+
+                    <div class="flow-step reverse">
+                        <div class="flow-number">2</div>
+                        <div class="flow-content">
+                            <h4>Pick What Matters to You</h4>
+                            <p>Users choose up to three milestones that matter most: buying a home, planning retirement, starting a family. The interface adapts instantly.</p>
+                            <span class="flow-rationale">UX Principle: Personalization increases engagement and relevance</span>
+                        </div>
+                        <div class="flow-visual">
+                            <img src="assets/images/syf/syf-goal-selection.png" alt="Goal selection interface">
+                        </div>
+                    </div>
+
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <div class="flow-content">
+                            <h4>Map Your Future</h4>
+                            <p>A visual, interactive timeline transforms abstract ambitions into tangible plans. Drag-and-drop chips map to age ranges, making the future feel real.</p>
+                            <span class="flow-rationale">UX Principle: Visual feedback makes abstract concepts concrete</span>
+                        </div>
+                        <div class="flow-visual">
+                            <img src="assets/images/syf/syf-timeline-builder.png" alt="Timeline builder interface">
+                        </div>
+                    </div>
+
+                    <div class="flow-step reverse">
+                        <div class="flow-number">4</div>
+                        <div class="flow-content">
+                            <h4>From Goals to Actionable Steps</h4>
+                            <p>Each milestone expands into practical next steps, educational resources, and relevant offerings. One tap books an advisor with all context attached.</p>
+                            <span class="flow-rationale">UX Principle: Progressive disclosure reduces overwhelm</span>
+                        </div>
+                        <div class="flow-visual">
+                            <img src="assets/images/syf/syf-plan-summary.png" alt="Personalized plan summary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Section -->
+        <section class="cs-section cs-design" id="design" data-accent="design">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Design Process</h2>
+            </div>
+
+            <div class="section-content">
+                <p class="section-intro">
+                    In a one-week sprint, we moved from research synthesis to tested prototype. 
+                    Speed required clarity—every decision was filtered through our three pillars.
+                </p>
+
+                <div class="design-system-preview">
+                    <h3>Design System</h3>
+                    <div class="design-system-images">
+                        <div class="design-system-image">
+                            <img src="assets/images/syf/syf-design-system-colors.png" alt="Color palette">
+                            <p class="visual-caption">Color palette designed for trust and optimism</p>
+                        </div>
+                        <div class="design-system-image">
+                            <img src="assets/images/syf/syf-design-system-typography.png" alt="Typography system">
+                            <p class="visual-caption">Typography balancing warmth and professionalism</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prototype-section">
+                <h3>Experience the Full Flow</h3>
+                <p>Walk through from milestone onboarding to tailored plan summaries.</p>
+                <div class="prototype-embed">
+                    <iframe 
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fu3BQavf3MBRNbzncgwzsph%2FUX-UI-Design-Jam-Group-3%3Fnode-id%3D179-1509%26viewport%3D403%252C551%252C0.04%26t%3DsvmEi5LHozqqLpzx-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D179%253A1509"
+                        allowfullscreen
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+                    </iframe>
+                </div>
+                <a href="https://www.figma.com/proto/u3BQavf3MBRNbzncgwzsph/UX-UI-Design-Jam-Group-3?node-id=179-1509" 
+                   target="_blank" 
+                   rel="noopener" 
+                   class="prototype-link">
+                    Open full prototype ↗
+                </a>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section class="cs-section cs-reflection" id="reflection" data-accent="conclusion">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Reflection & Impact</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="results-comparison">
+                    <h3>What Changed</h3>
+                    <div class="comparison-table">
+                        <div class="comparison-row header">
+                            <span>Metric</span>
+                            <span>Before</span>
+                            <span>After</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span>Lead Completion</span>
+                            <span>Static forms, low engagement</span>
+                            <span class="highlight">+65% with interactive planner</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span>User Confidence</span>
+                            <span>"Overwhelmed and confused"</span>
+                            <span class="highlight">"Empowered and informed"</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span>Advisor Insight</span>
+                            <span>Minimal context from forms</span>
+                            <span class="highlight">Goal-based narratives for every lead</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span>Task Success</span>
+                            <span>High abandonment</span>
+                            <span class="highlight">100% completion rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="learnings-block">
+                    <h3>What I Learned</h3>
+                    <div class="learnings-grid">
+                        <div class="learning-card">
+                            <span class="learning-icon">🎯</span>
+                            <h4>Start With Goals, Not Products</h4>
+                            <p>
+                                Leading with milestones instead of insurance jargon turned intimidation 
+                                into aspiration. People don't plan by policy; they plan by life event.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">🤝</span>
+                            <h4>Bridge Digital and Human</h4>
+                            <p>
+                                The best digital tools don't replace advisors. They prepare users to have 
+                                better conversations, and context travels with every lead.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">📈</span>
+                            <h4>Measure What Matters</h4>
+                            <p>
+                                65% lift in qualified leads proved milestone-first planning works. But user 
+                                quotes like "It finally makes sense" remind us why we built this.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="next-steps">
+                    <div class="next-steps-header">
+                        <div class="next-steps-icon">🔮</div>
+                        <div>
+                            <h3>If We Continued...</h3>
+                            <p class="next-steps-subtitle">Where the journey leads next</p>
+                        </div>
+                    </div>
+                    <div class="next-steps-grid">
+                        <div class="next-step-card">
+                            <div class="next-step-number">01</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Expand Milestone Library</div>
+                                <div class="next-step-desc">Add more life events based on user feedback—from business ownership to parental care.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🎯</span> Content</div>
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">😰</span>
-                            <div class="snapshot-point-content">
-                                <h4>The friction</h4>
-                                <p>Product-first portals overwhelmed people before they could picture the life they were planning for.</p>
+                        <div class="next-step-card">
+                            <div class="next-step-number">02</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Advisor Context Dashboard</div>
+                                <div class="next-step-desc">Build a dashboard that gives advisors rich context before every call, improving conversion.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">💼</span> B2B</div>
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">🛠️</span>
-                            <div class="snapshot-point-content">
-                                <h4>What we built</h4>
-                                <p>A milestone-first planner that speaks plainly, visualizes timelines, and hands advisors context they can act on.</p>
+                        <div class="next-step-card">
+                            <div class="next-step-number">03</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">A/B Test Timeline Interactions</div>
+                                <div class="next-step-desc">Experiment with different timeline builder interactions to optimize engagement and completion.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🧪</span> Experimentation</div>
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">📈</span>
-                            <div class="snapshot-point-content">
-                                <h4>Why it stuck</h4>
-                                <p>Qualified leads jumped 65%, advisors asked to pilot, and the judges called out the human tone.</p>
+                        <div class="next-step-card">
+                            <div class="next-step-number">04</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">AI Milestone Recommendations</div>
+                                <div class="next-step-desc">Explore AI-powered suggestions that predict which milestones matter based on user context.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🤖</span> AI/ML</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="snapshot-card">
-                    <h3>🧭 Process in brief</h3>
-                    <div class="snapshot-steps">
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">1</span>
-                            <div class="snapshot-step-body">
-                                <h4>Align on reality</h4>
-                                <p>Talked with Canadians and advisors, mapped the existing maze, and surfaced real-life friction points.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">2</span>
-                            <div class="snapshot-step-body">
-                                <h4>Anchor on milestones</h4>
-                                <p>Reframed the first question to "What life moment is next?" and storyboarded flows around that energy.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">3</span>
-                            <div class="snapshot-step-body">
-                                <h4>Prototype the arc</h4>
-                                <p>Built five screen loops that move from milestone pick to advisor-ready summaries in a few confident clicks.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">4</span>
-                            <div class="snapshot-step-body">
-                                <h4>Validate tone and flow</h4>
-                                <p>Moderated usability tests to make sure clarity, warmth, and handoff data all landed the way we promised.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Overview -->
-    <section class="visual-story-section">
-        <div class="section-intro-text">
-            <h2>🧭 Where it all began</h2>
-            <p>Designing clarity in a world of financial noise</p>
-        </div>
-        
-        <div class="split-visual-layout">
-            <div class="split-image">
-                <img src="assets/images/syf/syf-solution-flow.png" alt="Solution flow showing the timeline-based planning approach">
+        <!-- Footer Navigation -->
+        <footer class="case-footer">
+            <div class="footer-nav">
+                <a href="project-resonate.html" class="footer-link prev">
+                    <span class="footer-link-label">Previous</span>
+                    <span class="footer-link-title">← Resonate</span>
+                </a>
+                <a href="project-pulse.html" class="footer-link next">
+                    <span class="footer-link-label">Next</span>
+                    <span class="footer-link-title">Pulse →</span>
+                </a>
             </div>
-            <div class="split-text">
-                <h3>The Story</h3>
-                <p>Most Canadians feel overwhelmed by financial planning. Secure Your Future reframes the process around life moments so folks can imagine a future version of themselves before we talk numbers.</p>
-                <p>I led the concept-to-prototype journey, stitching together research synthesis, experience mapping, and interaction design to build a planner that earns trust before it asks for details.</p>
-            </div>
-        </div>
+        </footer>
+    </main>
 
-        <div class="section-intro-text" style="margin-top: 6rem;">
-            <h3>The Core Question</h3>
-            <p>How might we help Canadians plan for their futures with confidence, not confusion?</p>
-        </div>
-
-        <div class="data-insights" style="background: transparent; padding: 0;">
-            <div class="insight-card">
-                <div class="insight-number" style="color: #60a5fa;">3</div>
-                <div class="insight-label">Personas guided decisions</div>
-            </div>
-            <div class="insight-card">
-                <div class="insight-number" style="color: #60a5fa;">5</div>
-                <div class="insight-label">Moderated usability sessions</div>
-            </div>
-            <div class="insight-card">
-                <div class="insight-number" style="color: #60a5fa;">65%</div>
-                <div class="insight-label">Increase in qualified leads</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem -->
-    <section class="visual-story-section">
-        <div class="section-intro-text">
-            <h2>💡 What's keeping people up at night?</h2>
-            <p>When planning feels like guesswork</p>
-        </div>
-
-        <div class="split-visual-layout">
-            <div class="split-image">
-                <img src="assets/images/syf/syf-problem-stats.png" alt="Research showing Canadians are confused and under-prepared">
-            </div>
-            <div class="split-text">
-                <h3>The Challenge</h3>
-                <p>Users weren't inspired by insurance quotes; they were intimidated. Long forms, dense terminology, and product-first flows eroded trust before value appeared.</p>
-                <p>People don't wake up thinking "I need insurance." They think about buying a home, starting a family, or retiring comfortably. But traditional financial planning forced them to speak a foreign language first.</p>
-            </div>
-        </div>
-
-        <div class="pain-points-container">
-            <div class="pain-card">
-                <div class="pain-card-icon">📚</div>
-                <h4>Too much jargon</h4>
-                <p>Portals led with policy questions before users even understood how coverage supported their lives. The language felt cold and transactional.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">🎯</div>
-                <h4>No personalization</h4>
-                <p>Dense terminology and long forms chipped away at confidence before value was visible. Everyone got the same experience, regardless of their goals.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">❄️</div>
-                <h4>Cold handoffs</h4>
-                <p>Advisors received little context about users' dreams and priorities, so outreach felt generic instead of tailored and empathetic.</p>
-            </div>
-        </div>
-
-        <div class="quote-highlight">
-            "Users don't plan by product. They plan by life event."
-        </div>
-    </section>
-
-    <!-- Research & Insights -->
-    <section class="research-showcase">
-        <div class="section-intro-text">
-            <h2 style="color: white;">🔍 Who are we really designing for?</h2>
-            <p style="color: rgba(255,255,255,0.9);">Getting to know the people behind the data</p>
-        </div>
-
-        <div class="cooperators-mission">
-            <img src="assets/images/syf/cooperators-logo.png" alt="Co-operators logo">
-            <blockquote>"We help Canadians build financial strength through personalized advice."</blockquote>
-        </div>
-
-        <div class="data-insights">
-            <div class="insight-card">
-                <div class="insight-number">📉 30%</div>
-                <div class="insight-label">Canadians are underinsured (CLHIA, 2023)</div>
-            </div>
-            <div class="insight-card">
-                <div class="insight-number">💬 1 in 3</div>
-                <div class="insight-label">Feel confident about their finances (ESG, 2024)</div>
-            </div>
-            <div class="insight-card">
-                <div class="insight-number">📱 70%</div>
-                <div class="insight-label">Expect mobile-first simplicity</div>
-            </div>
-        </div>
-
-        <div class="section-intro-text" style="margin-top: 4rem;">
-            <h3 style="color: white;">Meet the People Behind the Data</h3>
-            <p style="color: rgba(255,255,255,0.9);">Three personas that shaped our approach</p>
-        </div>
-
-        <div class="persona-showcase">
-            <div class="persona-visual">
-                <div class="persona-avatar-placeholder">👩‍🎓</div>
-                <div class="persona-name">Paige · 22</div>
-                <div class="persona-quote">"I just need someone to explain where to start."</div>
-            </div>
-            <div class="persona-visual">
-                <div class="persona-avatar-placeholder">👩‍💼</div>
-                <div class="persona-name">Farah · 39</div>
-                <div class="persona-quote">"I'm juggling goals and I need clarity fast."</div>
-            </div>
-            <div class="persona-visual">
-                <div class="persona-avatar-placeholder">👵</div>
-                <div class="persona-name">Irene · 62</div>
-                <div class="persona-quote">"I want reassurance I've saved enough."</div>
-            </div>
-        </div>
-
-        <div class="venn-insight">
-            <h4 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Research Insights</h4>
-            <img src="assets/images/syf/syf-research.png" alt="Research findings and user insights" style="width: 100%; max-width: 900px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.3); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2)';">
-        </div>
-
-        <div class="quote-highlight" style="background: rgba(255,255,255,0.1); color: white; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
-            30% of Canadians feel underinsured, only 1 in 3 feel confident about their financial decisions, and 70% expect mobile-first simplicity. Those truths anchored every design choice.
-        </div>
-    </section>
-
-    <!-- Opportunity -->
-    <section class="visual-story-section">
-        <div class="section-intro-text">
-            <h2>🎯 What if we flipped the script?</h2>
-            <p style="font-size: 1.5rem; font-style: italic; color: #60a5fa; margin-top: 2rem;">What if financial planning started with your dreams, not your documents?</p>
-        </div>
-
-        <div class="split-visual-layout" style="margin-bottom: 4rem;">
-            <div class="split-image">
-                <img src="assets/images/syf/syf-approach-comparison.png" alt="Comparison showing traditional insurance vs life goals first approach">
-            </div>
-            <div class="split-text">
-                <h3>The Shift</h3>
-                <p>We reframed the intake question to unlock trust: <strong>"What life milestone matters most right now?"</strong></p>
-                <p>By starting with goals instead of products, we created a human-first experience that feels less like paperwork and more like planning a meaningful future.</p>
-            </div>
-        </div>
-
-        <div class="pain-points-container">
-            <div class="pain-card">
-                <div class="pain-card-icon">🌄</div>
-                <h4>Start with goals</h4>
-                <p>Users start by picking the milestones they care about, whether that's buying a home, starting a family, or planning for retirement. Their priorities lead the way, not ours.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">🧭</div>
-                <h4>Guide with clarity</h4>
-                <p>Plain language, visual timelines, and helpful nudges make progress tangible without overwhelming detail. Every step feels achievable.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">🤝</div>
-                <h4>Empower advisors</h4>
-                <p>Goal context travels with every lead, so follow-up calls begin informed and empathetic. Advisors become partners, not salespeople.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Walkthrough -->
-    <section class="solution-journey">
-        <div class="section-intro-text">
-            <h2>💡 How we brought it to life</h2>
-            <p>Five focused screens that translate dreams into actionable next steps</p>
-        </div>
-
-        <!-- Step 1: Landing -->
-        <div class="journey-step">
-            <div class="step-number">Step 01 · Landing</div>
-            <h3 class="step-title">A warm welcome, not a sales pitch</h3>
-            <img class="step-visual" src="assets/images/syf/syf-landing-hero.png" alt="Landing page mockup with mountain illustration">
-            <p class="step-caption">The mountain path hints at steady growth and the journey ahead. A single "Get Started" button invites people into the planner without pushing products. The moment feels calm, aspirational, and human.</p>
-        </div>
-
-        <!-- Step 2: Goal Selection -->
-        <div class="journey-step">
-            <div class="step-number">Step 02 · Goal Selection</div>
-            <h3 class="step-title">Pick what matters to you</h3>
-            <img class="step-visual" src="assets/images/syf/syf-goal-selection.png" alt="Goal selection interface mockup">
-            <p class="step-caption">Users choose up to three milestones that matter most, whether that's buying a home, planning retirement, starting a family, or traveling the world. The interface adapts instantly to mirror their priorities. Their goals, their language.</p>
-        </div>
-
-        <!-- Step 3: Timeline Builder -->
-        <div class="journey-step">
-            <div class="step-number">Step 03 · Timeline Builder</div>
-            <h3 class="step-title">Map your future</h3>
-            <img class="step-visual" src="assets/images/syf/syf-timeline-builder.png" alt="Timeline builder interface mockup">
-            <p class="step-caption">A visual, interactive timeline transforms abstract ambitions into tangible plans. Drag-and-drop milestone chips map to age ranges, making the future feel real and within reach. Complex planning made simple.</p>
-        </div>
-
-        <!-- Step 4: Your Personalized Plan -->
-        <div class="journey-step">
-            <div class="step-number">Step 04 · Your Personalized Plan</div>
-            <h3 class="step-title">From goals to actionable next steps</h3>
-            <img class="step-visual" src="assets/images/syf/syf-plan-summary.png" alt="Personalized plan summary with recommendations">
-            <p class="step-caption">Each milestone expands into practical next steps, educational resources, and relevant Co-operators offerings. Users can save, download, or email a shareable roadmap. One tap books an advisor with all that goal context already attached. It's the sweet spot where digital planning meets human guidance.</p>
-        </div>
-
-        <div class="quote-highlight">
-            We built a bridge between aspiration and action. Digital tools meet human guidance here.
-        </div>
-    </section>
-
-    <!-- Design System -->
-    <section class="visual-story-section">
-        <div class="section-intro-text">
-            <h2>🎨 Building trust through design</h2>
-            <p>A visual system that turns financial anxiety into confidence, one thoughtful decision at a time.</p>
-        </div>
-
-        <!-- Design System Showcase -->
-        <div style="max-width: 900px; margin: 0 auto; position: relative; z-index: 1;">
-            <img src="assets/images/syf/syf-design-system-full.png" alt="Complete design system showing colors, typography, and components" style="width: 100%; height: auto; display: block; object-fit: contain; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.3); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2)';">
-        </div>
-
-        <!-- System Principles - 3x1 Row -->
-        <div class="pain-points-container" style="margin-top: 4rem;">
-            <div class="pain-card">
-                <div class="pain-card-icon">♿</div>
-                <h4>Accessible</h4>
-                <p>WCAG AA contrast, keyboard navigation, screen-reader optimized. Financial planning should be for everyone.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">📱</div>
-                <h4>Expandable</h4>
-                <p>Designed to scale seamlessly between mobile and web. Responsive layouts that adapt to any screen while maintaining a consistent, intuitive experience.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">⚡</div>
-                <h4>Performant</h4>
-                <p>Lightweight components and optimized assets keep the experience fast, even on slower connections.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testing & Iteration -->
-    <section class="testing-section">
-        <div class="section-intro-text">
-            <h2>🧪 Does it actually work?</h2>
-            <p>Five moderated usability sessions validated clarity, confidence, and emotional tone</p>
-        </div>
-
-        <div class="testing-layout">
-            <div>
-                <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: #ffffff;">Our Approach</h3>
-                <p style="font-size: 1.125rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.5rem;">We invited users across personas and life stages to walk through the prototype, focusing on three key questions:</p>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="font-size: 1.125rem; color: #cbd5e1; margin-bottom: 1rem; padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #60a5fa; font-weight: bold;">→</span>
-                        Is the language clear and approachable?
-                    </li>
-                    <li style="font-size: 1.125rem; color: #cbd5e1; margin-bottom: 1rem; padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #60a5fa; font-weight: bold;">→</span>
-                        Can users complete core tasks without friction?
-                    </li>
-                    <li style="font-size: 1.125rem; color: #cbd5e1; margin-bottom: 1rem; padding-left: 2rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #60a5fa; font-weight: bold;">→</span>
-                        How does the experience make them feel?
-                    </li>
-                </ul>
-            </div>
-
-            <div class="quote-stack-container">
-                <div class="user-quote">"It finally makes sense."</div>
-                <div class="user-quote">"I'd actually use this before meeting an advisor."</div>
-                <div class="user-quote">"Simple but reassuring, which is exactly what I needed."</div>
-            </div>
-        </div>
-
-        <div class="testing-metrics-grid">
-            <h3 style="text-align: center; font-size: 1.75rem; margin-bottom: 2rem; color: #ffffff;">Key Findings</h3>
-            
-            <div class="metric-item">
-                <div class="metric-label-text">✅ 100% task success rate</div>
-                <div class="metric-bar-bg">
-                    <div class="metric-bar-progress" style="width: 100%;">100%</div>
-                </div>
-            </div>
-
-            <div class="metric-item">
-                <div class="metric-label-text">✅ 80% reported improved clarity and confidence</div>
-                <div class="metric-bar-bg">
-                    <div class="metric-bar-progress" style="width: 80%;">80%</div>
-                </div>
-            </div>
-
-            <div class="metric-item">
-                <div class="metric-label-text">⚠️ 20% wanted "what-if" scenario comparisons</div>
-                <div class="metric-bar-bg">
-                    <div class="metric-bar-progress" style="width: 20%; background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);">20%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="quote-highlight">
-            The numbers validated our approach, and the user quotes reminded us why we built this in the first place.
-        </div>
-    </section>
-
-    <!-- Impact -->
-    <section class="impact-section">
-        <div class="section-intro-text">
-            <h2>📈 What changed?</h2>
-            <p>The milestone-first approach improved outcomes for users and advisors</p>
-        </div>
-
-        <div class="impact-comparison">
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th>Before</th>
-                        <th>After</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Lead Completion</strong></td>
-                        <td>Static forms · low engagement</td>
-                        <td><strong style="color: #059669;">+65% with interactive planner</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>User Confidence</strong></td>
-                        <td>"Overwhelmed and confused"</td>
-                        <td><strong style="color: #059669;">"Empowered and informed"</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Advisor Insight</strong></td>
-                        <td>Minimal context from forms</td>
-                        <td><strong style="color: #059669;">Goal-based narratives for every lead</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="impact-highlights-box">
-            <h4>✨ What This Means</h4>
-            <ul>
-                <li>🤗 <strong>Warmer handoffs:</strong> Advisor follow-ups now reference user milestones, creating empathy before the first call.</li>
-                <li>🏆 <strong>Recognition:</strong> Design jam judges cited our journey map as "the blueprint for modern advice."</li>
-                <li>🛣️ <strong>Future roadmap:</strong> A/B testing scenario planners to expand personalization and support "what-if" comparisons.</li>
-                <li>🤖 <strong>Human-centered AI:</strong> Prototyping gentle AI coaching that guides without replacing human advisors.</li>
-            </ul>
-        </div>
-
-        <div class="section-intro-text" style="margin-top: 6rem;">
-            <h2>💎 Key Takeaways</h2>
-            <p>What I learned designing for life's biggest decisions</p>
-        </div>
-
-        <div class="pain-points-container">
-            <div class="pain-card">
-                <div class="pain-card-icon">🎯</div>
-                <h4>Start with goals, not products</h4>
-                <p>Leading with milestones instead of insurance jargon turned intimidation into aspiration. People don't plan by policy; they plan by life event.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">🤝</div>
-                <h4>Bridge digital and human</h4>
-                <p>The best digital tools don't replace advisors. They prepare users to have better conversations, and context travels with every lead.</p>
-            </div>
-            <div class="pain-card">
-                <div class="pain-card-icon">📈</div>
-                <h4>Measure what matters</h4>
-                <p>65% lift in qualified leads proved milestone-first planning works. But user quotes like "It finally makes sense" remind us why we built this.</p>
-            </div>
-        </div>
-
-        <div class="quote-highlight">
-            This wasn't just about building a tool. It was about redesigning how people think about their futures.
-        </div>
-    </section>
-
-    <section class="section prototype-embed-section">
-        <div class="container">
-            <div class="section-intro-text">
-                <h2>🎬 Walk the Prototype</h2>
-                <p>Explore the full Secure Your Future experience, from milestone onboarding to tailored plan summaries, right inside Figma.</p>
-            </div>
-            <div class="prototype-embed-wrapper">
-                <iframe src="https://www.figma.com/embed?embed_host=ux-portfolio&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fu3BQavf3MBRNbzncgwzsph%2FUX-UI-Design-Jam-Group-3%3Fnode-id%3D179-1509%26viewport%3D403%252C551%252C0.04%26t%3DsvmEi5LHozqqLpzx-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D179%253A1509" allowfullscreen loading="lazy"></iframe>
-            </div>
-            <p class="section-note" style="margin-top: 2rem;">Want a larger view? <a href="https://www.figma.com/proto/u3BQavf3MBRNbzncgwzsph/UX-UI-Design-Jam-Group-3?node-id=179-1509&viewport=403%2C551%2C0.04&t=svmEi5LHozqqLpzx-0&scaling=contain&content-scaling=fixed&starting-point-node-id=179%3A1509" target="_blank" rel="noopener">Open the prototype in a new tab ↗</a></p>
-        </div>
-    </section>
-
-    <!-- Project Navigation -->
-    <section class="project-navigation">
-        <div class="nav-projects">
-            <a href="project-resonate.html">← Previous Project</a>
-            <a href="project-pulse.html">Next Project →</a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <p class="footer-location">made in canada</p>
-                <div class="footer-contact">
-                    <a href="about.html" class="footer-contact-link">About</a>
-                    <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
-                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-tagline">let's make something beautiful.</p>
-            </div>
-        </div>
-    </footer>
-    
     <script src="main.js"></script>
-    <script src="transitions.js"></script>
-    
-    <!-- Scroll Animations & Interactions -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Scroll-triggered fade-in animations with performance optimization
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
-            const enableAnimations = !(prefersReducedMotion || isSmallScreen);
-
-            if (enableAnimations) {
-                const fadeInObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                            requestAnimationFrame(() => {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0)';
-                                entry.target.classList.add('animated');
-                            });
-                            fadeInObserver.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                // Observe fade-in elements with optimized stagger
-                const fadeElements = document.querySelectorAll('.pain-card, .insight-card, .persona-visual, .user-quote');
-                fadeElements.forEach((element, index) => {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(20px)';
-                    element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
-                    element.style.willChange = 'opacity, transform';
-                    fadeInObserver.observe(element);
-                });
-
-                // Journey steps animation
-                const journeyObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                }, { threshold: 0.2 });
-
-                document.querySelectorAll('.journey-step').forEach(step => {
-                    journeyObserver.observe(step);
-                });
-
-                // Metric bars animation
-                const metricObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                            const bar = entry.target;
-                            const targetWidth = bar.style.width;
-                            bar.style.width = '0%';
-                            setTimeout(() => {
-                                bar.style.width = targetWidth;
-                                bar.classList.add('animated');
-                            }, 100);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                document.querySelectorAll('.metric-bar-progress').forEach(bar => {
-                    metricObserver.observe(bar);
-                });
-            } else {
-                document.querySelectorAll('.pain-card, .insight-card, .persona-visual, .user-quote').forEach(element => {
-                    element.style.opacity = '1';
-                    element.style.transform = 'none';
-                });
-
-                document.querySelectorAll('.journey-step').forEach(step => {
-                    step.classList.add('visible');
-                });
-
-                document.querySelectorAll('.metric-bar-progress').forEach(bar => {
-                    bar.classList.add('animated');
-                });
-            }
-
-            // Enhanced hover effects for navigation links
-            const navLinks = document.querySelectorAll('.nav-projects a');
-            navLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.2)';
-                    link.style.transform = 'translateY(-5px)';
-                    link.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.4)';
-                });
-                link.addEventListener('mouseleave', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.1)';
-                    link.style.transform = 'translateY(0)';
-                    link.style.boxShadow = 'none';
-                });
-            });
-
-            // Optimized parallax effect on hero section
-            let ticking = false;
-            let lastScroll = 0;
-            if (!isSmallScreen && !prefersReducedMotion) {
-                window.addEventListener('scroll', () => {
-                    const scrolled = window.pageYOffset;
-                    if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
-                        window.requestAnimationFrame(() => {
-                            const hero = document.querySelector('.case-study-hero');
-                            const heroMockup = document.querySelector('.hero-mockup-large');
-                            
-                            if (hero && scrolled < window.innerHeight) {
-                                hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
-                                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.3;
-                            }
-
-                            if (heroMockup && scrolled < window.innerHeight) {
-                                heroMockup.style.transform = `translate3d(0, ${scrolled * 0.2}px, 0)`;
-                            }
-
-                            lastScroll = scrolled;
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                }, { passive: true });
-            }
-
-            // Add click to expand for mockup images
-            document.querySelectorAll('.step-visual, .split-image img, .hero-mockup-large').forEach(img => {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => {
-                    const modal = document.createElement('div');
-                    modal.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.95);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 10000;
-                        cursor: pointer;
-                        animation: fadeIn 0.3s ease;
-                    `;
-                    
-                    const expandedImg = document.createElement('img');
-                    expandedImg.src = img.src;
-                    expandedImg.alt = img.alt;
-                    expandedImg.style.cssText = `
-                        max-width: 90%;
-                        max-height: 90%;
-                        border-radius: 16px;
-                        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 100px rgba(59, 130, 246, 0.5);
-                        border: 2px solid rgba(59, 130, 246, 0.5);
-                    `;
-                    
-                    modal.appendChild(expandedImg);
-                    document.body.appendChild(modal);
-                    
-                    modal.addEventListener('click', () => {
-                        modal.style.animation = 'fadeOut 0.3s ease';
-                        setTimeout(() => modal.remove(), 300);
-                    });
-                });
-            });
-
-            // Add smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            console.log('✨ Secure Your Future: Dark mode activated with enhanced interactions!');
-        });
-
-        // Add fade animations to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes fadeOut {
-                from { opacity: 1; }
-                to { opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="case-study.js"></script>
 </body>
 </html>
-

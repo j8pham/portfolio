@@ -3,1916 +3,808 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case Study - Pulse">
-    <title>Pulse: Self-Triage Kiosk</title>
+    <meta name="description" content="Pulse Case Study - A self-triage kiosk that calms emergency room chaos">
+    <title>Pulse | Case Study</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="case-study-styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/sleepycat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #0a0e1a;
-            color: #e2e8f0;
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            scroll-padding-top: 90px;
-        }
-
-        nav,
-        section,
-        footer {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-
-        .case-study-hero {
-            background-image: linear-gradient(135deg, rgba(4, 24, 24, 0.94) 0%, rgba(6, 34, 38, 0.9) 50%, rgba(4, 24, 24, 0.94) 100%), url('assets/images/pulse/pulse-hero-mockup.png');
-            background-size: cover, cover;
-            background-position: center, center;
-            background-repeat: no-repeat;
-            position: relative;
-            overflow: hidden;
-            padding: 9rem 2rem 6rem;
-            margin-bottom: 4rem;
-        }
-
-        .case-study-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(45, 212, 191, 0.12) 0%, transparent 60%),
-                        radial-gradient(circle at 70% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-inner {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            align-items: flex-start;
-        }
-
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .project-eyebrow {
-            color: #5eead4;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(94, 234, 212, 0.5);
-        }
-
-        .project-title {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 2px 30px rgba(13, 148, 136, 0.4);
-        }
-
-        .hero-lede {
-            font-size: 1.4rem;
-            color: #cbd5e1;
-            line-height: 1.8;
-            max-width: 640px;
-        }
-
-        .hero-metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.75rem;
-            width: 100%;
-        }
-
-        .hero-metric {
-            padding: 1.75rem;
-            background: rgba(9, 35, 40, 0.75);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            border: 1px solid rgba(20, 184, 166, 0.38);
-            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.55);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-        }
-
-        .hero-metric:hover {
-            background: rgba(10, 44, 50, 0.92);
-            border-color: rgba(94, 234, 212, 0.6);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 44px rgba(20, 184, 166, 0.35);
-        }
-
-        .metric-icon {
-            font-size: 2rem;
-            line-height: 1;
-            color: #5eead4;
-        }
-
-        .metric-label {
-            display: block;
-            color: #5eead4;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .metric-value {
-            color: #ffffff;
-            font-size: 1.55rem;
-            font-weight: 600;
-        }
-
-        .metric-note {
-            color: #a5f3fc;
-            font-size: 0.98rem;
-            line-height: 1.6;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .hero-actions a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.5rem;
-            border-radius: 999px;
-            background: rgba(20, 184, 166, 0.22);
-            color: #ffffff;
-            font-weight: 600;
-            border: 1px solid rgba(94, 234, 212, 0.4);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .hero-actions a:hover {
-            background: rgba(20, 184, 166, 0.35);
-            border-color: rgba(94, 234, 212, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .hero-visual {
-            display: none;
-        }
-
-        .hero-meta-list {
-            list-style: none;
-            margin: 0;
-            padding: 1.75rem;
-            display: grid;
-            gap: 1.1rem;
-            background: rgba(9, 35, 40, 0.75);
-            border: 1px solid rgba(20, 184, 166, 0.38);
-            border-radius: 20px;
-            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
-        }
-
-        .hero-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .meta-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-            color: #5eead4;
-        }
-
-        .meta-value {
-            color: #ccfbf1;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .hero-meta-list li {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .hero-meta-list strong {
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #5eead4;
-        }
-
-        .hero-meta-list span {
-            color: #ccfbf1;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        .hero-note {
-            font-size: 0.85rem;
-            color: rgba(204, 251, 241, 0.85);
-            margin-top: 0.5rem;
-            line-height: 1.5;
-        }
-
-        .section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #0a0e1a 0%, #0f0f0f 100%);
-            position: relative;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 20px rgba(20, 184, 166, 0.3);
-            text-align: left;
-        }
-
-        .section h3 {
-            color: #ffffff;
-            text-align: left;
-        }
-
-        .section h4 {
-            color: #ffffff;
-        }
-
-        .section-intro {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            max-width: 1200px;
-            margin: 0.5rem 0 3rem 0;
-            line-height: 1.7;
-            text-align: left;
-        }
-
-        .section-note {
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            padding: 1.5rem;
-            background: rgba(30, 41, 59, 0.4);
-            border-radius: 12px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-note strong {
-            color: #5eead4;
-        }
-
-        .snapshot-section {
-            position: relative;
-            padding: 5rem 2rem 5.5rem;
-            background: linear-gradient(180deg, #041118 0%, #062028 100%);
-            scroll-margin-top: 140px;
-            overflow: visible;
-        }
-
-        .snapshot-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            gap: 2.5rem;
-        }
-
-        .snapshot-heading {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: left;
-        }
-
-        .snapshot-badge {
-            align-self: flex-start;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.45rem 0.95rem;
-            border-radius: 999px;
-            background: rgba(20, 184, 166, 0.18);
-            border: 1px solid rgba(20, 184, 166, 0.38);
-            color: #5eead4;
-            font-size: 0.8rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .snapshot-heading h2 {
-            font-size: 2.35rem;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .snapshot-heading p {
-            font-size: 1.1rem;
-            color: #a5f3fc;
-            max-width: 760px;
-            line-height: 1.7;
-        }
-
-        .snapshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .snapshot-card {
-            padding: 2.5rem;
-            background: rgba(4, 35, 39, 0.84);
-            border: 1px solid rgba(45, 212, 191, 0.5);
-            border-radius: 20px;
-            box-shadow: 0 16px 42px rgba(2, 18, 22, 0.55);
-        }
-
-        .snapshot-card h3 {
-            font-size: 1.35rem;
-            color: #ffffff;
-            margin-bottom: 1.25rem;
-        }
-
-        .snapshot-card ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .snapshot-card li {
-            color: #d7f4f4;
-            font-size: 1rem;
-            line-height: 1.65;
-            position: relative;
-            padding-left: 1.85rem;
-        }
-
-        .snapshot-card li::before {
-            content: "•";
-            position: absolute;
-            left: 0.6rem;
-            color: #5fe0d5;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .snapshot-points {
-            display: grid;
-            gap: 1.15rem;
-        }
-
-        .snapshot-point {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.25rem 1.35rem;
-            background: rgba(3, 33, 36, 0.72);
-            border: 1px solid rgba(95, 224, 213, 0.42);
-            border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(2, 17, 19, 0.55);
-        }
-
-        .snapshot-point-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(95, 224, 213, 0.28), rgba(45, 212, 191, 0.1));
-            color: #bff8f2;
-            font-size: 1.4rem;
-            border: 1px solid rgba(95, 224, 213, 0.5);
-        }
-
-        .snapshot-point-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .snapshot-point-content h4 {
-            margin: 0;
-            font-size: 1.05rem;
-            color: #f6fffe;
-        }
-
-        .snapshot-point-content p {
-            margin: 0;
-            color: #d7f4f4;
-            line-height: 1.65;
-            font-size: 0.98rem;
-        }
-
-        .step-list {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .step-item {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(20, 184, 166, 0.18);
-            border: 1px solid rgba(20, 184, 166, 0.38);
-            color: #5eead4;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 0.2rem;
-        }
-
-        .step-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .step-content strong {
-            color: #ffffff;
-            font-size: 1.05rem;
-        }
-
-        .step-content span {
-            color: #a5f3fc;
-            font-size: 0.96rem;
-            line-height: 1.7;
-        }
-
-        /* Challenge Cards - Stacked Layout */
-        .challenge-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .challenge-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        .challenge-card:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(20, 184, 166, 0.5);
-            transform: translateX(10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(20, 184, 166, 0.3);
-        }
-
-        .challenge-label {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #5eead4;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            min-width: 100px;
-            padding-top: 0.25rem;
-        }
-
-        .challenge-content h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .challenge-content p {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        /* Research Grid - Split View */
-        .research-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .research-block {
-            --spacing-unit: 0.5rem;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--spacing-unit) * 2);
-        }
-
-        .research-block:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(20, 184, 166, 0.5);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(20, 184, 166, 0.3);
-        }
-
-        .research-icon {
-            font-size: 2.75rem;
-            margin-bottom: 0.4rem;
-            display: block;
-            filter: drop-shadow(0 0 18px rgba(94, 234, 212, 0.5));
-        }
-
-        .research-block h3 {
-            color: #ffffff;
-            margin: calc(var(--spacing-unit)) 0;
-            font-size: 1.2rem;
-        }
-
-        .research-block p {
-            color: #cbd5e1;
-            line-height: 1.5;
-            margin-bottom: 0.4rem;
-        }
-
-        .research-block ul {
-            list-style: none;
-            padding: 0;
-            margin: calc(var(--spacing-unit)) 0;
-        }
-
-        .research-block ul li {
-            color: #cbd5e1;
-            line-height: 1.7;
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .research-block ul li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #5eead4;
-            font-weight: bold;
-        }
-
-        .research-stat {
-            display: block;
-            color: #5eead4;
-            font-style: italic;
-            margin-top: 0.3rem;
-            font-size: 0.9rem;
-        }
-
-        /* Validation Badge */
-        .validation-banner {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 3rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .validation-icon {
-            font-size: 3rem;
-            filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));
-        }
-
-        .validation-content {
-            flex: 1;
-        }
-
-        .validation-content h4 {
-            color: #10b981;
-            margin-bottom: 0.5rem;
-            font-size: 1.125rem;
-        }
-
-        .validation-content p {
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        /* Process Timeline */
-        .process-timeline {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, 
-                rgba(20, 184, 166, 0) 0%, 
-                rgba(20, 184, 166, 0.3) 10%, 
-                rgba(20, 184, 166, 0.3) 90%, 
-                rgba(20, 184, 166, 0) 100%);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding: 2rem 2rem 4rem 60px;
-            border-radius: 12px;
-            margin-left: 10px;
-            border: 2px solid transparent;
-        }
-        
-        .timeline-item.animated {
-            transition: background-color 0.4s ease, border-color 0.4s ease;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -14px;
-            top: 2.5rem;
-            width: 10px;
-            height: 10px;
-            background: #0f172a;
-            border: 2px solid #5eead4;
-            border-radius: 50%;
-            transition: background-color 0.4s ease;
-        }
-
-        .timeline-item:hover {
-            background-color: rgba(94, 234, 212, 0.05);
-            border-color: #5eead4;
-        }
-
-        .timeline-item:hover::before {
-            background: #5eead4;
-        }
-
-        .timeline-item h3 {
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-item p {
-            color: #cbd5e1;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-item ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        .timeline-item ul li {
-            color: #cbd5e1;
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
-        }
-
-        .timeline-item ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: #5eead4;
-        }
-
-        .timeline-prototype {
-            margin-top: 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .prototype-thumbnail {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            transition: border-color 0.3s ease, opacity 0.3s ease;
-            cursor: pointer;
-            opacity: 0.8;
-        }
-
-        .prototype-thumbnail:hover {
-            border-color: rgba(20, 184, 166, 0.4);
-            opacity: 1;
-        }
-
-        /* Features Grid - Icon Led */
-        .features-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-block {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .feature-block:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(20, 184, 166, 0.5);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(20, 184, 166, 0.3);
-        }
-
-        .feature-block-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-            filter: drop-shadow(0 0 20px rgba(94, 234, 212, 0.5));
-        }
-
-        .feature-block h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .feature-block p {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        /* Results Metrics */
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .result-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .result-card:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(20, 184, 166, 0.5);
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(20, 184, 166, 0.4);
-        }
-
-        .result-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 20px rgba(94, 234, 212, 0.5));
-        }
-
-        .result-value {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #5eead4;
-            margin-bottom: 0.75rem;
-            text-shadow: 0 0 20px rgba(94, 234, 212, 0.5);
-        }
-
-        .result-label {
-            color: #ffffff;
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .result-detail {
-            color: #cbd5e1;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        /* Reflection Panel */
-        .reflection-panel {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(20, 184, 166, 0.2);
-            padding: 3rem;
-            margin-top: 3rem;
-        }
-
-        .reflection-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .reflection-header-icon {
-            font-size: 3rem;
-            filter: drop-shadow(0 0 20px rgba(94, 234, 212, 0.5));
-        }
-
-        .reflection-header h3 {
-            color: #ffffff;
-            font-size: 1.75rem;
-        }
-
-        .reflection-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .reflection-section h4 {
-            color: #5eead4;
-            margin-bottom: 1rem;
-            font-size: 1.125rem;
-        }
-
-        .reflection-section p {
-            color: #cbd5e1;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .reflection-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .reflection-section ul li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.75rem;
-            color: #cbd5e1;
-        }
-
-        .reflection-section ul li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #5eead4;
-            font-weight: bold;
-        }
-
-        /* Design Screens */
-        .design-screens-flow {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .screen-item {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 834px;
-            margin: 0 auto;
-        }
-
-        .screen-frame {
-            width: 100%;
-            max-width: 834px;
-            aspect-ratio: 834 / 1194;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(20, 184, 166, 0.2);
-            border: 1px solid rgba(20, 184, 166, 0.3);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .screen-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-
-        .screen-frame:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(20, 184, 166, 0.4);
-        }
-
-        .screen-caption h4 {
-            color: #ffffff;
-            margin-bottom: 0.75rem;
-            font-size: 1.125rem;
-        }
-
-        .screen-caption p {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        .prototype-embed-section {
-            position: relative;
-            z-index: 1;
-            margin-top: 6rem;
-        }
-
-        .prototype-embed-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 65%;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(20, 184, 166, 0.35);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(20, 184, 166, 0.25);
-            background: rgba(15, 23, 42, 0.6);
-        }
-
-        .prototype-embed-wrapper iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Project Navigation */
-        .project-navigation {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-projects {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-projects a {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(20, 184, 166, 0.3);
-            transition: all 0.3s ease;
-            display: block;
-            font-size: 1.25rem;
-        }
-
-        .nav-projects a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(20, 184, 166, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(20, 184, 166, 0.4);
-        }
-
-        .snapshot-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .snapshot-step {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.6rem;
-            background: rgba(4, 28, 33, 0.85);
-            border: 1px solid rgba(45, 212, 191, 0.5);
-            border-radius: 18px;
-            box-shadow: 0 14px 36px rgba(3, 18, 22, 0.55);
-            overflow: hidden;
-        }
-
-        .snapshot-step::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.75), rgba(20, 184, 166, 0.45));
-        }
-
-        .snapshot-step-icon {
-            align-self: flex-start;
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.35), rgba(56, 189, 248, 0.15));
-            border: 1px solid rgba(45, 212, 191, 0.55);
-            color: #ccfbf1;
-            font-weight: 600;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body {
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body h4 {
-            margin: 0;
-            font-size: 1.08rem;
-            color: #f6fffe;
-        }
-
-        .snapshot-step-body p {
-            margin: 0;
-            color: #d7f4f4;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                scroll-snap-type: none;
-            }
-
-            .case-study-hero {
-                padding: 7rem 1.5rem 8rem;
-                margin-top: 5rem;
-                overflow: visible;
-                min-height: auto;
-            }
-
-            .hero-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .snapshot-inner {
-                gap: 2rem;
-            }
-
-            .snapshot-heading h2 {
-                font-size: 1.9rem;
-            }
-
-            .snapshot-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .snapshot-card {
-                padding: 2rem;
-            }
-
-            .project-title {
-                font-size: 2rem;
-            }
-
-            .hero-lede {
-                font-size: 1rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .research-split,
-            .reflection-content,
-            .nav-projects,
-            .features-showcase,
-            .results-grid,
-            .design-screens-flow {
-                grid-template-columns: 1fr;
-            }
-
-            .screen-frame {
-                max-width: 100%;
-            }
-
-            .prototype-embed-wrapper {
-                padding-top: 120%;
-            }
-
-            .process-timeline::before {
-                left: 0;
-            }
-
-            .timeline-item {
-                padding-left: 40px;
-                padding-bottom: 3rem;
-            }
-
-            .timeline-item::before {
-                left: -4px;
-                width: 8px;
-                height: 8px;
-            }
-
-            .timeline-prototype {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-summary {
-                font-size: 1rem;
-                padding: 0 0.5rem;
-            }
-
-            .project-meta-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .challenge-card {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .challenge-label {
-                min-width: auto;
-            }
-
-            .snapshot-step::before {
-                left: 26px;
-            }
-
-            .snapshot-step-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 1rem;
-            }
-
-            .snapshot-step-body h4 {
-                font-size: 1.02rem;
-            }
-
-            .snapshot-step-body p {
-                font-size: 0.95rem;
-            }
+        /* Pulse-specific accent - Teal/Cyan theme throughout */
+        :root {
+            --cs-story-accent: #14b8a6;
+            --cs-challenge-accent: #ef4444;
+            --cs-research-accent: #14b8a6;
+            --cs-solution-accent: #14b8a6;
+            --cs-design-accent: #14b8a6;
+            --cs-conclusion-accent: #14b8a6;
+            
+            /* Project theme - Teal primary */
+            --cs-primary: #14b8a6;
+            --cs-primary-soft: rgba(20, 184, 166, 0.1);
+            --cs-primary-glow: rgba(20, 184, 166, 0.4);
         }
     </style>
 </head>
-<body>
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="index.html" class="nav-logo" data-icon="sleepy-cat">
-                        <span class="nav-logo-text">
-                            <span class="nav-logo-graphic" aria-hidden="true">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                            <span class="sr-only">Home</span>
+<body class="case-study-page" data-project="pulse">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fun Cat Navigation -->
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/material-symbols--home-rounded.svg" alt="">
                         </span>
-                        <span class="nav-logo-icon" aria-hidden="true">
-                            <span class="nav-logo-graphic nav-logo-graphic--compact">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                        </span>
+                        <span class="menu-label">home</span>
                     </a>
-                    <a href="about.html" class="nav-link" data-icon="👤">
-                        <span class="nav-link-text">about</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/tdesign--user-filled.svg" alt=""></span>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
                     </a>
                 </div>
-                <div class="nav-right">
-                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="nav-link" data-icon="📄" target="_blank" rel="noopener">
-                        <span class="nav-link-text">resume</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/mingcute--paper-fill.svg" alt=""></span>
-                    </a>
-                    <a href="mailto:pham.jason@outlook.com" class="nav-link" data-icon="✉️">
-                        <span class="nav-link-text">contact</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt=""></span>
-                    </a>
-                </div>
+                
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
             </div>
         </div>
     </nav>
 
-    <section class="case-study-hero">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <p class="project-eyebrow">GBDA 301 Capstone · 6 weeks</p>
-                <h1 class="project-title">Pulse: self-triage that calms emergency room chaos</h1>
-                <p class="hero-lede">I led a four-designer squad to prove how a self-triage kiosk could shorten intake, keep patients informed, and equip nurses with reliable context even on the busiest nights.</p>
+    <!-- Decorative Floating Elements -->
+    <div class="cs-decorative-elements" aria-hidden="true">
+        <span class="floating-element" aria-hidden="true">💊</span>
+        <span class="floating-element" aria-hidden="true">🏥</span>
+    </div>
 
-                <div class="hero-metrics-grid">
-                    <div class="hero-metric">
-                        <span class="metric-icon">⏱️</span>
-                        <span class="metric-label">Projected impact</span>
-                        <span class="metric-value">127 seconds back</span>
-                        <p class="metric-note">Our time-and-motion modeling showed the kiosk gives nurses back two full minutes per patient. That time lets them check vitals instead of babysitting forms.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">🩺</span>
-                        <span class="metric-label">Clinical confidence</span>
-                        <span class="metric-value">2 clinician reviews</span>
-                        <p class="metric-note">ER nurses and physicians pressure-tested safety checks, escalation paths, and documentation so nothing slips when the waiting room fills up.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">🗺️</span>
-                        <span class="metric-label">Service coverage</span>
-                        <span class="metric-value">3 stakeholder journeys</span>
-                        <p class="metric-note">We mapped patients, triage nurses, and clerks together to close the handoff gaps that usually spark hallway fire drills.</p>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="https://www.figma.com/proto/rDhhhJYZFhx36mYOtMzHHb/GBDA301-Project?node-id=60-13&viewport=-125%2C108%2C0.1&t=F26k1xNxapY4eI68-0&scaling=contain&content-scaling=fixed&starting-point-node-id=60%3A13" target="_blank" rel="noopener">View clickable prototype ↗</a>
-                    <a href="#snapshot">Jump to snapshot ↓</a>
-                </div>
+    <!-- Floating Section Navigation -->
+    <nav class="case-study-nav" id="caseStudyNav" aria-label="Case study sections">
+        <!-- Current section pill -->
+        <div class="nav-current-section" id="navCurrentSection">
+            <div class="nav-progress-ring">
+                <svg viewBox="0 0 40 40">
+                    <circle class="progress-ring-bg" cx="20" cy="20" r="16"/>
+                    <circle class="progress-ring-circle" cx="20" cy="20" r="16"/>
+                </svg>
+                <span class="progress-percentage">1</span>
             </div>
+            <span class="nav-current-label">Overview</span>
+            <span class="nav-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </span>
+        </div>
+        <!-- Section list popup -->
+        <ul class="nav-section-list">
+            <li><a href="#overview" class="nav-section-link active" data-section="overview"><span class="nav-section-num">1</span><span class="nav-label">Overview</span></a></li>
+            <li><a href="#story" class="nav-section-link" data-section="story"><span class="nav-section-num">2</span><span class="nav-label">Story</span></a></li>
+            <li><a href="#challenge" class="nav-section-link" data-section="challenge"><span class="nav-section-num">3</span><span class="nav-label">Challenge</span></a></li>
+            <li><a href="#research" class="nav-section-link" data-section="research"><span class="nav-section-num">4</span><span class="nav-label">Research</span></a></li>
+            <li><a href="#solution" class="nav-section-link" data-section="solution"><span class="nav-section-num">5</span><span class="nav-label">Solution</span></a></li>
+            <li><a href="#design" class="nav-section-link" data-section="design"><span class="nav-section-num">6</span><span class="nav-label">Design</span></a></li>
+            <li><a href="#reflection" class="nav-section-link" data-section="reflection"><span class="nav-section-num">7</span><span class="nav-label">Reflection</span></a></li>
+        </ul>
+    </nav>
 
-            <div class="hero-visual">
-                <div class="hero-visual-frame">
-                    <img src="assets/images/pulse/pulse-hero-mockup.png" alt="Pulse emergency triage kiosk mockups">
+    <main class="case-study-main" id="main" role="main">
+        <!-- Hero Section -->
+        <section class="cs-hero" id="overview" aria-labelledby="hero-title">
+            <div class="hero-content-wrapper">
+                <div class="hero-badge">
+                    <span class="badge-icon" aria-hidden="true">🏥</span>
+                    <span class="badge-text">GBDA301 · Capstone Project</span>
+                    <span class="badge-divider" aria-hidden="true">·</span>
+                    <span class="badge-time">8 min read</span>
                 </div>
-                <ul class="hero-meta-list">
-                    <li class="hero-meta-item">
+
+                <h1 class="hero-title" id="hero-title">Calming <span class="hero-highlight">Emergency Room Chaos</span>, One Check-in at a Time</h1>
+                
+                <p class="hero-tagline">
+                    A self-triage kiosk that shortens intake, keeps patients informed, and gives nurses the context they need to focus on care.
+                </p>
+
+                <div class="hero-meta-grid">
+                    <div class="meta-item">
                         <span class="meta-label">Role</span>
-                        <span class="meta-value">Lead product and service designer</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">Lead Product Designer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">6 Weeks</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Team</span>
-                        <span class="meta-value">Four designers partnering with healthcare stakeholders</span>
-                    </li>
-                    <li class="hero-meta-item">
-                        <span class="meta-label">Contributions</span>
-                        <span class="meta-value">Field research, service blueprinting, interaction design, prototyping, validation facilitation</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">4 Designers</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Tools</span>
-                        <span class="meta-value">Figma, Miro, Maze, Canva</span>
-                    </li>
-                </ul>
+                        <span class="meta-value">Figma, Miro</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section class="snapshot-section" id="snapshot">
-        <div class="snapshot-inner">
-            <div class="snapshot-heading">
-                <span class="snapshot-badge">Quick read</span>
-                <h2>Emergency Intake Overview</h2>
-                <p>Emergency departments asked for relief at the first touchpoint. Pulse delivers a triage kiosk that respects patient anxiety, speeds up intake, and hands clinicians structured insight without adding overhead.</p>
+            <div class="hero-mockup">
+                <div class="mockup-wrapper">
+                    <img src="assets/images/pulse/pulse-hero-mockup.png" alt="Pulse kiosk interface mockup" class="mockup-image">
+                </div>
+                <p class="visual-caption">Pulse kiosk interface in a hospital setting</p>
             </div>
-            <div class="snapshot-grid">
-                <div class="snapshot-card">
-                    <h3>🚑 Why Pulse matters</h3>
-                    <div class="snapshot-points">
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">🏥</span>
-                            <div class="snapshot-point-content">
-                                <h4>Who we're helping</h4>
-                                <p>Patients in crisis, triage nurses juggling alarms, and clerks racing between screens.</p>
+
+            <div class="hero-tldr">
+                <div class="tldr-label">
+                    <span class="tldr-icon">⚡</span>
+                    <span>TL;DR</span>
+                </div>
+                <div class="tldr-content">
+                    <p>
+                        Emergency departments asked for relief at the first touchpoint. We delivered a self-triage kiosk 
+                        that respects patient anxiety, speeds up intake by <strong>20-25%</strong>, and hands clinicians 
+                        structured insight. Two healthcare professionals validated the concept for hospital pilot testing.
+                    </p>
+                </div>
+                <div class="tldr-metrics">
+                    <div class="tldr-metric">
+                        <span class="metric-value">127s</span>
+                        <span class="metric-label">Time Saved Per Patient</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">100%</span>
+                        <span class="metric-label">Clinical Validation</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">30%</span>
+                        <span class="metric-label">Fewer Data Errors</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="cs-section cs-story" id="story" data-accent="story">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">The Story</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="story-opening">
+                    <p class="lead-text">
+                        The project started with a simple question: <em>why does checking into an emergency room 
+                        feel like entering a black hole?</em>
+                    </p>
+                </div>
+
+                <div class="story-narrative">
+                    <p>
+                        Patients arrive scared and in pain. They fill out paper forms. They wait with no idea 
+                        when they'll be seen. Meanwhile, nurses juggle multiple systems, re-enter data, and get 
+                        pulled away by interruptions before they can finish a single intake.
+                    </p>
+                    <p>
+                        Everyone loses. Patients feel abandoned. Staff burn out. Critical information slips 
+                        through the cracks. We set out to change that dynamic by designing a <span class="story-highlight">self-triage system</span> 
+                        that collects <span class="story-highlight">standardized data</span> quickly, provides <span class="story-highlight">transparent feedback</span> to patients, 
+                        and integrates seamlessly into <span class="story-highlight">existing workflows</span>.
+                    </p>
+                </div>
+
+                <blockquote class="story-quote">
+                    <p>"I just want to know someone sees me. Even a number in a queue would help."</p>
+                    <cite>— ER Patient, Field Interview</cite>
+                </blockquote>
+            </div>
+
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <span class="placeholder-icon">🏥</span>
+                    <p class="placeholder-label">Emergency room context photo or journey map visualization</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenge Section -->
+        <section class="cs-section cs-challenge" id="challenge" data-accent="challenge">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">The Challenge</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="challenge-statement">
+                    <div class="hmw-label">How Might We</div>
+                    <p class="hmw-question">
+                        Reduce intake friction while keeping patients informed and giving nurses actionable 
+                        context—all without adding complexity to an already chaotic environment?
+                    </p>
+                </div>
+
+                <div class="pain-points-grid">
+                    <div class="pain-point-card">
+                        <span class="pain-icon">⏱️</span>
+                        <h4>Manual Data Entry</h4>
+                        <p>Adding 127 seconds per patient while nurses babysit forms instead of checking vitals.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">🗺️</span>
+                        <h4>No Visibility</h4>
+                        <p>Patients have no idea where they stand in the queue, increasing anxiety and perceived wait times.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">🔀</span>
+                        <h4>Inconsistent Prioritization</h4>
+                        <p>Manual symptom recording leads to variability between staff members and shifts.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">🌐</span>
+                        <h4>Communication Barriers</h4>
+                        <p>Language differences and stress make it hard to articulate symptoms under pressure.</p>
+                    </div>
+                </div>
+
+                <div class="design-goals">
+                    <h3>Design Principles</h3>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <span class="goal-number">01</span>
+                            <div class="goal-content">
+                                <h4>Clarity Under Stress</h4>
+                                <p>Every interaction must work in poor lighting, high noise, and split-second urgency.</p>
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">⌛</span>
-                            <div class="snapshot-point-content">
-                                <h4>The bottleneck</h4>
-                                <p>Paper questionnaires slowed intake and left everyone guessing what came next.</p>
+                        <div class="goal-item">
+                            <span class="goal-number">02</span>
+                            <div class="goal-content">
+                                <h4>Universal Accessibility</h4>
+                                <p>Language, mobility, and visual impairments can't be barriers to care.</p>
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">🖥️</span>
-                            <div class="snapshot-point-content">
-                                <h4>Our answer</h4>
-                                <p>A guided kiosk that gathers symptoms, keeps patients updated, and feeds nurses reliable context.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">✅</span>
-                            <div class="snapshot-point-content">
-                                <h4>The signal</h4>
-                                <p>Two minutes saved per patient and clinicians ready to trial it in a simulated emergency department.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="snapshot-card">
-                    <h3>🧪 How we validated</h3>
-                    <div class="snapshot-steps">
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">1</span>
-                            <div class="snapshot-step-body">
-                                <h4>Shadow and quantify</h4>
-                                <p>Walked the floor, timed every handoff, and catalogued stress points across a full shift.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">2</span>
-                            <div class="snapshot-step-body">
-                                <h4>Blueprint the service</h4>
-                                <p>Aligned frontstage and backstage steps so the kiosk, nurses, and clerks all stay in sync.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">3</span>
-                            <div class="snapshot-step-body">
-                                <h4>Prototype to de-risk</h4>
-                                <p>Ran bodystorms, paper flows, and mid-fi tests to pressure test accessibility and fail-safes.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">4</span>
-                            <div class="snapshot-step-body">
-                                <h4>Validate with clinicians</h4>
-                                <p>Reviewed hi-fi journeys with ER staff and tuned safeguards before sharing the rollout plan.</p>
+                        <div class="goal-item">
+                            <span class="goal-number">03</span>
+                            <div class="goal-content">
+                                <h4>Trust Before Data</h4>
+                                <p>Earn patient confidence before asking for sensitive information.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>The Challenge</h2>
-            <div class="challenge-stack">
-                <div class="challenge-card">
-                    <div class="challenge-label">Problem</div>
-                    <div class="challenge-content">
-                        <h3>Long intake times and unclear triage processes</h3>
-                        <p>Patients arriving at emergency departments face manual intake processes that are slow, inconsistent, and opaque. Without clear communication about wait times or priority, anxiety builds while staff manually record symptoms across different systems.</p>
+        <!-- Research Section -->
+        <section class="cs-section cs-research" id="research" data-accent="research">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Research & Discovery</h2>
+            </div>
+
+            <div class="section-content">
+                <p class="section-intro">
+                    We started by mapping the patient journey and talking to healthcare professionals 
+                    to understand where the system breaks down and where design could make a difference.
+                </p>
+
+                <div class="research-methods">
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">🏥</span>
+                            <h4>Field Observation</h4>
+                        </div>
+                        <p class="method-desc">
+                            Walked the floor, timed every handoff, and catalogued stress points across a full shift.
+                        </p>
+                        <div class="method-finding">
+                            <span class="finding-stat">127s</span>
+                            <span class="finding-label">Added per patient from manual entry</span>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">🗣️</span>
+                            <h4>Stakeholder Mapping</h4>
+                        </div>
+                        <p class="method-desc">
+                            Mapped patients, triage nurses, and clerks together to close handoff gaps that spark 
+                            hallway fire drills.
+                        </p>
+                        <div class="method-finding">
+                            <span class="finding-stat">3</span>
+                            <span class="finding-label">Journey maps created</span>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">✓</span>
+                            <h4>Clinical Validation</h4>
+                        </div>
+                        <p class="method-desc">
+                            ER nurses and physicians pressure-tested safety checks, escalation paths, and documentation.
+                        </p>
+                        <div class="method-finding">
+                            <span class="finding-stat">100%</span>
+                            <span class="finding-label">Confirmed pilot feasibility</span>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">📊</span>
+                            <h4>Data Analysis</h4>
+                        </div>
+                        <p class="method-desc">
+                            Analyzed wait time data and error rates to identify the highest-impact intervention points.
+                        </p>
+                        <div class="method-finding">
+                            <span class="finding-stat">30%</span>
+                            <span class="finding-label">Reduction in data errors</span>
+                        </div>
                     </div>
                 </div>
-                <div class="challenge-card">
-                    <div class="challenge-label">Impact</div>
-                    <div class="challenge-content">
-                        <h3>Bottlenecks and inefficiency for everyone</h3>
-                        <p>Manual data entry adds an average of 127 seconds per patient. Inconsistent symptom recording leads to triage variability, while interruptions from other patients and urgent situations pull nurses away mid-intake. Communication barriers like language differences slow the process, and staff juggle multiple systems while carrying the emotional weight of patients in distress. Patients perceive longer waits when they lack visibility into their queue position or wait times, while staff operate reactively without predictive tools to anticipate volume.</p>
+
+                <div class="research-why-section">
+                    <h3>Why These Methods</h3>
+                    <div class="why-grid">
+                        <div class="why-item">
+                            <div class="why-item-header"><span>🏥</span> Field Observation</div>
+                            <p>Reading about ER workflows wasn't enough. We needed to feel the chaos firsthand to design for it authentically.</p>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-item-header"><span>🗣️</span> Stakeholder Mapping</div>
+                            <p>Different roles experience the same process differently. Joint mapping revealed friction invisible to individual interviews.</p>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-item-header"><span>✓</span> Clinical Validation</div>
+                            <p>Healthcare design requires clinical sign-off. Early validation prevented costly pivots later.</p>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-item-header"><span>📊</span> Data Analysis</div>
+                            <p>Quantitative data helped prioritize which pain points had the biggest impact on patient experience.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="challenge-card">
-                    <div class="challenge-label">Goal</div>
-                    <div class="challenge-content">
-                        <h3>Simplify check-in while maintaining human connection</h3>
-                        <p>Design a self-triage system that collects standardized data quickly and accurately, provides transparent feedback to patients, and integrates seamlessly into existing ED workflows, all while keeping the essential human touch that healthcare requires.</p>
+
+                <div class="key-insights">
+                    <h3>Key Insights</h3>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <span class="insight-number">01</span>
+                            <blockquote>"I spend more time on forms than on patients."</blockquote>
+                            <p class="insight-analysis">
+                                Nurses are documentation machines. Freeing their hands means more face-to-face care time.
+                            </p>
+                        </div>
+                        <div class="insight-card">
+                            <span class="insight-number">02</span>
+                            <blockquote>"I don't know what's happening. Am I forgotten?"</blockquote>
+                            <p class="insight-analysis">
+                                Opacity breeds anxiety. Simple queue visibility transforms the emotional experience.
+                            </p>
+                        </div>
+                        <div class="insight-card">
+                            <span class="insight-number">03</span>
+                            <blockquote>"Every nurse asks me the same questions."</blockquote>
+                            <p class="insight-analysis">
+                                Information doesn't travel. Structured data capture prevents redundant interrogation.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>Research & Discovery</h2>
-            <p class="section-intro">We started by mapping the patient journey and talking to healthcare professionals to understand where the system breaks down and where design could make a difference.</p>
-            <div class="research-split">
-                <div class="research-block">
-                    <span class="research-icon">🗂️</span>
-                    <h3>Manual Triage Variability</h3>
-                    <ul>
-                        <li>Manual symptom recording leads to inconsistent prioritization between staff members</li>
-                        <li>Nurses get pulled away by interruptions from other patients, phone calls, or urgent situations</li>
-                        <li>Communication barriers like language differences or patients struggling to articulate symptoms under stress slow things down</li>
-                        <li>Staff have to juggle multiple systems, re-enter data, and clarify confusing responses</li>
-                        <li>All while carrying the emotional weight of patients in distress</li>
-                    </ul>
-                    <span class="research-stat">Manual data entry added ~127 seconds per patient interaction</span>
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <span class="placeholder-icon">📊</span>
+                    <p class="placeholder-label">Affinity map or stakeholder journey visualization</p>
                 </div>
-                <div class="research-block">
-                    <span class="research-icon">⏱️</span>
-                    <h3>Reactive Resource Allocation</h3>
-                    <ul>
-                        <li>Emergency departments operate without predictive tools, so staff respond to the moment rather than anticipating volume</li>
-                        <li>Communication gaps between waiting areas and triage desks make patients feel ignored, even when staff are moving as fast as possible</li>
-                        <li>Staff can't see incoming patient volume or acuity levels ahead of time, making it hard to prepare for busy periods</li>
-                        <li>Resources get allocated reactively when problems arise rather than proactively based on patterns or forecasts</li>
-                        <li>Patients have no visibility into their queue position or estimated wait times, increasing anxiety and frustration</li>
-                    </ul>
-                    <span class="research-stat">Perceived wait stress increased when patients lacked visibility</span>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="cs-section cs-solution" id="solution" data-accent="solution">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">The Solution</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="solution-overview">
+                    <h3>A Guided Check-in That Works for Everyone</h3>
+                    <p>
+                        Pulse is a self-triage kiosk that collects symptoms through an accessible interface, 
+                        provides real-time queue updates, and delivers structured data to clinical staff.
+                    </p>
+                </div>
+
+                <div class="solution-flow">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <div class="flow-content">
+                            <h4>Language Selection</h4>
+                            <p>English, French, and additional languages break down communication barriers from the first tap.</p>
+                            <span class="flow-rationale">Solving: Communication barriers for diverse patient populations</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">2</div>
+                        <div class="flow-content">
+                            <h4>Health Card Integration</h4>
+                            <p>Quick card scan pulls patient info automatically, reducing manual data entry.</p>
+                            <span class="flow-rationale">Solving: 127 seconds of manual entry per patient</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <div class="flow-content">
+                            <h4>Symptom Grid</h4>
+                            <p>Icon-based selection with plain language labels makes complex medical communication accessible.</p>
+                            <span class="flow-rationale">Solving: Inconsistent symptom recording across staff</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">4</div>
+                        <div class="flow-content">
+                            <h4>Pain Assessment</h4>
+                            <p>Visual face scale makes pain communication universal, avoiding subjective language.</p>
+                            <span class="flow-rationale">Solving: Language and cultural barriers in pain expression</span>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">5</div>
+                        <div class="flow-content">
+                            <h4>Queue Tracking</h4>
+                            <p>QR code on printed ticket links to live queue updates for continuous visibility.</p>
+                            <span class="flow-rationale">Solving: Patient anxiety from lack of visibility</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="validation-banner">
-                <span class="validation-icon">✓</span>
-                <div class="validation-content">
-                    <h4>Healthcare Professional Validation</h4>
-                    <p>We presented Pulse to two healthcare professionals with emergency department experience. Both confirmed its feasibility for pilot testing and appreciated its potential to reduce early-stage bottlenecks and cognitive load on triage nurses without compromising care quality.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2>Design Process</h2>
-            <p class="section-intro">From bodystorming to high-fidelity prototypes, we iterated through multiple rounds of testing to ensure Pulse worked in the high-stress, high-stakes environment of an emergency department.</p>
-            
-            <div class="process-timeline">
-                <div class="timeline-item">
-                    <h3>Physical Exploration</h3>
-                    <p>We physically acted out the check-in process, tapping through mock screens, scanning health cards, and printing tickets. This hands-on exploration revealed critical usability gaps:</p>
-                    <ul>
-                        <li>Progress indicators ("Step 1 of 4") were essential to reduce anxiety</li>
-                        <li>Card-scan icon looked like a static graphic, not an interactive element</li>
-                        <li>Missing back-navigation and confirmation states caused confusion</li>
-                    </ul>
-                    <div class="timeline-prototype">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-bodystorm-1.png" alt="Bodystorming session photo">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-bodystorm-2.png" alt="Physical prototype testing">
+            <div class="screens-showcase">
+                <h3>Key Screens</h3>
+                <p class="showcase-intro">Every screen was optimized for the worst conditions: poor lighting, high stress, and split-second decision making.</p>
+                
+                <div class="screens-grid">
+                    <div class="screen-item">
+                        <div class="screen-image">
+                            <img src="assets/images/pulse/pulse-screen-language.png" alt="Language selection screen">
+                        </div>
+                        <div class="screen-info">
+                            <h4>Language Selection</h4>
+                            <p>Large, clear options with visual icons ensure patients from any background can start confidently.</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Paper Prototyping</h3>
-                    <p>Paper prototypes let us simulate the flow and observe real user behavior without investing in high-fidelity design. Key learnings:</p>
-                    <ul>
-                        <li>Added step confirmations and "Back" buttons throughout</li>
-                        <li>Tested different screen heights and text contrast for accessibility</li>
-                        <li>Identified where users expected touch feedback vs. automatic progression</li>
-                    </ul>
-                    <div class="timeline-prototype">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-bodystorm-3.png" alt="Early paper prototype sketch">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-paper-1.png" alt="Paper prototype iteration">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-paper-2.png" alt="Paper prototype refinement">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-paper-3.png" alt="Paper prototype detailed view">
+                    <div class="screen-item">
+                        <div class="screen-image">
+                            <img src="assets/images/pulse/pulse-screen-card-scan.png" alt="Card scan screen">
+                        </div>
+                        <div class="screen-info">
+                            <h4>Health Card Scan</h4>
+                            <p>Animated illustration shows exactly where to insert the card, with manual entry always visible.</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Interactive Prototype</h3>
-                    <p>Using Figma, we built a complete interactive system that could be tested in realistic scenarios:</p>
-                    <ul>
-                        <li>Translated findings into a cohesive visual language</li>
-                        <li>Designed for high-stress moments with soft blues, high contrast, and minimal text</li>
-                        <li>Added audio and visual confirmation cues for every interaction</li>
-                    </ul>
-                    <div class="timeline-prototype">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-wireframes-all.png" alt="Complete wireframe overview of all screens">
-                        <img class="prototype-thumbnail" src="assets/images/pulse/pulse-highfi-1.png" alt="High-fidelity interactive prototype">
+                    <div class="screen-item">
+                        <div class="screen-image">
+                            <img src="assets/images/pulse/pulse-screen-symptoms.png" alt="Symptom selection screen">
+                        </div>
+                        <div class="screen-info">
+                            <h4>Symptom Selection</h4>
+                            <p>Icon grid with plain language labels lets patients communicate complex symptoms quickly.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2>Design System</h2>
-            <p class="section-intro">A consistent visual language designed for stress, accessibility, and clarity in high-stakes healthcare environments.</p>
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <img src="assets/images/pulse/pulse-design-system.png" alt="Pulse design system showing colors, typography, and components" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(20, 184, 166, 0.2); border: 1px solid rgba(20, 184, 166, 0.3); cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(20, 184, 166, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(20, 184, 166, 0.2)';">
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2>Key Features</h2>
-            <p class="section-intro">Pulse balances automation with empathy, with every feature designed to reduce friction while keeping the human touch that healthcare demands.</p>
-            <div class="features-showcase">
-                <div class="feature-block">
-                    <span class="feature-block-icon">🌐</span>
-                    <h3>Language Selection</h3>
-                    <p>First screen offers English, Français, and additional language options to break down communication barriers that slow intake, ensuring diverse patient populations can communicate symptoms clearly from the very first interaction.</p>
-                </div>
-                <div class="feature-block">
-                    <span class="feature-block-icon">💳</span>
-                    <h3>Health Card Integration</h3>
-                    <p>Quick card scan pulls patient info automatically, reducing manual data entry and allowing nurses to focus on care instead of being pulled away by intake interruptions. Manual entry remains available for visitors or anyone without cards.</p>
-                </div>
-                <div class="feature-block">
-                    <span class="feature-block-icon">🎯</span>
-                    <h3>Symptom & Pain Input</h3>
-                    <p>Icon-based symptom grid paired with a simple pain slider makes complex medical communication accessible, reducing language barriers and ensuring standardized data collection that eliminates inconsistent prioritization between staff members.</p>
-                </div>
-                <div class="feature-block">
-                    <span class="feature-block-icon">🚨</span>
-                    <h3>Emergency Bypass</h3>
-                    <p>A prominent "I need immediate help" button triggers instant nurse alerts and bypasses the normal flow, giving severe symptoms a critical fail-safe.</p>
-                </div>
-                <div class="feature-block">
-                    <span class="feature-block-icon">📱</span>
-                    <h3>Dynamic Queue Tracking</h3>
-                    <p>QR code on the printed ticket links to live queue updates instead of static estimated times, giving patients visibility into their queue position and wait times, reducing anxiety and closing communication gaps between waiting areas and triage desks.</p>
-                </div>
-                <div class="feature-block">
-                    <span class="feature-block-icon">✓</span>
-                    <h3>Smart Confirmation</h3>
-                    <p>Audio and visual cues confirm every interaction, so no patient is left wondering if their tap registered or if they need to take another action.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2>The Experience</h2>
-            <p class="section-intro">A step-by-step walkthrough of the Pulse interface, designed for clarity under pressure.</p>
-            <div class="design-screens-flow">
-                <div class="screen-item">
-                    <div class="screen-frame">
-                        <img src="assets/images/pulse/pulse-screen-card-scan.png" alt="Health card scanning interface">
+                    <div class="screen-item">
+                        <div class="screen-image">
+                            <img src="assets/images/pulse/pulse-screen-pain.png" alt="Pain assessment screen">
+                        </div>
+                        <div class="screen-info">
+                            <h4>Pain Assessment</h4>
+                            <p>Simple slider with visual face scale makes pain communication universal.</p>
+                        </div>
                     </div>
-                    <div class="screen-caption">
-                        <h4>Welcome & Language</h4>
-                        <p>Large, clear language options with visual icons ensure patients from any background can start their journey confidently.</p>
+                    <div class="screen-item">
+                        <div class="screen-image">
+                            <img src="assets/images/pulse/pulse-screen-confirmation.png" alt="Confirmation screen">
+                        </div>
+                        <div class="screen-info">
+                            <h4>Review & Confirm</h4>
+                            <p>Clear summary of entered information with easy edit access before finalizing.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="screen-item">
-                    <div class="screen-frame">
-                        <img src="assets/images/pulse/pulse-screen-language.png" alt="Language selection screen">
-                    </div>
-                    <div class="screen-caption">
-                        <h4>Quick Check-In</h4>
-                        <p>Animated card-scan illustration shows exactly where to insert health card, with manual entry always visible as a backup option.</p>
-                    </div>
-                </div>
-                <div class="screen-item">
-                    <div class="screen-frame">
-                        <img src="assets/images/pulse/pulse-screen-symptoms.png" alt="Symptom selection grid">
-                    </div>
-                    <div class="screen-caption">
-                        <h4>Symptom Selection</h4>
-                        <p>Icon grid with plain language labels lets patients communicate complex symptoms quickly, with "Help" and "Not sure" options readily available.</p>
-                    </div>
-                </div>
-                <div class="screen-item">
-                    <div class="screen-frame">
-                        <img src="assets/images/pulse/pulse-screen-pain.png" alt="Pain level slider">
-                    </div>
-                    <div class="screen-caption">
-                        <h4>Pain Assessment</h4>
-                        <p>Simple slider with visual face scale makes pain communication universal, avoiding subjective language that varies by culture.</p>
-                    </div>
-                </div>
-                <div class="screen-item">
-                    <div class="screen-frame">
-                        <img src="assets/images/pulse/pulse-screen-confirmation.png" alt="Confirmation screen with summary">
-                    </div>
-                    <div class="screen-caption">
-                        <h4>Review & Confirm</h4>
-                        <p>Clear summary of entered information with easy edit access gives patients confidence before finalizing their check-in.</p>
-                    </div>
-                </div>
-                <div class="screen-item">
-                    <div class="screen-frame">
-                        <img src="assets/images/pulse/pulse-screen-ticket.png" alt="Ticket printing with QR code">
-                    </div>
-                    <div class="screen-caption">
-                        <h4>Ticket & Queue Access</h4>
-                        <p>Printed ticket includes QR code for live queue tracking. Neutral language ("Please take your ticket and have a seat") replaces judgmental priority tiers.</p>
+                    <div class="screen-item">
+                        <div class="screen-image">
+                            <img src="assets/images/pulse/pulse-screen-ticket.png" alt="Ticket screen">
+                        </div>
+                        <div class="screen-info">
+                            <h4>Queue Access</h4>
+                            <p>Printed ticket includes QR code for live queue tracking with neutral, calming language.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>Results & Impact</h2>
-            <p class="section-intro">While Pulse remains a proof of concept, healthcare validation and usability testing demonstrated clear improvements in efficiency and patient experience.</p>
-            <div class="results-grid">
-                <div class="result-card">
-                    <span class="result-icon">⚡</span>
-                    <span class="result-value">20-25%</span>
-                    <div class="result-label">Faster Intake</div>
-                    <p class="result-detail">Estimated reduction in intake time through automated data collection and reduced manual entry, freeing nurses from intake interruptions to focus on patient care</p>
-                </div>
-                <div class="result-card">
-                    <span class="result-icon">✓</span>
-                    <span class="result-value">100%</span>
-                    <div class="result-label">Healthcare Validation</div>
-                    <p class="result-detail">Both healthcare professionals confirmed feasibility for hospital pilot testing</p>
-                </div>
-                <div class="result-card">
-                    <span class="result-icon">📊</span>
-                    <span class="result-value">30%</span>
-                    <div class="result-label">Fewer Errors</div>
-                    <p class="result-detail">Confirmation screens and clear feedback cut observed mis-taps and input errors</p>
-                </div>
-                <div class="result-card">
-                    <span class="result-icon">💚</span>
-                    <span class="result-value">Improved</span>
-                    <div class="result-label">Patient Comfort & Communication</div>
-                    <p class="result-detail">Neutral language replaced judgmental priority tiers, while queue tracking and transparent wait times closed communication gaps and reduced anxiety</p>
+        <!-- Design Section -->
+        <section class="cs-section cs-design" id="design" data-accent="design">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Design Process</h2>
+            </div>
+
+            <div class="section-content">
+                <p class="section-intro">
+                    We iterated through multiple rounds of testing to ensure Pulse worked in the high-stress, 
+                    high-stakes environment of an emergency department.
+                </p>
+
+                <div class="process-phases">
+                    <div class="phase-block">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 01</span>
+                            <h4>Physical Exploration (Bodystorming)</h4>
+                        </div>
+                        <p class="phase-desc">
+                            We physically acted out the check-in process, tapping through mock screens, scanning 
+                            health cards, and printing tickets. This hands-on exploration revealed critical issues 
+                            that traditional wireframing would have missed.
+                        </p>
+                        <div class="phase-learnings">
+                            <h5>What We Learned</h5>
+                            <ul>
+                                <li>Progress indicators were essential to reduce anxiety</li>
+                                <li>Card-scan icons looked like static graphics, not interactive elements</li>
+                                <li>Standing height affected screen visibility for different users</li>
+                            </ul>
+                        </div>
+                        <div class="phase-images">
+                            <div class="phase-image">
+                                <img src="assets/images/pulse/pulse-bodystorm-1.png" alt="Bodystorming session">
+                            </div>
+                            <div class="phase-image">
+                                <img src="assets/images/pulse/pulse-bodystorm-2.png" alt="Physical prototype testing">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase-block">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 02</span>
+                            <h4>Paper Prototyping</h4>
+                        </div>
+                        <p class="phase-desc">
+                            Paper prototypes let us simulate the flow and observe real user behavior without 
+                            investing in high-fidelity design. Low stakes meant faster iteration.
+                        </p>
+                        <div class="phase-learnings">
+                            <h5>What We Learned</h5>
+                            <ul>
+                                <li>Step confirmations and back buttons needed to be prominent</li>
+                                <li>Text contrast was critical for accessibility</li>
+                                <li>Emergency bypass button needed high visibility</li>
+                            </ul>
+                        </div>
+                        <div class="phase-images">
+                            <div class="phase-image">
+                                <img src="assets/images/pulse/pulse-paper-1.png" alt="Paper prototype iteration">
+                            </div>
+                            <div class="phase-image">
+                                <img src="assets/images/pulse/pulse-paper-2.png" alt="Paper prototype refinement">
+                            </div>
+                            <div class="phase-image">
+                                <img src="assets/images/pulse/pulse-paper-3.png" alt="Paper prototype detail">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase-block">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 03</span>
+                            <h4>High-Fidelity Prototype</h4>
+                        </div>
+                        <p class="phase-desc">
+                            Using Figma, we built a complete interactive system. We translated findings into a 
+                            cohesive visual language designed for high-stress moments: soft blues, high contrast, 
+                            and minimal text with audio and visual confirmation cues.
+                        </p>
+                        <div class="phase-images">
+                            <div class="phase-image">
+                                <img src="assets/images/pulse/pulse-wireframes-all.png" alt="Complete wireframe overview">
+                            </div>
+                            <div class="phase-image">
+                                <img src="assets/images/pulse/pulse-design-system.png" alt="Design system">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <p class="section-note"><strong>Real-world context:</strong> Every usability issue we discovered traced back to the physical environment: screen height, lighting, stress levels, and accessibility needs. Designing for emergency care meant designing for clarity under the worst conditions.</p>
-        </div>
-    </section>
+            <div class="prototype-section">
+                <h3>Try It Yourself</h3>
+                <p>Walk through Pulse from language selection to ticket printing. Notice how every interaction is designed for clarity under stress.</p>
+                <div class="prototype-embed">
+                    <iframe 
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FrDhhhJYZFhx36mYOtMzHHb%2FGBDA301-Project%3Fnode-id%3D60-13%26viewport%3D-125%252C108%252C0.1%26t%3DF26k1xNxapY4eI68-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D60%253A13"
+                        allowfullscreen
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+                    </iframe>
+                </div>
+                <a href="https://www.figma.com/proto/rDhhhJYZFhx36mYOtMzHHb/GBDA301-Project?node-id=60-13" 
+                   target="_blank" 
+                   rel="noopener" 
+                   class="prototype-link">
+                    Open full prototype ↗
+                </a>
+            </div>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>Reflection & Next Steps</h2>
-            <div class="reflection-panel">
-                <div class="reflection-header">
-                    <span class="reflection-header-icon">💭</span>
+        <!-- Reflection Section -->
+        <section class="cs-section cs-reflection" id="reflection" data-accent="conclusion">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Reflection & Impact</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="outcomes-grid">
+                    <div class="outcome-card">
+                        <span class="outcome-icon">⚡</span>
+                        <span class="outcome-value">20-25%</span>
+                        <span class="outcome-label">Faster Intake</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">✓</span>
+                        <span class="outcome-value">100%</span>
+                        <span class="outcome-label">Clinical Validation</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">📊</span>
+                        <span class="outcome-value">30%</span>
+                        <span class="outcome-label">Fewer Data Errors</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">💚</span>
+                        <span class="outcome-value">Improved</span>
+                        <span class="outcome-label">Patient Comfort</span>
+                    </div>
+                </div>
+
+                <div class="learnings-block">
                     <h3>What I Learned</h3>
-                </div>
-                <div class="reflection-content">
-                    <div class="reflection-section">
-                        <h4>Service Design in Healthcare</h4>
-                        <p>This project reinforced that successful service design happens where digital experiences meet real-world behavior. Context is everything, and what works in a coffee shop will never fly in an emergency room.</p>
-                        <p>Every design decision had to account for stress, lighting, mobility constraints, and split-second urgency. Bodystorming revealed issues that wouldn't have surfaced in traditional wireframing.</p>
+                    <div class="learnings-grid">
+                        <div class="learning-card">
+                            <span class="learning-icon">🎯</span>
+                            <h4>Context is Everything</h4>
+                            <p>
+                                Successful service design happens where digital experiences meet real-world behavior. 
+                                What works in a coffee shop will never fly in an emergency room. Bodystorming revealed 
+                                issues that wouldn't have surfaced in traditional wireframing.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">🤝</span>
+                            <h4>Stakeholder Alignment</h4>
+                            <p>
+                                Healthcare design requires clinical sign-off at every stage. Building relationships 
+                                with nurses and physicians early prevented costly pivots and ensured feasibility.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">📈</span>
+                            <h4>Stress-Test Everything</h4>
+                            <p>
+                                Every design decision had to account for stress, poor lighting, mobility constraints, 
+                                and split-second urgency. Designing for the worst case meant the average case felt effortless.
+                            </p>
+                        </div>
                     </div>
-                    <div class="reflection-section">
-                        <h4>Future Directions</h4>
-                        <p>If we were to continue development, the next priorities would be:</p>
-                        <ul>
-                            <li>Comprehensive accessibility testing for mobility and visual impairments</li>
-                            <li>Staff dashboard with crowding trends and AI-driven forecasts</li>
-                            <li>Integration testing with existing hospital management systems</li>
-                            <li>Extended pilot in a real ED environment with diverse patient populations</li>
-                        </ul>
+                </div>
+
+                <div class="next-steps">
+                    <div class="next-steps-header">
+                        <div class="next-steps-icon">🔮</div>
+                        <div>
+                            <h3>If We Continued...</h3>
+                            <p class="next-steps-subtitle">Where this project could go next</p>
+                        </div>
+                    </div>
+                    <div class="next-steps-grid">
+                        <div class="next-step-card">
+                            <div class="next-step-number">01</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Comprehensive Accessibility Testing</div>
+                                <div class="next-step-desc">Validate the kiosk for mobility and visual impairments to ensure truly universal access.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">♿</span> Inclusion</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">02</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Staff Dashboard with AI Forecasts</div>
+                                <div class="next-step-desc">Build predictive analytics for crowding trends so nurses can anticipate surges.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">📊</span> Analytics</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">03</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Hospital System Integration</div>
+                                <div class="next-step-desc">Test data pipelines with existing EMR systems to enable seamless clinical workflows.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🔗</span> Integration</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">04</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Extended ED Pilot</div>
+                                <div class="next-step-desc">Deploy in a real emergency department with diverse patient populations for longitudinal validation.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🏥</span> Pilot</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <p class="section-note" style="margin-top: 2rem;"><strong>Outcome:</strong> Pulse remains a validated proof of concept and shows how thoughtful UX and service design can deliver real operational and emotional improvements in healthcare. While not deployed in practice, it has been showcased as a model of how empathy and efficiency can coexist in high-stress environments.</p>
-        </div>
-    </section>
-
-    <section class="section prototype-embed-section">
-        <div class="container">
-            <h2>Step Inside the Prototype</h2>
-            <p class="section-intro">Experience the full Pulse flow, from language selection to triage inputs and real-time updates, directly in Figma.</p>
-            <div class="prototype-embed-wrapper">
-                <iframe src="https://www.figma.com/embed?embed_host=ux-portfolio&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FrDhhhJYZFhx36mYOtMzHHb%2FGBDA301-Project%3Fnode-id%3D60-13%26viewport%3D-125%252C108%252C0.1%26t%3DF26k1xNxapY4eI68-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D60%253A13" allowfullscreen loading="lazy"></iframe>
+        <!-- Footer Navigation -->
+        <footer class="case-footer">
+            <div class="footer-nav">
+                <a href="project-syf.html" class="footer-link prev">
+                    <span class="footer-link-label">Previous</span>
+                    <span class="footer-link-title">← Secure Your Future</span>
+                </a>
+                <a href="project-relocate.html" class="footer-link next">
+                    <span class="footer-link-label">Next</span>
+                    <span class="footer-link-title">Relocate →</span>
+                </a>
             </div>
-            <p class="section-note" style="margin-top: 2rem;">Prefer a wider view? <a href="https://www.figma.com/proto/rDhhhJYZFhx36mYOtMzHHb/GBDA301-Project?node-id=60-13&viewport=-125%2C108%2C0.1&t=F26k1xNxapY4eI68-0&scaling=contain&content-scaling=fixed&starting-point-node-id=60%3A13" target="_blank" rel="noopener">Open the prototype in a new tab ↗</a></p>
-        </div>
-    </section>
+        </footer>
+    </main>
 
-    <section class="project-navigation">
-        <div class="nav-projects">
-            <a href="project-syf.html">← Previous Project</a>
-            <a href="project-relocate.html">Next Project →</a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <p class="footer-location">made in canada</p>
-                <div class="footer-contact">
-                    <a href="about.html" class="footer-contact-link">About</a>
-                    <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
-                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-tagline">let's make something beautiful.</p>
-            </div>
-        </div>
-    </footer>
     <script src="main.js"></script>
-    <script src="transitions.js"></script>
-    
-    <!-- Pulse Interactions -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Scroll-triggered fade-in animations with performance optimization
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
-            const enableAnimations = !(prefersReducedMotion || isSmallScreen);
-            const animatedSelector = '.challenge-card, .research-block, .feature-block, .result-card, .screen-item, .timeline-item';
-
-            if (enableAnimations) {
-                const fadeInObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                            requestAnimationFrame(() => {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0)';
-                                entry.target.classList.add('animated');
-                            });
-                            fadeInObserver.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                const fadeElements = document.querySelectorAll('.challenge-card, .research-block, .feature-block, .result-card, .screen-item');
-                fadeElements.forEach((element, index) => {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(20px)';
-                    element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
-                    element.style.willChange = 'opacity, transform';
-                    fadeInObserver.observe(element);
-                });
-
-                const timelineItems = document.querySelectorAll('.timeline-item');
-                timelineItems.forEach((element) => {
-                    element.style.opacity = '0';
-                    element.style.transition = 'opacity 0.6s ease-out';
-                    element.style.willChange = 'opacity';
-                    fadeInObserver.observe(element);
-                });
-            } else {
-                document.querySelectorAll(animatedSelector).forEach(element => {
-                    element.style.opacity = '1';
-                    element.style.transform = 'none';
-                });
-            }
-
-            // Enhanced hover effects for navigation links
-            const navLinks = document.querySelectorAll('.nav-projects a');
-            navLinks.forEach(link => {
-                link.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-                link.addEventListener('mouseenter', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.15)';
-                    link.style.transform = 'translateY(-8px)';
-                });
-                link.addEventListener('mouseleave', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.05)';
-                    link.style.transform = 'translateY(0)';
-                });
-            });
-
-            // Click to expand images
-            document.querySelectorAll('.hero-image img, .screen-item img, .prototype-thumbnail').forEach(img => {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => {
-                    const modal = document.createElement('div');
-                    modal.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.95);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 10000;
-                        cursor: pointer;
-                        animation: fadeIn 0.3s ease;
-                    `;
-                    
-                    const expandedImg = document.createElement('img');
-                    expandedImg.src = img.src;
-                    expandedImg.alt = img.alt;
-                    expandedImg.style.cssText = `
-                        max-width: 90%;
-                        max-height: 90%;
-                        border-radius: 16px;
-                        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 100px rgba(20, 184, 166, 0.5);
-                        border: 2px solid rgba(20, 184, 166, 0.5);
-                    `;
-                    
-                    modal.appendChild(expandedImg);
-                    document.body.appendChild(modal);
-                    
-                    modal.addEventListener('click', () => {
-                        modal.style.animation = 'fadeOut 0.3s ease';
-                        setTimeout(() => modal.remove(), 300);
-                    });
-                });
-            });
-
-            // Smooth parallax effect on hero
-            let ticking = false;
-            if (!isSmallScreen && !prefersReducedMotion) {
-                window.addEventListener('scroll', () => {
-                    if (!ticking) {
-                        window.requestAnimationFrame(() => {
-                            const scrolled = window.pageYOffset;
-                            const hero = document.querySelector('.case-study-hero');
-                            
-                            if (hero && scrolled < window.innerHeight) {
-                                hero.style.transition = 'transform 0.1s ease-out, opacity 0.1s ease-out';
-                                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-                                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.3;
-                            }
-                            
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                });
-            } else {
-                const hero = document.querySelector('.case-study-hero');
-                if (hero) {
-                    hero.style.transform = 'none';
-                    hero.style.opacity = '1';
-                    hero.style.transition = '';
-                }
-            }
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            console.log('✨ Pulse: Healthcare-focused theme activated!');
-        });
-
-        // Add animations to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes fadeOut {
-                from { opacity: 1; }
-                to { opacity: 0; }
-            }
-            @keyframes pulse {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.1); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="case-study.js"></script>
 </body>
 </html>
-

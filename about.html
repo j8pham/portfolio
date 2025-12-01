@@ -3,165 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About - Product Designer">
-    <title>About</title>
+    <meta name="description" content="About Jason Pham - Product Designer passionate about human-centered design">
+    <title>About | Jason Pham</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="about-styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat-256x256.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/images/branding/sleepycat-256x256.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/sleepycat-256x256.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/sleepycat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="index.html" class="nav-logo" data-icon="sleepy-cat">
-                        <span class="nav-logo-text">
-                            <span class="nav-logo-graphic" aria-hidden="true">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                            <span class="sr-only">Home</span>
+<body class="about-page">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fun Cat Navigation -->
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <!-- Cat Menu Hub -->
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <!-- Radial Menu -->
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/material-symbols--home-rounded.svg" alt="">
                         </span>
-                        <span class="nav-logo-icon" aria-hidden="true">
-                            <span class="nav-logo-graphic nav-logo-graphic--compact">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                        </span>
+                        <span class="menu-label">home</span>
                     </a>
-                    <a href="about.html" class="nav-link" data-icon="👤">
-                        <span class="nav-link-text">about</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/tdesign--user-filled.svg" alt=""></span>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
                     </a>
                 </div>
-                <div class="nav-right">
-                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="nav-link" data-icon="📄" target="_blank" rel="noopener">
-                        <span class="nav-link-text">resume</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/mingcute--paper-fill.svg" alt=""></span>
-                    </a>
-                    <a href="mailto:pham.jason@outlook.com" class="nav-link" data-icon="✉️">
-                        <span class="nav-link-text">contact</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt=""></span>
-                    </a>
-                </div>
+                
+                <!-- Menu backdrop blur -->
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <!-- Quick nav pills (visible when scrolled) -->
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
             </div>
         </div>
     </nav>
 
+    <!-- Animated Background -->
+    <div class="about-bg-canvas" id="bgCanvas" aria-hidden="true"></div>
+
     <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="about-hero-section">
+    <main class="main-content" id="main" role="main">
+        <!-- Hero Section - Full Screen Intro -->
+        <section class="about-hero-section" aria-labelledby="about-title">
+            <div class="hero-content-wrapper">
                 <div class="about-hero-content">
                     <div class="about-hero-text">
-                        <h1 class="about-hero-title">nice to see you 🫶</h1>
-                        <p class="about-hero-description">once again, i'm <span class="highlight-name">jason</span>. i love learning about human stories and letting them guide every pixel, prototype, and conversation.</p>
+                        <div class="hero-greeting">
+                            <span class="greeting-wave" aria-hidden="true">👋</span>
+                            <span class="greeting-text">nice to see you</span>
+                        </div>
+                        <h1 class="about-hero-title" id="about-title">
+                            <span class="title-line">once again, i'm</span>
+                            <span class="title-name" data-text="jason">jason</span>
+                        </h1>
+                        <p class="about-hero-description">
+                            i love learning about <span class="text-highlight">human stories</span> and letting them guide every pixel, prototype, and conversation.
+                        </p>
+                        <div class="hero-scroll-hint">
+                            <span class="scroll-text">scroll to explore</span>
+                            <div class="scroll-indicator">
+                                <span class="scroll-dot"></span>
+                            </div>
+                        </div>
                     </div>
                     <div class="about-hero-image">
-                        <div class="profile-image-wrapper">
-                            <img src="assets/images/branding/profile-portrait.jpg" alt="Jason - Profile Picture" class="profile-image" loading="eager" decoding="sync" fetchpriority="high">
+                        <!-- Stacked polaroid-style cards -->
+                        <div class="polaroid-stack">
+                            <div class="polaroid-card back-card"></div>
+                            <div class="polaroid-card mid-card"></div>
+                            <div class="polaroid-card main-card">
+                                <div class="polaroid-image">
+                                    <img src="assets/images/branding/profile-portrait.jpg" alt="Jason - Profile Picture" loading="eager" decoding="sync" fetchpriority="high">
+                                </div>
+                                <div class="polaroid-caption">
+                                    <span class="caption-text">that's me! 📸</span>
+                                </div>
+                            </div>
                         </div>
-                        <img src="assets/images/branding/sleepycat-256x256.png" alt="" class="profile-image-cat" aria-hidden="true">
+                        <!-- Cat peeking from corner -->
+                        <div class="cat-peek">
+                            <img src="assets/images/branding/sleepycat-256x256.png" alt="" aria-hidden="true">
+                            <div class="cat-zzz-mini">
+                                <span>z</span><span>z</span><span>z</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Hobby Projects Gallery -->
-            <section class="hobby-gallery-section principles-section">
-                <h2 class="section-heading">welcome to my playground</h2>
-                <p class="section-description">in my free time, i love experimenting with new ideas and pushing creative boundaries. here are some side projects i've been working on.</p>
+        <div class="container">
+            <!-- Hobby Projects Gallery - Interactive Cards -->
+            <section class="hobby-gallery-section" id="playground" aria-labelledby="playground-heading">
+                <div class="section-header">
+                    <span class="section-tag" aria-hidden="true">✦ creative corner</span>
+                    <h2 class="section-heading" id="playground-heading">welcome to my playground</h2>
+                    <p class="section-description">in my free time, i love experimenting with new ideas and pushing creative boundaries. here are some side projects i've been working on.</p>
+                </div>
                 
                 <div class="hobby-grid">
-                    <div class="hobby-item">
+                    <div class="hobby-item tilt-card" data-tilt>
                         <div class="hobby-image">
                             <img src="assets/images/branding/SERVE.png" alt="UW Serve promotional campaign visuals">
+                            <div class="hobby-overlay">
+                                <span class="hobby-tag">branding</span>
+                            </div>
                         </div>
                         <div class="hobby-info">
                             <h3 class="hobby-title">uw serve redesign</h3>
-                            <p class="hobby-description">we rebuilt the club’s branding from scratch and designed new and improved visuals and marketing strategies to help engagement climb across campus.</p>
+                            <p class="hobby-description">we rebuilt the club's branding from scratch and designed new and improved visuals and marketing strategies to help engagement climb across campus.</p>
                         </div>
+                        <div class="card-shine"></div>
                     </div>
 
-                    <a class="hobby-item" href="playground-magazine.html">
+                    <a class="hobby-item tilt-card" href="playground-magazine.html" data-tilt>
                         <div class="hobby-image">
                             <img src="assets/images/branding/GBDA101_A4_Magazine_Design_Final_JasonP-1-1.png" alt="Magazine spread preview">
+                            <div class="hobby-overlay">
+                                <span class="hobby-tag">editorial</span>
+                                <span class="hobby-view">view project →</span>
+                            </div>
                         </div>
                         <div class="hobby-info">
                             <h3 class="hobby-title">magazine editorial experiments</h3>
                             <p class="hobby-description">this class project helped me explore and understand my design voice. feel free to flip through every spread.</p>
                         </div>
+                        <div class="card-shine"></div>
                     </a>
 
-                    <a class="hobby-item" href="playground-posters.html">
+                    <a class="hobby-item tilt-card" href="playground-posters.html" data-tilt>
                         <div class="hobby-image">
                             <img src="assets/images/branding/GBDA101_A2_Poster2_JasonP.png" alt="Cinematic poster concept with vibrant gradients">
+                            <div class="hobby-overlay">
+                                <span class="hobby-tag">poster design</span>
+                                <span class="hobby-view">view project →</span>
+                            </div>
                         </div>
                         <div class="hobby-info">
                             <h3 class="hobby-title">poster series</h3>
                             <p class="hobby-description">another class brief challenged me to build cinematic mood posters. click through to see the full pair of dramatic typographic studies.</p>
                         </div>
+                        <div class="card-shine"></div>
                     </a>
                 </div>
             </section>
 
-            <!-- Spotify Playlist Section -->
+            <!-- Spotify Section - Music Vibes -->
             <section class="spotify-section">
                 <div class="spotify-content">
                     <div class="spotify-text">
-                        <h3 class="spotify-title">currently vibing to</h3>
+                        <h3 class="spotify-title">
+                            <span class="spotify-icon">🎵</span>
+                            currently vibing to
+                            <div class="sound-waves">
+                                <span class="wave" style="--i:1"></span>
+                                <span class="wave" style="--i:2"></span>
+                                <span class="wave" style="--i:3"></span>
+                                <span class="wave" style="--i:4"></span>
+                                <span class="wave" style="--i:5"></span>
+                            </div>
+                        </h3>
                         <p class="spotify-description">music shapes my creative process. here's what's been inspiring me lately.</p>
                     </div>
                     <div class="spotify-embed">
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4HYqsL3WZqMpDvaRIDxQLk?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Playlist - bees"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4HYqsL3WZqMpDvaRIDxQLk?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Playlist - bees"></iframe>
                     </div>
                 </div>
             </section>
 
-            <!-- Design Principles Section -->
-            <section class="principles-section">
-                <h2 class="section-heading">my design principles</h2>
-                <p class="section-description">i've come up with my own design principles that guide me every day. these are the ones i care about the most.</p>
+            <!-- Design Principles - Interactive Cards -->
+            <section class="principles-section" id="principles" aria-labelledby="principles-heading">
+                <div class="section-header">
+                    <span class="section-tag" aria-hidden="true">✦ philosophy</span>
+                    <h2 class="section-heading" id="principles-heading">my design principles</h2>
+                    <p class="section-description">i've come up with my own design principles that guide me every day. hover to reveal what each one means to me.</p>
+                </div>
                 
                 <div class="principles-grid">
-                    <div class="principle-card">
-                        <h3 class="principle-title">be considerate</h3>
-                        <p class="principle-description">show care for every person who uses your products. recognize exclusions and create inclusive experiences.</p>
+                    <div class="principle-card interactive-card" data-principle="considerate" tabindex="0" role="button" aria-label="Be considerate principle - tap or hover to reveal details">
+                        <div class="card-front">
+                            <div class="principle-icon" aria-hidden="true">🫶</div>
+                            <h3 class="principle-title">be considerate</h3>
+                            <span class="card-hint">hover or tap me</span>
+                        </div>
+                        <div class="card-back">
+                            <p class="principle-description">show care for every person who uses your products. recognize exclusions and create inclusive experiences that make everyone feel welcome.</p>
+                        </div>
+                        <div class="card-glow" aria-hidden="true"></div>
                     </div>
 
-                    <div class="principle-card">
-                        <h3 class="principle-title">build trust</h3>
-                        <p class="principle-description">be genuine and transparent. show users and stakeholders that you act in their best interests.</p>
+                    <div class="principle-card interactive-card" data-principle="trust" tabindex="0" role="button" aria-label="Build trust principle - tap or hover to reveal details">
+                        <div class="card-front">
+                            <div class="principle-icon" aria-hidden="true">🤝</div>
+                            <h3 class="principle-title">build trust</h3>
+                            <span class="card-hint">hover or tap me</span>
+                        </div>
+                        <div class="card-back">
+                            <p class="principle-description">be genuine and transparent. show users and stakeholders that you act in their best interests, always prioritizing honesty in design decisions.</p>
+                        </div>
+                        <div class="card-glow" aria-hidden="true"></div>
                     </div>
 
-                    <div class="principle-card">
-                        <h3 class="principle-title">create consistency</h3>
-                        <p class="principle-description">use familiar patterns to make experiences recognizable. help your teams achieve goals with less effort.</p>
+                    <div class="principle-card interactive-card" data-principle="consistency" tabindex="0" role="button" aria-label="Create consistency principle - tap or hover to reveal details">
+                        <div class="card-front">
+                            <div class="principle-icon" aria-hidden="true">✨</div>
+                            <h3 class="principle-title">create consistency</h3>
+                            <span class="card-hint">hover or tap me</span>
+                        </div>
+                        <div class="card-back">
+                            <p class="principle-description">use familiar patterns to make experiences recognizable. help your teams achieve goals with less effort through systematic design approaches.</p>
+                        </div>
+                        <div class="card-glow" aria-hidden="true"></div>
                     </div>
                 </div>
             </section>
 
-            <!-- Experience Section -->
-            <section class="experience-section">
-                <h2 class="section-heading">experiences</h2>
-                <p class="section-description">here's what i've been up to lately. enjoy reminiscing down memory lane with me 🫶</p>
+            <!-- Experience Section - Visual Timeline -->
+            <section class="experience-section" id="experience" aria-labelledby="experience-heading">
+                <div class="section-header">
+                    <span class="section-tag" aria-hidden="true">✦ journey</span>
+                    <h2 class="section-heading" id="experience-heading">experiences</h2>
+                    <p class="section-description">here's what i've been up to lately. enjoy reminiscing down memory lane with me 🫶</p>
+                </div>
                 
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-period">september 2024 - present</div>
-                        <div class="experience-content">
-                            <h3 class="experience-title">ux design intern</h3>
-                            <p class="experience-company">ontario mto</p>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-progress" id="timelineProgress"></div>
+                    
+                    <div class="timeline-item" data-year="2024">
+                        <div class="timeline-marker">
+                            <span class="marker-dot"></span>
+                            <span class="marker-pulse"></span>
+                        </div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">september 2024 - present</span>
+                            <h3 class="timeline-title">ux design intern</h3>
+                            <p class="timeline-company">ontario mto</p>
+                            <div class="timeline-badge current">current role</div>
                         </div>
                     </div>
 
-                    <div class="experience-item">
-                        <div class="experience-period">september 2023 - fall 2027</div>
-                        <div class="experience-content">
-                            <h3 class="experience-title">university of waterloo</h3>
-                            <p class="experience-company">global business and digital arts</p>
-                            <ul class="experience-notes">
+                    <div class="timeline-item" data-year="2023">
+                        <div class="timeline-marker">
+                            <span class="marker-dot"></span>
+                        </div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">september 2023 - fall 2027</span>
+                            <h3 class="timeline-title">university of waterloo</h3>
+                            <p class="timeline-company">global business and digital arts</p>
+                            <ul class="timeline-notes">
                                 <li>UW Serve – Promo Lead</li>
                                 <li>UW Cube – Project Team & Marketing Team</li>
                                 <li>osu!Waterloo – VP</li>
@@ -169,20 +306,26 @@
                         </div>
                     </div>
 
-                    <div class="experience-item">
-                        <div class="experience-period">august 2022 - april 2023</div>
-                        <div class="experience-content">
-                            <h3 class="experience-title">it co-op student</h3>
-                            <p class="experience-company">shared services canada</p>
+                    <div class="timeline-item" data-year="2022">
+                        <div class="timeline-marker">
+                            <span class="marker-dot"></span>
+                        </div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">august 2022 - april 2023</span>
+                            <h3 class="timeline-title">it co-op student</h3>
+                            <p class="timeline-company">shared services canada</p>
                         </div>
                     </div>
 
-                    <div class="experience-item">
-                        <div class="experience-period">september 2020 - april 2023</div>
-                        <div class="experience-content">
-                            <h3 class="experience-title">university of guelph</h3>
-                            <p class="experience-company">computer engineering</p>
-                            <ul class="experience-notes">
+                    <div class="timeline-item" data-year="2020">
+                        <div class="timeline-marker">
+                            <span class="marker-dot"></span>
+                        </div>
+                        <div class="timeline-card">
+                            <span class="timeline-date">september 2020 - april 2023</span>
+                            <h3 class="timeline-title">university of guelph</h3>
+                            <p class="timeline-company">computer engineering</p>
+                            <ul class="timeline-notes">
                                 <li>Transferred into GBDA @ UW</li>
                             </ul>
                         </div>
@@ -190,26 +333,41 @@
                 </div>
             </section>
 
-            <!-- Skills Section -->
-            <section class="skills-compact-section">
-                <h2 class="section-heading">skills</h2>
+            <!-- Skills Section - Interactive Tags -->
+            <section class="skills-section" id="skills" aria-labelledby="skills-heading">
+                <div class="section-header">
+                    <span class="section-tag" aria-hidden="true">✦ toolkit</span>
+                    <h2 class="section-heading" id="skills-heading">skills</h2>
+                </div>
                 
-                <div class="skills-columns">
-                    <ul class="skills-list">
-                        <li>user research</li>
-                        <li>interaction design</li>
-                        <li>information architecture</li>
-                    </ul>
-                    <ul class="skills-list">
-                        <li>prototyping</li>
-                        <li>design systems</li>
-                        <li>stakeholder management</li>
-                    </ul>
-                    <ul class="skills-list">
-                        <li>accessibility</li>
-                        <li>visual design</li>
-                        <li>usability testing</li>
-                    </ul>
+                <div class="skills-cloud">
+                    <div class="skill-category" data-category="research">
+                        <h4 class="category-label">research</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag" style="--delay: 0.1s">user research</span>
+                            <span class="skill-tag" style="--delay: 0.15s">usability testing</span>
+                            <span class="skill-tag" style="--delay: 0.2s">stakeholder interviews</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category" data-category="design">
+                        <h4 class="category-label">design</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag" style="--delay: 0.25s">interaction design</span>
+                            <span class="skill-tag" style="--delay: 0.3s">visual design</span>
+                            <span class="skill-tag" style="--delay: 0.35s">prototyping</span>
+                            <span class="skill-tag" style="--delay: 0.4s">design systems</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category" data-category="strategy">
+                        <h4 class="category-label">strategy</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag" style="--delay: 0.45s">information architecture</span>
+                            <span class="skill-tag" style="--delay: 0.5s">accessibility</span>
+                            <span class="skill-tag" style="--delay: 0.55s">stakeholder management</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -217,15 +375,15 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-top">
-                <p class="footer-location">made in canada</p>
-                <div class="footer-contact">
-                    <a href="about.html" class="footer-contact-link">About</a>
+                <p class="footer-location">made in canada <span aria-hidden="true">🍁</span></p>
+                <nav class="footer-contact" aria-label="Footer navigation">
+                    <a href="about.html" class="footer-contact-link" aria-current="page">about</a>
                     <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
-                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
-                </div>
+                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener noreferrer">linkedin<span class="sr-only"> (opens in new tab)</span></a>
+                </nav>
             </div>
             <div class="footer-bottom">
                 <p class="footer-tagline">let's make something beautiful.</p>
@@ -237,4 +395,3 @@
     <script src="about-interactions.js"></script>
 </body>
 </html>
-

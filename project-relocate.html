@@ -3,2123 +3,721 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case Study - Relocate">
-    <title>Relocate: Simplifying Local Recreation</title>
+    <meta name="description" content="Relocate Case Study - Making community recreation easy to find and book">
+    <title>Relocate | Case Study</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="case-study-styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/sleepycat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #0a0e1a;
-            color: #e2e8f0;
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            scroll-padding-top: 90px;
-        }
-
-        nav,
-        section,
-        footer {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-
-        .case-study-hero {
-            background-image: linear-gradient(135deg, rgba(5, 10, 20, 0.92) 0%, rgba(15, 15, 15, 0.88) 50%, rgba(5, 10, 20, 0.92) 100%), url('assets/images/relocate/relocate-hero.png');
-            background-size: cover, cover;
-            background-position: center, center;
-            background-repeat: no-repeat;
-            position: relative;
-            overflow: hidden;
-            padding: 9rem 2rem 6rem;
-            margin-bottom: 4rem;
-        }
-
-        .case-study-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
-                        radial-gradient(circle at 70% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-inner {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            align-items: flex-start;
-        }
-
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .project-eyebrow {
-            color: #60a5fa;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
-        }
-
-        .project-title {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 2px 30px rgba(59, 130, 246, 0.4);
-        }
-
-        .hero-lede {
-            font-size: 1.4rem;
-            color: #cbd5e1;
-            line-height: 1.8;
-            max-width: 640px;
-        }
-
-        .hero-metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.75rem;
-            width: 100%;
-        }
-
-        .hero-metric {
-            padding: 1.75rem;
-            background: rgba(15, 23, 42, 0.68);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            border: 1px solid rgba(59, 130, 246, 0.28);
-            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.42);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-        }
-
-        .hero-metric:hover {
-            background: rgba(15, 23, 42, 0.92);
-            border-color: rgba(59, 130, 246, 0.55);
-            transform: translateY(-6px);
-            box-shadow: 0 14px 44px rgba(59, 130, 246, 0.35);
-        }
-
-        .metric-icon {
-            font-size: 2rem;
-            line-height: 1;
-            color: #93c5fd;
-        }
-
-        .metric-label {
-            display: block;
-            color: #60a5fa;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .metric-value {
-            color: #ffffff;
-            font-size: 1.55rem;
-            font-weight: 600;
-        }
-
-        .metric-note {
-            color: #e2e8f0;
-            font-size: 0.98rem;
-            line-height: 1.6;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .hero-actions a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.5rem;
-            border-radius: 999px;
-            background: rgba(59, 130, 246, 0.2);
-            color: #ffffff;
-            font-weight: 600;
-            border: 1px solid rgba(96, 165, 250, 0.4);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .hero-actions a:hover {
-            background: rgba(59, 130, 246, 0.35);
-            border-color: rgba(96, 165, 250, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .hero-meta-list {
-            list-style: none;
-            margin: 0;
-            padding: 1.75rem;
-            display: grid;
-            gap: 1.1rem;
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(59, 130, 246, 0.28);
-            border-radius: 20px;
-            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
-        }
-
-        .hero-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .meta-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-            color: #60a5fa;
-        }
-
-        .meta-value {
-            color: #e2e8f0;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .hero-visual {
-            display: none;
-        }
-
-        .hero-note {
-            font-size: 0.85rem;
-            color: rgba(191, 219, 254, 0.85);
-            margin-top: 0.5rem;
-            line-height: 1.5;
-        }
-
-        .section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #0a0e1a 0%, #0f0f0f 100%);
-            position: relative;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 20px rgba(59, 130, 246, 0.3);
-            text-align: left;
-        }
-
-        .section h3 {
-            color: #ffffff;
-            text-align: left;
-        }
-
-        .section h4 {
-            color: #ffffff;
-        }
-
-        .section-intro {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            max-width: 1200px;
-            margin: 0.5rem 0 3rem 0;
-            line-height: 1.7;
-            text-align: left;
-        }
-
-        .section-note {
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            padding: 1.5rem;
-            background: rgba(30, 41, 59, 0.4);
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-note strong {
-            color: #60a5fa;
-        }
-
-        .snapshot-section {
-            position: relative;
-            padding: 5rem 2rem 5.5rem;
-            background: linear-gradient(180deg, #071425 0%, #0a1d36 100%);
-            scroll-margin-top: 140px;
-            overflow: visible;
-        }
-
-        .snapshot-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            gap: 2.5rem;
-        }
-
-        .snapshot-heading {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: left;
-        }
-
-        .snapshot-badge {
-            align-self: flex-start;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.45rem 0.95rem;
-            border-radius: 999px;
-            background: rgba(59, 130, 246, 0.18);
-            border: 1px solid rgba(59, 130, 246, 0.4);
-            color: #bfdbfe;
-            font-size: 0.8rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .snapshot-heading h2 {
-            font-size: 2.35rem;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .snapshot-heading p {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            max-width: 760px;
-            line-height: 1.7;
-        }
-
-        .snapshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .snapshot-card {
-            padding: 2.5rem;
-            background: rgba(15, 23, 42, 0.72);
-            border: 1px solid rgba(59, 130, 246, 0.38);
-            border-radius: 20px;
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
-        }
-
-        .snapshot-card h3 {
-            font-size: 1.35rem;
-            color: #ffffff;
-            margin-bottom: 1.25rem;
-        }
-
-        .snapshot-card ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .snapshot-card li {
-            color: #d8e4f6;
-            font-size: 1rem;
-            line-height: 1.65;
-            position: relative;
-            padding-left: 1.85rem;
-        }
-
-        .snapshot-card li::before {
-            content: "•";
-            position: absolute;
-            left: 0.6rem;
-            color: #7db2ff;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .snapshot-points {
-            display: grid;
-            gap: 1.15rem;
-        }
-
-        .snapshot-point {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.25rem 1.35rem;
-            background: rgba(16, 33, 56, 0.7);
-            border: 1px solid rgba(125, 178, 255, 0.42);
-            border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(6, 14, 26, 0.5);
-        }
-
-        .snapshot-point-icon {
-            width: 42px;
-            height: 42px;
-            font-size: 1.2rem;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(125, 178, 255, 0.34), rgba(59, 130, 246, 0.1));
-            color: #d0e2ff;
-            border: 1px solid rgba(125, 178, 255, 0.5);
-        }
-
-        .snapshot-point-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .snapshot-point-content h4 {
-            margin: 0;
-            font-size: 1rem;
-            color: #f5f9ff;
-        }
-
-        .snapshot-point-content p {
-            margin: 0;
-            color: #d8e4f6;
-            line-height: 1.65;
-            font-size: 0.95rem;
-        }
-
-        .step-list {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .step-item {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.42);
-            color: #93c5fd;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 0.2rem;
-        }
-
-        .step-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .step-content strong {
-            color: #ffffff;
-            font-size: 1.05rem;
-        }
-
-        .step-content span {
-            color: #cbd5e1;
-            font-size: 0.96rem;
-            line-height: 1.7;
-        }
-
-        .features-grid,
-        .pain-points-grid,
-        .persona-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .reflection-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .reflection-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .reflection-card:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .reflection-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-            filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.5));
-        }
-
-        .reflection-card h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .reflection-card p {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        .feature-card,
-        .pain-point-card,
-        .persona-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover,
-        .pain-point-card:hover,
-        .persona-card:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: #60a5fa;
-            margin-bottom: 1rem;
-            display: block;
-            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
-        }
-
-        .feature-card h3,
-        .pain-point-card h4,
-        .persona-title {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p,
-        .pain-point-card p,
-        .persona-bio {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        .data-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .data-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .data-card:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .data-card strong {
-            display: block;
-            font-size: 2.5rem;
-            color: #60a5fa;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
-        }
-
-        .data-card span {
-            color: #cbd5e1;
-            font-size: 0.9rem;
-        }
-
-        .persona-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
-        }
-
-        .accordion-item {
-            background: transparent;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .accordion-item:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-        }
-
-        .accordion-item summary {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            transition: border-color 0.3s ease;
-            position: relative;
-        }
-
-        .accordion-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .accordion-item summary::after {
-            content: '+';
-            font-size: 1.2rem;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(96, 165, 250, 0.45);
-            background: rgba(96, 165, 250, 0.12);
-            color: #93c5fd;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            flex-shrink: 0;
-            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-        }
-
-        .accordion-item[open] > summary::after {
-            content: '–';
-            background: rgba(96, 165, 250, 0.22);
-            border-color: rgba(96, 165, 250, 0.65);
-        }
-
-        .accordion-title {
-            color: #ffffff;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .accordion-meta {
-            color: #60a5fa;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 640px) {
-            .accordion-item summary {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.35rem;
-            }
-
-            .accordion-item summary::after {
-                margin-left: 0;
-            }
-
-            .accordion-meta {
-                font-size: 0.85rem;
-            }
-        }
-
-        .accordion-body {
-            padding: 0 1.5rem 1.5rem;
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        .highlight-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-        }
-
-        .highlight-list li {
-            padding-left: 2rem;
-            position: relative;
-            margin-bottom: 0.75rem;
-            color: #cbd5e1;
-        }
-
-        .highlight-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #60a5fa;
-            font-weight: bold;
-        }
-
-        .highlight-list strong {
-            color: #60a5fa;
-        }
-
-        .insight-callouts {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        @media (max-width: 900px) {
-            .insight-callouts {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 600px) {
-            .insight-callouts {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .insight-callout {
-            background: rgba(15, 23, 42, 0.55);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            border-radius: 14px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .insight-callout:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-6px);
-            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.6);
-        }
-
-        .insight-callout-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.15);
-            color: #60a5fa;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 0 20px rgba(96, 165, 250, 0.35);
-        }
-
-        .insight-callout h4 {
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .insight-callout p {
-            color: #cbd5e1;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .solution-tabs {
-            background: transparent;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 16px;
-            padding: 1.75rem 2rem 2.25rem;
-            margin-top: 2rem;
-        }
-
-        .tab-controls {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-control {
-            padding: 0.75rem 1.5rem;
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 8px;
-            color: #cbd5e1;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-control:hover,
-        .tab-control.active {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
-            color: #60a5fa;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .tab-panel-visual {
-            display: flex;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        .tab-panel-visual img {
-            flex: 0 0 auto;
-            width: 100%;
-            max-width: 340px;
-            height: auto;
-            border-radius: 20px;
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            box-shadow: 0 18px 34px rgba(15, 23, 42, 0.35);
-        }
-
-        .tab-panel-visual.single-image {
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            padding: 0 1rem 1.5rem;
-        }
-
-        .tab-panel-visual.single-image img {
-            flex: 0 0 auto;
-            width: 100%;
-            max-width: 340px;
-        }
-
-        .tab-panel-detail {
-            flex: 1;
-        }
-
-        .tab-panel-detail h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .tab-panel-detail p {
-            color: #cbd5e1;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .two-column ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .two-column ul li {
-            padding-left: 2rem;
-            position: relative;
-            margin-bottom: 1rem;
-            color: #cbd5e1;
-        }
-
-        .two-column ul li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #60a5fa;
-            font-weight: bold;
-        }
-
-        .two-column ul li strong {
-            color: #60a5fa;
-        }
-
-        .design-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .design-screen {
-            position: relative;
-            z-index: 1;
-        }
-
-        .design-screen img {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .design-screen img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 130, 246, 0.4);
-        }
-
-        .design-caption h4 {
-            color: #ffffff;
-            margin-bottom: 0.75rem;
-        }
-
-        .design-caption p {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        .project-navigation {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-projects {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-projects a {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-            display: block;
-            font-size: 1.25rem;
-        }
-
-        .nav-projects a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(59, 130, 246, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .design-system-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .design-system-card {
-            background: linear-gradient(150deg, rgba(15, 23, 42, 0.7) 0%, rgba(17, 24, 39, 0.6) 60%, rgba(32, 41, 64, 0.55) 100%);
-            border: 1px solid rgba(96, 165, 250, 0.18);
-            border-left: 4px solid rgba(96, 165, 250, 0.55);
-            border-radius: 18px;
-            padding: 1.75rem;
-            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.4);
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .design-system-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.48);
-            border-color: rgba(96, 165, 250, 0.3);
-        }
-
-        .design-system-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(96, 165, 250, 0.18);
-            color: #60a5fa;
-            font-size: 1.5rem;
-            box-shadow: 0 0 18px rgba(96, 165, 250, 0.25);
-        }
-
-        .design-system-card h3 {
-            margin: 0;
-        }
-
-        .design-system-card p {
-            margin: 0;
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        .design-system-card p strong {
-            color: #93c5fd;
-            font-weight: 600;
-        }
-
-        .prototype-embed-section {
-            position: relative;
-            z-index: 1;
-            margin-top: 6rem;
-        }
-
-        .prototype-embed-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 65%;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(59, 130, 246, 0.25);
-            background: rgba(15, 23, 42, 0.6);
-        }
-
-        .prototype-embed-wrapper iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .artifact-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
-            margin: 0 auto 1.25rem;
-            max-width: 720px;
-        }
-
-        .artifact-gallery img {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            border-radius: 20px;
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
-            object-fit: cover;
-        }
-
-        .artifact-item > img {
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto 0.75rem;
-            display: block;
-            border-radius: 18px;
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.32);
-            object-fit: cover;
-            max-height: 360px;
-            height: auto;
-        }
-
-        .artifact-gallery figure {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 0.5rem;
-        }
-
-        .artifact-gallery figcaption {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            line-height: 1.4;
-        }
-
-        .insight-figure {
-            margin: 2rem auto 0;
-            max-width: 720px;
-            text-align: center;
-        }
-
-        .insight-figure img {
-            width: 100%;
-            border-radius: 18px;
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
-        }
-
-        .insight-figure figcaption {
-            margin-top: 0.75rem;
-            font-size: 0.95rem;
-            color: #cbd5e1;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                scroll-snap-type: none;
-            }
-
-            .case-study-hero {
-                padding: 7rem 1.5rem 8rem;
-                margin-top: 5rem;
-                overflow: visible;
-                min-height: auto;
-            }
-
-            .hero-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .snapshot-inner {
-                gap: 2rem;
-            }
-
-            .snapshot-heading h2 {
-                font-size: 1.9rem;
-            }
-
-            .snapshot-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .snapshot-card {
-                padding: 2rem;
-            }
-
-            .project-title {
-                font-size: 2rem;
-            }
-
-            .hero-lede {
-                font-size: 1rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .two-column,
-            .nav-projects,
-            .features-grid,
-            .pain-points-grid,
-            .persona-grid,
-            .data-cards,
-            .design-showcase,
-            .design-system-showcase,
-            .artifact-showcase {
-                grid-template-columns: 1fr;
-            }
-
-            .reflection-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .project-meta-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tab-controls {
-                flex-direction: column;
-            }
-
-            .tab-panel-visual {
-                flex-direction: column;
-            }
-
-            .tab-panel-visual img {
-                width: 100%;
-                max-width: 320px;
-            }
-
-            .prototype-embed-wrapper {
-                padding-top: 120%;
-            }
-
-            .artifact-gallery {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .artifact-gallery figure {
-                margin: 0;
-            }
-        }
-
-        .user-lessons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.75rem;
-            margin-top: 2rem;
-        }
-
-        .user-lesson-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            border-radius: 16px;
-            padding: 1.75rem;
-            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.35);
-        }
-
-        .user-lesson-icon {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            filter: drop-shadow(0 0 18px rgba(96, 165, 250, 0.5));
-        }
-
-        .user-lesson-card h3 {
-            color: #ffffff;
-            margin-bottom: 0.75rem;
-        }
-
-        .user-lesson-card p {
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        .snapshot-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .snapshot-step {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.6rem;
-            background: rgba(18, 32, 55, 0.82);
-            border: 1px solid rgba(125, 178, 255, 0.5);
-            border-radius: 18px;
-            box-shadow: 0 14px 36px rgba(8, 16, 30, 0.5);
-            overflow: hidden;
-        }
-
-        .snapshot-step::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, rgba(96, 165, 250, 0.75), rgba(14, 165, 233, 0.45));
-        }
-
-        .snapshot-step-icon {
-            align-self: flex-start;
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(125, 178, 255, 0.35), rgba(59, 130, 246, 0.16));
-            border: 1px solid rgba(125, 178, 255, 0.55);
-            color: #dce7ff;
-            font-weight: 600;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body {
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body h4 {
-            margin: 0;
-            font-size: 1.08rem;
-            color: #f5f9ff;
-        }
-
-        .snapshot-step-body p {
-            margin: 0;
-            color: #d8e4f6;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        @media (max-width: 768px) {
-            .snapshot-steps {
-                grid-template-columns: 1fr;
-            }
-
-            .snapshot-step {
-                padding: 1.4rem;
-            }
-
-            .snapshot-step-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 1rem;
-            }
-
-            .snapshot-step-body h4 {
-                font-size: 1.02rem;
-            }
-
-            .snapshot-step-body p {
-                font-size: 0.95rem;
-            }
+        /* Relocate-specific accent - Sky Blue theme throughout (matches index.html) */
+        :root {
+            --cs-story-accent: #0ea5e9;
+            --cs-challenge-accent: #ef4444;
+            --cs-research-accent: #0ea5e9;
+            --cs-solution-accent: #0ea5e9;
+            --cs-design-accent: #0ea5e9;
+            --cs-conclusion-accent: #0ea5e9;
+            
+            /* Project theme - Sky Blue primary */
+            --cs-primary: #0ea5e9;
+            --cs-primary-soft: rgba(14, 165, 233, 0.1);
+            --cs-primary-glow: rgba(14, 165, 233, 0.4);
         }
     </style>
 </head>
-<body>
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="index.html" class="nav-logo" data-icon="sleepy-cat">
-                        <span class="nav-logo-text">
-                            <span class="nav-logo-graphic" aria-hidden="true">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                            <span class="sr-only">Home</span>
+<body class="case-study-page" data-project="relocate">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fun Cat Navigation -->
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/material-symbols--home-rounded.svg" alt="">
                         </span>
-                        <span class="nav-logo-icon" aria-hidden="true">
-                            <span class="nav-logo-graphic nav-logo-graphic--compact">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                        </span>
+                        <span class="menu-label">home</span>
                     </a>
-                    <a href="about.html" class="nav-link" data-icon="👤">
-                        <span class="nav-link-text">about</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/tdesign--user-filled.svg" alt=""></span>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
                     </a>
                 </div>
-                <div class="nav-right">
-                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="nav-link" data-icon="📄" target="_blank" rel="noopener">
-                        <span class="nav-link-text">resume</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/mingcute--paper-fill.svg" alt=""></span>
-                    </a>
-                    <a href="mailto:pham.jason@outlook.com" class="nav-link" data-icon="✉️">
-                        <span class="nav-link-text">contact</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt=""></span>
-                    </a>
-                </div>
+                
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
             </div>
         </div>
     </nav>
 
-    <section class="case-study-hero">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <p class="project-eyebrow">GBDA210 · September to November 2024</p>
-                <h1 class="project-title">Relocate: making community recreation easy to find and book</h1>
-                <p class="hero-lede">Our city portal buried the information people needed to stay active. I led research, strategy, and product design to overhaul the experience so families, athletes, and newcomers could plan with confidence.</p>
+    <!-- Decorative Floating Elements -->
+    <div class="cs-decorative-elements" aria-hidden="true">
+        <span class="floating-element" aria-hidden="true">📍</span>
+        <span class="floating-element" aria-hidden="true">🗺️</span>
+    </div>
 
-                <div class="hero-metrics-grid">
-                    <div class="hero-metric">
-                        <span class="metric-icon">📊</span>
-                        <span class="metric-label">Opportunity signal</span>
-                        <span class="metric-value">42% wanted drop-ins</span>
-                        <p class="metric-note">Residents told us they'll show up when we spell out gear, cost, and commitment up front. They want clear info instead of mystery PDFs.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">⚠️</span>
-                        <span class="metric-label">Problem severity</span>
-                        <span class="metric-value">62% abandon rate</span>
-                        <p class="metric-note">Analytics confirmed most visitors bailed before picking a slot because schedules hid behind downloadable files.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">🧪</span>
-                        <span class="metric-label">Evidence</span>
-                        <span class="metric-value">5 moderated sessions</span>
-                        <p class="metric-note">Testing shaped a booking flow with live availability, maintenance alerts, and filters that actually surface accessible options.</p>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="https://www.figma.com/proto/lkE5bh37HtcuFfzTDGtYZo/Milestones?node-id=564-7535&viewport=4821%2C1430%2C0.47&t=zOvQ3z3UyxL9Eypr-0&scaling=contain&content-scaling=fixed&starting-point-node-id=564%3A7535" target="_blank" rel="noopener">View clickable prototype ↗</a>
-                    <a href="#snapshot">Jump to snapshot ↓</a>
-                </div>
+    <!-- Floating Section Navigation -->
+    <nav class="case-study-nav" id="caseStudyNav">
+        <!-- Current section pill -->
+        <div class="nav-current-section" id="navCurrentSection">
+            <div class="nav-progress-ring">
+                <svg viewBox="0 0 40 40">
+                    <circle class="progress-ring-bg" cx="20" cy="20" r="16"/>
+                    <circle class="progress-ring-circle" cx="20" cy="20" r="16"/>
+                </svg>
+                <span class="progress-percentage">1</span>
             </div>
+            <span class="nav-current-label">Overview</span>
+            <span class="nav-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </span>
+        </div>
+        <!-- Section list popup -->
+        <ul class="nav-section-list">
+            <li><a href="#overview" class="nav-section-link active" data-section="overview"><span class="nav-section-num">1</span><span class="nav-label">Overview</span></a></li>
+            <li><a href="#story" class="nav-section-link" data-section="story"><span class="nav-section-num">2</span><span class="nav-label">Story</span></a></li>
+            <li><a href="#challenge" class="nav-section-link" data-section="challenge"><span class="nav-section-num">3</span><span class="nav-label">Challenge</span></a></li>
+            <li><a href="#research" class="nav-section-link" data-section="research"><span class="nav-section-num">4</span><span class="nav-label">Research</span></a></li>
+            <li><a href="#solution" class="nav-section-link" data-section="solution"><span class="nav-section-num">5</span><span class="nav-label">Solution</span></a></li>
+            <li><a href="#design" class="nav-section-link" data-section="design"><span class="nav-section-num">6</span><span class="nav-label">Design</span></a></li>
+            <li><a href="#reflection" class="nav-section-link" data-section="reflection"><span class="nav-section-num">7</span><span class="nav-label">Reflection</span></a></li>
+        </ul>
+    </nav>
 
-            <div class="hero-visual">
-                <div class="hero-visual-frame">
-                    <img src="assets/images/relocate/relocate-hero.png" alt="Relocate recreation platform mockups showing booking and facility updates">
+    <main class="case-study-main" id="main" role="main">
+        <!-- Hero Section -->
+        <section class="cs-hero" id="overview" aria-labelledby="hero-title">
+            <div class="hero-content-wrapper">
+                <div class="hero-badge">
+                    <span class="badge-icon">🏃</span>
+                    <span class="badge-text">GBDA210 · Academic Project</span>
+                    <span class="badge-divider">·</span>
+                    <span class="badge-time">7 min read</span>
                 </div>
-                <ul class="hero-meta-list">
-                    <li class="hero-meta-item">
+
+                <h1 class="hero-title">Making <span class="hero-highlight">Community Recreation</span> Easy to Find and Book</h1>
+                
+                <p class="hero-tagline">
+                    Our city portal buried the information people needed to stay active. I led research, 
+                    strategy, and product design to overhaul the experience so families, athletes, and 
+                    newcomers could plan with confidence.
+                </p>
+
+                <div class="hero-meta-grid">
+                    <div class="meta-item">
                         <span class="meta-label">Role</span>
-                        <span class="meta-value">Project manager, UX researcher, and product designer</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">PM & UX Designer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">10 Weeks</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Team</span>
-                        <span class="meta-value">1 PM, 2 researchers, and 3 designers partnering with municipal staff</span>
-                    </li>
-                    <li class="hero-meta-item">
-                        <span class="meta-label">Contributions</span>
-                        <span class="meta-value">Research ops, insight synthesis, interaction design, content strategy, usability testing</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">6 People</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Tools</span>
-                        <span class="meta-value">Figma, Maze, Notion, FigJam</span>
-                    </li>
-                </ul>
-                <p class="hero-note">Delivered over a ten-week academic sprint with weekly stakeholder playbacks.</p>
+                        <span class="meta-value">Figma, Notion</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section class="snapshot-section" id="snapshot">
-        <div class="snapshot-inner">
-            <div class="snapshot-heading">
-                <span class="snapshot-badge">Quick read</span>
-                <h2>Community Recreation Overview</h2>
-                <p>Relocate re-centers municipal recreation around real people. We tackled outdated content, inaccessible booking, and poor facility communication to create a platform that feels current, human, and trustworthy.</p>
-            </div>
-            <div class="snapshot-grid">
-                <div class="snapshot-card">
-                    <h3>🏙️ What residents face</h3>
-                    <div class="snapshot-points">
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">👪</span>
-                            <div class="snapshot-point-content">
-                                <h4>Who's looking</h4>
-                                <p>Families, rec players, and newcomers trying to stay active without decoding city jargon.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">🗂️</span>
-                            <div class="snapshot-point-content">
-                                <h4>The mess</h4>
-                                <p>Schedules and rules hid in PDFs and bulletin boards, so gear, accessibility, and openings were guesswork.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">🧭</span>
-                            <div class="snapshot-point-content">
-                                <h4>Our platform</h4>
-                                <p>Smart filters, live maintenance alerts, and clear pricing that make planning feel modern and human.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">📊</span>
-                            <div class="snapshot-point-content">
-                                <h4>The momentum</h4>
-                                <p>A data-backed roadmap, refreshed content strategy, and cross-department buy-in to launch.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="hero-mockup">
+                <div class="mockup-wrapper">
+                    <img src="assets/images/relocate/relocate-hero.png" alt="Relocate platform mockups" class="mockup-image">
                 </div>
-                <div class="snapshot-card">
-                    <h3>🧭 How we responded</h3>
-                    <div class="snapshot-steps">
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">1</span>
-                            <div class="snapshot-step-body">
-                                <h4>Listen widely</h4>
-                                <p>Pulled in 50+ survey responses and deep interviews to surface the biggest "I give up" moments.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">2</span>
-                            <div class="snapshot-step-body">
-                                <h4>Map the system</h4>
-                                <p>Audited four municipal portals and showed where communication and accountability fell apart.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">3</span>
-                            <div class="snapshot-step-body">
-                                <h4>Prototype and test</h4>
-                                <p>Ran moderated sessions to tweak booking flows, facility pages, and alert patterns until they felt effortless.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">4</span>
-                            <div class="snapshot-step-body">
-                                <h4>Build the handoff</h4>
-                                <p>Delivered component kits, content playbooks, and measurement plans so the city can actually launch this.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p class="visual-caption">Relocate mobile app interface showing discovery and booking</p>
             </div>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>What we built</h2>
-            <p class="section-intro">A recreation platform that finally meets people where they are, whether they're booking a league or discovering a new neighborhood.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">01</div>
-                    <h3>Design Leadership</h3>
-                    <p>Simplified navigation and flows so athletes, families, and explorers can reach the right facility fast.</p>
+            <div class="hero-tldr">
+                <div class="tldr-label">
+                    <span class="tldr-icon">⚡</span>
+                    <span>TL;DR</span>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">02</div>
-                    <h3>Research Ops</h3>
-                    <p>Ran five interviews and audited four portals to anchor decisions in clear, comparable insights.</p>
+                <div class="tldr-content">
+                    <p>
+                        Legacy city portals buried recreation info in PDFs and redundant forms. We redesigned 
+                        the experience around <strong>three personas</strong>—athletes, explorers, and planners—to 
+                        surface live schedules, accessibility info, and neighborhood context. The result: a 
+                        platform that meets people where they are.
+                    </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">03</div>
-                    <h3>Team Stewardship</h3>
-                    <p>Facilitated focused workshops, aligned three designers around milestones, and told the story as we iterated.</p>
+                <div class="tldr-metrics">
+                    <div class="tldr-metric">
+                        <span class="metric-value">50+</span>
+                        <span class="metric-label">Survey Responses</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">62%</span>
+                        <span class="metric-label">Abandon Rate (Before)</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">42%</span>
+                        <span class="metric-label">Wanted Drop-ins</span>
+                    </div>
                 </div>
             </div>
-            <p class="section-note"><strong>How might we design a recreation platform that meets people where they are?</strong></p>
-            <figure class="insight-figure">
-                <img src="assets/images/relocate/relocate-process-flow.png" alt="Journey map synthesizing interview findings across the Relocate service">
-                <figcaption>This research journey mapped 50+ survey responses and interviews, highlighting exactly where discovery, booking, and upkeep signals fell apart.</figcaption>
-            </figure>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>Where the cracks showed</h2>
-            <p class="section-intro">Combining user stories with market data showed exactly where people gave up and why.</p>
-            <div class="research-accordion">
-                <details class="accordion-item" open>
-                    <summary>
-                        <span class="accordion-title">User research</span>
-                        <span class="accordion-meta">Interviews & stories</span>
-                    </summary>
-                    <div class="accordion-body">
-                        <p>Recreation keeps people active, social, and grounded, yet the tools that exist today often swing too far toward either casual drop-ins or competitive leagues. That leaves a lot of people feeling unsupported.</p>
-                        <p>We ran 10+ in-depth interviews and gathered 50+ survey responses across students, parents, and league organizers. Here's what kept coming up.</p>
-                        <div class="insight-callouts">
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🧼</div>
-                                <h4>Maintenance</h4>
-                                <p>Unsanitary washrooms and uneven upkeep pushed people to abandon otherwise convenient facilities.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🧭</div>
-                                <h4>Website overload</h4>
-                                <p>Outdated navigation hid key info behind endless links, forcing calls or in-person visits just to book.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">♿</div>
-                                <h4>Activity gaps</h4>
-                                <p>Few accessible or low-commitment options existed, and packed time slots drained the joy from returning.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">📅</div>
-                                <h4>Organizational cracks</h4>
-                                <p>Schedule changes, overbookings, and surprise closures left users out of the loop.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🤝</div>
-                                <h4>Community friction</h4>
-                                <p>People wanted to find "their" crew, but inconsistent skill levels and unreliable info made connection hard.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🧾</div>
-                                <h4>Expectation gap</h4>
-                                <p>42% of interviewees expected drop-in options with gear info baked in. Most portals still hide those features.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-                <details class="accordion-item">
-                    <summary>
-                        <span class="accordion-title">Design sprints</span>
-                        <span class="accordion-meta">5-phase loop · 40+ sketch explorations</span>
-                    </summary>
-                    <div class="accordion-body">
-                        <p>Our empathize→test loop let us pressure test ideas quickly. Workshop artifacts became guardrails so every iteration stayed anchored to real needs.</p>
-                        <div class="insight-callouts">
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">✏️</div>
-                                <h4>Crazy 8s</h4>
-                                <p>Generated layout variations that pushed beyond map-first assumptions and surfaced new booking patterns.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🎯</div>
-                                <h4>Storyboard dives</h4>
-                                <p>Translated personas into day-in-the-life journeys to validate which flows deserved top billing.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🧪</div>
-                                <h4>Lightning critiques</h4>
-                                <p>Weekly share-outs let the team stress test concepts early, keeping fidelity in check while we aligned on priorities.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-                <details class="accordion-item">
-                    <summary>
-                        <span class="accordion-title">Usability tests & critiques</span>
-                        <span class="accordion-meta">5 moderated sessions · continuous feedback</span>
-                    </summary>
-                    <div class="accordion-body">
-                        <p>We validated each iteration with moderated usability tests, async critiques, and quick quant pulses so we could course-correct before build.</p>
-                        <div class="insight-callouts">
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🧪</div>
-                                <h4>Moderated tests</h4>
-                                <p>Five live sessions confirmed the schedule step was the breaking point and revealed where guidance was missing.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">📊</div>
-                                <h4>Quant pulses</h4>
-                                <p>Legacy analytics showed a 62% abandon rate before slot selection, echoing survey frustration around time sinks.</p>
-                            </div>
-                            <div class="insight-callout">
-                                <div class="insight-callout-icon">🛠️</div>
-                                <h4>Critique loops</h4>
-                                <p>Weekly heuristic reviews and support-ticket deep dives kept maintenance alerts and facility updates front-and-center.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
+        <!-- Story Section -->
+        <section class="cs-section cs-story" id="story" data-accent="story">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">The Story</h2>
             </div>
-            <div class="solution-tabs" data-tab-switcher style="background: transparent; border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; padding: 1.75rem 2rem 2.25rem; margin-top: 3rem;">
-                <h3 class="solution-tabs-title">In their own words</h3>
-                <p class="solution-tabs-subtitle">Five conversations revealed the friction behind every failed booking.</p>
-                <div class="tab-controls" role="tablist" aria-label="User quotes">
-                    <button class="tab-control active" role="tab" aria-selected="true" aria-controls="quote-athlete" data-tab-target="quote-athlete">The Athlete</button>
-                    <button class="tab-control" role="tab" aria-selected="false" aria-controls="quote-parent" data-tab-target="quote-parent">The Parent</button>
-                    <button class="tab-control" role="tab" aria-selected="false" aria-controls="quote-newcomer" data-tab-target="quote-newcomer">The Newcomer</button>
+
+            <div class="section-content">
+                <div class="story-opening">
+                    <p class="lead-text">
+                        Recreation keeps people active, social, and grounded. But the tools that exist 
+                        today often leave people feeling <em>unsupported</em>.
+                    </p>
                 </div>
-                <div class="tab-panels">
-                     <div class="tab-panel active" id="quote-athlete" role="tabpanel">
-                        <div class="tab-panel-visual single-image">
-                            <img src="assets/images/relocate/Timmy.png" alt="Timmy, the athlete persona for Relocate saying "I drive across town only to find locked doors."">
-                        </div>
+
+                <div class="story-narrative">
+                    <p>
+                        We ran interviews and gathered survey responses across students, parents, and 
+                        league organizers. The frustration was universal: schedules hid in PDFs, 
+                        <span class="story-highlight">accessibility info</span> was missing, and <span class="story-highlight">maintenance updates</span> only appeared on 
+                        bulletin boards.
+                    </p>
+                    <p>
+                        Residents told us they would show up when we spelled out gear, cost, and 
+                        commitment up front. They wanted clear information instead of <span class="story-highlight">mystery PDFs</span>. 
+                        Most visitors bailed before picking a slot because schedules required 
+                        downloading files just to see availability.
+                    </p>
+                    <p>
+                        Our goal became clear: design a recreation platform that <span class="story-highlight">meets people where 
+                        they are</span>, whether they're booking a league or discovering a new neighborhood.
+                    </p>
+                </div>
+
+                <blockquote class="story-quote">
+                    <p>"I just want to know if the pool is open before I drive across town."</p>
+                    <cite>— Survey Respondent</cite>
+                </blockquote>
+
+                <div class="story-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">50+</span>
+                        <span class="stat-label">Survey responses gathered</span>
                     </div>
-                    <div class="tab-panel" id="quote-parent" role="tabpanel" hidden>
-                        <div class="tab-panel-visual single-image">
-                            <img src="assets/images/relocate/Lisa.png" alt="Lisa, the parent persona for Relocate saying "Schedules are buried in PDFs. I don't know where to start."">
-                        </div>
+                    <div class="stat-item">
+                        <span class="stat-value">10+</span>
+                        <span class="stat-label">In-depth interviews</span>
                     </div>
-                    <div class="tab-panel" id="quote-newcomer" role="tabpanel" hidden>
-                        <div class="tab-panel-visual single-image">
-                            <img src="assets/images/relocate/Peter.png" alt="Peter, the newcomer persona for Relocate saying "I want filters for accessibility, but there's nothing."">
+                    <div class="stat-item">
+                        <span class="stat-value">4</span>
+                        <span class="stat-label">Municipal portals audited</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <span class="placeholder-icon">🗺️</span>
+                    <p class="placeholder-label">User journey map showing current frustration points</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenge Section -->
+        <section class="cs-section cs-challenge" id="challenge" data-accent="challenge">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">The Challenge</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="challenge-statement">
+                    <div class="hmw-label">How Might We</div>
+                    <p class="hmw-question">
+                        Help residents discover, plan, and book recreational activities without 
+                        navigating legacy portals, downloading PDFs, or calling facilities directly?
+                    </p>
+                </div>
+
+                <div class="pain-points-grid">
+                    <div class="pain-point-card">
+                        <span class="pain-icon">🧼</span>
+                        <h4>Maintenance Blind Spots</h4>
+                        <p>Facility upkeep updates lived on social media or PDF bulletins, forcing users to gamble on availability every visit.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">🧭</span>
+                        <h4>Navigation Sprawl</h4>
+                        <p>Legacy IA forced people through redundant forms and unclear labels, especially painful on mobile.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">📅</span>
+                        <h4>Planning Overhead</h4>
+                        <p>Comparing schedules meant juggling tabs, PDFs, and phone calls before any slot could be confirmed.</p>
+                    </div>
+                    <div class="pain-point-card">
+                        <span class="pain-icon">♿</span>
+                        <h4>Inclusion in the Dark</h4>
+                        <p>Filters for accessibility, cost, and language were missing, limiting participation for families and newcomers.</p>
+                    </div>
+                </div>
+
+                <div class="personas-section">
+                    <h3>Who We Designed For</h3>
+                    <p class="personas-intro">These personas kept us focused on real needs instead of the wish list municipalities usually bring to the table.</p>
+                    
+                    <div class="personas-grid">
+                        <div class="persona-card">
+                            <span class="persona-emoji">🏀</span>
+                            <h4>Timmy</h4>
+                            <span class="persona-role">The Athlete</span>
+                            <p>Needs dependable tools to secure recurring practices and monitor facility status for his team.</p>
+                        </div>
+                        <div class="persona-card">
+                            <span class="persona-emoji">🗺️</span>
+                            <h4>Peter</h4>
+                            <span class="persona-role">The Explorer</span>
+                            <p>Wants effortless discovery of new activities with filters he can trust and itineraries he can share.</p>
+                        </div>
+                        <div class="persona-card">
+                            <span class="persona-emoji">📝</span>
+                            <h4>Lisa</h4>
+                            <span class="persona-role">The Planner</span>
+                            <p>Coordinates family schedules and accessibility needs, demanding clarity and timely reminders.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>Who this is for</h2>
-            <p class="section-intro">Three personas kept us focused on real needs instead of the wish list municipalities usually bring to the table.</p>
-            <div class="persona-grid">
-                <div class="persona-card">
-                    <div class="persona-title">🏀 Timmy · The Athlete</div>
-                    <div class="persona-bio">Needs dependable tools to secure recurring practices and monitor facility status for his team.</div>
-                </div>
-                <div class="persona-card">
-                    <div class="persona-title">🗺️ Peter · The Explorer</div>
-                    <div class="persona-bio">Wants effortless discovery of new activities with filters he can trust and itineraries he can share.</div>
-                </div>
-                <div class="persona-card">
-                    <div class="persona-title">📝 Lisa · The Planner</div>
-                    <div class="persona-bio">Coordinates family schedules and accessibility needs, demanding clarity and timely reminders.</div>
-                </div>
+        <!-- Research Section -->
+        <section class="cs-section cs-research" id="research" data-accent="research">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Research & Discovery</h2>
             </div>
-        </div>
-    </section>
 
-    <section class="section overview">
-        <div class="container">
-            <h2>What kept people from booking</h2>
-            <p class="section-intro">These pain points came up in every single conversation.</p>
-            <div class="pain-points-grid">
-                <div class="pain-point-card">
-                    <h4>Maintenance blind spots</h4>
-                    <p>Facility upkeep updates lived on social media or PDF bulletins, forcing users to gamble on availability every visit.</p>
-                </div>
-                <div class="pain-point-card">
-                    <h4>Navigation sprawl</h4>
-                    <p>Legacy IA forced people through redundant forms and unclear labels, especially painful on mobile.</p>
-                </div>
-                <div class="pain-point-card">
-                    <h4>Planning overhead</h4>
-                    <p>Comparing schedules meant juggling tabs, PDFs, and phone calls before any slot could be confirmed.</p>
-                </div>
-                <div class="pain-point-card">
-                    <h4>Inclusion in the dark</h4>
-                    <p>Filters for accessibility, cost, and language were missing, limiting participation for families and newcomers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="section-content">
+                <p class="section-intro">
+                    Our empathize-to-test loop let us pressure test ideas quickly. Workshop artifacts 
+                    became guardrails so every iteration stayed anchored to real needs.
+                </p>
 
-    <section class="section">
-        <div class="container">
-            <h2>The solutions we bet on</h2>
-            <p class="section-intro">Nine features emerged from research, each one addressing a specific pain point.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏟️</div>
-                    <h3>Facilities status & upkeep</h3>
-                    <p>Live maintenance banners keep visitors informed before they leave home.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Streamlined navigation</h3>
-                    <p>Guided search lets people browse by facility, activity, or neighborhood vibe.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗓️</div>
-                    <h3>One-glance schedules</h3>
-                    <p>Color-coded schedules show availability, bookings, and upkeep in one panel.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧩</div>
-                    <h3>Inclusive filters</h3>
-                    <p>Filters for accessibility, cost, and equipment make selection effortless.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📍</div>
-                    <h3>Discover local recreation</h3>
-                    <p>Map overlays pair facility info with neighborhood cues for quicker planning.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>Feedback loops</h3>
-                    <p>Inline prompts collect feedback so municipalities can act on real demand.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧭</div>
-                    <h3>Guided onboarding</h3>
-                    <p>Goal-setting during signup tailors recommendations to each user's intent.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Insights dashboards</h3>
-                    <p>Lightweight analytics show municipalities which programs need more support.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2>How we got there</h2>
-            <p class="section-intro">From rough sketches to tested prototypes, every iteration taught us something new.</p>
-            <div class="artifact-showcase">
-                <div class="artifact-item">
-                    <div class="artifact-caption">
-                        <div class="artifact-gallery">
-                            <figure>
-                                <img src="assets/images/relocate/relocate-paper-1.jpg" alt="Paper prototype sketches for the Relocate intake flow">
-                                <figcaption>Mapping the core intake flow and success criteria on paper.</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="assets/images/relocate/relocate-paper-2.png" alt="Paper prototype showing booking filters laid out for testing">
-                                <figcaption>Testing filter clarity before committing to UI components.</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="assets/images/relocate/relocate-paper-3.jpg" alt="Observed paper prototype session highlighting navigation issues">
-                                <figcaption>Documenting navigation hiccups we observed in walk-throughs.</figcaption>
-                            </figure>
+                <div class="research-methods">
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">📋</span>
+                            <h4>Listen Widely</h4>
                         </div>
-                        <h3>Paper prototypes</h3>
-                        <p>Quick pen-and-paper explorations helped us test flows without getting attached to pixels. We learned users wanted clear tasks before customization.</p>
+                        <p class="method-desc">
+                            50+ survey responses and deep interviews surfaced the biggest "I give up" moments 
+                            across different user types and age groups.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">🔍</span>
+                            <h4>Map the System</h4>
+                        </div>
+                        <p class="method-desc">
+                            Audited four municipal portals and documented where communication fell apart between 
+                            facilities, websites, and residents.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">🧪</span>
+                            <h4>Prototype Fast</h4>
+                        </div>
+                        <p class="method-desc">
+                            Paper sketches to clickable wireframes, testing flows before styling. Speed 
+                            mattered more than polish in early rounds.
+                        </p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-icon">👥</span>
+                            <h4>Test and Refine</h4>
+                        </div>
+                        <p class="method-desc">
+                            Five moderated sessions confirmed where guidance was missing and revealed 
+                            unexpected navigation patterns.
+                        </p>
                     </div>
                 </div>
-                <div class="artifact-item">
-                    <img src="assets/images/relocate/relocate-highfi-screens.png" alt="Relocate low-fidelity wireframes used for early usability tests">
-                    <div class="artifact-caption">
-                        <h3>Low-fi prototype</h3>
-                        <p>Clickable wireframes walked users through filters, search, and discovery so we could validate the core flow before styling.</p>
+
+                <div class="research-why-section">
+                    <h3>Why These Methods</h3>
+                    <div class="why-grid">
+                        <div class="why-item">
+                            <div class="why-item-header"><span>📋</span> Listen Widely</div>
+                            <p>Quantitative data revealed patterns, but quotes like "I just gave up" became our rallying cry for stakeholders.</p>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-item-header"><span>🔍</span> Map the System</div>
+                            <p>Competitive analysis showed the problem wasn't unique—every city struggled with the same legacy patterns.</p>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-item-header"><span>🧪</span> Prototype Fast</div>
+                            <p>Low-fidelity testing reduced attachment to ideas and encouraged honest feedback from users.</p>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-item-header"><span>👥</span> Test and Refine</div>
+                            <p>Think-aloud protocols caught confusion that click analytics would have missed.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="artifact-item">
-                    <img src="assets/images/relocate/relocate-wireframe.png" alt="High-fidelity Relocate screens with polished UI and motion">
-                    <div class="artifact-caption">
-                        <h3>High-fidelity prototype</h3>
-                        <p>High-fidelity screens locked in the bright palette, bold typography, and clarified navigation we scoped after M2 feedback.</p>
+
+                <div class="key-insights">
+                    <h3>What Users Taught Us</h3>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <span class="insight-number">01</span>
+                            <blockquote>"The map is hidden. I didn't know I could switch views."</blockquote>
+                            <p class="insight-analysis">
+                                Map/list toggle sat too quietly. We elevated it with contrast and microcopy 
+                                so explorers could hop views instantly.
+                            </p>
+                        </div>
+                        <div class="insight-card">
+                            <span class="insight-number">02</span>
+                            <blockquote>"Is this my schedule or a template?"</blockquote>
+                            <p class="insight-analysis">
+                                Testers wondered if the calendar was theirs or generic. A "Your Bookings" 
+                                title and persistent state solved the ambiguity.
+                            </p>
+                        </div>
+                        <div class="insight-card">
+                            <span class="insight-number">03</span>
+                            <blockquote>"Filters are the most useful thing—why are they hidden?"</blockquote>
+                            <p class="insight-analysis">
+                                Filters hid in the overflow. We surfaced them beside search for faster 
+                                refinement and higher engagement.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>The details that made it work</h2>
-            <p class="section-intro">Moving from sketches to polish meant dialing in the look, smoothing the flows, and making sure every core feature pulled its weight.</p>
-            <div class="design-system-showcase">
-                <div class="design-system-card">
-                    <div class="design-system-icon">🎨</div>
-                    <h3>Palette & type upgrades</h3>
-                    <p><strong>High-energy palette.</strong> Bright accents paired with deep blues keep CTAs in focus without overwhelming.</p>
-                    <p><strong>Readable hierarchy.</strong> Bold, minimal typography makes scanning effortless across dense schedules.</p>
-                    <p><strong>Accessible contrast.</strong> Every combination now meets WCAG AA so the interface stays inclusive.</p>
+        <!-- Solution Section -->
+        <section class="cs-section cs-solution" id="solution" data-accent="solution">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">The Solution</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="solution-overview">
+                    <h3>Features That Emerged From Research</h3>
+                    <p>
+                        Nine features emerged from our research, each one addressing a specific pain 
+                        point we uncovered. Every feature ties back to a persona need.
+                    </p>
                 </div>
-                <div class="design-system-card">
-                    <div class="design-system-icon">🧭</div>
-                    <h3>Navigation refinements</h3>
-                    <p><strong>Clear paths.</strong> Rebuilt buttons and wayfinding so the next step is always obvious.</p>
-                    <p><strong>Consistent language.</strong> Aligned spacing and iconography to reduce relearning between flows.</p>
-                    <p><strong>Friction-free flows.</strong> Simplified interactions we saw in walkthroughs to keep momentum high.</p>
-                </div>
-                <div class="design-system-card">
-                    <div class="design-system-icon">🛠️</div>
-                    <h3>Feature essentials</h3>
-                    <p><strong>Integrated discovery.</strong> Filters, search, and location services work together to surface the right facility fast.</p>
-                    <p><strong>Calm management.</strong> Notifications and schedules keep every booking, alert, and update in one hub.</p>
-                    <p><strong>Informed decisions.</strong> Facility pages surface amenities, reviews, and distance so choices feel confident.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🏟️</span>
+                        <h4>Facility Status</h4>
+                        <p>Live maintenance banners keep visitors informed before they leave home.</p>
+                        <span class="feature-persona">For: All personas</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔍</span>
+                        <h4>Smart Search</h4>
+                        <p>Browse by facility, activity, or neighborhood vibe.</p>
+                        <span class="feature-persona">For: Peter (Explorer)</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🗓️</span>
+                        <h4>Visual Schedules</h4>
+                        <p>Color-coded availability, bookings, and upkeep in one panel.</p>
+                        <span class="feature-persona">For: Lisa (Planner)</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🧩</span>
+                        <h4>Inclusive Filters</h4>
+                        <p>Filter by accessibility, cost, and equipment needs.</p>
+                        <span class="feature-persona">For: Lisa (Planner)</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📍</span>
+                        <h4>Local Discovery</h4>
+                        <p>Map overlays pair facility info with neighborhood cues.</p>
+                        <span class="feature-persona">For: Peter (Explorer)</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💬</span>
+                        <h4>Feedback Loops</h4>
+                        <p>Inline prompts collect feedback so cities can act on demand.</p>
+                        <span class="feature-persona">For: Municipalities</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🧭</span>
+                        <h4>Guided Onboarding</h4>
+                        <p>Goal-setting during signup tailors recommendations.</p>
+                        <span class="feature-persona">For: New users</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔔</span>
+                        <h4>Timely Alerts</h4>
+                        <p>Notifications keep bookings, alerts, and updates in one hub.</p>
+                        <span class="feature-persona">For: Timmy (Athlete)</span>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📊</span>
+                        <h4>City Dashboard</h4>
+                        <p>Analytics show municipalities which programs need support.</p>
+                        <span class="feature-persona">For: Municipalities</span>
+                    </div>
                 </div>
             </div>
-            <p class="section-note">Usability sessions called out three fixes we shipped: make the map/list toggle unmistakable, label the bookings view as "Your Bookings," and give filters prime placement so people always know how to narrow results.</p>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>What users taught us</h2>
-            <p class="section-intro">Testing showed us exactly which moments delighted users and which ones needed a tweak.</p>
-            <div class="user-lessons-grid">
-                <div class="user-lesson-card">
-                    <div class="user-lesson-icon">🗺️</div>
-                    <h3>Map toggle clarity</h3>
-                    <p>The map/list switch sat too quietly in the corner. We elevated it with contrast and microcopy so explorers could hop views instantly.</p>
-                </div>
-                <div class="user-lesson-card">
-                    <div class="user-lesson-icon">🗂️</div>
-                    <h3>Your bookings, clearly</h3>
-                    <p>Testers wondered if the schedule was theirs or a template. A "Your Bookings" title and persistent state solved the ambiguity.</p>
-                </div>
-                <div class="user-lesson-card">
-                    <div class="user-lesson-icon">🔍</div>
-                    <h3>Filters up front</h3>
-                    <p>Filters hid in the overflow, so users skipped the most powerful tool. We surfaced them beside search for faster refinement.</p>
-                </div>
-                <div class="user-lesson-card">
-                    <div class="user-lesson-icon">⚡</div>
-                    <h3>Smoother motion</h3>
-                    <p>Early animations felt jittery. We simplified transitions so interactions feel polished without delaying flows.</p>
+        <!-- Design Section -->
+        <section class="cs-section cs-design" id="design" data-accent="design">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Design Process</h2>
+            </div>
+
+            <div class="section-content">
+                <p class="section-intro">
+                    From rough sketches to tested prototypes, we moved fast but kept research 
+                    artifacts visible so every iteration stayed grounded.
+                </p>
+
+                <div class="process-phases">
+                    <div class="phase-block">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 01</span>
+                            <h4>Paper Prototypes</h4>
+                        </div>
+                        <p class="phase-desc">
+                            Quick pen and paper explorations helped us test flows without getting 
+                            attached to pixels. We could iterate three times in one session.
+                        </p>
+                        <div class="phase-images">
+                            <div class="phase-image">
+                                <img src="assets/images/relocate/relocate-paper-1.jpg" alt="Paper prototype sketches">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase-block">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 02</span>
+                            <h4>Low-Fi Wireframes</h4>
+                        </div>
+                        <p class="phase-desc">
+                            Clickable wireframes walked users through filters, search, and discovery. 
+                            Grayscale kept feedback focused on flow, not aesthetics.
+                        </p>
+                        <div class="phase-images">
+                            <div class="phase-image">
+                                <img src="assets/images/relocate/relocate-wireframe.png" alt="Low-fi wireframes">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase-block">
+                        <div class="phase-header">
+                            <span class="phase-number">Phase 03</span>
+                            <h4>High-Fidelity Screens</h4>
+                        </div>
+                        <p class="phase-desc">
+                            Polished UI with a bright palette and bold typography we scoped after testing. 
+                            Color and spacing were tuned for outdoor use on mobile.
+                        </p>
+                        <div class="phase-images">
+                            <div class="phase-image">
+                                <img src="assets/images/relocate/relocate-highfi-screens.png" alt="High-fi screens">
+                            </div>
+                            <div class="phase-image">
+                                <img src="assets/images/relocate/relocate-screen-mockups.png" alt="Screen mockups">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="section prototype-embed-section">
-        <div class="container">
-            <h2>Walk the Relocate Prototype</h2>
-            <p class="section-intro">Preview the end-to-end experience, from discovery to booking confirmation, in the live Figma prototype.</p>
-            <div class="prototype-embed-wrapper">
-                <!-- Replace the placeholder URL with the live Relocate Figma prototype link -->
-                <iframe src="https://www.figma.com/embed?embed_host=ux-portfolio&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FlkE5bh37HtcuFfzTDGtYZo%2FMilestones%3Fnode-id%3D564-7535%26viewport%3D4821%252C1430%252C0.47%26t%3DzOvQ3z3UyxL9Eypr-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D564%253A7535" allowfullscreen loading="lazy"></iframe>
+            <div class="prototype-section">
+                <h3>Walk the Relocate Prototype</h3>
+                <p>Preview the end-to-end experience, from discovery to booking confirmation.</p>
+                <div class="prototype-embed">
+                    <iframe 
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FlkE5bh37HtcuFfzTDGtYZo%2FMilestones%3Fnode-id%3D564-7535%26viewport%3D4821%252C1430%252C0.47%26t%3DzOvQ3z3UyxL9Eypr-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D564%253A7535"
+                        allowfullscreen
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+                    </iframe>
+                </div>
+                <a href="https://www.figma.com/proto/lkE5bh37HtcuFfzTDGtYZo/Milestones?node-id=564-7535" 
+                   target="_blank" 
+                   rel="noopener" 
+                   class="prototype-link">
+                    Open full prototype ↗
+                </a>
             </div>
-            <p class="section-note" style="margin-top: 2rem;">Want more room? <a href="https://www.figma.com/proto/lkE5bh37HtcuFfzTDGtYZo/Milestones?node-id=564-7535&viewport=4821%2C1430%2C0.47&t=zOvQ3z3UyxL9Eypr-0&scaling=contain&content-scaling=fixed&starting-point-node-id=564%3A7535" target="_blank" rel="noopener">Open the prototype in a new tab ↗</a></p>
-        </div>
-    </section>
+        </section>
 
-    <section class="section reflection-section">
-        <div class="container">
-            <h2>What stuck with me</h2>
-            <p class="section-intro">Beyond the final designs, this project taught me how to lead through ambiguity and advocate for users at every turn.</p>
-            <div class="reflection-cards">
-                <div class="reflection-card">
-                    <div class="reflection-icon">🎯</div>
-                    <h3>Strategy & systems</h3>
-                    <p>Keeping research artifacts visible helped us balance municipal constraints with a fresher, community-forward UI that users actually wanted.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">💬</div>
-                    <h3>Advocacy works</h3>
-                    <p>Sharing verbatim quotes persuaded stakeholders to prioritize accessibility and inclusive programming early, proving that user voices drive decisions.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">🔄</div>
-                    <h3>Iteration is everything</h3>
-                    <p>Weekly workshops on recreation context raised shared understanding and sped up critique cycles, making each iteration sharper than the last.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">🚀</div>
-                    <h3>Community features</h3>
-                    <p>Next up: social discovery, leaderboards, and mentorship programs to deepen engagement and turn bookings into lasting connections.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">📡</div>
-                    <h3>Real-time data</h3>
-                    <p>Integrating live maintenance and occupancy feeds will keep bookings accurate and rebuild trust in the system.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">♿</div>
-                    <h3>Accessibility first</h3>
-                    <p>A full WCAG review and filter clarity testing will ensure no one gets left behind as the platform scales.</p>
-                </div>
+        <!-- Reflection Section -->
+        <section class="cs-section cs-reflection" id="reflection" data-accent="conclusion">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Reflection & Impact</h2>
             </div>
-        </div>
-    </section>
 
-    <section class="project-navigation">
-        <div class="nav-projects">
-            <a href="project-pulse.html">← Previous Project</a>
-            <a href="project-resonate.html">Next Project →</a>
-        </div>
-    </section>
+            <div class="section-content">
+                <div class="reflection-quote">
+                    <blockquote>
+                        "Keeping research artifacts visible helped us balance municipal constraints 
+                        with a fresher, community-forward UI that users actually wanted."
+                    </blockquote>
+                </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <p class="footer-location">made in canada</p>
-                <div class="footer-contact">
-                    <a href="about.html" class="footer-contact-link">About</a>
-                    <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
-                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
+                <div class="learnings-block">
+                    <h3>What I Learned</h3>
+                    <div class="learnings-grid">
+                        <div class="learning-card">
+                            <span class="learning-icon">🗣️</span>
+                            <h4>User Voices Drive Decisions</h4>
+                            <p>
+                                Sharing verbatim quotes persuaded stakeholders to prioritize accessibility 
+                                and inclusive programming early. Real words cut through opinion.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">🔄</span>
+                            <h4>Weekly Workshops Scale Understanding</h4>
+                            <p>
+                                Weekly workshops raised shared understanding and sped up critique cycles, 
+                                making each iteration sharper than the last.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">🎯</span>
+                            <h4>Personas Keep Scope Tight</h4>
+                            <p>
+                                When scope creep threatened, returning to Timmy, Peter, and Lisa helped 
+                                us say no to features that didn't serve real needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="next-steps">
+                    <div class="next-steps-header">
+                        <div class="next-steps-icon">🔮</div>
+                        <div>
+                            <h3>If We Continued...</h3>
+                            <p class="next-steps-subtitle">The roadmap ahead</p>
+                        </div>
+                    </div>
+                    <div class="next-steps-grid">
+                        <div class="next-step-card">
+                            <div class="next-step-number">01</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Municipal Data Pilot</div>
+                                <div class="next-step-desc">Partner with a real city to test data integration and validate the platform in production.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🏛️</span> Pilot</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">02</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Administrator Dashboard</div>
+                                <div class="next-step-desc">Build the city-facing dashboard so program administrators can track engagement and demand.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">📊</span> Analytics</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">03</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Expanded Accessibility Filters</div>
+                                <div class="next-step-desc">Iterate on accessibility filters based on user feedback to cover more needs and edge cases.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">♿</span> Inclusion</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">04</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Team Coordination Features</div>
+                                <div class="next-step-desc">Add social features so teams and families can coordinate schedules and bookings together.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">👥</span> Social</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p class="footer-tagline">let's make something beautiful.</p>
+        </section>
+
+        <!-- Footer Navigation -->
+        <footer class="case-footer">
+            <div class="footer-nav">
+                <a href="project-pulse.html" class="footer-link prev">
+                    <span class="footer-link-label">Previous</span>
+                    <span class="footer-link-title">← Pulse</span>
+                </a>
+                <a href="project-resonate.html" class="footer-link next">
+                    <span class="footer-link-label">Next</span>
+                    <span class="footer-link-title">Resonate →</span>
+                </a>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </main>
+
     <script src="main.js"></script>
-    <script src="transitions.js"></script>
-    
-    <!-- Dark Theme Interactions -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Scroll-triggered fade-in animations with performance optimization
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
-            const enableAnimations = !(prefersReducedMotion || isSmallScreen);
-            const animatedSelector = '.feature-card, .pain-point-card, .persona-card, .data-card, .design-screen, .accordion-item, .reflection-card, .artifact-item';
-
-            if (enableAnimations) {
-                const fadeInObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                            requestAnimationFrame(() => {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0)';
-                                entry.target.classList.add('animated');
-                            });
-                            fadeInObserver.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                const fadeElements = document.querySelectorAll(animatedSelector);
-                fadeElements.forEach((element, index) => {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(20px)';
-                    element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
-                    element.style.willChange = 'opacity, transform';
-                    fadeInObserver.observe(element);
-                });
-            } else {
-                document.querySelectorAll(animatedSelector).forEach(element => {
-                    element.style.opacity = '1';
-                    element.style.transform = 'none';
-                });
-            }
-
-            // Tab switcher functionality
-            const tabSwitcher = document.querySelector('[data-tab-switcher]');
-            if (tabSwitcher) {
-                const controls = tabSwitcher.querySelectorAll('.tab-control');
-                const panels = tabSwitcher.querySelectorAll('.tab-panel');
-
-                controls.forEach(control => {
-                    control.addEventListener('click', () => {
-                        const targetId = control.dataset.tabTarget;
-                        
-                        // Update active states
-                        controls.forEach(c => {
-                            c.classList.remove('active');
-                            c.setAttribute('aria-selected', 'false');
-                        });
-                        control.classList.add('active');
-                        control.setAttribute('aria-selected', 'true');
-
-                        // Show target panel
-                        panels.forEach(panel => {
-                            panel.classList.remove('active');
-                            panel.hidden = true;
-                        });
-                        const targetPanel = document.getElementById(targetId);
-                        if (targetPanel) {
-                            targetPanel.classList.add('active');
-                            targetPanel.hidden = false;
-                        }
-                    });
-                });
-            }
-
-            // Enhanced hover effects for navigation links
-            const navLinks = document.querySelectorAll('.nav-projects a');
-            navLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.15)';
-                    link.style.transform = 'translateY(-8px)';
-                });
-                link.addEventListener('mouseleave', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.05)';
-                    link.style.transform = 'translateY(0)';
-                });
-            });
-
-            // Click to expand images
-            document.querySelectorAll('.design-screen img, .hero-image img, .quote-panel-content img').forEach(img => {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => {
-                    const modal = document.createElement('div');
-                    modal.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.95);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 10000;
-                        cursor: pointer;
-                        animation: fadeIn 0.3s ease;
-                    `;
-                    
-                    const expandedImg = document.createElement('img');
-                    expandedImg.src = img.src;
-                    expandedImg.alt = img.alt;
-                    expandedImg.style.cssText = `
-                        max-width: 90%;
-                        max-height: 90%;
-                        border-radius: 16px;
-                        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 100px rgba(59, 130, 246, 0.5);
-                        border: 2px solid rgba(59, 130, 246, 0.5);
-                    `;
-                    
-                    modal.appendChild(expandedImg);
-                    document.body.appendChild(modal);
-                    
-                    modal.addEventListener('click', () => {
-                        modal.style.animation = 'fadeOut 0.3s ease';
-                        setTimeout(() => modal.remove(), 300);
-                    });
-                });
-            });
-
-            // Optimized parallax effect on hero with passive listener
-            let ticking = false;
-            let lastScroll = 0;
-            if (!isSmallScreen && !prefersReducedMotion) {
-                window.addEventListener('scroll', () => {
-                    const scrolled = window.pageYOffset;
-                    if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
-                        window.requestAnimationFrame(() => {
-                            const hero = document.querySelector('.case-study-hero');
-                            
-                            if (hero && scrolled < window.innerHeight) {
-                                hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
-                                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.2;
-                            }
-                            
-                            lastScroll = scrolled;
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                }, { passive: true });
-            } else {
-                const hero = document.querySelector('.case-study-hero');
-                if (hero) {
-                    hero.style.transform = 'none';
-                    hero.style.opacity = '1';
-                }
-            }
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            console.log('✨ Relocate: Dark theme activated with enhanced interactions!');
-        });
-
-        // Add fade animations to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes fadeOut {
-                from { opacity: 1; }
-                to { opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="case-study.js"></script>
 </body>
 </html>
-

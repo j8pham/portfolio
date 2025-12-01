@@ -17,6 +17,137 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 });
 
+// ========================================
+// Fun Cat Navigation
+// ========================================
+function initCatNavigation() {
+    const catButton = document.getElementById('catButton');
+    const catMenu = document.getElementById('catMenu');
+    const catBackdrop = document.getElementById('catBackdrop');
+    
+    if (!catButton || !catMenu) return;
+    
+    let isMenuOpen = false;
+    
+    // Toggle menu
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        
+        catButton.classList.toggle('awake', isMenuOpen);
+        catMenu.classList.toggle('open', isMenuOpen);
+        catBackdrop.classList.toggle('visible', isMenuOpen);
+        catButton.setAttribute('aria-expanded', isMenuOpen);
+        
+        // Add a little shake animation when opening
+        if (isMenuOpen) {
+            catButton.style.animation = 'none';
+            catButton.offsetHeight; // Trigger reflow
+            catButton.style.animation = 'cat-wake 0.4s ease-out';
+        }
+    }
+    
+    // Close menu
+    function closeMenu() {
+        if (!isMenuOpen) return;
+        isMenuOpen = false;
+        
+        catButton.classList.remove('awake');
+        catMenu.classList.remove('open');
+        catBackdrop.classList.remove('visible');
+        catButton.setAttribute('aria-expanded', 'false');
+    }
+    
+    // Event listeners
+    catButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+    
+    catBackdrop.addEventListener('click', closeMenu);
+    
+    // Close on escape and handle keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMenu();
+            catButton.focus(); // Return focus to button
+        }
+        
+        // Tab trap when menu is open
+        if (isMenuOpen && e.key === 'Tab') {
+            const focusableElements = catMenu.querySelectorAll('.cat-menu-item');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                catButton.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                catButton.focus();
+            } else if (!e.shiftKey && document.activeElement === catButton) {
+                e.preventDefault();
+                firstElement.focus();
+            }
+        }
+    });
+    
+    // Close when clicking menu items
+    const menuItems = catMenu.querySelectorAll('.cat-menu-item');
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Small delay for visual feedback
+            setTimeout(closeMenu, 100);
+        });
+    });
+    
+    // Cat eye tracking (fun feature!)
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        if (!isMenuOpen) {
+            const rect = catButton.getBoundingClientRect();
+            const catCenterX = rect.left + rect.width / 2;
+            const catCenterY = rect.top + rect.height / 2;
+            
+            // Calculate angle to mouse
+            const deltaX = mouseX - catCenterX;
+            const deltaY = mouseY - catCenterY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            
+            // If mouse is close, show subtle attention
+            if (distance < 200) {
+                const intensity = 1 - (distance / 200);
+                catButton.style.setProperty('--attention', intensity);
+            }
+        }
+    });
+    
+    // Add wake animation keyframes
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        @keyframes cat-wake {
+            0% { transform: scale(1) rotate(0deg); }
+            20% { transform: scale(1.1) rotate(-5deg); }
+            40% { transform: scale(1.05) rotate(5deg); }
+            60% { transform: scale(1.1) rotate(-3deg); }
+            80% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1.1) rotate(0deg); }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCatNavigation);
+} else {
+    initCatNavigation();
+}
+
 // Set active nav link based on current page
 function setActiveNavLink() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -67,16 +198,22 @@ window.addEventListener('scroll', setActiveNavLink);
 window.addEventListener('load', setActiveNavLink);
 
 // Smooth scroll for anchor links (only if on same page)
+// Respects reduced motion preference
 if (window.location.pathname.split('/').pop() === 'index.html' || window.location.pathname.split('/').pop() === '') {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth',
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth',
                     block: 'start'
                 });
+                // Set focus to target for keyboard users
+                target.setAttribute('tabindex', '-1');
+                target.focus();
             }
         });
     });
@@ -98,7 +235,8 @@ if (learnMore) {
 
 // Scroll-based project highlighting
 function initProjectHighlighting() {
-    const projectCards = document.querySelectorAll('.project-card:not(.coming-soon)');
+    // Support both old and new card classes
+    const projectCards = document.querySelectorAll('.project-card:not(.coming-soon), .project-card-full:not(.coming-soon)');
     
     if (projectCards.length === 0) return;
     
@@ -282,5 +420,31 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initInteractiveSections);
 } else {
     initInteractiveSections();
+}
+
+// Fade-in scroll animations
+function initFadeInAnimations() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    if (fadeElements.length === 0) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFadeInAnimations);
+} else {
+    initFadeInAnimations();
 }
 

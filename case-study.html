@@ -3,297 +3,949 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case Study">
-    <title>Case Study</title>
+    <meta name="description" content="Case Study Template - Professional UX Portfolio">
+    <title>Case Study Template</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="case-study-styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat-256x256.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/images/branding/sleepycat-256x256.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/sleepycat-256x256.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/sleepycat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="index.html" class="nav-logo" data-icon="sleepy-cat">
-                        <span class="nav-logo-text">
-                            <span class="nav-logo-graphic" aria-hidden="true">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                            <span class="sr-only">Home</span>
+<body class="case-study-page">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fun Cat Navigation -->
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <!-- Cat Menu Hub -->
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <!-- Radial Menu -->
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/material-symbols--home-rounded.svg" alt="">
                         </span>
-                        <span class="nav-logo-icon" aria-hidden="true">
-                            <span class="nav-logo-graphic nav-logo-graphic--compact">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                        </span>
+                        <span class="menu-label">home</span>
                     </a>
-                    <a href="about.html" class="nav-link" data-icon="👤">
-                        <span class="nav-link-text">about</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/tdesign--user-filled.svg" alt=""></span>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
                     </a>
                 </div>
-                <div class="nav-right">
-                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="nav-link" data-icon="📄" target="_blank" rel="noopener">
-                        <span class="nav-link-text">resume</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/mingcute--paper-fill.svg" alt=""></span>
-                    </a>
-                    <a href="mailto:pham.jason@outlook.com" class="nav-link" data-icon="✉️">
-                        <span class="nav-link-text">contact</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt=""></span>
-                    </a>
-                </div>
+                
+                <!-- Menu backdrop blur -->
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <!-- Quick nav pills (visible when scrolled) -->
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="project-title">Project Title</h1>
-            <p class="project-subtitle">Project Subtitle or Tagline</p>
-            <div class="project-meta">
-                <span class="meta-item"><strong>Role:</strong> UX Designer</span>
-                <span class="meta-item"><strong>Duration:</strong> 3 months</span>
-                <span class="meta-item"><strong>Year:</strong> 2024</span>
-            </div>
+    <!-- Sticky Section Navigation -->
+    <aside class="case-study-nav" id="caseStudyNav">
+        <div class="nav-progress-bar">
+            <div class="nav-progress-fill" id="navProgressFill"></div>
         </div>
-        <div class="hero-image">
-            <img src="https://via.placeholder.com/1200x600" alt="Project hero image">
-        </div>
-    </section>
+        <nav class="nav-sections">
+            <a href="#hero" class="nav-section-link active" data-section="hero">
+                <span class="nav-dot"></span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="#story" class="nav-section-link" data-section="story">
+                <span class="nav-dot"></span>
+                <span class="nav-label">Story</span>
+            </a>
+            <a href="#challenge" class="nav-section-link" data-section="challenge">
+                <span class="nav-dot"></span>
+                <span class="nav-label">Challenge</span>
+            </a>
+            <a href="#research" class="nav-section-link" data-section="research">
+                <span class="nav-dot"></span>
+                <span class="nav-label">Research</span>
+            </a>
+            <a href="#solution" class="nav-section-link" data-section="solution">
+                <span class="nav-dot"></span>
+                <span class="nav-label">Solution</span>
+            </a>
+            <a href="#design" class="nav-section-link" data-section="design">
+                <span class="nav-dot"></span>
+                <span class="nav-label">Design</span>
+            </a>
+            <a href="#conclusion" class="nav-section-link" data-section="conclusion">
+                <span class="nav-dot"></span>
+                <span class="nav-label">Reflection</span>
+            </a>
+        </nav>
+    </aside>
 
-    <!-- Project Overview -->
-    <section class="section overview">
-        <div class="container">
-            <h2>Overview</h2>
-            <div class="overview-content">
-                <div>
-                    <h3>The Challenge</h3>
-                    <p>Brief description of the problem or challenge that this project addresses. Explain the context and why this project matters.</p>
-                    
-                    <h3>The Solution</h3>
-                    <p>Describe the solution you designed and how it addresses the challenge. Highlight key features or improvements.</p>
-                    
-                    <h3>Impact</h3>
-                    <p>Share measurable results or outcomes. Include metrics, user feedback, or business impact if available.</p>
+    <main class="case-study-main" id="main" role="main">
+        <!-- ============================================
+             HERO SECTION - First Impression
+             ============================================ -->
+        <section class="cs-hero" id="hero" aria-labelledby="hero-title">
+            <div class="cs-hero-content">
+                <!-- Project Identifier -->
+                <div class="cs-project-badge">
+                    <span class="badge-label">Case Study</span>
+                    <span class="badge-divider">•</span>
+                    <span class="badge-read-time">8 min read</span>
                 </div>
-                <div class="overview-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">85%</div>
-                        <div class="stat-label">User Satisfaction</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">40%</div>
-                        <div class="stat-label">Task Completion Rate</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">3.2s</div>
-                        <div class="stat-label">Average Load Time</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Research Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Research & Discovery</h2>
-            <p class="section-intro">Understanding the problem and user needs through comprehensive research.</p>
-            
-            <div class="research-phase">
-                <h3>User Interviews</h3>
-                <p>Conducted in-depth interviews with [X] participants to understand their pain points, goals, and behaviors.</p>
-                <div class="research-findings">
-                    <div class="finding">
-                        <h4>Finding 1</h4>
-                        <p>Key insight from user research that influenced design decisions.</p>
-                    </div>
-                    <div class="finding">
-                        <h4>Finding 2</h4>
-                        <p>Another important insight discovered during the research phase.</p>
-                    </div>
-                    <div class="finding">
-                        <h4>Finding 3</h4>
-                        <p>Critical user need that became a priority in the design solution.</p>
-                    </div>
-                </div>
-            </div>
+                <!-- Project Title & Tagline -->
+                <h1 class="cs-title">Project Name</h1>
+                <p class="cs-tagline">A compelling one-liner that captures the essence of your project and its value proposition</p>
 
-            <div class="research-phase">
-                <h3>User Personas</h3>
-                <p>Based on research findings, I created personas to guide design decisions.</p>
-                <div class="persona-grid">
-                    <div class="persona-card">
-                        <div class="persona-avatar"></div>
-                        <div class="persona-title">Primary Persona</div>
-                        <div class="persona-bio">Brief description of this persona's goals, needs, and pain points.</div>
+                <!-- Project Meta Grid -->
+                <div class="cs-meta-grid">
+                    <div class="cs-meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">UX Designer</span>
                     </div>
-                    <div class="persona-card">
-                        <div class="persona-avatar"></div>
-                        <div class="persona-title">Secondary Persona</div>
-                        <div class="persona-bio">Brief description of this persona's goals, needs, and pain points.</div>
+                    <div class="cs-meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">Jan - Mar 2024</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <span class="meta-label">Team</span>
+                        <span class="meta-value">2 Designers, 3 Engineers</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <span class="meta-label">Skills</span>
+                        <span class="meta-value">Research, Prototyping, Visual Design</span>
                     </div>
                 </div>
             </div>
 
-            <div class="research-phase">
-                <h3>Competitive Analysis</h3>
-                <p>Analyzed existing solutions in the market to identify opportunities and best practices.</p>
-                <div class="competitor-comparison">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Competitor A</th>
-                                <th>Competitor B</th>
-                                <th>Our Solution</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Feature 1</td>
-                                <td>✓</td>
-                                <td>✗</td>
-                                <td>✓</td>
-                            </tr>
-                            <tr>
-                                <td>Feature 2</td>
-                                <td>✗</td>
-                                <td>✓</td>
-                                <td>✓</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Design Process Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Design Process</h2>
-            <p class="section-intro">From ideation to high-fidelity prototypes, here's how the design evolved.</p>
-
-            <div class="process-phase">
-                <h3>Wireframes</h3>
-                <p>Early wireframes helped establish the information architecture and user flow.</p>
-                <div class="image-gallery">
-                    <img src="https://via.placeholder.com/600x400" alt="Wireframe 1">
-                    <img src="https://via.placeholder.com/600x400" alt="Wireframe 2">
-                    <img src="https://via.placeholder.com/600x400" alt="Wireframe 3">
-                </div>
-            </div>
-
-            <div class="process-phase">
-                <h3>User Flow</h3>
-                <p>Mapped out the complete user journey to ensure a seamless experience.</p>
-                <div class="user-flow-diagram">
-                    <img src="https://via.placeholder.com/1200x600" alt="User flow diagram">
-                </div>
-            </div>
-
-            <div class="process-phase">
-                <h3>Prototypes</h3>
-                <p>Interactive prototypes were created to test and validate design decisions.</p>
-                <div class="prototype-showcase">
-                    <div class="prototype-frame">
-                        <img src="https://via.placeholder.com/800x600" alt="Prototype screenshot">
+            <!-- Hero Visual Showcase -->
+            <div class="cs-hero-visual">
+                <div class="cs-visual-placeholder" data-visual="hero-mockup">
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">🎨</span>
+                        <span class="placeholder-text">Hero Mockup</span>
+                        <span class="placeholder-hint">High-fidelity mockup showcasing the final product (e.g., device mockups, app screens)</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Key Features Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Feature Name</h3>
-                    <p>Description of the feature and how it solves user needs. Explain the value it provides and why it matters.</p>
+            <!-- TL;DR Summary -->
+            <div class="cs-tldr">
+                <div class="tldr-header">
+                    <span class="tldr-label">TL;DR</span>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Feature Name</h3>
-                    <p>Description of the feature and how it solves user needs. Explain the value it provides and why it matters.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Feature Name</h3>
-                    <p>Description of the feature and how it solves user needs. Explain the value it provides and why it matters.</p>
+                <div class="tldr-content">
+                    <p class="tldr-summary">
+                        <strong>The problem:</strong> Users struggled with [specific pain point]. 
+                        <strong>My approach:</strong> Conducted user research, identified key patterns, and designed [solution]. 
+                        <strong>The outcome:</strong> Achieved [metric/result] improvement in [key area].
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Final Design Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Final Design</h2>
-            <p class="section-intro">Showcase of the final product with detailed explanations of key screens.</p>
-            <div class="design-showcase">
-                <div class="design-screen">
-                    <img src="https://via.placeholder.com/600x800" alt="Final design screen 1">
-                    <div class="design-caption">
-                        <h4>Screen Title</h4>
-                        <p>Explanation of this screen's purpose and key design decisions.</p>
+        <!-- ============================================
+             THE STORY - Context & Background
+             ============================================ -->
+        <section class="cs-section cs-story" id="story">
+            <div class="cs-section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">The Story</h2>
+                <p class="section-subtitle">Setting the stage — understanding the context and why this project matters</p>
+            </div>
+
+            <div class="cs-content-block">
+                <div class="story-intro">
+                    <h3 class="content-heading">How it all started</h3>
+                    <p class="content-text">
+                        Every great design begins with a story. Here, you paint the picture of the world before your solution existed. 
+                        What were users experiencing? What triggered this project? Why was it important to solve now?
+                    </p>
+                    <p class="content-text">
+                        This is where you hook your reader — make them care about the problem before you reveal the solution. 
+                        Use specific details, anecdotes, or data points that make the situation tangible.
+                    </p>
+                </div>
+
+                <!-- Context Cards -->
+                <div class="cs-context-cards">
+                    <div class="context-card">
+                        <div class="card-icon">🎯</div>
+                        <h4 class="card-title">The Context</h4>
+                        <p class="card-text">Describe the product, company, or ecosystem. What's the business context? Who are the key stakeholders?</p>
+                    </div>
+                    <div class="context-card">
+                        <div class="card-icon">👥</div>
+                        <h4 class="card-title">The Users</h4>
+                        <p class="card-text">Who are we designing for? What are their backgrounds, motivations, and current frustrations?</p>
+                    </div>
+                    <div class="context-card">
+                        <div class="card-icon">⚡</div>
+                        <h4 class="card-title">The Opportunity</h4>
+                        <p class="card-text">What gap in the market or user need created this opportunity? Why is now the right time?</p>
                     </div>
                 </div>
-                <div class="design-screen">
-                    <img src="https://via.placeholder.com/600x800" alt="Final design screen 2">
-                    <div class="design-caption">
-                        <h4>Screen Title</h4>
-                        <p>Explanation of this screen's purpose and key design decisions.</p>
+
+                <!-- Visual Placeholder: Context/Background -->
+                <div class="cs-visual-placeholder" data-visual="context-visual">
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">📊</span>
+                        <span class="placeholder-text">Context Visual</span>
+                        <span class="placeholder-hint">Product ecosystem diagram, market landscape, or user journey showing the before state</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Lessons Learned Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Lessons Learned</h2>
-            <div class="lessons-content">
-                <div class="lesson">
-                    <h3>What I Learned</h3>
-                    <p>Share key learnings from this project. What worked well? What would you do differently? Be honest about challenges and how you overcame them.</p>
+        <!-- ============================================
+             THE CHALLENGE - Problem Definition
+             ============================================ -->
+        <section class="cs-section cs-challenge" id="challenge">
+            <div class="cs-section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">The Challenge</h2>
+                <p class="section-subtitle">Defining the problem — what we're solving and why it matters</p>
+            </div>
+
+            <div class="cs-content-block">
+                <!-- Problem Statement -->
+                <div class="cs-problem-statement">
+                    <div class="problem-quote">
+                        <blockquote>
+                            "How might we [action] so that [users] can [achieve goal] without [current friction]?"
+                        </blockquote>
+                        <span class="quote-label">Problem Statement</span>
+                    </div>
                 </div>
-                <div class="lesson">
-                    <h3>Next Steps</h3>
-                    <p>Describe future improvements or iterations you would make if you had more time or resources. What would you prioritize next?</p>
+
+                <!-- Pain Points Grid -->
+                <div class="cs-pain-points">
+                    <h3 class="content-heading">Key Pain Points</h3>
+                    <p class="content-text">
+                        Through initial discovery, I identified several core issues affecting our users. 
+                        Understanding these pain points helped prioritize what to solve first.
+                    </p>
+
+                    <div class="pain-points-grid">
+                        <div class="pain-point-item">
+                            <div class="pain-number">01</div>
+                            <h4 class="pain-title">Pain Point Title</h4>
+                            <p class="pain-description">Describe the specific user frustration. What happens? How often? What's the impact?</p>
+                            <span class="pain-evidence">Evidence: User interviews, analytics data</span>
+                        </div>
+                        <div class="pain-point-item">
+                            <div class="pain-number">02</div>
+                            <h4 class="pain-title">Pain Point Title</h4>
+                            <p class="pain-description">Describe another key issue. Be specific about what users said or showed through behavior.</p>
+                            <span class="pain-evidence">Evidence: Usability testing, support tickets</span>
+                        </div>
+                        <div class="pain-point-item">
+                            <div class="pain-number">03</div>
+                            <h4 class="pain-title">Pain Point Title</h4>
+                            <p class="pain-description">Third significant challenge. Connect it to broader user goals or business metrics.</p>
+                            <span class="pain-evidence">Evidence: Competitive analysis, surveys</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson">
-                    <h3>Key Takeaways</h3>
-                    <p>Summarize the most important insights or outcomes from this project that would be valuable for future work.</p>
+
+                <!-- Design Goals -->
+                <div class="cs-design-goals">
+                    <h3 class="content-heading">Design Goals</h3>
+                    <p class="content-text">
+                        Based on the problem definition, I established clear design principles to guide decision-making throughout the project.
+                    </p>
+
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <div class="goal-check">✓</div>
+                            <div class="goal-content">
+                                <h4>Goal 1: Reduce Friction</h4>
+                                <p>Why this goal? How will we measure success?</p>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-check">✓</div>
+                            <div class="goal-content">
+                                <h4>Goal 2: Increase Clarity</h4>
+                                <p>What specific UX principle supports this goal?</p>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-check">✓</div>
+                            <div class="goal-content">
+                                <h4>Goal 3: Build Trust</h4>
+                                <p>How does this connect to user needs discovered in research?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Placeholder: Problem Visualization -->
+                <div class="cs-visual-placeholder" data-visual="problem-visual">
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">🔍</span>
+                        <span class="placeholder-text">Problem Visualization</span>
+                        <span class="placeholder-hint">User journey map showing pain points, data visualization of the problem, or before/after comparison</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Project Navigation -->
-    <section class="project-navigation">
-        <div class="nav-projects">
-            <a href="#">← Previous Project</a>
-            <a href="#">Next Project →</a>
-        </div>
-    </section>
+        <!-- ============================================
+             RESEARCH - Discovery & Insights
+             ============================================ -->
+        <section class="cs-section cs-research" id="research">
+            <div class="cs-section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Research & Discovery</h2>
+                <p class="section-subtitle">Understanding users deeply — methods, findings, and "aha" moments</p>
+            </div>
+
+            <div class="cs-content-block">
+                <!-- Research Approach -->
+                <div class="cs-research-approach">
+                    <h3 class="content-heading">Research Approach</h3>
+                    <p class="content-text">
+                        <strong>Why these methods?</strong> Each research method was chosen intentionally to answer specific questions. 
+                        Here's how I structured the discovery phase to balance breadth and depth.
+                    </p>
+
+                    <div class="research-methods">
+                        <div class="method-card">
+                            <div class="method-header">
+                                <span class="method-icon">💬</span>
+                                <h4 class="method-title">User Interviews</h4>
+                            </div>
+                            <div class="method-details">
+                                <span class="method-stat">8 participants</span>
+                                <p class="method-why"><strong>Why:</strong> To understand emotional drivers and uncover unarticulated needs through open-ended conversation.</p>
+                            </div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-header">
+                                <span class="method-icon">📈</span>
+                                <h4 class="method-title">Data Analysis</h4>
+                            </div>
+                            <div class="method-details">
+                                <span class="method-stat">3 months of data</span>
+                                <p class="method-why"><strong>Why:</strong> To identify behavioral patterns at scale and validate assumptions from qualitative research.</p>
+                            </div>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-header">
+                                <span class="method-icon">🔬</span>
+                                <h4 class="method-title">Competitive Audit</h4>
+                            </div>
+                            <div class="method-details">
+                                <span class="method-stat">12 competitors</span>
+                                <p class="method-why"><strong>Why:</strong> To identify industry patterns, spot differentiation opportunities, and learn from others' approaches.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Placeholder: Research Process -->
+                <div class="cs-visual-placeholder" data-visual="research-process">
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">🗂️</span>
+                        <span class="placeholder-text">Research Process</span>
+                        <span class="placeholder-hint">Affinity map, synthesis wall, interview setup, or research timeline showing your process</span>
+                    </div>
+                </div>
+
+                <!-- Key Insights -->
+                <div class="cs-insights">
+                    <h3 class="content-heading">Key Insights</h3>
+                    <p class="content-text">
+                        After synthesizing research data, these insights emerged as the foundation for design decisions. 
+                        Each insight represents a pattern observed across multiple users and data sources.
+                    </p>
+
+                    <div class="insights-showcase">
+                        <div class="insight-card">
+                            <div class="insight-number">Insight 1</div>
+                            <h4 class="insight-title">Users need [specific capability]</h4>
+                            <p class="insight-body">
+                                Explain what you discovered. Include a representative user quote if available. 
+                                Connect the insight to observable behavior.
+                            </p>
+                            <div class="insight-quote">
+                                <span class="quote-mark">"</span>
+                                <p>Actual user quote that illustrates this insight beautifully.</p>
+                                <span class="quote-attribution">— User role/context</span>
+                            </div>
+                            <div class="insight-implication">
+                                <strong>Design implication:</strong> This means we should [specific design direction].
+                            </div>
+                        </div>
+
+                        <div class="insight-card">
+                            <div class="insight-number">Insight 2</div>
+                            <h4 class="insight-title">Current solutions fail because [reason]</h4>
+                            <p class="insight-body">
+                                Another key discovery. Show how this shifted your thinking or challenged initial assumptions.
+                            </p>
+                            <div class="insight-quote">
+                                <span class="quote-mark">"</span>
+                                <p>Supporting user quote from research.</p>
+                                <span class="quote-attribution">— User role/context</span>
+                            </div>
+                            <div class="insight-implication">
+                                <strong>Design implication:</strong> We need to prioritize [feature/approach].
+                            </div>
+                        </div>
+
+                        <div class="insight-card">
+                            <div class="insight-number">Insight 3</div>
+                            <h4 class="insight-title">The hidden constraint is [discovery]</h4>
+                            <p class="insight-body">
+                                Something unexpected that emerged from research. Show how good research reveals things you wouldn't have guessed.
+                            </p>
+                            <div class="insight-quote">
+                                <span class="quote-mark">"</span>
+                                <p>Quote that captures this surprise finding.</p>
+                                <span class="quote-attribution">— User role/context</span>
+                            </div>
+                            <div class="insight-implication">
+                                <strong>Design implication:</strong> This changes our approach to [specific area].
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personas (Optional) -->
+                <div class="cs-personas">
+                    <h3 class="content-heading">User Personas</h3>
+                    <p class="content-text">
+                        These personas represent archetypal users synthesized from research. They helped the team stay aligned on who we're designing for.
+                    </p>
+
+                    <!-- Visual Placeholder: Personas -->
+                    <div class="cs-visual-placeholder" data-visual="personas">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">👤</span>
+                            <span class="placeholder-text">User Personas</span>
+                            <span class="placeholder-hint">2-3 persona cards showing key user archetypes with goals, frustrations, and behaviors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SOLUTION - The Approach
+             ============================================ -->
+        <section class="cs-section cs-solution" id="solution">
+            <div class="cs-section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">The Solution</h2>
+                <p class="section-subtitle">From insights to action — the strategic approach and core features</p>
+            </div>
+
+            <div class="cs-content-block">
+                <!-- Solution Overview -->
+                <div class="cs-solution-overview">
+                    <h3 class="content-heading">Solution Overview</h3>
+                    <p class="content-text">
+                        Based on research insights, I developed a solution that addresses the core pain points while staying true to the design goals. 
+                        Here's how each major feature connects back to user needs.
+                    </p>
+
+                    <!-- Visual Placeholder: Solution Overview -->
+                    <div class="cs-visual-placeholder" data-visual="solution-overview">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🎯</span>
+                            <span class="placeholder-text">Solution Overview</span>
+                            <span class="placeholder-hint">High-level diagram showing the solution architecture, key user flows, or feature map</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features with Reasoning -->
+                <div class="cs-features">
+                    <h3 class="content-heading">Key Features</h3>
+                    <p class="content-text">
+                        Each feature was designed with specific user needs in mind. Here's the "why" behind major design decisions.
+                    </p>
+
+                    <div class="features-deep-dive">
+                        <!-- Feature 1 -->
+                        <div class="feature-block">
+                            <div class="feature-content">
+                                <div class="feature-badge">Feature 01</div>
+                                <h4 class="feature-title">Feature Name</h4>
+                                <div class="feature-rationale">
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">Problem it solves</span>
+                                        <p>Users couldn't [specific action] efficiently, causing [negative outcome].</p>
+                                    </div>
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">Why this approach</span>
+                                        <p>I chose [approach] because [reasoning based on research/principles]. Alternative approaches considered included [alternatives].</p>
+                                    </div>
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">UX principles applied</span>
+                                        <p>Progressive disclosure, recognition over recall, feedback loops</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-visual">
+                                <div class="cs-visual-placeholder small" data-visual="feature-1">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">📱</span>
+                                        <span class="placeholder-text">Feature Screen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="feature-block reverse">
+                            <div class="feature-content">
+                                <div class="feature-badge">Feature 02</div>
+                                <h4 class="feature-title">Feature Name</h4>
+                                <div class="feature-rationale">
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">Problem it solves</span>
+                                        <p>Describe the specific user problem this feature addresses.</p>
+                                    </div>
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">Why this approach</span>
+                                        <p>Explain the design thinking and trade-offs considered.</p>
+                                    </div>
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">UX principles applied</span>
+                                        <p>Consistency, affordance, error prevention</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-visual">
+                                <div class="cs-visual-placeholder small" data-visual="feature-2">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">📱</span>
+                                        <span class="placeholder-text">Feature Screen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="feature-block">
+                            <div class="feature-content">
+                                <div class="feature-badge">Feature 03</div>
+                                <h4 class="feature-title">Feature Name</h4>
+                                <div class="feature-rationale">
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">Problem it solves</span>
+                                        <p>Describe the specific user problem this feature addresses.</p>
+                                    </div>
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">Why this approach</span>
+                                        <p>Explain the design thinking and trade-offs considered.</p>
+                                    </div>
+                                    <div class="rationale-item">
+                                        <span class="rationale-label">UX principles applied</span>
+                                        <p>Flexibility, efficiency, aesthetic integrity</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature-visual">
+                                <div class="cs-visual-placeholder small" data-visual="feature-3">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">📱</span>
+                                        <span class="placeholder-text">Feature Screen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Flow -->
+                <div class="cs-user-flow">
+                    <h3 class="content-heading">User Flow</h3>
+                    <p class="content-text">
+                        The complete journey from entry point to goal completion. Each step was designed to reduce cognitive load and guide users naturally.
+                    </p>
+
+                    <!-- Visual Placeholder: User Flow -->
+                    <div class="cs-visual-placeholder" data-visual="user-flow">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🔄</span>
+                            <span class="placeholder-text">User Flow Diagram</span>
+                            <span class="placeholder-hint">Complete flow diagram showing key decision points, screens, and pathways</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             DESIGN - Process & Iteration
+             ============================================ -->
+        <section class="cs-section cs-design" id="design">
+            <div class="cs-section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Design Evolution</h2>
+                <p class="section-subtitle">From sketches to pixels — the iterative journey to the final design</p>
+            </div>
+
+            <div class="cs-content-block">
+                <!-- Early Exploration -->
+                <div class="cs-exploration">
+                    <h3 class="content-heading">Early Exploration</h3>
+                    <p class="content-text">
+                        Design is never linear. Here's how I explored different directions before converging on the final solution. 
+                        Each iteration taught us something new about what works and what doesn't.
+                    </p>
+
+                    <!-- Visual Placeholder: Sketches/Early Concepts -->
+                    <div class="cs-visual-placeholder" data-visual="early-exploration">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">✏️</span>
+                            <span class="placeholder-text">Early Sketches & Wireframes</span>
+                            <span class="placeholder-hint">Low-fidelity explorations, paper prototypes, or early wireframes showing different approaches considered</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Iterations -->
+                <div class="cs-iterations">
+                    <h3 class="content-heading">Design Iterations</h3>
+                    <p class="content-text">
+                        Each iteration was informed by user feedback and testing. Here's how the design evolved through key decision points.
+                    </p>
+
+                    <div class="iteration-timeline">
+                        <div class="iteration-item">
+                            <div class="iteration-marker">
+                                <span class="marker-label">V1</span>
+                            </div>
+                            <div class="iteration-content">
+                                <h4>Initial Concept</h4>
+                                <p>First approach based on initial assumptions. What we thought would work.</p>
+                                <div class="iteration-feedback">
+                                    <span class="feedback-label">User Feedback:</span>
+                                    <span class="feedback-text">"Quote or summary of what users said"</span>
+                                </div>
+                            </div>
+                            <div class="iteration-visual">
+                                <div class="cs-visual-placeholder tiny" data-visual="iteration-v1">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-text">V1 Screen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="iteration-item">
+                            <div class="iteration-marker">
+                                <span class="marker-label">V2</span>
+                            </div>
+                            <div class="iteration-content">
+                                <h4>Refined Direction</h4>
+                                <p>Changes made based on feedback. What we learned and how we pivoted.</p>
+                                <div class="iteration-feedback">
+                                    <span class="feedback-label">User Feedback:</span>
+                                    <span class="feedback-text">"Quote showing improvement or new issues discovered"</span>
+                                </div>
+                            </div>
+                            <div class="iteration-visual">
+                                <div class="cs-visual-placeholder tiny" data-visual="iteration-v2">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-text">V2 Screen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="iteration-item final">
+                            <div class="iteration-marker">
+                                <span class="marker-label">Final</span>
+                            </div>
+                            <div class="iteration-content">
+                                <h4>Final Design</h4>
+                                <p>The polished solution that addressed all major concerns while maintaining design integrity.</p>
+                                <div class="iteration-feedback success">
+                                    <span class="feedback-label">Validation:</span>
+                                    <span class="feedback-text">Achieved [metric] in final usability testing</span>
+                                </div>
+                            </div>
+                            <div class="iteration-visual">
+                                <div class="cs-visual-placeholder tiny" data-visual="iteration-final">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-text">Final Screen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Screens Deep Dive -->
+                <div class="cs-final-screens">
+                    <h3 class="content-heading">Final Screens</h3>
+                    <p class="content-text">
+                        A closer look at key screens and the reasoning behind specific design decisions.
+                    </p>
+
+                    <div class="screen-showcase">
+                        <!-- Screen 1 -->
+                        <div class="screen-item">
+                            <div class="screen-visual">
+                                <div class="cs-visual-placeholder medium" data-visual="screen-1">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">📱</span>
+                                        <span class="placeholder-text">Screen: [Name]</span>
+                                        <span class="placeholder-hint">High-fidelity screen with annotations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-annotations">
+                                <h4 class="screen-title">Screen Name</h4>
+                                <div class="annotation-list">
+                                    <div class="annotation">
+                                        <span class="annotation-number">1</span>
+                                        <p><strong>Element name:</strong> Why this design choice? What problem does it solve?</p>
+                                    </div>
+                                    <div class="annotation">
+                                        <span class="annotation-number">2</span>
+                                        <p><strong>Element name:</strong> Design rationale connecting to user needs.</p>
+                                    </div>
+                                    <div class="annotation">
+                                        <span class="annotation-number">3</span>
+                                        <p><strong>Element name:</strong> How this supports the overall user flow.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Screen 2 -->
+                        <div class="screen-item reverse">
+                            <div class="screen-visual">
+                                <div class="cs-visual-placeholder medium" data-visual="screen-2">
+                                    <div class="placeholder-content">
+                                        <span class="placeholder-icon">📱</span>
+                                        <span class="placeholder-text">Screen: [Name]</span>
+                                        <span class="placeholder-hint">High-fidelity screen with annotations</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-annotations">
+                                <h4 class="screen-title">Screen Name</h4>
+                                <div class="annotation-list">
+                                    <div class="annotation">
+                                        <span class="annotation-number">1</span>
+                                        <p><strong>Element name:</strong> Design decision explanation.</p>
+                                    </div>
+                                    <div class="annotation">
+                                        <span class="annotation-number">2</span>
+                                        <p><strong>Element name:</strong> User benefit or problem solved.</p>
+                                    </div>
+                                    <div class="annotation">
+                                        <span class="annotation-number">3</span>
+                                        <p><strong>Element name:</strong> Technical or accessibility consideration.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design System (Optional) -->
+                <div class="cs-design-system">
+                    <h3 class="content-heading">Design System</h3>
+                    <p class="content-text">
+                        Core visual components and guidelines that ensure consistency across the product.
+                    </p>
+
+                    <!-- Visual Placeholder: Design System -->
+                    <div class="cs-visual-placeholder" data-visual="design-system">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🎨</span>
+                            <span class="placeholder-text">Design System</span>
+                            <span class="placeholder-hint">Colors, typography, components, spacing system, and key UI patterns</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prototype -->
+                <div class="cs-prototype">
+                    <h3 class="content-heading">Interactive Prototype</h3>
+                    <p class="content-text">
+                        Experience the final design in action. This prototype demonstrates the core user flow.
+                    </p>
+
+                    <!-- Visual Placeholder: Prototype Embed -->
+                    <div class="cs-visual-placeholder large" data-visual="prototype">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">▶️</span>
+                            <span class="placeholder-text">Interactive Prototype</span>
+                            <span class="placeholder-hint">Embedded Figma prototype, video walkthrough, or clickable demo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONCLUSION - Results & Reflection
+             ============================================ -->
+        <section class="cs-section cs-conclusion" id="conclusion">
+            <div class="cs-section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Results & Reflection</h2>
+                <p class="section-subtitle">Measuring success and learning for the future</p>
+            </div>
+
+            <div class="cs-content-block">
+                <!-- Impact Metrics -->
+                <div class="cs-impact">
+                    <h3 class="content-heading">Impact</h3>
+                    <p class="content-text">
+                        How do we know the solution worked? Here are the key metrics and outcomes from this project.
+                    </p>
+
+                    <div class="impact-metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">+40%</div>
+                            <div class="metric-label">Task Completion</div>
+                            <p class="metric-context">Users could complete [task] more efficiently</p>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">-60%</div>
+                            <div class="metric-label">Support Tickets</div>
+                            <p class="metric-context">Fewer confusion-related support requests</p>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4.5/5</div>
+                            <div class="metric-label">User Satisfaction</div>
+                            <p class="metric-context">Post-launch user feedback score</p>
+                        </div>
+                    </div>
+
+                    <div class="qualitative-feedback">
+                        <h4>What Users Said</h4>
+                        <div class="feedback-quotes">
+                            <blockquote class="user-quote">
+                                <p>"This is exactly what I needed. Finally, I can [user goal] without [previous frustration]."</p>
+                                <cite>— User type/role</cite>
+                            </blockquote>
+                            <blockquote class="user-quote">
+                                <p>"The [specific feature] makes such a difference. I use it every day now."</p>
+                                <cite>— User type/role</cite>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learnings -->
+                <div class="cs-learnings">
+                    <h3 class="content-heading">What I Learned</h3>
+                    <p class="content-text">
+                        Every project teaches something new. Here are the key takeaways that I'll carry into future work.
+                    </p>
+
+                    <div class="learnings-grid">
+                        <div class="learning-card">
+                            <div class="learning-icon">💡</div>
+                            <h4>Insight Title</h4>
+                            <p>What specific skill, approach, or understanding did you gain? Be specific about how this changed your practice.</p>
+                        </div>
+                        <div class="learning-card">
+                            <div class="learning-icon">🔄</div>
+                            <h4>What I'd Do Differently</h4>
+                            <p>Honest reflection on what could have been better. Shows self-awareness and growth mindset.</p>
+                        </div>
+                        <div class="learning-card">
+                            <div class="learning-icon">🚀</div>
+                            <h4>Next Steps</h4>
+                            <p>If this project continued, what would be the priorities? What questions remain unanswered?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Closing Statement -->
+                <div class="cs-closing">
+                    <div class="closing-content">
+                        <p class="closing-text">
+                            This project reinforced my belief that great design comes from deep user understanding. 
+                            By staying curious and iterating based on real feedback, we created something that truly helps people.
+                        </p>
+                        <p class="closing-cta">
+                            Thanks for reading! Want to discuss this project or work together?
+                        </p>
+                        <a href="mailto:pham.jason@outlook.com" class="contact-btn">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Navigation -->
+        <section class="cs-project-nav">
+            <div class="nav-projects-grid">
+                <a href="#" class="nav-project prev">
+                    <span class="nav-direction">← Previous</span>
+                    <span class="nav-project-name">Previous Project Name</span>
+                </a>
+                <a href="#" class="nav-project next">
+                    <span class="nav-direction">Next →</span>
+                    <span class="nav-project-name">Next Project Name</span>
+                </a>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
-                <p class="footer-location">made in canada</p>
+                <p class="footer-location">made in canada 🍁</p>
                 <div class="footer-contact">
-                    <a href="about.html" class="footer-contact-link">About</a>
+                    <a href="about.html" class="footer-contact-link">about</a>
                     <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
                     <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
                 </div>
@@ -303,7 +955,9 @@
             </div>
         </div>
     </footer>
+
     <script src="main.js"></script>
     <script src="transitions.js"></script>
+    <script src="case-study.js"></script>
 </body>
 </html>

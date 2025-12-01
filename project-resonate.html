@@ -3,2111 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case Study - Resonate">
-    <title>Resonate: Vocal Confidence Program</title>
+    <meta name="description" content="Resonate Case Study - Helping beginner singers build confidence through guided practice">
+    <title>Resonate | Case Study</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="case-study-styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/branding/sleepycat-256x256.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/branding/sleepycat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #0a0e1a;
-            color: #e2e8f0;
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            scroll-padding-top: 90px;
-        }
-
-        nav,
-        section,
-        footer {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-
-        /* Hero & Project Header */
-        .case-study-hero {
-            background-image: linear-gradient(135deg, rgba(12, 3, 24, 0.96) 0%, rgba(24, 9, 42, 0.92) 50%, rgba(12, 3, 24, 0.96) 100%), url('assets/images/resonate/Resonate%20Mockup.png');
-            background-size: cover, cover;
-            background-position: center, center;
-            background-repeat: no-repeat;
-            position: relative;
-            overflow: hidden;
-            padding: 9rem 2rem 6rem;
-            margin-bottom: 4rem;
-        }
-
-        .case-study-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(167, 139, 250, 0.12) 0%, transparent 60%),
-                        radial-gradient(circle at 70% 80%, rgba(147, 51, 234, 0.08) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-inner {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            align-items: flex-start;
-        }
-
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .project-eyebrow {
-            color: #d8b4fe;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-        }
-
-        .project-title {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 2px 30px rgba(167, 139, 250, 0.4);
-        }
-
-        .hero-lede {
-            font-size: 1.4rem;
-            color: #cbd5e1;
-            line-height: 1.8;
-            max-width: 640px;
-        }
-
-        .hero-metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.75rem;
-            width: 100%;
-        }
-
-        .hero-metric {
-            padding: 1.75rem;
-            background: rgba(38, 28, 58, 0.72);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            border: 1px solid rgba(167, 139, 250, 0.38);
-            box-shadow: 0 6px 28px rgba(8, 4, 15, 0.6);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-        }
-
-        .hero-metric:hover {
-            background: rgba(44, 30, 72, 0.92);
-            border-color: rgba(196, 181, 253, 0.55);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 44px rgba(167, 139, 250, 0.38);
-        }
-
-        .metric-icon {
-            font-size: 2rem;
-            line-height: 1;
-            color: #d8b4fe;
-        }
-
-        .metric-label {
-            display: block;
-            color: #c4b5fd;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .metric-value {
-            color: #ffffff;
-            font-size: 1.55rem;
-            font-weight: 600;
-        }
-
-        .metric-note {
-            color: #e9d5ff;
-            font-size: 0.98rem;
-            line-height: 1.6;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .hero-actions a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.5rem;
-            border-radius: 999px;
-            background: rgba(167, 139, 250, 0.2);
-            color: #ffffff;
-            font-weight: 600;
-            border: 1px solid rgba(196, 181, 253, 0.4);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .hero-actions a:hover {
-            background: rgba(167, 139, 250, 0.35);
-            border-color: rgba(196, 181, 253, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .hero-meta-list {
-            list-style: none;
-            margin: 0;
-            padding: 1.75rem;
-            display: grid;
-            gap: 1.1rem;
-            background: rgba(32, 24, 52, 0.75);
-            border: 1px solid rgba(167, 139, 250, 0.38);
-            border-radius: 20px;
-            box-shadow: 0 12px 34px rgba(8, 4, 15, 0.55);
-        }
-
-        .hero-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .meta-label {
-            color: #d8b4fe;
-        }
-
-        .meta-value {
-            color: #e9d5ff;
-        }
-
-        .hero-visual {
-            display: none;
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #0a0e1a 0%, #0f0f0f 100%);
-            position: relative;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 20px rgba(147, 51, 234, 0.3);
-            text-align: left;
-        }
-
-        .section h3 {
-            color: #ffffff;
-            text-align: left;
-        }
-
-        .section h4 {
-            color: #ffffff;
-        }
-
-        .section-intro {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            max-width: 1200px;
-            margin: 0.5rem 0 3rem 0;
-            line-height: 1.7;
-            text-align: left;
-        }
-
-        .section-note {
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 1.125rem;
-            color: #cbd5e1;
-            padding: 1.5rem;
-            background: rgba(30, 41, 59, 0.4);
-            border-radius: 12px;
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-note strong {
-            color: #a78bfa;
-        }
-
-        .snapshot-section {
-            position: relative;
-            padding: 5rem 2rem 5.5rem;
-            background: linear-gradient(180deg, #0f0624 0%, #160a35 100%);
-            scroll-margin-top: 140px;
-            overflow: visible;
-        }
-
-        .snapshot-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            gap: 2.5rem;
-        }
-
-        .snapshot-heading {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: left;
-        }
-
-        .snapshot-badge {
-            align-self: flex-start;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.45rem 0.95rem;
-            border-radius: 999px;
-            background: rgba(167, 139, 250, 0.2);
-            border: 1px solid rgba(167, 139, 250, 0.42);
-            color: #d8b4fe;
-            font-size: 0.8rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .snapshot-heading h2 {
-            font-size: 2.35rem;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .snapshot-heading p {
-            font-size: 1.1rem;
-            color: #d8b4fe;
-            max-width: 760px;
-            line-height: 1.7;
-        }
-
-        .snapshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .snapshot-card {
-            padding: 2.5rem;
-            background: rgba(42, 24, 70, 0.82);
-            border: 1px solid rgba(216, 180, 254, 0.5);
-            border-radius: 20px;
-            box-shadow: 0 16px 42px rgba(15, 6, 32, 0.55);
-        }
-
-        .snapshot-card h3 {
-            font-size: 1.35rem;
-            color: #ffffff;
-            margin-bottom: 1.25rem;
-        }
-
-        .snapshot-card ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 1rem;
-        }
-
-        .snapshot-card li {
-            color: #e9d5ff;
-            font-size: 1rem;
-            line-height: 1.65;
-            position: relative;
-            padding-left: 1.85rem;
-        }
-
-        .snapshot-card li::before {
-            content: "•";
-            position: absolute;
-            left: 0.6rem;
-            color: #d8b4fe;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .snapshot-points {
-            display: grid;
-            gap: 1.15rem;
-        }
-
-        .snapshot-point {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.25rem 1.35rem;
-            background: rgba(48, 26, 82, 0.7);
-            border: 1px solid rgba(216, 180, 254, 0.5);
-            border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(12, 4, 26, 0.55);
-        }
-
-        .snapshot-point-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(216, 180, 254, 0.32), rgba(129, 140, 248, 0.12));
-            color: #f8e7ff;
-            font-size: 1.35rem;
-            border: 1px solid rgba(216, 180, 254, 0.55);
-        }
-
-        .snapshot-point-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .snapshot-point-content h4 {
-            margin: 0;
-            font-size: 1.08rem;
-            color: #ffffff;
-        }
-
-        .snapshot-point-content p {
-            margin: 0;
-            color: #e9d5ff;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        .step-list {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .step-item {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(167, 139, 250, 0.2);
-            border: 1px solid rgba(167, 139, 250, 0.42);
-            color: #c4b5fd;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 0.2rem;
-        }
-
-        .step-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .step-content strong {
-            color: #ffffff;
-            font-size: 1.05rem;
-        }
-
-        .step-content span {
-            color: #e9d5ff;
-            font-size: 0.96rem;
-            line-height: 1.7;
-        }
-
-        /* Cards & Grids */
-        .features-grid,
-        .goals-grid,
-        .insight-cards-interactive,
-        .system-details-grid,
-        .reflection-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .problem-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Unified card surface styling */
-        .feature-card,
-        .goal-card,
-        .problem-card,
-        .insight-card,
-        .system-detail-card,
-        .reflection-card,
-        .test-insight,
-        .impact-card,
-        .data-card,
-        .improvement-item,
-        .secondary-stat,
-        .solution-tabs,
-        .prototype-container,
-        .tab-panel-visual,
-        .test-wins > .test-insights-grid .test-insight,
-        .test-iterations > .test-improvements .improvement-item {
-            background: rgba(42, 24, 70, 0.74) !important;
-            border: 1px solid rgba(192, 132, 252, 0.42) !important;
-            box-shadow: 0 14px 40px rgba(12, 4, 26, 0.52) !important;
-        }
-
-        .feature-card:hover,
-        .goal-card:hover,
-        .problem-card:hover,
-        .insight-card:hover,
-        .system-detail-card:hover,
-        .reflection-card:hover,
-        .test-insight:hover,
-        .impact-card:hover,
-        .improvement-item:hover {
-            background: rgba(48, 28, 82, 0.92) !important;
-            border-color: rgba(216, 180, 254, 0.65) !important;
-            box-shadow: 0 22px 60px rgba(24, 10, 42, 0.6) !important;
-        }
-
-        .feature-icon,
-        .problem-icon,
-        .insight-icon,
-        .detail-icon,
-        .reflection-icon,
-        .insight-icon-badge,
-        .metric-icon,
-        .highlight-list li:before,
-        .test-badge,
-        .test-badge-iterate {
-            color: #d8b4fe !important;
-            filter: drop-shadow(0 0 18px rgba(216, 180, 254, 0.45));
-        }
-
-        .problem-stat,
-        .meta-label,
-        .test-badge,
-        .test-badge-iterate {
-            color: #d8b4fe !important;
-        }
-
-        .goal-card,
-        .test-insight,
-        .improvement-item {
-            backdrop-filter: blur(8px);
-        }
-
-        .feature-card h3,
-        .problem-card h3,
-        .goal-content h3,
-        .insight-card h3,
-        .system-detail-card h3,
-        .reflection-card h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p,
-        .problem-card p,
-        .goal-content p,
-        .insight-card p,
-        .system-detail-card p,
-        .reflection-card p {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        .problem-stat {
-            color: #a78bfa !important;
-            font-style: italic;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Data Cards */
-        .data-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .data-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 2rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .data-card:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(147, 51, 234, 0.5);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(147, 51, 234, 0.4);
-        }
-
-        .data-card strong {
-            display: block;
-            font-size: 2.5rem;
-            color: #a78bfa;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
-        }
-
-        .data-card span {
-            color: #cbd5e1;
-            font-size: 0.9rem;
-        }
-
-        /* Goal Cards with Images */
-        .goal-card {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(150deg, rgba(30, 41, 59, 0.85) 0%, rgba(76, 29, 149, 0.45) 100%);
-            border: 1px solid rgba(147, 51, 234, 0.25);
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-        }
-
-        .goal-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(147, 51, 234, 0.35), transparent 55%);
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
-        }
-
-        .goal-card img {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            transition: all 0.3s ease;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            position: relative;
-            z-index: 1;
-        }
-        .goals-grid .goal-card:first-child img {
-            object-position: center;
-        }
-
-        .goals-grid .goal-card:nth-child(3) img {
-            object-position: center 25%;
-        }
-
-        .goal-card:hover img {
-            box-shadow: 0 10px 40px rgba(147, 51, 234, 0.4);
-        }
-
-        .goal-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 26px 60px rgba(15, 23, 42, 0.55);
-            border-color: rgba(147, 51, 234, 0.55);
-        }
-
-        .goal-card:hover::after {
-            opacity: 1;
-        }
-
-        .goal-content {
-            position: relative;
-            z-index: 1;
-            padding: 0 1.75rem 2.25rem;
-        }
-
-        .goal-content h3 {
-            font-size: 1.5rem;
-            letter-spacing: 0.01em;
-            margin-bottom: 0.75rem;
-            color: #f8fafc;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .goal-content h3::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(148, 163, 184, 0.2), transparent 70%);
-        }
-
-        .goal-content p {
-            color: #cbd5e1;
-            line-height: 1.75;
-            font-size: 1.02rem;
-        }
-
-        /* Quotes & Blockquotes */
-        .insight-card blockquote,
-        blockquote {
-            font-size: 1.125rem;
-            font-style: italic;
-            color: #a78bfa;
-            margin: 1.5rem 0;
-            padding-left: 1.5rem;
-            border-left: 3px solid #a78bfa;
-        }
-
-        .insight-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .insight-card img {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            margin-top: 1rem;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-        }
-
-        /* Artifact Showcase */
-        .artifact-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .artifact-item img {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(147, 51, 234, 0.2);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-        }
-
-        .artifact-item img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(147, 51, 234, 0.4);
-        }
-
-        .artifact-caption h3 {
-            color: #ffffff;
-            margin-bottom: 0.75rem;
-        }
-
-        .artifact-caption p {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-
-        /* Tabs */
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .solution-card {
-            background: linear-gradient(150deg, rgba(32, 24, 52, 0.78) 0%, rgba(20, 11, 36, 0.72) 100%);
-            border: 1px solid rgba(192, 132, 252, 0.35);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 18px 42px rgba(12, 4, 26, 0.45);
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            height: 100%;
-        }
-
-        .solution-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .solution-card-icon {
-            display: inline-flex;
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(216, 180, 254, 0.32), rgba(124, 58, 237, 0.18));
-            border: 1px solid rgba(216, 180, 254, 0.45);
-            color: #f8e7ff;
-            font-size: 1.6rem;
-            filter: drop-shadow(0 0 18px rgba(216, 180, 254, 0.45));
-        }
-
-        .solution-card h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            color: #ffffff;
-        }
-
-        .solution-card p {
-            color: #d8b4fe;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .solution-card-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            gap: 0.65rem;
-        }
-
-        .solution-card-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            color: #e9d5ff;
-            line-height: 1.6;
-        }
-
-        .solution-card-list li::before {
-            content: "★";
-            position: absolute;
-            left: 0;
-            color: #d8b4fe;
-            font-size: 0.9rem;
-        }
-
-        .solution-card-media {
-            margin-top: auto;
-            border-radius: 16px;
-            border: 1px solid rgba(192, 132, 252, 0.4);
-            overflow: hidden;
-            box-shadow: 0 16px 36px rgba(12, 4, 26, 0.45);
-            cursor: pointer;
-        }
-
-        .solution-card-media img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            aspect-ratio: 4 / 3;
-            object-position: center 10%;
-        }
-
-        /* Prototype Container */
-        .prototype-container {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            border-radius: 16px;
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .prototype-container img {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-        }
-
-        .prototype-note {
-            margin-top: 1.5rem;
-            color: #a78bfa;
-            font-style: italic;
-        }
-
-        /* Design System */
-        .system-hero {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .system-hero img {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(147, 51, 234, 0.2);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-        }
-
-        .system-hero-label {
-            position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            color: #a78bfa;
-        }
-
-        .system-detail-card img {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            margin-top: 1rem;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-        }
-
-        /* Testing */
-        .testing-results {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .testing-results > div {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .test-insights-grid {
-            display: grid;
-            gap: 1.5rem;
-            flex: 1;
-        }
-
-        .test-improvements {
-            display: grid;
-            gap: 1.5rem;
-            flex: 1;
-            align-content: stretch;
-            justify-items: stretch;
-        }
-
-        .test-insight {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .test-insight:hover {
-            border-color: rgba(147, 51, 234, 0.5);
-            transform: translateX(10px);
-        }
-
-        .insight-icon-badge {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .test-insight h4 {
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .test-insight p {
-            color: #cbd5e1;
-            font-style: italic;
-        }
-
-        .improvement-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            text-align: left;
-            margin-bottom: 0;
-            padding: 1.75rem 1.5rem;
-            background: rgba(15, 23, 42, 0.6);
-            border-radius: 12px;
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            width: 100%;
-            height: 100%;
-        }
-
-        .improvement-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #a78bfa;
-            min-width: 3rem;
-        }
-
-        .improvement-item p {
-            color: #cbd5e1;
-            margin: 0;
-            max-width: none;
-            text-align: left;
-        }
-
-        /* Impact Metrics */
-        .impact-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .impact-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .impact-card:hover {
-            background: rgba(15, 23, 42, 0.9);
-            border-color: rgba(147, 51, 234, 0.5);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(147, 51, 234, 0.3);
-        }
-
-        .impact-card .metric-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-card .metric-value {
-            font-size: 2.75rem;
-            font-weight: 700;
-            color: #a78bfa;
-            text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
-            margin: 0 auto 1rem;
-            max-width: 100%;
-            display: block;
-            text-align: center;
-            line-height: 1.1;
-            padding-bottom: 0.2rem;
-        }
-
-        .impact-label {
-            font-size: 1.125rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .impact-context {
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        .impact-secondary {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 3rem;
-        }
-
-        .secondary-stat {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-            color: #cbd5e1;
-        }
-
-        .secondary-stat strong {
-            color: #a78bfa;
-        }
-
-        /* Project Navigation */
-        .project-navigation {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #050a14 0%, #0f0f0f 100%);
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-projects {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-projects a {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            transition: all 0.3s ease;
-            display: block;
-            font-size: 1.25rem;
-        }
-
-        .nav-projects a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(147, 51, 234, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(147, 51, 234, 0.4);
-        }
-
-        .prototype-embed-section {
-            position: relative;
-            z-index: 1;
-            margin-top: 6rem;
-        }
-
-        .prototype-embed-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 65%;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(147, 51, 234, 0.35);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(147, 51, 234, 0.25);
-            background: rgba(20, 15, 35, 0.6);
-        }
-
-        .prototype-embed-wrapper iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                scroll-snap-type: none;
-            }
-
-            .case-study-hero {
-                padding: 7rem 1.5rem 8rem;
-                margin-top: 5rem;
-                overflow: visible;
-                min-height: auto;
-            }
-
-            .hero-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .snapshot-inner {
-                gap: 2rem;
-            }
-
-            .snapshot-heading h2 {
-                font-size: 1.9rem;
-            }
-
-            .snapshot-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .snapshot-card {
-                padding: 2rem;
-            }
-
-            .project-title {
-                font-size: 2rem;
-            }
-
-            .hero-lede {
-                font-size: 1rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .testing-results,
-            .nav-projects,
-            .tab-panel-visual,
-            .features-grid,
-            .goals-grid,
-            .insight-cards-interactive,
-            .system-details-grid,
-            .data-cards,
-            .artifact-showcase,
-            .impact-metrics {
-                grid-template-columns: 1fr;
-            }
-
-            .problem-cards-grid,
-            .reflection-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .impact-secondary {
-                flex-direction: column;
-            }
-
-            .hero-summary {
-                font-size: 1rem;
-                padding: 0 0.5rem;
-            }
-
-            .project-meta-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tab-controls {
-                flex-direction: column;
-            }
-
-            .prototype-embed-wrapper {
-                padding-top: 120%;
-            }
-
-            .snapshot-point {
-                grid-template-columns: auto 1fr;
-            }
-
-            .snapshot-point-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 1.2rem;
-            }
-
-            .snapshot-point-content h4 {
-                font-size: 1rem;
-            }
-
-            .snapshot-point-content p {
-                font-size: 0.95rem;
-            }
-        }
-
-        .snapshot-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .snapshot-step {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.6rem;
-            background: rgba(34, 18, 58, 0.85);
-            border: 1px solid rgba(216, 180, 254, 0.5);
-            border-radius: 18px;
-            box-shadow: 0 14px 36px rgba(12, 4, 26, 0.55);
-            overflow: hidden;
-        }
-
-        .snapshot-step::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, rgba(167, 139, 250, 0.75), rgba(124, 58, 237, 0.45));
-        }
-
-        .snapshot-step-icon {
-            align-self: flex-start;
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(216, 180, 254, 0.34), rgba(126, 58, 237, 0.16));
-            border: 1px solid rgba(216, 180, 254, 0.55);
-            color: #f8e7ff;
-            font-weight: 600;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body {
-            display: flex;
-            flex-direction: column;
-            gap: 0.45rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .snapshot-step-body h4 {
-            margin: 0;
-            font-size: 1.08rem;
-            color: #ffffff;
-        }
-
-        .snapshot-step-body p {
-            margin: 0;
-            color: #e9d5ff;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-
-        @media (max-width: 768px) {
-            .snapshot-steps {
-                grid-template-columns: 1fr;
-            }
-
-            .snapshot-step {
-                padding: 1.4rem;
-            }
-
-            .snapshot-step-icon {
-                width: 42px;
-                height: 42px;
-                font-size: 1rem;
-            }
-
-            .snapshot-step-body h4 {
-                font-size: 1.02rem;
-            }
-
-            .snapshot-step-body p {
-                font-size: 0.95rem;
-            }
-        }
-
-        .testing-results .test-badge,
-        .testing-results .test-badge-iterate {
-            color: #ffffff !important;
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+        /* Resonate-specific accent - Purple/Violet theme throughout */
+        :root {
+            --cs-story-accent: #a78bfa;
+            --cs-challenge-accent: #ef4444;
+            --cs-research-accent: #a78bfa;
+            --cs-solution-accent: #a78bfa;
+            --cs-design-accent: #a78bfa;
+            --cs-conclusion-accent: #a78bfa;
+            
+            /* Project theme - Purple primary */
+            --cs-primary: #a78bfa;
+            --cs-primary-soft: rgba(167, 139, 250, 0.1);
+            --cs-primary-glow: rgba(167, 139, 250, 0.4);
         }
     </style>
 </head>
-<body>
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-left">
-                    <a href="index.html" class="nav-logo" data-icon="sleepy-cat">
-                        <span class="nav-logo-text">
-                            <span class="nav-logo-graphic" aria-hidden="true">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                            <span class="sr-only">Home</span>
+<body class="case-study-page" data-project="resonate">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fun Cat Navigation -->
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/material-symbols--home-rounded.svg" alt="">
                         </span>
-                        <span class="nav-logo-icon" aria-hidden="true">
-                            <span class="nav-logo-graphic nav-logo-graphic--compact">
-                                <img src="assets/images/branding/sleepycat.png" alt="">
-                            </span>
-                        </span>
+                        <span class="menu-label">home</span>
                     </a>
-                    <a href="about.html" class="nav-link" data-icon="👤">
-                        <span class="nav-link-text">about</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/tdesign--user-filled.svg" alt=""></span>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
                     </a>
                 </div>
-                <div class="nav-right">
-                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="nav-link" data-icon="📄" target="_blank" rel="noopener">
-                        <span class="nav-link-text">resume</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/mingcute--paper-fill.svg" alt=""></span>
-                    </a>
-                    <a href="mailto:pham.jason@outlook.com" class="nav-link" data-icon="✉️">
-                        <span class="nav-link-text">contact</span>
-                        <span class="nav-link-icon"><img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt=""></span>
-                    </a>
-                </div>
+                
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
             </div>
         </div>
     </nav>
 
-    <section class="case-study-hero">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <p class="project-eyebrow">BET350 Capstone · September to December 2023</p>
-                <h1 class="project-title">Resonate: helping beginner singers practice with confidence</h1>
-                <p class="hero-lede">I worked with a cross-disciplinary team to turn scattered vocal coaching into a supportive mobile companion. We focused on motivation, feedback, and tone so anxious singers could keep showing up without feeling judged.</p>
+    <!-- Decorative Floating Elements -->
+    <div class="cs-decorative-elements" aria-hidden="true">
+        <span class="floating-element" aria-hidden="true">🎵</span>
+        <span class="floating-element" aria-hidden="true">🎤</span>
+    </div>
 
-                <div class="hero-metrics-grid">
-                    <div class="hero-metric">
-                        <span class="metric-icon">🎯</span>
-                        <span class="metric-label">Pilot ready</span>
-                        <span class="metric-value">4-week curriculum</span>
-                        <p class="metric-note">Packaged onboarding scripts, motion cues, and practice loops so a vocal coach can run the pilot without us in the room.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">🗣️</span>
-                        <span class="metric-label">Discovery reach</span>
-                        <span class="metric-value">27 voices</span>
-                        <p class="metric-note">Surveys and deep dives with beginners and coaches painted a full picture of the motivation highs and lows.</p>
-                    </div>
-                    <div class="hero-metric">
-                        <span class="metric-icon">♻️</span>
-                        <span class="metric-label">Iteration depth</span>
-                        <span class="metric-value">5 prototype rounds</span>
-                        <p class="metric-note">We worked through paper, mid-fi, and hi-fi loops to dial in the copy, pacing, and feedback moments singers needed.</p>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="https://www.figma.com/proto/WRYzjTBUWyrOSqyB0n17Jv/hi-fi-showcase?node-id=3-1952&viewport=499%2C379%2C0.13&t=4at8Wy6ZvNI5Xbfu-0&scaling=contain&content-scaling=fixed&starting-point-node-id=3%3A1952" target="_blank" rel="noopener">View clickable prototype ↗</a>
-                    <a href="#snapshot">Jump to snapshot ↓</a>
-                </div>
+    <!-- Floating Section Navigation -->
+    <nav class="case-study-nav" id="caseStudyNav">
+        <!-- Current section pill -->
+        <div class="nav-current-section" id="navCurrentSection">
+            <div class="nav-progress-ring">
+                <svg viewBox="0 0 40 40">
+                    <circle class="progress-ring-bg" cx="20" cy="20" r="16"/>
+                    <circle class="progress-ring-circle" cx="20" cy="20" r="16"/>
+                </svg>
+                <span class="progress-percentage">1</span>
             </div>
+            <span class="nav-current-label">Overview</span>
+            <span class="nav-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </span>
+        </div>
+        <!-- Section list popup -->
+        <ul class="nav-section-list">
+            <li><a href="#overview" class="nav-section-link active" data-section="overview"><span class="nav-section-num">1</span><span class="nav-label">Overview</span></a></li>
+            <li><a href="#story" class="nav-section-link" data-section="story"><span class="nav-section-num">2</span><span class="nav-label">Story</span></a></li>
+            <li><a href="#challenge" class="nav-section-link" data-section="challenge"><span class="nav-section-num">3</span><span class="nav-label">Challenge</span></a></li>
+            <li><a href="#research" class="nav-section-link" data-section="research"><span class="nav-section-num">4</span><span class="nav-label">Research</span></a></li>
+            <li><a href="#solution" class="nav-section-link" data-section="solution"><span class="nav-section-num">5</span><span class="nav-label">Solution</span></a></li>
+            <li><a href="#design" class="nav-section-link" data-section="design"><span class="nav-section-num">6</span><span class="nav-label">Design</span></a></li>
+            <li><a href="#reflection" class="nav-section-link" data-section="reflection"><span class="nav-section-num">7</span><span class="nav-label">Reflection</span></a></li>
+        </ul>
+    </nav>
 
-            <div class="hero-visual">
-                <div class="hero-visual-frame">
-                    <img src="assets/images/resonate/Resonate%20Mockup.png" alt="Resonate mobile practice companion mockups">
+    <main class="case-study-main" id="main" role="main">
+        <!-- Hero Section -->
+        <section class="cs-hero" id="overview" aria-labelledby="hero-title">
+            <div class="hero-content-wrapper">
+                <div class="hero-badge">
+                    <span class="badge-icon">🎤</span>
+                    <span class="badge-text">BET350 · Academic Project</span>
+                    <span class="badge-divider">·</span>
+                    <span class="badge-time">8 min read</span>
                 </div>
-                <ul class="hero-meta-list">
-                    <li class="hero-meta-item">
+
+                <h1 class="hero-title">Building <span class="hero-highlight">Confidence</span>, Not Just Skills</h1>
+                
+                <p class="hero-tagline">
+                    My friends wanted to sing but were too terrified to practice. This personal frustration 
+                    with the "talent myth" led to Resonate—a tool designed to make failure feel safe.
+                </p>
+
+                <div class="hero-meta-grid">
+                    <div class="meta-item">
                         <span class="meta-label">Role</span>
-                        <span class="meta-value">UX designer and researcher guiding discovery through launch-readiness</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">Product Designer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">Sept – Dec 2023</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Team</span>
-                        <span class="meta-value">3 researchers and 3 designers partnering closely with vocal coaches</span>
-                    </li>
-                    <li class="hero-meta-item">
-                        <span class="meta-label">Contributions</span>
-                        <span class="meta-value">Discovery leadership, opportunity framing, interaction design, usability testing, pilot enablement</span>
-                    </li>
-                    <li class="hero-meta-item">
+                        <span class="meta-value">6 Members</span>
+                    </div>
+                    <div class="meta-item">
                         <span class="meta-label">Tools</span>
-                        <span class="meta-value">Figma, FigJam, Maze, Notion</span>
-                    </li>
-                </ul>
-                <p class="hero-note">Delivered as the capstone project for BET350: Applied Innovation.</p>
+                        <span class="meta-value">Figma</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section class="snapshot-section" id="snapshot">
-        <div class="snapshot-inner">
-            <div class="snapshot-heading">
-                <span class="snapshot-badge">Quick read</span>
-                <h2>Confidence Snapshot</h2>
-                <p>Resonate turns vocal coaching into daily wins. We centered the work on emotional safety, accessible guidance, and proof that beginners could sustain practice without a live coach beside them.</p>
+            <div class="hero-mockup">
+                <div class="mockup-wrapper">
+                    <img src="assets/images/resonate/Resonate Mockup.png" alt="Resonate App Mockup" class="mockup-image">
+                </div>
+                <p class="visual-caption">The Resonate mobile app interface</p>
             </div>
-            <div class="snapshot-grid">
-                <div class="snapshot-card">
-                    <h3>🎤 What singers needed</h3>
-                    <div class="snapshot-points">
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">👥</span>
-                            <div class="snapshot-point-content">
-                                <h4>The singers</h4>
-                                <p>Busy beginners squeezing practice between work, school, and roommates who don't love vocal warmups.</p>
+
+            <div class="hero-tldr">
+                <div class="tldr-label">
+                    <span class="tldr-icon">⚡</span>
+                    <span>TL;DR</span>
+                </div>
+                <div class="tldr-content">
+                    <p>
+                        Beginner singers don't need better tools—they need <strong>emotional safety</strong>. 
+                        Resonate removes the social pressure from singing through guided loops, visual feedback, 
+                        and encouraging copy. The result: users described it as "motivating" and "easy to follow."
+                    </p>
+                </div>
+                <div class="tldr-metrics">
+                    <div class="tldr-metric">
+                        <span class="metric-value">27</span>
+                        <span class="metric-label">Voices Heard</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">78%</span>
+                        <span class="metric-label">Wanted Reminders</span>
+                    </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">5</span>
+                        <span class="metric-label">Prototype Rounds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="cs-section cs-story" id="story" data-accent="story">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">The Story</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="story-opening">
+                    <p class="lead-text">
+                        "Every video is from a pro. I need someone to tell me when my version is <em>good enough</em>."
+                    </p>
+                </div>
+
+                <div class="story-narrative">
+                    <p>
+                        The project started from a simple observation: people who love singing rarely practice. 
+                        Not because of time or ability, but because of <span class="story-highlight">fear</span>. Fear of sounding bad. 
+                        Fear of reinforcing mistakes. Fear of being judged, even by themselves.
+                    </p>
+                    <p>
+                        Through conversations with 27 beginner singers, I uncovered a pattern. The moment 
+                        practice felt <span class="story-highlight">"exposed"</span>, they stopped. YouTube tutorials from professionals only 
+                        made them feel worse. They needed <span class="story-highlight">encouragement</span>, not criticism.
+                    </p>
+                </div>
+
+                <blockquote class="story-quote">
+                    <p>"I stop when I feel silly. Even alone, I judge myself."</p>
+                    <cite>— Interview Participant</cite>
+                </blockquote>
+
+                <div class="story-insight">
+                    <div class="insight-label">The Insight</div>
+                    <p>
+                        Beginners don't need better tools. They need <span class="story-highlight">emotional safety</span>. 
+                        <strong>Skill-building and confidence-building are inseparable.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <span class="placeholder-icon">🎵</span>
+                    <p class="placeholder-label">Affinity map or interview synthesis visualization</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenge Section -->
+        <section class="cs-section cs-challenge" id="challenge" data-accent="challenge">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">The Challenge</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="challenge-statement">
+                    <div class="hmw-label">How Might We</div>
+                    <p class="hmw-question">
+                        Help beginner singers overcome the fear of judgment and build a consistent, 
+                        private practice routine?
+                    </p>
+                </div>
+
+                <div class="design-pillars">
+                    <h3>Design Pillars</h3>
+                    <div class="pillars-grid">
+                        <div class="pillar-card">
+                            <span class="pillar-number">01</span>
+                            <h4>Make Practice Feel "Safe"</h4>
+                            <p>Remove social pressure and judgment from the experience entirely.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <span class="pillar-number">02</span>
+                            <h4>Provide Instant Feedback</h4>
+                            <p>Objective, visual feedback that doesn't require musical knowledge.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <span class="pillar-number">03</span>
+                            <h4>Visualize Invisible Progress</h4>
+                            <p>Show growth over time without punishing missed days.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-cycle">
+                    <h3>The Confidence Cycle We Needed to Break</h3>
+                    <div class="cycle-steps">
+                        <div class="cycle-step">
+                            <span class="cycle-icon">❓</span>
+                            <h4>No Feedback</h4>
+                            <p>"Am I doing this right?"</p>
+                        </div>
+                        <div class="cycle-step">
+                            <span class="cycle-icon">😰</span>
+                            <h4>Low Confidence</h4>
+                            <p>Fear of reinforcing mistakes</p>
+                        </div>
+                        <div class="cycle-step">
+                            <span class="cycle-icon">📉</span>
+                            <h4>Inconsistent Practice</h4>
+                            <p>Avoidance due to anxiety</p>
+                        </div>
+                        <div class="cycle-step">
+                            <span class="cycle-icon">🛑</span>
+                            <h4>Stagnation</h4>
+                            <p>Eventual abandonment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section class="cs-section cs-research" id="research" data-accent="research">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Research & Discovery</h2>
+            </div>
+
+            <div class="section-content">
+                <p class="section-intro">
+                    I conducted 15 interviews with "closet singers"—people who love to sing but never 
+                    do it publicly. These conversations revealed patterns that shaped every design decision.
+                </p>
+
+                <div class="research-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">27</span>
+                        <span class="stat-label">Voices Heard</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">15</span>
+                        <span class="stat-label">Deep Interviews</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Prototype Rounds</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">78%</span>
+                        <span class="stat-label">Wanted Reminders</span>
+                    </div>
+                </div>
+
+                <div class="key-insights">
+                    <h3>Key Patterns</h3>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <span class="insight-number">01</span>
+                            <blockquote>"I don't know if I'm getting better."</blockquote>
+                            <p class="insight-analysis">
+                                Beginners lack the ear to self-critique. Without a teacher, they fear 
+                                reinforcing bad habits. They needed objective proof of accuracy.
+                            </p>
+                        </div>
+                        <div class="insight-card">
+                            <span class="insight-number">02</span>
+                            <blockquote>"I stop when I feel silly."</blockquote>
+                            <p class="insight-analysis">
+                                The biggest barrier wasn't time or ability. It was emotional safety. Practice 
+                                sessions ended the moment they felt judged, even by themselves.
+                            </p>
+                        </div>
+                        <div class="insight-card">
+                            <span class="insight-number">03</span>
+                            <blockquote>"Streaks make me feel guilty."</blockquote>
+                            <p class="insight-analysis">
+                                Popular gamification patterns backfired. Missing a day felt like failure, 
+                                leading to complete abandonment rather than resumption.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <span class="placeholder-icon">📊</span>
+                    <p class="placeholder-label">User research synthesis or persona visualization</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="cs-section cs-solution" id="solution" data-accent="solution">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">The Solution</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="solution-overview">
+                    <h3>A Safe Space to Fail</h3>
+                    <p>
+                        Resonate is a mobile companion that removes the social pressure from singing. Through 
+                        guided loops and visual feedback, users learn to trust their own voice at their own pace.
+                    </p>
+                </div>
+
+                <div class="solution-features">
+                    <div class="feature-block">
+                        <div class="feature-content">
+                            <span class="feature-tag">Feature 01</span>
+                            <h4>Personalized Guidance</h4>
+                            <p>
+                                Adaptive exercises that calibrate to the user's current vocal range, ensuring 
+                                they never feel "out of their depth."
+                            </p>
+                            <div class="feature-rationale">
+                                <strong>Why this matters:</strong> Reduces overwhelm and decision fatigue by 
+                                removing the "what should I practice?" question.
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">🧩</span>
-                            <div class="snapshot-point-content">
-                                <h4>The gap</h4>
-                                <p>Open-ended tutorials left them unsure if they were improving or just reinforcing shaky habits.</p>
+                        <div class="feature-visual">
+                            <img src="assets/images/resonate/Goals - Main.png" alt="Personalized guidance screen">
+                        </div>
+                    </div>
+
+                    <div class="feature-block reverse">
+                        <div class="feature-content">
+                            <span class="feature-tag">Feature 02</span>
+                            <h4>Low-Stakes Practice Loop</h4>
+                            <p>
+                                A closed, 3-step practice loop that reduces decision fatigue. Just hit play, 
+                                sing, and finish. Three minutes, no pressure.
+                            </p>
+                            <div class="feature-rationale">
+                                <strong>Why this matters:</strong> Based on BJ Fogg's Tiny Habits model—consistency 
+                                beats intensity for beginners.
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">📱</span>
-                            <div class="snapshot-point-content">
-                                <h4>The solution</h4>
-                                <p>A supportive mobile loop with adaptive warmups, plain-language copy, and feedback that sounds like a coach.</p>
+                        <div class="feature-visual">
+                            <img src="assets/images/resonate/practice.png" alt="Practice loop interface">
+                        </div>
+                    </div>
+
+                    <div class="feature-block">
+                        <div class="feature-content">
+                            <span class="feature-tag">Feature 03</span>
+                            <h4>Skill Tree Progress</h4>
+                            <p>
+                                Moving from punitive "streaks" to a "Skill Tree" model that shows effort 
+                                accumulating over time, not just daily attendance.
+                            </p>
+                            <div class="feature-rationale">
+                                <strong>Why this matters:</strong> Reduces guilt from missed days while still 
+                                celebrating consistent effort.
                             </div>
                         </div>
-                        <div class="snapshot-point">
-                            <span class="snapshot-point-icon">🌟</span>
-                            <div class="snapshot-point-content">
-                                <h4>The response</h4>
-                                <p>Testers called it encouraging, easy to follow, and kept showing up without us nudging.</p>
+                        <div class="feature-visual">
+                            <img src="assets/images/resonate/Skilltree.png" alt="Skill tree progress view">
+                        </div>
+                    </div>
+
+                    <div class="feature-block reverse">
+                        <div class="feature-content">
+                            <span class="feature-tag">Feature 04</span>
+                            <h4>Encouraging Copy</h4>
+                            <p>
+                                Every piece of feedback is written to feel supportive, not critical. 
+                                "Great start!" instead of "Off-pitch."
+                            </p>
+                            <div class="feature-rationale">
+                                <strong>Why this matters:</strong> Tone shapes behavior. Encouraging language 
+                                increases return rate by reducing anxiety.
+                            </div>
+                        </div>
+                        <div class="feature-visual">
+                            <img src="assets/images/resonate/progess.png" alt="Encouraging feedback screen">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Section -->
+        <section class="cs-section cs-design" id="design" data-accent="design">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Design Process</h2>
+            </div>
+
+            <div class="section-content">
+                <p class="section-intro">
+                    Every design decision was filtered through one question: <em>"Does this make the user 
+                    feel more or less confident?"</em> This constraint shaped everything from color choices 
+                    to microcopy.
+                </p>
+
+                <div class="design-principles">
+                    <div class="principle-column">
+                        <h4>The App Is</h4>
+                        <ul>
+                            <li>For building confidence through repetition</li>
+                            <li>For providing simple, visual pitch matching</li>
+                            <li>Meant for 5-minute "micro-practice" sessions</li>
+                            <li>A private, judgment-free companion</li>
+                        </ul>
+                    </div>
+                    <div class="principle-column">
+                        <h4>The App Is Not</h4>
+                        <ul>
+                            <li>A replacement for a professional vocal coach</li>
+                            <li>A comprehensive music theory course</li>
+                            <li>A social network for sharing performances</li>
+                            <li>A tool for advanced singers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="design-system-preview">
+                    <h3>Design System</h3>
+                    <div class="design-system-image">
+                        <img src="assets/images/resonate/design system.png" alt="Resonate design system">
+                    </div>
+                    <p class="visual-caption">Color palette and typography designed for calm, encouraging interactions</p>
+                </div>
+            </div>
+
+            <div class="prototype-section">
+                <h3>Experience It Yourself</h3>
+                <p>The best way to understand Resonate is to walk through the flow. Notice how every interaction is designed to encourage, not critique.</p>
+                <div class="prototype-embed">
+                    <iframe 
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FWRYzjTBUWyrOSqyB0n17Jv%2Fhi-fi-showcase%3Fnode-id%3D3-1952%26viewport%3D499%252C379%252C0.13%26t%3D4at8Wy6ZvNI5Xbfu-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D3%253A1952" 
+                        allowfullscreen
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+                    </iframe>
+                </div>
+                <a href="https://www.figma.com/proto/WRYzjTBUWyrOSqyB0n17Jv/hi-fi-showcase?node-id=3-1952" 
+                   target="_blank" 
+                   rel="noopener" 
+                   class="prototype-link">
+                    Open full prototype ↗
+                </a>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section class="cs-section cs-reflection" id="reflection" data-accent="conclusion">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Reflection & Impact</h2>
+            </div>
+
+            <div class="section-content">
+                <div class="outcomes-grid">
+                    <div class="outcome-card">
+                        <span class="outcome-icon">📈</span>
+                        <span class="outcome-value">"Encouraging"</span>
+                        <span class="outcome-label">User Feedback</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">⏱️</span>
+                        <span class="outcome-value">"Easy to follow"</span>
+                        <span class="outcome-label">User Feedback</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">💪</span>
+                        <span class="outcome-value">"Motivating"</span>
+                        <span class="outcome-label">User Feedback</span>
+                    </div>
+                </div>
+
+                <div class="learnings-block">
+                    <h3>What I Learned</h3>
+                    <p class="learnings-intro">
+                        The biggest lesson was that <strong>emotional ergonomics</strong> are just as real as 
+                        physical ones. Designing for how a user feels—not just what they do—yields better 
+                        retention and genuine behavior change.
+                    </p>
+                    
+                    <div class="learnings-grid">
+                        <div class="learning-card">
+                            <span class="learning-icon">🧠</span>
+                            <h4>Emotional Safety First</h4>
+                            <p>
+                                Users need to feel safe before they can learn. Lowering the stakes 
+                                increases engagement more than adding features.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">🎯</span>
+                            <h4>Permission to Fail</h4>
+                            <p>
+                                Beginners need permission to fail more than they need perfect tools. 
+                                Making failure feel okay is the design challenge.
+                            </p>
+                        </div>
+                        <div class="learning-card">
+                            <span class="learning-icon">📊</span>
+                            <h4>Gamification Can Backfire</h4>
+                            <p>
+                                Popular patterns like streaks can backfire for emotionally vulnerable 
+                                activities. Guilt-based motivation isn't motivation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="next-steps">
+                    <div class="next-steps-header">
+                        <div class="next-steps-icon">🔮</div>
+                        <div>
+                            <h3>If I Revisited This Project...</h3>
+                            <p class="next-steps-subtitle">Ideas for future exploration</p>
+                        </div>
+                    </div>
+                    <div class="next-steps-grid">
+                        <div class="next-step-card">
+                            <div class="next-step-number">01</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Real-Time AI Pitch Analysis</div>
+                                <div class="next-step-desc">Explore instant visual feedback that shows users exactly how their voice matches the target pitch.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🤖</span> AI/ML</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">02</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Safe Peer Feedback</div>
+                                <div class="next-step-desc">Test how peer-to-peer feedback could be introduced without triggering performance anxiety.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">👥</span> Community</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">03</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Longitudinal Confidence Study</div>
+                                <div class="next-step-desc">Build a research framework to measure how confidence changes over weeks and months of practice.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">📈</span> Research</div>
+                            </div>
+                        </div>
+                        <div class="next-step-card">
+                            <div class="next-step-number">04</div>
+                            <div class="next-step-content">
+                                <div class="next-step-title">Vocal Coach Partnership</div>
+                                <div class="next-step-desc">Partner with professional vocal coaches to validate and refine the pedagogical approach.</div>
+                                <div class="next-step-tag"><span class="next-step-tag-icon">🎤</span> Validation</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="snapshot-card">
-                    <h3>🛠️ How we built trust</h3>
-                    <div class="snapshot-steps">
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">1</span>
-                            <div class="snapshot-step-body">
-                                <h4>Map motivation gaps</h4>
-                                <p>Synthesized interviews, surveys, and diary prompts to see where confidence nosedived after day two.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">2</span>
-                            <div class="snapshot-step-body">
-                                <h4>Define habit loops</h4>
-                                <p>Storyboarded daily routines and wrote the playbook for what "good enough" feedback sounds like.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">3</span>
-                            <div class="snapshot-step-body">
-                                <h4>Prototype and test</h4>
-                                <p>Ran five rounds from napkin sketches to hi-fi screens, tuning microcopy, navigation, and rewards.</p>
-                            </div>
-                        </div>
-                        <div class="snapshot-step">
-                            <span class="snapshot-step-icon">4</span>
-                            <div class="snapshot-step-body">
-                                <h4>Package the pilot</h4>
-                                <p>Documented flows, motion, and facilitator scripts so coaches could launch confidently on their own.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <h2>Overview</h2>
-            <p class="section-intro">Resonate is built for beginners who want to grow at their own pace. Inspired by micro-learning apps like Duolingo, it condenses vocal coaching into rewarding loops that reduce anxiety and celebrate consistent effort.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">01</div>
-                    <h3>Approachable practice loops</h3>
-                    <p>Three-minute warmups, guided exercises, and reflections keep routines digestible while nurturing daily momentum.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">02</div>
-                    <h3>Adaptive guidance</h3>
-                    <p>Exercises calibrate to vocal range, tension, and goals, so feedback lands in the moment it is needed most.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">03</div>
-                    <h3>Confidence-first tone</h3>
-                    <p>Inclusive copy, supportive visuals, and gentle rewards remove the fear of judgment and keep practice playful.</p>
-                </div>
+        <!-- Footer Navigation -->
+        <footer class="case-footer">
+            <div class="footer-nav">
+                <a href="project-relocate.html" class="footer-link prev">
+                    <span class="footer-link-label">Previous</span>
+                    <span class="footer-link-title">← Relocate</span>
+                </a>
+                <a href="project-syf.html" class="footer-link next">
+                    <span class="footer-link-label">Next</span>
+                    <span class="footer-link-title">Secure Your Future →</span>
+                </a>
             </div>
-            <p class="section-note"><strong>Guiding question:</strong> How might we help beginner singers build confidence by rewarding consistency and offering low-pressure support?</p>
-        </div>
-    </section>
+        </footer>
+    </main>
 
-    <section class="section problem-section">
-        <div class="container">
-            <h2>The problem</h2>
-            <p class="section-intro">Interviews and surveys surfaced emotional barriers that technical tools rarely address. Singers needed motivation, feedback, and encouragement that felt human.</p>
-            <div class="problem-cards-grid">
-                <div class="problem-card">
-                    <div class="problem-icon">📅</div>
-                    <h3>Practice slumps</h3>
-                    <p class="problem-stat">Streaks fizzled after day two</p>
-                    <p>Long, unstructured exercises were hard to squeeze in. Without gentle reminders, singers skipped practice altogether.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">🎯</div>
-                    <h3>Feedback drought</h3>
-                    <p class="problem-stat">"Am I making progress?"</p>
-                    <p>YouTube and prerecorded lessons couldn't confirm technique, so singers feared reinforcing mistakes in isolation.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">🎵</div>
-                    <h3>Technique overload</h3>
-                    <p class="problem-stat">Too many cues, not enough clarity</p>
-                    <p>Coach notes and PDFs arrived hours later, making it difficult to recall breathing, posture, and pitch guidance during practice.</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">🔒</div>
-                    <h3>Confidence blockers</h3>
-                    <p class="problem-stat">Fear of judgment stalled sharing</p>
-                    <p>Recording or practicing near others felt vulnerable, so singers avoided feedback and missed growth opportunities.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2>Defining the goals</h2>
-            <p class="section-intro">Affinity mapping and MoSCoW prioritization turned research insights into goals that balanced motivation, personalization, and emotional safety.</p>
-            <div class="goals-grid">
-                <div class="goal-card">
-                    <img src="assets/images/resonate/Screenshot%202025-11-08%20at%204.59.40%E2%80%AFPM.png" alt="Updated streak and badge concepts for Resonate practice loops">
-                    <div class="goal-content">
-                        <h3>🔥 Encourage daily engagement</h3>
-                        <p>Streaks, badges, and contextual reminders nudge singers back into routines without guilt.</p>
-                    </div>
-                </div>
-                <div class="goal-card">
-                    <img src="assets/images/resonate/personal%20coaching.png" alt="Personalized coaching interface showing adaptive warmups">
-                    <div class="goal-content">
-                        <h3>🎯 Provide personalized exercises</h3>
-                        <p>Adaptive warmups calibrate to vocal range and experience level so progress feels tangible.</p>
-                    </div>
-                </div>
-                <div class="goal-card">
-                    <img src="assets/images/resonate/progess.png" alt="Progress storytelling dashboards celebrating confidence growth">
-                    <div class="goal-content">
-                        <h3>⭐ Visualize confidence growth</h3>
-                        <p>Dashboards story progress across pitch accuracy, reflections, and streaks to reinforce motivation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section overview research-highlights">
-        <div class="container">
-            <h2>What the research surfaced</h2>
-            <p class="section-intro">15 surveys and 12 interviews with beginner and intermediate singers highlighted motivational gaps and the desire for encouraging feedback.</p>
-            <div class="data-cards">
-                <div class="data-card">
-                    <strong>15</strong>
-                    <span>Singers surveyed</span>
-                </div>
-                <div class="data-card">
-                    <strong>12</strong>
-                    <span>In-depth interviews</span>
-                </div>
-                <div class="data-card">
-                    <strong>5</strong>
-                    <span>Competitive products reviewed</span>
-                </div>
-                <div class="data-card">
-                    <strong>3</strong>
-                    <span>Personas modeled</span>
-                </div>
-                <div class="data-card">
-                    <strong>5</strong>
-                    <span>Prototype rounds</span>
-                </div>
-                <div class="data-card">
-                    <strong>78%</strong>
-                    <span>Requested structured reminders</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section insights-visual">
-        <div class="container">
-            <h2>In their own words</h2>
-            <p class="section-intro">Quotes from our interviews underscored how confidence and guidance intersect for beginner singers.</p>
-            <div class="insight-cards-interactive">
-                <div class="insight-card" data-insight-card>
-                    <div class="insight-header">
-                        <div class="insight-icon">📺</div>
-                        <h3>Comparison fatigue</h3>
-                    </div>
-                    <blockquote>"Every video is from a pro. I need someone to tell me when my version is good enough."</blockquote>
-                </div>
-                <div class="insight-card" data-insight-card>
-                    <div class="insight-header">
-                        <div class="insight-icon">⏰</div>
-                        <h3>Reminder gap</h3>
-                    </div>
-                    <blockquote>"If no one checks in after day two, I fall off. I need a friendly nudge, not a guilt trip."</blockquote>
-                </div>
-                <div class="insight-card" data-insight-card>
-                    <div class="insight-header">
-                        <div class="insight-icon">🌀</div>
-                        <h3>Technique overwhelm</h3>
-                    </div>
-                    <blockquote>"Breath, posture, pitch... I freeze because I cannot keep track of all the cues at once."</blockquote>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section research-artifacts">
-        <div class="container">
-            <h2>Design process</h2>
-            <p class="section-intro">We moved from low-fidelity sketches into Figma wireframes and mid-fi flows, iterating on navigation clarity, microcopy, and accessibility before layering in visual polish.</p>
-            <div class="artifact-showcase">
-                <div class="artifact-item">
-                    <img src="assets/images/resonate/affinity.png" alt="Affinity map clusters synthesizing user research">
-                    <div class="artifact-caption">
-                        <h3>Affinity mapping</h3>
-                        <p>Grouped interview notes into motivation drivers, confidence blockers, and opportunity areas that informed three primary personas.</p>
-                    </div>
-                </div>
-                <div class="artifact-item">
-                    <img src="assets/images/resonate/CJM%20Template%20-%20Exp.jpg" alt="Customer journey map visualizing emotional highs and lows across a practice week">
-                    <div class="artifact-caption">
-                        <h3>Customer journey map</h3>
-                        <p>Charted a typical week for each persona, aligning emotional peaks with practice drop-offs to prioritize journeys via MoSCoW.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section solution-features">
-        <div class="container">
-            <h2>The solution</h2>
-            <p class="section-intro">The final prototype combines habit-forming loops, adaptive coaching, and celebratory storytelling so singers feel guided and encouraged at every step.</p>
-            <div class="solution-grid">
-                <div class="solution-card">
-                    <div class="solution-card-header">
-                        <span class="solution-card-icon">⚡</span>
-                        <h3>Quick practice loop</h3>
-                    </div>
-                    <p>Resonate breaks practice into short, rewarding sessions with a warmup, guided exercise, and reflection so singers never feel like they’re falling behind.</p>
-                    <ul class="solution-card-list">
-                        <li>Adaptive pacing responds to vocal strain and energy so every loop feels doable.</li>
-                        <li>Micro-rewards celebrate streaks and milestones without hijacking motivation.</li>
-                        <li>Reflection prompts connect each rep to the bigger goal of showing up consistently.</li>
-                    </ul>
-                    <div class="solution-card-media" data-solution-image="assets/images/resonate/practice.png" data-alt="Three-minute practice loop screens with warmup, exercise, and reflection">
-                        <img src="assets/images/resonate/practice.png" alt="Three-minute practice loop screens">
-                    </div>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-card-header">
-                        <span class="solution-card-icon">🎯</span>
-                        <h3>Actionable goals</h3>
-                    </div>
-                    <p>Weekly goal templates align to each singer’s confidence level and time, turning vague intentions into focused steps that keep momentum.</p>
-                    <ul class="solution-card-list">
-                        <li>Goals adapt to range, routine, and feedback so progress always feels relevant.</li>
-                        <li>Soft celebrations reinforce streaks without adding pressure or guilt.</li>
-                        <li>Weekly reflections reconnect practice to personal motivations.</li>
-                    </ul>
-                    <div class="solution-card-media" data-solution-image="assets/images/resonate/Goals%20-%20Main.png" data-alt="User-defined actionable goals overview">
-                        <img src="assets/images/resonate/Goals%20-%20Main.png" alt="User-defined actionable goals overview">
-                    </div>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-card-header">
-                        <span class="solution-card-icon">⭐</span>
-                        <h3>Progress storytelling</h3>
-                    </div>
-                    <p>Progress storytelling turns streak history, pitch accuracy, and mood reflections into a narrative that validates effort and restores confidence.</p>
-                    <ul class="solution-card-list">
-                        <li>Gradient rings show streaks, highlight restorative breaks, and avoid shame tactics.</li>
-                        <li>Mood check-ins track emotional wins instead of just numbers.</li>
-                        <li>Optional share-outs let singers loop in a coach or keep insights personal.</li>
-                    </ul>
-                    <div class="solution-card-media" data-solution-image="assets/images/resonate/Skilltree.png" data-alt="Progress and streak celebration dashboards">
-                        <img src="assets/images/resonate/Skilltree.png" alt="Progress and streak celebration dashboards">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section prototype-embed">
-        <div class="container">
-            <h2>Experience it yourself</h2>
-            <p class="section-intro">The best way to understand Resonate is to walk through the loop and experience how gentle scaffolding builds trust.</p>
-            <div class="prototype-embed-wrapper">
-                <iframe src="https://www.figma.com/embed?embed_host=ux-portfolio&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FWRYzjTBUWyrOSqyB0n17Jv%2Fhi-fi-showcase%3Fnode-id%3D3-1952%26viewport%3D499%252C379%252C0.13%26t%3D4at8Wy6ZvNI5Xbfu-0%26scaling%3Dcontain%26content-scaling%3Dfixed%26starting-point-node-id%3D3%253A1952" allowfullscreen loading="lazy"></iframe>
-            </div>
-            <p class="section-note" style="margin-top: 2rem;">Prefer a wider view? <a href="https://www.figma.com/proto/WRYzjTBUWyrOSqyB0n17Jv/hi-fi-showcase?node-id=3-1952&viewport=499%2C379%2C0.13&t=4at8Wy6ZvNI5Xbfu-0&scaling=contain&content-scaling=fixed&starting-point-node-id=3%3A1952" target="_blank" rel="noopener">Open the prototype in a new tab ↗</a></p>
-        </div>
-    </section>
-
-    <section class="section design-system-section">
-        <div class="container">
-            <h2>Designing for emotional safety</h2>
-            <p class="section-intro">We crafted Resonate's system to feel uplifting, inclusive, and accessible across devices and abilities.</p>
-            <div class="design-system-showcase-enhanced">
-                <div class="system-details-grid">
-                    <div class="system-detail-card">
-                        <div class="detail-icon">🎨</div>
-                        <h3>Visual foundation</h3>
-                        <p>A gradient-rich palette shifts from calming blues and darker navy tones to energizing corals as confidence builds, while typography scales remain readable for quick glances mid-practice.</p>
-                    </div>
-                    <div class="system-detail-card">
-                        <div class="detail-icon">🧩</div>
-                        <h3>Component library</h3>
-                        <p>Reusable cards, buttons, and progress rings built with Figma variants ensure consistent hierarchy and effortless updates.</p>
-                    </div>
-                    <div class="system-detail-card">
-                        <div class="detail-icon">✨</div>
-                        <h3>Accessibility & Spacing</h3>
-                        <p>An 8px grid system ensures consistent spacing and hierarchy, while WCAG AA contrast standards make the interface readable for quick glances mid-practice. Clear visual feedback guides singers without overwhelming them.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section testing-signals">
-        <div class="container">
-            <h2>Testing & validation</h2>
-            <p class="section-intro">Usability tests with 20 participants validated the habit loop and highlighted refinements that made the experience encouraging and easy to follow.</p>
-            <div class="testing-results">
-                <div class="test-wins">
-                    <div class="test-badge">✓ What landed</div>
-                    <div class="test-insights-grid">
-                        <div class="test-insight">
-                            <div class="insight-icon-badge">📱</div>
-                            <h4>Daily nudges</h4>
-                            <p>"Streak reminders felt encouraging, like a friend cheering me on instead of scolding me."</p>
-                        </div>
-                        <div class="test-insight">
-                            <div class="insight-icon-badge">🎯</div>
-                            <h4>Visual feedback</h4>
-                            <p>"The visual cues made feedback easy to follow; I knew exactly what to adjust without jargon."</p>
-                        </div>
-                        <div class="test-insight">
-                            <div class="insight-icon-badge">📝</div>
-                            <h4>Reflection logs</h4>
-                            <p>"Mini challenges kept me going, even on days when singing felt intimidating."</p>
-                        </div>
-                        <div class="test-insight">
-                            <div class="insight-icon-badge">⏱️</div>
-                            <h4>Three-minute sessions</h4>
-                            <p>"The quick loop made practice feel doable between classes and work shifts."</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="test-iterations">
-                    <div class="test-badge test-badge-iterate">↻ What we tuned</div>
-                    <div class="test-improvements">
-                        <div class="improvement-item">
-                            <span class="improvement-number">01</span>
-                            <p>Collapsed onboarding into a single, goal-setting flow so singers understood the value before their first three-minute session.</p>
-                        </div>
-                        <div class="improvement-item">
-                            <span class="improvement-number">02</span>
-                            <p>Refined technique feedback with clearer color-coded pitch arcs and supportive copy that explained each correction.</p>
-                        </div>
-                        <div class="improvement-item">
-                            <span class="improvement-number">03</span>
-                            <p>Surfaced actionable goals, Explore Songs, and Warm-up modules directly on the home hub to keep next steps obvious.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section impact-showcase">
-        <div class="container">
-            <h2>What changed</h2>
-            <p class="section-intro">After iteration, singers reported higher confidence, stronger habits, and clearer next steps for improving technique.</p>
-            <div class="impact-metrics">
-                <div class="impact-card impact-primary">
-                    <div class="metric-icon">📈</div>
-                    <div class="metric-value">"Encouraging"</div>
-                    <div class="impact-label">Participants felt supported</div>
-                    <p class="impact-context">After refinements, testers described Resonate as an encouraging companion instead of a critical coach.</p>
-                </div>
-                <div class="impact-card impact-primary">
-                    <div class="metric-icon">⏱️</div>
-                    <div class="metric-value">"Easy to follow"</div>
-                    <div class="impact-label">Practice felt approachable</div>
-                    <p class="impact-context">Short guided loops and clear flows made practice doable between classes, commutes, and rehearsals.</p>
-                </div>
-                <div class="impact-card impact-primary">
-                    <div class="metric-icon">💪</div>
-                    <div class="metric-value">"Motivating"</div>
-                    <div class="impact-label">Confidence grew with streaks</div>
-                    <p class="impact-context">Progress storytelling and rewards encouraged singers to keep showing up and celebrate small wins.</p>
-                </div>
-            </div>
-            <div class="impact-secondary">
-                <div class="secondary-stat">
-                    <strong>12</strong> motion micro-interactions documented for engineering handoff
-                </div>
-                <div class="secondary-stat">
-                    <strong>4-week</strong> pilot with beginner singers and supporting vocal coaches
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section reflection-section">
-        <div class="container">
-            <h2>What I learned along the way</h2>
-            <p class="section-intro">This project deepened my understanding of emotional design and habit-building UX. It turned qualitative insights into features that respectfully coach beginners over time.</p>
-            <div class="reflection-cards">
-                <div class="reflection-card">
-                    <div class="reflection-icon">🔍</div>
-                    <h3>Research synthesis</h3>
-                    <p>Refined how I synthesize interviews and surveys into personas, empathy maps, and priority roadmaps focused on user emotion.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">💡</div>
-                    <h3>Ideation & iteration</h3>
-                    <p>Evolved low-fi sketches into mid- and high-fidelity prototypes that balanced warmth, clarity, and motivation across flows.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">🎨</div>
-                    <h3>Information architecture</h3>
-                    <p>Testing mid-fi prototypes honed my instincts for navigation hierarchy and micro-interactions before adding visual polish.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">⚡</div>
-                    <h3>Figma mastery</h3>
-                    <p>Documenting systems in Figma variants deepened my ability to build scalable, accessible components and motion guidelines.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">👥</div>
-                    <h3>Usability testing</h3>
-                    <p>Conducting iterative usability tests taught me how to synthesize feedback quickly and iterate toward clarity and delight.</p>
-                </div>
-                <div class="reflection-card">
-                    <div class="reflection-icon">🤝</div>
-                    <h3>Team collaboration</h3>
-                    <p>Collaborating closely with vocal coaches and designers highlighted the value of cross-disciplinary critiques and empathetic communication.</p>
-                </div>
-            </div>
-            <p class="section-note">This project reinforced that confidence compounds through consistency. If revisited, I would explore real-time AI pitch analysis and moderated peer feedback to expand supportive pathways.</p>
-        </div>
-    </section>
-
-    <section class="project-navigation">
-        <div class="nav-projects">
-            <a href="project-relocate.html">← Previous Project</a>
-            <a href="project-syf.html">Next Project →</a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <p class="footer-location">made in canada</p>
-                <div class="footer-contact">
-                    <a href="about.html" class="footer-contact-link">About</a>
-                    <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
-                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-tagline">let's make something beautiful.</p>
-            </div>
-        </div>
-    </footer>
     <script src="main.js"></script>
-    <script src="transitions.js"></script>
-    
-    <!-- Dark Theme Interactions -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Scroll-triggered fade-in animations with performance optimization
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
-            const enableAnimations = !(prefersReducedMotion || isSmallScreen);
-
-            if (enableAnimations) {
-                const fadeInObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                            requestAnimationFrame(() => {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0)';
-                                entry.target.classList.add('animated');
-                            });
-                            fadeInObserver.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                const fadeElements = document.querySelectorAll('.feature-card, .problem-card, .goal-card, .insight-card, .data-card, .reflection-card, .impact-card, .system-detail-card, .test-insight, .improvement-item, .artifact-item');
-                fadeElements.forEach((element, index) => {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(20px)';
-                    element.style.transition = `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
-                    element.style.willChange = 'opacity, transform';
-                    fadeInObserver.observe(element);
-                });
-            } else {
-                document.querySelectorAll('.feature-card, .problem-card, .goal-card, .insight-card, .data-card, .reflection-card, .impact-card, .system-detail-card, .test-insight, .improvement-item, .artifact-item').forEach(element => {
-                    element.style.opacity = '1';
-                    element.style.transform = 'none';
-                });
-            }
-
-            // Tab switcher functionality
-            const tabSwitcher = document.querySelector('[data-tab-switcher]');
-            if (tabSwitcher) {
-                const controls = tabSwitcher.querySelectorAll('.tab-control');
-                const panels = tabSwitcher.querySelectorAll('.tab-panel');
-
-                controls.forEach(control => {
-                    control.addEventListener('click', () => {
-                        const targetId = control.dataset.tabTarget;
-                        
-                        // Update active states
-                        controls.forEach(c => {
-                            c.classList.remove('active');
-                            c.setAttribute('aria-selected', 'false');
-                        });
-                        control.classList.add('active');
-                        control.setAttribute('aria-selected', 'true');
-
-                        // Show target panel
-                        panels.forEach(panel => {
-                            panel.classList.remove('active');
-                            panel.hidden = true;
-                        });
-                        const targetPanel = document.getElementById(targetId);
-                        if (targetPanel) {
-                            targetPanel.classList.add('active');
-                            targetPanel.hidden = false;
-                        }
-                    });
-                });
-            }
-
-            // Enhanced hover effects for navigation links
-            const navLinks = document.querySelectorAll('.nav-projects a');
-            navLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.15)';
-                    link.style.transform = 'translateY(-8px)';
-                });
-                link.addEventListener('mouseleave', () => {
-                    link.style.background = 'rgba(255, 255, 255, 0.05)';
-                    link.style.transform = 'translateY(0)';
-                });
-            });
-
-            // Click to expand images
-            document.querySelectorAll('.hero-image img, .goal-card img, .insight-card img, .artifact-item img, .system-hero img, .prototype-container img, .tab-panel-visual img, .solution-card-media').forEach(img => {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => {
-                    const modal = document.createElement('div');
-                    modal.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.95);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 10000;
-                        cursor: pointer;
-                        animation: fadeIn 0.3s ease;
-                    `;
-                    
-                    const expandedImg = document.createElement('img');
-                    const source = img.dataset.solutionImage || img.src;
-                    const altText = img.dataset.alt || img.alt;
-                    expandedImg.src = source;
-                    expandedImg.alt = altText;
-                    expandedImg.style.cssText = `
-                        max-width: 90%;
-                        max-height: 90%;
-                        border-radius: 16px;
-                        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 100px rgba(147, 51, 234, 0.5);
-                        border: 2px solid rgba(147, 51, 234, 0.5);
-                    `;
-                    
-                    modal.appendChild(expandedImg);
-                    document.body.appendChild(modal);
-                    
-                    modal.addEventListener('click', () => {
-                        modal.style.animation = 'fadeOut 0.3s ease';
-                        setTimeout(() => modal.remove(), 300);
-                    });
-                });
-            });
-
-            // Optimized parallax effect on hero
-            let ticking = false;
-            let lastScroll = 0;
-            if (!isSmallScreen && !prefersReducedMotion) {
-                window.addEventListener('scroll', () => {
-                    const scrolled = window.pageYOffset;
-                    if (!ticking && Math.abs(scrolled - lastScroll) > 5) {
-                        window.requestAnimationFrame(() => {
-                            const hero = document.querySelector('.case-study-hero');
-                            
-                            if (hero && scrolled < window.innerHeight) {
-                                hero.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
-                                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.2;
-                            }
-                            
-                            lastScroll = scrolled;
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                }, { passive: true });
-            } else {
-                const hero = document.querySelector('.case-study-hero');
-                if (hero) {
-                    hero.style.transform = 'none';
-                    hero.style.opacity = '1';
-                }
-            }
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            console.log('✨ Resonate: Dark theme activated with enhanced interactions!');
-        });
-
-        // Add fade animations to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes fadeOut {
-                from { opacity: 1; }
-                to { opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="case-study.js"></script>
 </body>
 </html>
-
