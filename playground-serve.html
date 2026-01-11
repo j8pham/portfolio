@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SERVE Volleyball Club - Marketing & Content Strategy Case Study">
+    <title>SERVE Playground | Jason Pham</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/branding/sleepycat-256x256.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/branding/sleepycat-256x256.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/branding/sleepycat-256x256.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/branding/sleepycat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .case-study-content {
+            color: var(--color-text);
+        }
+        .case-study-section {
+            margin-bottom: 3rem;
+        }
+        .case-study-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+        .case-study-subheading {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+        .case-study-text {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+        .case-study-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1rem 0;
+        }
+        .case-study-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+        .case-study-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fun Cat Navigation -->
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <!-- Cat Menu Hub -->
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="/assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <!-- Radial Menu -->
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/material-symbols--home-rounded.svg" alt="">
+                        </span>
+                        <span class="menu-label">home</span>
+                    </a>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
+                    </a>
+                </div>
+                
+                <!-- Menu backdrop blur -->
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <!-- Quick nav pills (visible when scrolled) -->
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="/assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1m-VoKqFR8ci9xDdvS9kWOCV1OdQ-8lW5/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="/assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="/assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content" id="main" role="main">
+        <div class="container">
+            <section class="playground-hero" aria-labelledby="playground-title">
+                <a class="playground-back-link" href="about.html">
+                    <span aria-hidden="true">←</span>
+                    <span>back to playground</span>
+                </a>
+                <h1 class="playground-hero-title" id="playground-title">SERVE Volleyball Club</h1>
+                <p class="playground-hero-description">Marketing & Content Strategy Case Study</p>
+            </section>
+
+            <div class="playground-gallery">
+                <div class="playground-artwork">
+                    <img src="/assets/images/branding/SERVE.png" alt="SERVE Volleyball Club branding" loading="lazy">
+                </div>
+            </div>
+
+            <section class="case-study-content" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1rem;">
+                <div class="case-study-section">
+                    <h2 class="case-study-heading">Overview</h2>
+                    <p class="case-study-text">SERVE Volleyball Club is a student-run volleyball community supporting recreational, semi-competitive, and competitive players. I led marketing strategy and content direction across multiple academic terms, working with a rotating marketing team while building a consistent, performance-driven social presence.</p>
+                    <div class="case-study-meta" style="margin-top: 2rem; padding: 1.5rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--border-radius);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                            <div>
+                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Timeline</strong>
+                                <span style="color: var(--color-text);">Winter 2024 – Fall 2025</span>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Role</strong>
+                                <span style="color: var(--color-text);">Marketing Lead</span>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Team</strong>
+                                <span style="color: var(--color-text);">Changing marketing team each term</span>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Tools</strong>
+                                <span style="color: var(--color-text);">Instagram Insights, Figma</span>
+                            </div>
+                            <div>
+                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Platform</strong>
+                                <span style="color: var(--color-text);">Instagram (Reels-first)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem;">
+                    <h2 class="case-study-heading">The Challenge</h2>
+                    <p class="case-study-text">SERVE had strong in-person engagement, but its social presence wasn't fully reflecting the club's energy or competitive credibility.</p>
+                    <p class="case-study-text" style="margin-top: 1rem;">Challenges included:</p>
+                    <ul class="case-study-list">
+                        <li>Inconsistent growth and engagement</li>
+                        <li>Content leaning too promotional</li>
+                        <li>No stable visual or content system</li>
+                        <li>Knowledge loss between exec transitions</li>
+                    </ul>
+                    <p class="case-study-text" style="margin-top: 1.5rem;">The goal wasn't just growth, but clarity, consistency, and long-term impact.</p>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem;">
+                    <h2 class="case-study-heading">Goals</h2>
+                    <ul class="case-study-list">
+                        <li>Grow followers and reach</li>
+                        <li>Improve engagement consistency</li>
+                        <li>Humanize the club brand</li>
+                        <li>Test and validate a long-term content direction</li>
+                        <li>Build a system future leads could inherit</li>
+                    </ul>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem;">
+                    <h2 class="case-study-heading">Strategy</h2>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3 class="case-study-subheading">1. Human-First Content</h3>
+                        <p class="case-study-text">Content shifted away from announcements toward people, personality, and moments.</p>
+                        <p class="case-study-text" style="margin-top: 1rem;"><strong>Content pillars:</strong></p>
+                        <ul class="case-study-list">
+                            <li>Execs and members as real people</li>
+                            <li>Behind-the-scenes and humor</li>
+                            <li>Event energy and candid clips</li>
+                            <li>Competitive highlights</li>
+                        </ul>
+                        <p class="case-study-text" style="margin-top: 1rem;">This made the account feel social rather than promotional.</p>
+                    </div>
+
+                    <div style="margin-top: 3rem;">
+                        <h3 class="case-study-subheading">2. Iterative Brand & Design Testing (3-Term Approach)</h3>
+                        
+                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--color-bg-card); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius);">
+                            <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.75rem;">Term 1: Fun & Casual</h4>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Goal:</strong> attract new and beginner players</p>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Result:</strong> strong early engagement</p>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Issue:</strong> performance declined toward the end of term</p>
+                            <p class="case-study-text"><strong>Learning:</strong> too one-dimensional, novelty wore off</p>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--color-bg-card); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius);">
+                            <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.75rem;">Term 2: Casual–Semi Competitive Mix</h4>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Goal:</strong> balance approachability with skill</p>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Result:</strong> slower start, but engagement improved by the end of term</p>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Learning:</strong> iteration within the term mattered more than the initial direction</p>
+                            <p class="case-study-text"><strong>Insight:</strong> variation and pacing helped recover audience interest</p>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--color-bg-card); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius);">
+                            <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.75rem;">Term 3: Competitive Focus</h4>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Goal:</strong> establish credibility and performance identity</p>
+                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Result:</strong> strongest overall engagement and reach</p>
+                            <p class="case-study-text"><strong>Learning:</strong> competitive positioning resonated most while still allowing lighter content</p>
+                        </div>
+
+                        <p class="case-study-text" style="margin-top: 1.5rem;">This structured testing clarified what actually worked, rather than relying on assumptions.</p>
+                    </div>
+
+                    <div style="margin-top: 3rem;">
+                        <h3 class="case-study-subheading">3. Performance-Led Iteration</h3>
+                        <p class="case-study-text">Using Instagram Insights, I tracked:</p>
+                        <ul class="case-study-list">
+                            <li>Views per reel</li>
+                            <li>Likes and interaction trends</li>
+                            <li>Follower growth patterns</li>
+                        </ul>
+                        <p class="case-study-text" style="margin-top: 1rem;">Content formats were adjusted in real time. Visual systems were designed and refined in Figma to keep output consistent despite team changes.</p>
+                    </div>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem;">
+                    <h2 class="case-study-heading">Results</h2>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3 class="case-study-subheading">Audience Growth</h3>
+                        <p class="case-study-text">Followers grew from <strong>2,115 to 3,355</strong></p>
+                        <p class="case-study-text" style="color: var(--color-accent);">~59% increase in total followers</p>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h3 class="case-study-subheading">Reach & Visibility</h3>
+                        <p class="case-study-text">Average views per post increased from <strong>~3K to ~10K</strong></p>
+                        <p class="case-study-text" style="color: var(--color-accent);">~230% increase in average views</p>
+                        <p class="case-study-text" style="margin-top: 1rem;">Reels consistently reached 10K+ views from Winter 2024 through Fall 2025</p>
+                        <p class="case-study-text" style="margin-top: 1rem;">Two reels went viral:</p>
+                        <ul class="case-study-list">
+                            <li>500K+ views</li>
+                            <li>2M+ views</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h3 class="case-study-subheading">Engagement Quality</h3>
+                        <p class="case-study-text">Likes per post stabilized from inconsistent 50–100 to <strong>100+ consistently</strong></p>
+                        <p class="case-study-text" style="margin-top: 1rem;">Engagement became more predictable and less trend-dependent</p>
+                        <p class="case-study-text">Interactions scaled alongside reach</p>
+                    </div>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem;">
+                    <h2 class="case-study-heading">What Worked</h2>
+                    <ul class="case-study-list">
+                        <li>Showing people, not just events</li>
+                        <li>Iterating within a term, not waiting for the next one</li>
+                        <li>Using performance data to guide creative decisions</li>
+                        <li>Designing systems that survived team turnover</li>
+                    </ul>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem;">
+                    <h2 class="case-study-heading">What Didn't (and Why That Helped)</h2>
+                    <ul class="case-study-list">
+                        <li>Purely casual content lacked long-term depth</li>
+                        <li>Early mixed positioning needed refinement</li>
+                        <li>Mid-term pivots led to stronger end results</li>
+                    </ul>
+                    <p class="case-study-text" style="margin-top: 1rem; font-style: italic;">Failures became signals, not setbacks.</p>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem;">
+                    <h2 class="case-study-heading">Impact Beyond Metrics</h2>
+                    <ul class="case-study-list">
+                        <li>Stronger community connection</li>
+                        <li>Clearer brand direction for future execs</li>
+                        <li>Easier onboarding for new marketing team members</li>
+                        <li>A repeatable content system instead of one-off wins</li>
+                    </ul>
+                </div>
+
+                <div class="case-study-section" style="margin-top: 4rem; padding: 2rem; background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: var(--border-radius-lg);">
+                    <h2 class="case-study-heading" style="margin-bottom: 1rem;">Key Takeaway</h2>
+                    <p class="case-study-text" style="font-size: 1.125rem; line-height: 1.8;">The biggest gains came from staying flexible. The ability to recognize fatigue, pivot mid-term, and double down on what worked turned experimentation into real growth. Competitive clarity, paired with human storytelling, ultimately delivered the strongest results.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <p class="footer-location">made in canada 🍁</p>
+                <div class="footer-contact">
+                    <a href="about.html" class="footer-contact-link">about</a>
+                    <a href="mailto:pham.jason@outlook.com" class="footer-contact-link">email</a>
+                    <a href="https://www.linkedin.com/in/pham-jason/" target="_blank" class="footer-contact-link" rel="noopener">linkedin</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-tagline">let's make something beautiful.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/main.js"></script>
+    <script src="/transitions.js"></script>
+</body>
+</html>
+
