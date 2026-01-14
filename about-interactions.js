@@ -1,59 +1,6 @@
-// About Page Interactions - Fun & Interactive
+// About Page V2 Interactions - Fun & Interactive
 
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // ========================================
-    // ANIMATED BACKGROUND PARTICLES
-    // ========================================
-    
-    function initBackgroundParticles() {
-        const canvas = document.getElementById('bgCanvas');
-        if (!canvas) return;
-        
-        // Create floating particles
-        for (let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'bg-particle';
-            particle.style.cssText = `
-                position: absolute;
-                width: ${Math.random() * 4 + 2}px;
-                height: ${Math.random() * 4 + 2}px;
-                background: rgba(96, 165, 250, ${Math.random() * 0.3 + 0.1});
-                border-radius: 50%;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                animation: particleFloat ${Math.random() * 10 + 15}s linear infinite;
-                animation-delay: ${Math.random() * -20}s;
-                pointer-events: none;
-            `;
-            canvas.appendChild(particle);
-        }
-        
-        // Add keyframes for particles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes particleFloat {
-                0%, 100% {
-                    transform: translate(0, 0) scale(1);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 1;
-                }
-                90% {
-                    opacity: 1;
-                }
-                100% {
-                    transform: translate(${Math.random() > 0.5 ? '' : '-'}${Math.random() * 100 + 50}px, -${Math.random() * 200 + 100}px) scale(0.5);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
-    
-    initBackgroundParticles();
-    
     
     // ========================================
     // TILT CARD EFFECT - 3D HOVER
@@ -103,72 +50,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
     
     function initTimelineAnimation() {
-        const timelineItems = document.querySelectorAll('.timeline-item');
         const timelineProgress = document.getElementById('timelineProgress');
         const timelineContainer = document.querySelector('.timeline-container');
         
-        if (!timelineItems.length || !timelineContainer) return;
-        
-        // Make all items visible immediately
-        timelineItems.forEach((item, index) => {
-            item.classList.add('visible');
-            item.style.transitionDelay = `${index * 0.15}s`;
-        });
+        if (!timelineContainer || !timelineProgress) return;
         
         // Timeline progress line animation on scroll
-        if (timelineProgress) {
-            window.addEventListener('scroll', function() {
-                const rect = timelineContainer.getBoundingClientRect();
-                const containerTop = rect.top;
-                const containerHeight = rect.height;
-                const windowHeight = window.innerHeight;
-                
-                // Calculate how much of the timeline is visible
-                let progress = 0;
-                if (containerTop < windowHeight * 0.5) {
-                    progress = Math.min(1, (windowHeight * 0.5 - containerTop) / containerHeight);
-                }
-                
-                timelineProgress.style.height = `${progress * 100}%`;
-            }, { passive: true });
+        function updateTimeline() {
+            const rect = timelineContainer.getBoundingClientRect();
+            const containerTop = rect.top;
+            const containerHeight = rect.height;
+            const windowHeight = window.innerHeight;
+            
+            // Calculate how much of the timeline is visible
+            let progress = 0;
+            if (containerTop < windowHeight * 0.5) {
+                progress = Math.min(1, (windowHeight * 0.5 - containerTop) / containerHeight);
+            }
+            
+            timelineProgress.style.height = `${progress * 100}%`;
         }
+        
+        window.addEventListener('scroll', updateTimeline, { passive: true });
+        updateTimeline(); // Initial call
     }
     
     initTimelineAnimation();
-    
-    
-    // ========================================
-    // SKILLS CLOUD ANIMATION
-    // ========================================
-    
-    function initSkillsAnimation() {
-        const skillCategories = document.querySelectorAll('.skill-category');
-        
-        if (!skillCategories.length) return;
-        
-        // Make all categories visible immediately
-        skillCategories.forEach(category => {
-            category.classList.add('visible');
-        });
-        
-        // Skill tag hover effects
-        const skillTags = document.querySelectorAll('.skill-tag');
-        skillTags.forEach(tag => {
-            // Make tags visible
-            tag.style.opacity = '1';
-            tag.style.transform = 'translateY(0)';
-            
-            tag.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-4px) scale(1.02)';
-            });
-            
-            tag.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    }
-    
-    initSkillsAnimation();
     
     
     // ========================================
@@ -181,114 +88,47 @@ document.addEventListener('DOMContentLoaded', function() {
         cards.forEach(card => {
             // Click/tap handler for all devices
             card.addEventListener('click', function(e) {
-                // Remove flipped state from other cards
-                cards.forEach(c => {
-                    if (c !== card) c.classList.remove('flipped');
-                });
                 // Toggle this card
                 this.classList.toggle('flipped');
+                
+                // On mobile, close other cards when one is opened
+                if (window.innerWidth <= 768) {
+                    cards.forEach(c => {
+                        if (c !== card) c.classList.remove('flipped');
+                    });
+                }
             });
             
             // Keyboard support - Enter and Space keys
             card.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    // Remove flipped state from other cards
-                    cards.forEach(c => {
-                        if (c !== card) c.classList.remove('flipped');
-                    });
-                    // Toggle this card
                     this.classList.toggle('flipped');
+                    
+                    // On mobile, close other cards when one is opened
+                    if (window.innerWidth <= 768) {
+                        cards.forEach(c => {
+                            if (c !== card) c.classList.remove('flipped');
+                        });
+                    }
+                }
+            });
+            
+            // On desktop, remove flip on mouse leave
+            card.addEventListener('mouseleave', function() {
+                if (window.innerWidth > 768) {
+                    // Add a small delay before removing flip
+                    setTimeout(() => {
+                        if (!this.matches(':hover')) {
+                            this.classList.remove('flipped');
+                        }
+                    }, 200);
                 }
             });
         });
-        
-        // Add touch-specific styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .principle-card.interactive-card .card-front,
-            .principle-card.interactive-card .card-back {
-                transition: transform 0.6s var(--ease-out-expo);
-            }
-            .principle-card.interactive-card.flipped .card-front {
-                transform: rotateY(-180deg);
-            }
-            .principle-card.interactive-card.flipped .card-back {
-                transform: rotateY(0deg);
-            }
-            @media (hover: none) {
-                .principle-card.interactive-card:hover .card-front {
-                    transform: none;
-                }
-                .principle-card.interactive-card:hover .card-back {
-                    transform: rotateY(180deg);
-                }
-            }
-        `;
-        document.head.appendChild(style);
     }
     
     initPrincipleCards();
-    
-    
-    // ========================================
-    // SCROLL REVEAL FOR SECTIONS
-    // ========================================
-    
-    // Sections are visible by default - just add subtle entrance animations via CSS
-    // No JavaScript scroll reveal that hides content
-    
-    
-    // ========================================
-    // SOUND WAVE ANIMATION SYNC
-    // ========================================
-    
-    function initSoundWaves() {
-        const waves = document.querySelectorAll('.sound-waves .wave');
-        
-        if (!waves.length) return;
-        
-        // Randomize wave animations for more organic feel
-        waves.forEach((wave, index) => {
-            const duration = 0.8 + Math.random() * 0.8; // 0.8-1.6s
-            const delay = index * 0.08;
-            wave.style.animationDuration = `${duration}s`;
-            wave.style.animationDelay = `${delay}s`;
-        });
-    }
-    
-    initSoundWaves();
-    
-    
-    // ========================================
-    // SMOOTH SCROLL FOR ANCHOR LINKS
-    // ========================================
-    
-    function initSmoothScroll() {
-        // Respect reduced motion preference
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-                        block: 'start'
-                    });
-                    // Set focus to target for keyboard users
-                    target.setAttribute('tabindex', '-1');
-                    target.focus();
-                }
-            });
-        });
-    }
-    
-    initSmoothScroll();
     
     
     // ========================================
@@ -301,9 +141,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!polaroidStack) return;
         
-        window.addEventListener('scroll', function() {
+        function updateParallax() {
             const scrollY = window.pageYOffset;
             const heroSection = document.querySelector('.about-hero-section');
+            
             if (!heroSection) return;
             
             const heroRect = heroSection.getBoundingClientRect();
@@ -317,7 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     catPeek.style.transform = `translateY(${parallaxOffset * 0.5}px)`;
                 }
             }
-        }, { passive: true });
+        }
+        
+        window.addEventListener('scroll', updateParallax, { passive: true });
     }
     
     initParallax();
@@ -420,23 +263,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Add animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes catMessagePop {
-                from {
-                    opacity: 0;
-                    transform: translateX(-50%) translateY(10px) scale(0.8);
+        if (!document.querySelector('#cat-message-styles')) {
+            const style = document.createElement('style');
+            style.id = 'cat-message-styles';
+            style.textContent = `
+                @keyframes catMessagePop {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-50%) translateY(10px) scale(0.8);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(-50%) translateY(0) scale(1);
+                    }
                 }
-                to {
-                    opacity: 1;
-                    transform: translateX(-50%) translateY(0) scale(1);
+                .cat-peek img {
+                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                 }
-            }
-            .cat-peek img {
-                transition: transform 0.4s var(--ease-out-expo);
-            }
-        `;
-        document.head.appendChild(style);
+            `;
+            document.head.appendChild(style);
+        }
     }
     
     initCatEasterEgg();
@@ -450,8 +296,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const hobbyItems = document.querySelectorAll('.hobby-item');
         
         hobbyItems.forEach(item => {
-            const overlay = item.querySelector('.hobby-overlay');
-            
             item.addEventListener('mousemove', function(e) {
                 const rect = item.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
@@ -476,6 +320,89 @@ document.addEventListener('DOMContentLoaded', function() {
     initMagneticEffect();
     
     
-    console.log('✨ About page interactions initialized!');
-    console.log('🐱 Psst... try clicking the cat!');
+    // ========================================
+    // SMOOTH SCROLL FOR ANCHOR LINKS
+    // ========================================
+    
+    function initSmoothScroll() {
+        // Respect reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+    
+    initSmoothScroll();
+    
+    
+    // ========================================
+    // SKILL TAGS HOVER EFFECTS
+    // ========================================
+    
+    function initSkillTags() {
+        const skillTags = document.querySelectorAll('.skill-tag');
+        
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                // Subtle scale and lift on hover
+                this.style.transform = 'translateY(-4px) scale(1.02)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    }
+    
+    initSkillTags();
+    
+    
+    // ========================================
+    // SCROLL REVEAL ANIMATIONS (OPTIONAL)
+    // ========================================
+    
+    function initScrollReveal() {
+        const sections = document.querySelectorAll('section');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            // Set initial state
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            
+            observer.observe(section);
+        });
+    }
+    
+    // Only enable scroll reveal on desktop
+    if (window.innerWidth > 768) {
+        initScrollReveal();
+    }
 });

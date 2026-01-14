@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SERVE Volleyball Club - Marketing & Content Strategy Case Study">
-    <title>SERVE Playground | Jason Pham</title>
+    <title>SERVE Volleyball Club | Jason Pham</title>
     <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/case-study-styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/branding/sleepycat-256x256.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/branding/sleepycat-256x256.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/branding/sleepycat-256x256.png">
@@ -14,53 +15,370 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .case-study-content {
-            color: var(--color-text);
+        :root {
+            --cs-primary: #f59e0b;
+            --cs-primary-soft: rgba(245, 158, 11, 0.1);
+            --cs-primary-glow: rgba(245, 158, 11, 0.3);
         }
-        .case-study-section {
-            margin-bottom: 3rem;
+        
+        /* Animated growth chart */
+        .growth-chart {
+            position: relative;
+            height: 300px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem;
+            overflow: hidden;
         }
-        .case-study-heading {
-            font-family: var(--font-serif);
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 400;
-            color: var(--color-text);
-            margin-bottom: 1.5rem;
+        
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 100%;
+            gap: 1rem;
         }
-        .case-study-subheading {
-            font-size: 1.375rem;
+        
+        .chart-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .bar-visual {
+            width: 100%;
+            background: linear-gradient(to top, var(--cs-primary), rgba(245, 158, 11, 0.6));
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .bar-visual:hover {
+            transform: scale(1.05);
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
             font-weight: 600;
             color: var(--color-text);
-            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
         }
-        .case-study-text {
-            font-size: 1.0625rem;
-            line-height: 1.8;
-            color: var(--color-text-secondary);
-            margin-bottom: 1rem;
+        
+        .bar-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-align: center;
         }
-        .case-study-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 1rem 0;
-        }
-        .case-study-list li {
+        
+        /* Timeline visualization */
+        .timeline-container {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.0625rem;
-            line-height: 1.8;
-            color: var(--color-text-secondary);
+            padding: 2rem 0;
         }
-        .case-study-list li::before {
-            content: '→';
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, 
+                var(--cs-primary) 0%, 
+                var(--cs-primary) 33%, 
+                var(--color-border) 33%,
+                var(--cs-primary) 66%,
+                var(--color-border) 66%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        
+        .timeline-content:hover {
+            border-color: var(--cs-primary);
+            transform: scale(1.02);
+        }
+        
+        .timeline-badge {
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            transform: translateX(-50%);
+            width: 48px;
+            height: 48px;
+            background: var(--cs-primary);
+            border: 4px solid var(--color-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            z-index: 2;
+        }
+        
+        .timeline-term {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--cs-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-stat {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-learning {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 0.75rem;
+        }
+        
+        /* Content pillars grid */
+        .pillars-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .pillar-showcase-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pillar-showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--cs-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar-showcase-card:hover {
+            border-color: var(--cs-primary);
+            transform: translateY(-4px);
+        }
+        
+        .pillar-showcase-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .pillar-icon-large {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pillar-showcase-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+        
+        .pillar-showcase-desc {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Comparison cards */
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .comparison-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-card.before {
+            border-color: rgba(239, 68, 68, 0.3);
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, transparent 100%);
+        }
+        
+        .comparison-card.after {
+            border-color: rgba(34, 197, 94, 0.3);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, transparent 100%);
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .comparison-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .comparison-card.before .comparison-icon {
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .comparison-card.after .comparison-icon {
+            background: rgba(34, 197, 94, 0.1);
+        }
+        
+        .comparison-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .comparison-card.before .comparison-title {
+            color: #ef4444;
+        }
+        
+        .comparison-card.after .comparison-title {
+            color: #22c55e;
+        }
+        
+        .comparison-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .comparison-items li {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .comparison-items li::before {
             position: absolute;
             left: 0;
-            color: var(--color-accent);
+            font-weight: 600;
+        }
+        
+        .comparison-card.before .comparison-items li::before {
+            content: '✗';
+            color: #ef4444;
+        }
+        
+        .comparison-card.after .comparison-items li::before {
+            content: '✓';
+            color: #22c55e;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 24px;
+            }
+            
+            .timeline-badge {
+                left: 24px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .pillars-showcase,
+            .comparison-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-bars {
+                gap: 0.5rem;
+            }
+            
+            .bar-label {
+                font-size: 0.625rem;
+            }
         }
     </style>
 </head>
-<body>
+<body class="case-study-page cs-loading">
     <!-- Skip Link for Keyboard Navigation -->
     <a href="#main" class="skip-link">Skip to main content</a>
     
@@ -130,199 +448,457 @@
         </div>
     </nav>
 
-    <main class="main-content" id="main" role="main">
-        <div class="container">
-            <section class="playground-hero" aria-labelledby="playground-title">
-                <a class="playground-back-link" href="about.html">
+    <!-- Floating Progress Navigation -->
+    <nav class="case-study-nav" id="caseStudyNav" aria-label="Case study navigation">
+        <div class="nav-current-section">
+            <div class="nav-progress-ring">
+                <svg width="44" height="44">
+                    <circle class="progress-ring-bg" cx="22" cy="22" r="16"></circle>
+                    <circle class="progress-ring-circle" cx="22" cy="22" r="16"></circle>
+                </svg>
+                <span class="progress-percentage">0</span>
+            </div>
+            <span class="nav-current-label">Overview</span>
+            <span class="nav-expand-icon">▼</span>
+        </div>
+        <ul class="nav-section-list">
+            <li>
+                <a href="#overview" class="nav-section-link active" data-section="overview">
+                    <span class="nav-section-num">0</span>
+                    <span class="nav-label">Overview</span>
+                </a>
+            </li>
+            <li>
+                <a href="#challenge" class="nav-section-link" data-section="challenge">
+                    <span class="nav-section-num">1</span>
+                    <span class="nav-label">Challenge</span>
+                </a>
+            </li>
+            <li>
+                <a href="#strategy" class="nav-section-link" data-section="strategy">
+                    <span class="nav-section-num">2</span>
+                    <span class="nav-label">Strategy</span>
+                </a>
+            </li>
+            <li>
+                <a href="#results" class="nav-section-link" data-section="results">
+                    <span class="nav-section-num">3</span>
+                    <span class="nav-label">Results</span>
+                </a>
+            </li>
+            <li>
+                <a href="#reflection" class="nav-section-link" data-section="reflection">
+                    <span class="nav-section-num">4</span>
+                    <span class="nav-label">Reflection</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="case-study-main" id="main" role="main">
+        <!-- Hero Section -->
+        <section class="cs-hero" id="overview">
+            <div class="hero-content-wrapper">
+                <a class="playground-back-link" href="about.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-text-muted); text-decoration: none; font-size: 0.9375rem; margin-bottom: 1.5rem; transition: all 0.3s ease; font-weight: 500;">
                     <span aria-hidden="true">←</span>
                     <span>back to playground</span>
                 </a>
-                <h1 class="playground-hero-title" id="playground-title">SERVE Volleyball Club</h1>
-                <p class="playground-hero-description">Marketing & Content Strategy Case Study</p>
-            </section>
-
-            <div class="playground-gallery">
-                <div class="playground-artwork">
-                    <img src="/assets/images/branding/SERVE.png" alt="SERVE Volleyball Club branding" loading="lazy">
+                
+                <div class="hero-badge">
+                    <span class="badge-icon">🏐</span>
+                    <span class="badge-text">Marketing Strategy</span>
+                    <span class="badge-divider">•</span>
+                    <span class="badge-time">Winter 2024 – Fall 2025</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Building a <span class="hero-highlight">social-first</span> volleyball community
+                </h1>
+                
+                <p class="hero-tagline">
+                    Leading marketing strategy for SERVE Volleyball Club through three academic terms, testing content approaches, and growing engagement across Instagram through data-driven iteration.
+                </p>
+                
+                <div class="hero-meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Timeline</span>
+                        <span class="meta-value">Winter 2024 – Fall 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Role</span>
+                        <span class="meta-value">Marketing Lead</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Platform</span>
+                        <span class="meta-value">Instagram (Reels-first)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tools</span>
+                        <span class="meta-value">Instagram Insights, Figma</span>
+                    </div>
                 </div>
             </div>
 
-            <section class="case-study-content" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1rem;">
-                <div class="case-study-section">
-                    <h2 class="case-study-heading">Overview</h2>
-                    <p class="case-study-text">SERVE Volleyball Club is a student-run volleyball community supporting recreational, semi-competitive, and competitive players. I led marketing strategy and content direction across multiple academic terms, working with a rotating marketing team while building a consistent, performance-driven social presence.</p>
-                    <div class="case-study-meta" style="margin-top: 2rem; padding: 1.5rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--border-radius);">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-                            <div>
-                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Timeline</strong>
-                                <span style="color: var(--color-text);">Winter 2024 – Fall 2025</span>
+            <div class="hero-mockup">
+                <div class="mockup-wrapper">
+                    <img src="/assets/images/branding/SERVE.png" alt="SERVE Volleyball Club branding" class="mockup-image">
                             </div>
-                            <div>
-                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Role</strong>
-                                <span style="color: var(--color-text);">Marketing Lead</span>
                             </div>
-                            <div>
-                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Team</strong>
-                                <span style="color: var(--color-text);">Changing marketing team each term</span>
+
+            <div class="hero-tldr">
+                <div class="tldr-label">
+                    <span class="tldr-icon">⚡</span>
+                    TL;DR
                             </div>
-                            <div>
-                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Tools</strong>
-                                <span style="color: var(--color-text);">Instagram Insights, Figma</span>
+                <div class="tldr-content">
+                    <p>Led marketing strategy for a student-run volleyball club, <strong>growing followers by 1,258</strong> and <strong>increasing average views by 230%</strong> through systematic content testing, human-first storytelling, and performance-driven iteration across three academic terms.</p>
                             </div>
-                            <div>
-                                <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Platform</strong>
-                                <span style="color: var(--color-text);">Instagram (Reels-first)</span>
+                <div class="tldr-metrics">
+                    <div class="tldr-metric">
+                        <span class="metric-value">+1,258</span>
+                        <span class="metric-label">Followers Gained</span>
                             </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">+230%</span>
+                        <span class="metric-label">Views Increase</span>
                         </div>
+                    <div class="tldr-metric">
+                        <span class="metric-value">2M+</span>
+                        <span class="metric-label">Peak Reel Views</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="case-study-section" style="margin-top: 4rem;">
-                    <h2 class="case-study-heading">The Challenge</h2>
-                    <p class="case-study-text">SERVE had strong in-person engagement, but its social presence wasn't fully reflecting the club's energy or competitive credibility.</p>
-                    <p class="case-study-text" style="margin-top: 1rem;">Challenges included:</p>
-                    <ul class="case-study-list">
+        <!-- Challenge Section -->
+        <section class="cs-section" id="challenge">
+            <div class="section-header">
+                <span class="section-number">01 — THE CHALLENGE</span>
+                <h2 class="section-title">Strong in-person, invisible online</h2>
+                <p class="section-intro">
+                    SERVE had great energy on the court, but its social presence wasn't capturing the club's competitive credibility or community personality.
+                </p>
+                </div>
+
+            <div class="section-content">
+                <div class="comparison-cards">
+                    <div class="comparison-card before">
+                        <div class="comparison-header">
+                            <div class="comparison-icon">😕</div>
+                            <h3 class="comparison-title">Before</h3>
+                        </div>
+                        <ul class="comparison-items">
                         <li>Inconsistent growth and engagement</li>
                         <li>Content leaning too promotional</li>
                         <li>No stable visual or content system</li>
                         <li>Knowledge loss between exec transitions</li>
+                            <li>Brand identity unclear</li>
                     </ul>
-                    <p class="case-study-text" style="margin-top: 1.5rem;">The goal wasn't just growth, but clarity, consistency, and long-term impact.</p>
                 </div>
 
-                <div class="case-study-section" style="margin-top: 4rem;">
-                    <h2 class="case-study-heading">Goals</h2>
-                    <ul class="case-study-list">
-                        <li>Grow followers and reach</li>
-                        <li>Improve engagement consistency</li>
+                    <div class="comparison-card after">
+                        <div class="comparison-header">
+                            <div class="comparison-icon">✨</div>
+                            <h3 class="comparison-title">Goals</h3>
+                        </div>
+                        <ul class="comparison-items">
+                            <li>Grow followers and reach consistently</li>
+                            <li>Improve engagement quality</li>
                         <li>Humanize the club brand</li>
-                        <li>Test and validate a long-term content direction</li>
+                            <li>Test and validate content direction</li>
                         <li>Build a system future leads could inherit</li>
                     </ul>
+                    </div>
                 </div>
 
-                <div class="case-study-section" style="margin-top: 4rem;">
-                    <h2 class="case-study-heading">Strategy</h2>
+                <div style="margin-top: 3rem; padding: 2rem; background: var(--color-bg-card); border-left: 3px solid var(--cs-primary); border-radius: 0 12px 12px 0;">
+                    <p style="font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.6; color: var(--color-text); margin: 0;">
+                        "The goal wasn't just growth—it was <strong style="color: var(--cs-primary);">clarity, consistency, and long-term impact</strong> that could survive team changes."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy Section -->
+        <section class="cs-section" id="strategy">
+            <div class="section-header">
+                <span class="section-number">02 — THE STRATEGY</span>
+                <h2 class="section-title">Test, learn, adapt—three terms of evolution</h2>
+                <p class="section-intro">
+                    Rather than guessing what would work, we ran a structured 3-term experiment testing different content positioning while staying human-first.
+                </p>
+            </div>
+
+            <div class="section-content">
+                <!-- Content Pillars -->
+                <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-text);">Human-First Content Pillars</h3>
+                <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">We shifted from announcements to stories, showing the people and personality behind the club.</p>
+                
+                <div class="pillars-showcase">
+                    <div class="pillar-showcase-card">
+                        <div class="pillar-icon-large">👥</div>
+                        <h4 class="pillar-showcase-title">Real People</h4>
+                        <p class="pillar-showcase-desc">Execs and members as authentic personalities, not just names on a poster</p>
+                    </div>
+                    <div class="pillar-showcase-card">
+                        <div class="pillar-icon-large">🎬</div>
+                        <h4 class="pillar-showcase-title">Behind-the-Scenes</h4>
+                        <p class="pillar-showcase-desc">Candid moments, humor, and the everyday energy that makes SERVE feel alive</p>
+                    </div>
+                    <div class="pillar-showcase-card">
+                        <div class="pillar-icon-large">🎉</div>
+                        <h4 class="pillar-showcase-title">Event Energy</h4>
+                        <p class="pillar-showcase-desc">Capturing the excitement and community vibe from sessions and tournaments</p>
+                    </div>
+                    <div class="pillar-showcase-card">
+                        <div class="pillar-icon-large">🏆</div>
+                        <h4 class="pillar-showcase-title">Competitive Highlights</h4>
+                        <p class="pillar-showcase-desc">Showcasing skill, intensity, and the club's performance credibility</p>
+                    </div>
+                </div>
+
+                <!-- Three-Term Timeline -->
+                <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 4rem 0 2rem; color: var(--color-text);">Three-Term Content Evolution</h3>
+                <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">Each term tested a different content approach. Here's what we learned:</p>
+                
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
                     
-                    <div style="margin-top: 2rem;">
-                        <h3 class="case-study-subheading">1. Human-First Content</h3>
-                        <p class="case-study-text">Content shifted away from announcements toward people, personality, and moments.</p>
-                        <p class="case-study-text" style="margin-top: 1rem;"><strong>Content pillars:</strong></p>
-                        <ul class="case-study-list">
-                            <li>Execs and members as real people</li>
-                            <li>Behind-the-scenes and humor</li>
-                            <li>Event energy and candid clips</li>
-                            <li>Competitive highlights</li>
-                        </ul>
-                        <p class="case-study-text" style="margin-top: 1rem;">This made the account feel social rather than promotional.</p>
-                    </div>
-
-                    <div style="margin-top: 3rem;">
-                        <h3 class="case-study-subheading">2. Iterative Brand & Design Testing (3-Term Approach)</h3>
-                        
-                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--color-bg-card); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius);">
-                            <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.75rem;">Term 1: Fun & Casual</h4>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Goal:</strong> attract new and beginner players</p>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Result:</strong> strong early engagement</p>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Issue:</strong> performance declined toward the end of term</p>
-                            <p class="case-study-text"><strong>Learning:</strong> too one-dimensional, novelty wore off</p>
+                    <div class="timeline-item">
+                        <div class="timeline-badge">1</div>
+                        <div class="timeline-content">
+                            <div class="timeline-term">Winter 2024 — Fun & Casual</div>
+                            <h4 class="timeline-title">Attract new and beginner players</h4>
+                            <p class="timeline-stat"><strong>Result:</strong> Strong early engagement, but performance declined toward end of term</p>
+                            <p class="timeline-learning">💡 Learning: Too one-dimensional—novelty wore off quickly</p>
+                        </div>
                         </div>
 
-                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--color-bg-card); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius);">
-                            <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.75rem;">Term 2: Casual–Semi Competitive Mix</h4>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Goal:</strong> balance approachability with skill</p>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Result:</strong> slower start, but engagement improved by the end of term</p>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Learning:</strong> iteration within the term mattered more than the initial direction</p>
-                            <p class="case-study-text"><strong>Insight:</strong> variation and pacing helped recover audience interest</p>
+                    <div class="timeline-item">
+                        <div class="timeline-badge">2</div>
+                        <div class="timeline-content">
+                            <div class="timeline-term">Spring/Summer 2024 — Casual–Semi Competitive Mix</div>
+                            <h4 class="timeline-title">Balance approachability with skill</h4>
+                            <p class="timeline-stat"><strong>Result:</strong> Slower start, but engagement improved by end of term</p>
+                            <p class="timeline-learning">💡 Learning: Iteration within the term mattered more than initial direction—variation and pacing helped recover audience interest</p>
+                        </div>
                         </div>
 
-                        <div style="margin-top: 1.5rem; padding: 1.5rem; background: var(--color-bg-card); border-left: 3px solid var(--color-accent); border-radius: var(--border-radius);">
-                            <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.75rem;">Term 3: Competitive Focus</h4>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Goal:</strong> establish credibility and performance identity</p>
-                            <p class="case-study-text" style="margin-bottom: 0.5rem;"><strong>Result:</strong> strongest overall engagement and reach</p>
-                            <p class="case-study-text"><strong>Learning:</strong> competitive positioning resonated most while still allowing lighter content</p>
+                    <div class="timeline-item">
+                        <div class="timeline-badge">3</div>
+                        <div class="timeline-content">
+                            <div class="timeline-term">Fall 2024 — Competitive Focus</div>
+                            <h4 class="timeline-title">Establish credibility and performance identity</h4>
+                            <p class="timeline-stat"><strong>Result:</strong> Strongest overall engagement and reach across all three terms</p>
+                            <p class="timeline-learning">✨ Success: Competitive positioning resonated most while still allowing lighter content moments</p>
                         </div>
-
-                        <p class="case-study-text" style="margin-top: 1.5rem;">This structured testing clarified what actually worked, rather than relying on assumptions.</p>
-                    </div>
-
-                    <div style="margin-top: 3rem;">
-                        <h3 class="case-study-subheading">3. Performance-Led Iteration</h3>
-                        <p class="case-study-text">Using Instagram Insights, I tracked:</p>
-                        <ul class="case-study-list">
-                            <li>Views per reel</li>
-                            <li>Likes and interaction trends</li>
-                            <li>Follower growth patterns</li>
-                        </ul>
-                        <p class="case-study-text" style="margin-top: 1rem;">Content formats were adjusted in real time. Visual systems were designed and refined in Figma to keep output consistent despite team changes.</p>
                     </div>
                 </div>
 
-                <div class="case-study-section" style="margin-top: 4rem;">
-                    <h2 class="case-study-heading">Results</h2>
-                    
-                    <div style="margin-top: 2rem;">
-                        <h3 class="case-study-subheading">Audience Growth</h3>
-                        <p class="case-study-text">Followers grew from <strong>2,115 to 3,355</strong></p>
-                        <p class="case-study-text" style="color: var(--color-accent);">~59% increase in total followers</p>
-                    </div>
+                <div style="margin-top: 3rem; padding: 2rem; background: var(--cs-primary-soft); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px;">
+                    <h4 style="font-size: 1rem; font-weight: 600; color: var(--cs-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span>📊</span> Performance-Led Iteration
+                    </h4>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.7; margin: 0;">
+                        Using Instagram Insights, we tracked views per reel, engagement patterns, and follower growth. Content formats were adjusted in real time, and visual systems were designed in Figma to keep output consistent despite rotating team members.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-                    <div style="margin-top: 2rem;">
-                        <h3 class="case-study-subheading">Reach & Visibility</h3>
-                        <p class="case-study-text">Average views per post increased from <strong>~3K to ~10K</strong></p>
-                        <p class="case-study-text" style="color: var(--color-accent);">~230% increase in average views</p>
-                        <p class="case-study-text" style="margin-top: 1rem;">Reels consistently reached 10K+ views from Winter 2024 through Fall 2025</p>
-                        <p class="case-study-text" style="margin-top: 1rem;">Two reels went viral:</p>
-                        <ul class="case-study-list">
-                            <li>500K+ views</li>
-                            <li>2M+ views</li>
-                        </ul>
-                    </div>
+        <!-- Results Section -->
+        <section class="cs-section" id="results">
+            <div class="section-header">
+                <span class="section-number">03 — THE RESULTS</span>
+                <h2 class="section-title">From inconsistent to unstoppable</h2>
+                <p class="section-intro">
+                    Three terms of testing, iterating, and refining delivered measurable growth and created a sustainable content system.
+                </p>
+                        </div>
 
-                    <div style="margin-top: 2rem;">
-                        <h3 class="case-study-subheading">Engagement Quality</h3>
-                        <p class="case-study-text">Likes per post stabilized from inconsistent 50–100 to <strong>100+ consistently</strong></p>
-                        <p class="case-study-text" style="margin-top: 1rem;">Engagement became more predictable and less trend-dependent</p>
-                        <p class="case-study-text">Interactions scaled alongside reach</p>
+            <div class="section-content">
+                <!-- Key Metrics -->
+                <div class="outcomes-grid">
+                    <div class="outcome-card">
+                        <span class="outcome-icon">👥</span>
+                        <span class="outcome-value">+1,258</span>
+                        <span class="outcome-label">Followers Gained</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">📈</span>
+                        <span class="outcome-value">100+</span>
+                        <span class="outcome-label">Consistent Likes</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">👀</span>
+                        <span class="outcome-value">3K → 10K</span>
+                        <span class="outcome-label">Avg Views per Post</span>
+                    </div>
+                    <div class="outcome-card">
+                        <span class="outcome-icon">🚀</span>
+                        <span class="outcome-value">+230%</span>
+                        <span class="outcome-label">Views Increase</span>
                     </div>
                 </div>
 
-                <div class="case-study-section" style="margin-top: 4rem;">
-                    <h2 class="case-study-heading">What Worked</h2>
-                    <ul class="case-study-list">
-                        <li>Showing people, not just events</li>
-                        <li>Iterating within a term, not waiting for the next one</li>
-                        <li>Using performance data to guide creative decisions</li>
-                        <li>Designing systems that survived team turnover</li>
+                <!-- Growth Visualization -->
+                <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 4rem 0 1.5rem; color: var(--color-text);">Engagement Growth Over Time</h3>
+                <div class="growth-chart">
+                    <div class="chart-bars">
+                        <div class="chart-bar">
+                            <div class="bar-visual" style="height: 30%;">
+                                <div class="bar-value">~3K</div>
+                            </div>
+                            <div class="bar-label">Before<br/>(Avg)</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="bar-visual" style="height: 45%;">
+                                <div class="bar-value">~5K</div>
+                            </div>
+                            <div class="bar-label">Term 1<br/>(Peak)</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="bar-visual" style="height: 65%;">
+                                <div class="bar-value">~8K</div>
+                            </div>
+                            <div class="bar-label">Term 2<br/>(End)</div>
+                        </div>
+                        <div class="chart-bar">
+                            <div class="bar-visual" style="height: 100%;">
+                                <div class="bar-value">~10K</div>
+                            </div>
+                            <div class="bar-label">Term 3<br/>(Consistent)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viral Success -->
+                <div style="margin-top: 4rem; padding: 2.5rem; background: linear-gradient(135deg, var(--cs-primary-soft) 0%, rgba(245, 158, 11, 0.05) 100%); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🔥</span>
+                        <h3 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--color-text); margin-bottom: 0.5rem;">Viral Breakthrough</h3>
+                        <p style="color: var(--color-text-secondary); font-size: 1rem;">Two reels reached exceptional viral performance</p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                            <div style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--cs-primary); margin-bottom: 0.5rem;">500K+</div>
+                            <div style="font-size: 0.875rem; color: var(--color-text-muted);">First Viral Reel</div>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                            <div style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--cs-primary); margin-bottom: 0.5rem;">2M+</div>
+                            <div style="font-size: 0.875rem; color: var(--color-text-muted);">Peak Viral Reel</div>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Engagement Quality -->
+                <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 4rem 0 1.5rem; color: var(--color-text);">Engagement Quality Improved</h3>
+                <div class="comparison-cards">
+                    <div class="comparison-card before">
+                        <div class="comparison-header">
+                            <div class="comparison-icon">📉</div>
+                            <h3 class="comparison-title">Before Strategy</h3>
+                        </div>
+                        <ul class="comparison-items">
+                            <li>Inconsistent 50–100 likes per post</li>
+                            <li>Unpredictable engagement patterns</li>
+                            <li>Trend-dependent performance</li>
+                            <li>High variance between posts</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card after">
+                        <div class="comparison-header">
+                            <div class="comparison-icon">📈</div>
+                            <h3 class="comparison-title">After Strategy</h3>
+                        </div>
+                        <ul class="comparison-items">
+                            <li>Consistent 100+ likes per post</li>
+                            <li>Predictable engagement baseline</li>
+                            <li>Quality interactions scaled with reach</li>
+                            <li>Stable performance across content types</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section class="cs-section" id="reflection">
+            <div class="section-header">
+                <span class="section-number">04 — REFLECTION</span>
+                <h2 class="section-title">What worked, what didn't, and why it mattered</h2>
+            </div>
+
+            <div class="section-content">
+                <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--color-text);">Key Takeaways</h3>
+                
+                <div class="learnings-grid">
+                    <div class="learning-card">
+                        <div class="learning-icon">✅</div>
+                        <h4>Show people, not just events</h4>
+                        <p>Human-first storytelling made the account feel social rather than promotional</p>
+                    </div>
+                    <div class="learning-card">
+                        <div class="learning-icon">🔄</div>
+                        <h4>Iterate within terms, not between them</h4>
+                        <p>Mid-term pivots led to stronger end results—waiting for the next term would have been too slow</p>
+                    </div>
+                    <div class="learning-card">
+                        <div class="learning-icon">📊</div>
+                        <h4>Let data guide creative decisions</h4>
+                        <p>Instagram Insights revealed what resonated, allowing us to double down on what worked</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(239, 68, 68, 0.05); border-left: 3px solid #ef4444; border-radius: 0 12px 12px 0;">
+                    <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 1rem;">What Didn't Work (And Why That Helped)</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                        <li style="font-size: 0.9375rem; color: var(--color-text-secondary); padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ef4444;">→</span>
+                            Purely casual content lacked long-term depth
+                        </li>
+                        <li style="font-size: 0.9375rem; color: var(--color-text-secondary); padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ef4444;">→</span>
+                            Early mixed positioning needed refinement through testing
+                        </li>
+                        <li style="font-size: 0.9375rem; color: var(--color-text-secondary); padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ef4444;">→</span>
+                            These "failures" became signals for the next iteration, not setbacks
+                        </li>
                     </ul>
                 </div>
 
-                <div class="case-study-section" style="margin-top: 4rem;">
-                    <h2 class="case-study-heading">What Didn't (and Why That Helped)</h2>
-                    <ul class="case-study-list">
-                        <li>Purely casual content lacked long-term depth</li>
-                        <li>Early mixed positioning needed refinement</li>
-                        <li>Mid-term pivots led to stronger end results</li>
-                    </ul>
-                    <p class="case-study-text" style="margin-top: 1rem; font-style: italic;">Failures became signals, not setbacks.</p>
+                <div style="margin-top: 3rem; padding: 2rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px;">
+                    <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 1rem;">Impact Beyond Metrics</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+                        <div style="padding: 1.25rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🤝</div>
+                            <div style="font-size: 0.9375rem; color: var(--color-text-secondary);">Stronger community connection</div>
+                        </div>
+                        <div style="padding: 1.25rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
+                            <div style="font-size: 0.9375rem; color: var(--color-text-secondary);">Clearer brand direction for future execs</div>
+                        </div>
+                        <div style="padding: 1.25rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📚</div>
+                            <div style="font-size: 0.9375rem; color: var(--color-text-secondary);">Easier onboarding for new team members</div>
+                        </div>
+                        <div style="padding: 1.25rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔄</div>
+                            <div style="font-size: 0.9375rem; color: var(--color-text-secondary);">Repeatable system, not one-off wins</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="case-study-section" style="margin-top: 4rem;">
-                    <h2 class="case-study-heading">Impact Beyond Metrics</h2>
-                    <ul class="case-study-list">
-                        <li>Stronger community connection</li>
-                        <li>Clearer brand direction for future execs</li>
-                        <li>Easier onboarding for new marketing team members</li>
-                        <li>A repeatable content system instead of one-off wins</li>
-                    </ul>
+                <div style="margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 16px; text-align: center;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--color-text); margin-bottom: 1rem;">Final Takeaway</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--color-text-secondary); max-width: 720px; margin: 0 auto;">
+                        The biggest gains came from <strong style="color: var(--cs-primary);">staying flexible</strong>. The ability to recognize fatigue, pivot mid-term, and double down on what worked turned experimentation into real growth. <strong style="color: var(--color-text);">Competitive clarity, paired with human storytelling, ultimately delivered the strongest results.</strong>
+                    </p>
                 </div>
-
-                <div class="case-study-section" style="margin-top: 4rem; padding: 2rem; background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: var(--border-radius-lg);">
-                    <h2 class="case-study-heading" style="margin-bottom: 1rem;">Key Takeaway</h2>
-                    <p class="case-study-text" style="font-size: 1.125rem; line-height: 1.8;">The biggest gains came from staying flexible. The ability to recognize fatigue, pivot mid-term, and double down on what worked turned experimentation into real growth. Competitive clarity, paired with human storytelling, ultimately delivered the strongest results.</p>
                 </div>
             </section>
-        </div>
     </main>
 
     <footer class="footer">
@@ -341,8 +917,17 @@
         </div>
     </footer>
 
+    <!-- Lightbox for images -->
+    <div class="cs-lightbox" id="lightbox">
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <img src="" alt="" class="lightbox-image">
+        </div>
+    </div>
+
     <script src="/main.js"></script>
     <script src="/transitions.js"></script>
+    <script src="/case-study.js"></script>
 </body>
 </html>
-
