@@ -267,6 +267,7 @@ body {
 .project-tall {
     grid-column: span 2;
     grid-row: span 2;
+    min-height: 500px;
 }
 
 .about-card {
@@ -275,27 +276,46 @@ body {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
     border: none;
     color: white;
+    min-height: 500px;
 }
 
 .project-wide {
     grid-column: span 3;
     grid-row: span 1;
+    min-height: 350px;
 }
 
 .project-medium {
     grid-column: span 2;
     grid-row: span 1;
+    min-height: 350px;
 }
 
 .contact-card {
     grid-column: span 4;
     grid-row: span 1;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(37, 99, 235, 0.08) 100%);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 3rem;
+    min-height: 350px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
 .project-card {
@@ -702,10 +722,6 @@ body {
 /* Removed Skills Card - Not needed */
 
 /* Contact Card - Blue Gradient Theme */
-.contact-card {
-    padding: 2.5rem;
-}
-
 .contact-card > * {
     flex: 0 0 auto;
 }
@@ -713,34 +729,45 @@ body {
 .contact-card-content {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .contact-card .bento-title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 2.75rem;
+    font-weight: 400;
 }
 
 .contact-text {
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: var(--color-text-secondary);
-    margin: 0.75rem 0 0;
-    line-height: 1.6;
+    margin: 0;
+    line-height: 1.7;
+    max-width: 600px;
 }
 
 .social-links {
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
     flex-shrink: 0;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .social-link {
-    width: 44px;
-    height: 44px;
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--color-bg-elevated);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    border-radius: 18px;
     color: var(--color-text-secondary);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -761,8 +788,8 @@ body {
     position: relative;
     z-index: 1;
     transition: all 0.4s ease;
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
 }
 
 .social-link:hover {
@@ -976,7 +1003,22 @@ body {
     .contact-card {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 2rem;
+        min-height: 300px;
+    }
+    
+    .contact-card .bento-title {
+        font-size: 2.25rem;
+    }
+    
+    .contact-text {
+        font-size: 1.125rem;
+        max-width: 100%;
+    }
+    
+    .social-links {
+        width: 100%;
+        justify-content: flex-start;
     }
 }
 
@@ -1011,6 +1053,25 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
+        min-height: 280px;
+    }
+    
+    .contact-card .bento-title {
+        font-size: 2rem;
+    }
+    
+    .contact-text {
+        font-size: 1rem;
+    }
+    
+    .social-link {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .social-link svg {
+        width: 24px;
+        height: 24px;
     }
     
     .mto-card, .azul-card {
