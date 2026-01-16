@@ -24,48 +24,55 @@
         /* Animated growth chart */
         .growth-chart {
             position: relative;
-            height: 300px;
+            height: 320px;
             background: var(--color-bg-card);
             border: 1px solid var(--color-border);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 1.5rem;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .chart-bars {
             display: flex;
             align-items: flex-end;
-            justify-content: space-around;
-            height: 100%;
-            gap: 1rem;
+            justify-content: center;
+            height: 220px;
+            gap: 1.5rem;
         }
         
         .chart-bar {
-            flex: 1;
+            flex: 0 0 70px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: flex-end;
+            height: 100%;
+            position: relative;
         }
         
         .bar-visual {
-            width: 100%;
-            background: linear-gradient(to top, var(--cs-primary), rgba(245, 158, 11, 0.6));
+            width: 50px;
+            background: linear-gradient(to top, #f59e0b, rgba(245, 158, 11, 0.6));
             border-radius: 8px 8px 0 0;
             position: relative;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
         
         .bar-visual:hover {
-            transform: scale(1.05);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
         }
         
         .bar-value {
             position: absolute;
-            top: -30px;
+            top: -24px;
             left: 50%;
             transform: translateX(-50%);
-            font-weight: 600;
+            font-weight: 700;
             color: var(--color-text);
             font-size: 0.875rem;
             white-space: nowrap;
@@ -75,6 +82,8 @@
             font-size: 0.75rem;
             color: var(--color-text-muted);
             text-align: center;
+            margin-top: 0.75rem;
+            white-space: nowrap;
         }
         
         /* Timeline visualization */
@@ -499,9 +508,11 @@
         <!-- Hero Section -->
         <section class="cs-hero" id="overview">
             <div class="hero-content-wrapper">
-                <a class="playground-back-link" href="about.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-text-muted); text-decoration: none; font-size: 0.9375rem; margin-bottom: 1.5rem; transition: all 0.3s ease; font-weight: 500;">
-                    <span aria-hidden="true">←</span>
-                    <span>back to playground</span>
+                <a href="about.html" class="back-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>Back to Playground</span>
                 </a>
                 
                 <div class="hero-badge">
@@ -746,25 +757,25 @@
                 <div class="growth-chart">
                     <div class="chart-bars">
                         <div class="chart-bar">
-                            <div class="bar-visual" style="height: 30%;">
+                            <div class="bar-visual" style="height: 60px;">
                                 <div class="bar-value">~3K</div>
                             </div>
                             <div class="bar-label">Before<br/>(Avg)</div>
                         </div>
                         <div class="chart-bar">
-                            <div class="bar-visual" style="height: 45%;">
+                            <div class="bar-visual" style="height: 100px;">
                                 <div class="bar-value">~5K</div>
                             </div>
                             <div class="bar-label">Term 1<br/>(Peak)</div>
                         </div>
                         <div class="chart-bar">
-                            <div class="bar-visual" style="height: 65%;">
+                            <div class="bar-visual" style="height: 140px;">
                                 <div class="bar-value">~8K</div>
                             </div>
                             <div class="bar-label">Term 2<br/>(End)</div>
                         </div>
                         <div class="chart-bar">
-                            <div class="bar-visual" style="height: 100%;">
+                            <div class="bar-visual" style="height: 180px;">
                                 <div class="bar-value">~10K</div>
                             </div>
                             <div class="bar-label">Term 3<br/>(Consistent)</div>

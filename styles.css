@@ -142,7 +142,7 @@ body {
 
 /* Header */
 .header-section {
-    padding: 0 0 2rem;
+    padding: 12rem 0 2rem;
     position: relative;
     z-index: 1;
     overflow: visible;
@@ -150,12 +150,12 @@ body {
 
 .header-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.2;
     color: var(--color-text);
     letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     padding-left: 0.1em;
     overflow: visible;
 }
@@ -177,7 +177,7 @@ body {
 
 .typing-text {
     font-style: italic;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
     border-right: 3px solid var(--color-text-secondary);
     padding-right: 0.25rem;
     animation: blink 1s infinite;
@@ -272,7 +272,7 @@ body {
 .about-card {
     grid-column: span 2;
     grid-row: span 2;
-    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
     border: none;
     color: white;
 }
@@ -317,26 +317,19 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(3px);
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .featured-large:hover .bento-image img {
     transform: scale(1.08);
-    filter: blur(0px);
 }
 
 .featured-large::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(0, 0, 0, 0.92) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(0, 0, 0, 0.9) 100%);
     z-index: 1;
-    transition: all 0.5s ease;
-}
-
-.featured-large:hover::after {
-    background: linear-gradient(180deg, transparent 0%, transparent 20%, rgba(0, 0, 0, 0.96) 100%);
 }
 
 .bento-content {
@@ -630,8 +623,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(3px);
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-card {
@@ -656,18 +648,12 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(0, 0, 0, 0.92) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(0, 0, 0, 0.9) 100%);
     z-index: 1;
-    transition: all 0.5s ease;
-}
-
-.project-card:hover::after {
-    background: linear-gradient(180deg, transparent 0%, transparent 20%, rgba(0, 0, 0, 0.96) 100%);
 }
 
 .project-card:hover .project-thumb img {
     transform: scale(1.08);
-    filter: blur(0px);
 }
 
 /* Project Card Content - Similar to Featured Project */
@@ -960,6 +946,10 @@ body {
 }
 
 @media (max-width: 1024px) {
+    .header-section {
+        padding: 10rem 0 2rem;
+    }
+    
     .bento-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1035,8 +1025,12 @@ body {
         font-size: 2rem;
     }
     
+    .header-section {
+        padding: 8rem 0 2rem;
+    }
+    
     .header-title {
-        font-size: clamp(2rem, 8vw, 3.5rem);
+        font-size: clamp(2.25rem, 8vw, 3.5rem);
     }
     
     .project-tall, .project-wide, .project-medium {
@@ -1090,6 +1084,14 @@ body {
         padding: 1.5rem 1rem;
         max-width: calc(100vw - 1rem);
         box-sizing: border-box;
+    }
+    
+    .header-section {
+        padding: 6rem 0 2rem;
+    }
+    
+    .header-title {
+        font-size: clamp(2rem, 9vw, 3rem);
     }
     
     .bento-item {
