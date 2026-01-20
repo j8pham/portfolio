@@ -1029,7 +1029,7 @@ body {
     }
     
     .page-container {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.25rem;
         border-radius: 24px;
         width: 100%;
         max-width: calc(100vw - 2rem);
@@ -1048,90 +1048,248 @@ body {
         grid-row: span 1;
     }
     
+    /* Featured project card mobile */
+    .featured-large {
+        min-height: 320px;
+    }
+    
+    .featured-large .bento-content {
+        padding: 1.5rem;
+    }
+    
+    .featured-large .bento-title {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+        line-height: 1.15;
+        margin-bottom: 0.5rem;
+    }
+    
+    .featured-large .bento-label {
+        font-size: 0.6875rem;
+    }
+    
+    .featured-large .bento-description {
+        font-size: 0.9375rem;
+        line-height: 1.5;
+    }
+    
+    .featured-large .bento-tags {
+        margin-top: 1rem;
+        gap: 0.5rem;
+    }
+    
+    .featured-large .tag {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    /* Project cards mobile */
+    .project-card .bento-content {
+        padding: 1.25rem;
+    }
+    
+    .project-card .bento-title {
+        font-size: clamp(1.375rem, 5vw, 1.75rem);
+        margin-bottom: 0.25rem;
+    }
+    
+    .project-card .bento-description {
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+    
+    .project-card .bento-tags {
+        margin-top: 0.75rem;
+        gap: 0.5rem;
+    }
+    
+    .project-card .tag {
+        font-size: 0.6875rem;
+        padding: 0.375rem 0.75rem;
+    }
+    
+    /* Contact card mobile */
     .contact-card {
         grid-column: span 1;
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
-        min-height: 280px;
+        gap: 1.25rem;
+        min-height: auto;
+        padding: 1.75rem;
     }
     
     .contact-card .bento-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 6vw, 2rem);
     }
     
     .contact-text {
-        font-size: 1rem;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+    
+    .social-links {
+        gap: 1rem;
     }
     
     .social-link {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
     }
     
     .social-link svg {
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
     }
     
+    /* Coming soon cards mobile */
     .mto-card, .azul-card {
-        min-height: 250px;
+        min-height: 200px;
     }
     
-    .featured-large .bento-title {
-        font-size: 2.5rem;
+    .coming-soon-info {
+        padding: 1.25rem;
+    }
+    
+    .coming-soon-card .bento-title.small {
+        font-size: 1.5rem;
+    }
+    
+    .coming-soon-text {
+        font-size: 0.75rem;
     }
     
     .bento-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 5vw, 2rem);
     }
     
     .header-section {
-        padding: 8rem 0 2rem;
+        padding: 7rem 0 1.5rem;
     }
     
     .header-title {
-        font-size: clamp(2.25rem, 8vw, 3.5rem);
+        font-size: clamp(1.75rem, 7vw, 2.75rem);
+        line-height: 1.25;
     }
     
     .project-tall, .project-wide, .project-medium {
-        min-height: 300px;
+        min-height: 280px;
     }
     
     /* About card responsive */
+    .about-card {
+        padding: 1.75rem;
+        min-height: auto;
+    }
+    
     .about-header {
         flex-direction: column;
         gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .about-icon {
+        font-size: 2rem;
     }
     
     .greeting-mini {
         align-self: flex-start;
+        padding: 0.375rem 0.75rem;
+    }
+    
+    .greeting-mini .wave-hand {
+        font-size: 1rem;
+    }
+    
+    .greeting-mini .greeting-text {
+        font-size: 0.75rem;
     }
     
     .about-card .bento-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 0.75rem;
     }
     
     .about-intro {
-        font-size: 1rem;
+        font-size: 0.9375rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+    }
+    
+    .about-highlights {
+        gap: 0.625rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .highlight-item {
+        padding: 0.75rem 1rem;
+        gap: 0.75rem;
+    }
+    
+    .highlight-icon {
+        font-size: 1.25rem;
+    }
+    
+    .highlight-label {
+        font-size: 0.625rem;
+    }
+    
+    .highlight-text {
+        font-size: 0.8125rem;
+    }
+    
+    .about-principles {
+        padding: 1rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .principles-intro {
+        font-size: 0.8125rem;
+        margin-bottom: 0.625rem;
     }
     
     .principles-tags {
         flex-direction: column;
+        gap: 0.375rem;
     }
     
     .principle-tag {
         width: 100%;
         text-align: center;
+        font-size: 0.75rem;
+        padding: 0.625rem 0.75rem;
+    }
+    
+    .about-link {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
     }
     
     .cat-menu-hub {
         margin: 1rem;
-        margin-left: max(1rem, calc((100vw - 1600px) / 2 + 2rem));
+        margin-left: 1rem;
     }
     
     .quick-nav-pills {
         margin: 1rem;
+    }
+    
+    /* Footer mobile */
+    .footer-section {
+        padding: 2rem 0 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .footer-text {
+        font-size: 0.8125rem;
+    }
+    
+    .footer-tagline {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+    }
+    
+    .scroll-hint {
+        font-size: 0.8125rem;
+        margin-bottom: 1.5rem;
     }
 }
 
@@ -1142,63 +1300,151 @@ body {
     }
     
     .page-container {
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 1rem;
         max-width: calc(100vw - 1rem);
         box-sizing: border-box;
+        border-radius: 20px;
     }
     
     .header-section {
-        padding: 6rem 0 2rem;
+        padding: 5.5rem 0 1.25rem;
     }
     
     .header-title {
-        font-size: clamp(2rem, 9vw, 3rem);
+        font-size: clamp(1.5rem, 8vw, 2.25rem);
+        line-height: 1.3;
+    }
+    
+    .bento-grid {
+        gap: 0.875rem;
     }
     
     .bento-item {
-        padding: 1.5rem;
+        padding: 1.25rem;
+        border-radius: 20px;
     }
     
     .bento-content {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
     
     .project-card .bento-content {
-        padding: 1.5rem;
-    }
-    
-    .featured-large .bento-title {
-        font-size: 2rem;
-    }
-    
-    .about-card .bento-title {
-        font-size: 1.75rem;
-    }
-    
-    .about-intro {
-        font-size: 0.9375rem;
-    }
-    
-    .highlight-item {
-        padding: 0.875rem 1rem;
-    }
-    
-    .highlight-text {
-        font-size: 0.875rem;
-    }
-    
-    .about-principles {
         padding: 1rem;
     }
     
-    .principle-tag {
+    .featured-large {
+        min-height: 280px;
+        border-radius: 20px;
+    }
+    
+    .featured-large .bento-content {
+        padding: 1.25rem;
+    }
+    
+    .featured-large .bento-title {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+    }
+    
+    .featured-large .bento-description {
+        font-size: 0.875rem;
+    }
+    
+    .featured-large .tag {
+        font-size: 0.6875rem;
+        padding: 0.375rem 0.75rem;
+    }
+    
+    .project-card {
+        border-radius: 20px;
+    }
+    
+    .project-card .bento-title {
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+    }
+    
+    .project-card .bento-description {
+        font-size: 0.8125rem;
+    }
+    
+    .project-tall, .project-wide, .project-medium {
+        min-height: 250px;
+    }
+    
+    /* About card small mobile */
+    .about-card {
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+    
+    .about-card .bento-title {
+        font-size: clamp(1.375rem, 6vw, 1.75rem);
+    }
+    
+    .about-intro {
+        font-size: 0.875rem;
+    }
+    
+    .highlight-item {
+        padding: 0.625rem 0.875rem;
+    }
+    
+    .highlight-text {
         font-size: 0.75rem;
-        padding: 0.5rem 0.75rem;
+    }
+    
+    .about-principles {
+        padding: 0.875rem;
+    }
+    
+    .principle-tag {
+        font-size: 0.6875rem;
+        padding: 0.5rem 0.625rem;
+    }
+    
+    .about-link {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.8125rem;
+        border-radius: 12px;
+    }
+    
+    /* Contact card small mobile */
+    .contact-card {
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+    
+    .contact-card .bento-title {
+        font-size: clamp(1.375rem, 6vw, 1.75rem);
+    }
+    
+    .contact-text {
+        font-size: 0.875rem;
+    }
+    
+    .social-link {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+    
+    .social-link svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Coming soon cards small mobile */
+    .mto-card, .azul-card {
+        min-height: 180px;
+        border-radius: 20px;
+    }
+    
+    .coming-soon-card .bento-title.small {
+        font-size: 1.25rem;
     }
     
     .cat-menu-hub {
         margin: 0.75rem;
-        margin-left: max(0.75rem, calc((100vw - 1600px) / 2 + 1.5rem));
+        margin-left: 0.75rem;
     }
     
     .quick-nav-pills {

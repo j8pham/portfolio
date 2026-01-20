@@ -3399,14 +3399,25 @@
 /* ========================================
    RESPONSIVE UTILITIES
    ======================================== */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .hero-title,
     .cs-title {
-        font-size: clamp(2.25rem, 10vw, 3rem);
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+        line-height: 1.15;
     }
     
     .section-title {
-        font-size: clamp(1.75rem, 6vw, 2rem);
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+    
+    .hero-tagline,
+    .cs-tagline {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .section-intro {
+        font-size: 1rem;
     }
     
     .hero-content-wrapper,
@@ -3425,9 +3436,328 @@
         padding: 0 1.25rem;
     }
     
+    /* Hero section mobile */
+    .cs-hero {
+        padding: 100px 0 50px;
+        gap: 40px;
+    }
+    
+    .back-button {
+        padding: 8px 14px 8px 10px;
+        font-size: 0.8125rem;
+        margin-bottom: 20px;
+    }
+    
+    .hero-badge,
+    .cs-project-badge {
+        padding: 6px 12px;
+        margin-bottom: 20px;
+    }
+    
+    .badge-text,
+    .badge-label {
+        font-size: 0.6875rem;
+    }
+    
+    .badge-time,
+    .badge-read-time {
+        font-size: 0.6875rem;
+    }
+    
+    /* TL;DR mobile */
+    .tldr-content {
+        padding: 16px;
+    }
+    
+    .tldr-content p {
+        font-size: 0.9375rem;
+    }
+    
+    .tldr-metric .metric-value {
+        font-size: 1.5rem;
+    }
+    
+    .tldr-metric .metric-label {
+        font-size: 0.6875rem;
+    }
+    
+    /* Section spacing mobile */
+    .cs-section {
+        padding: 60px 0;
+    }
+    
+    .section-header,
+    .cs-section-header {
+        margin-bottom: 40px;
+    }
+    
+    .section-number {
+        font-size: 0.75rem;
+    }
+    
+    /* Story section mobile */
+    .lead-text {
+        font-size: clamp(1.125rem, 4vw, 1.5rem);
+    }
+    
+    .story-narrative p {
+        font-size: 0.9375rem;
+    }
+    
+    .story-quote {
+        padding: 20px;
+        margin: 32px 0;
+    }
+    
+    .story-quote p {
+        font-size: 1.125rem;
+    }
+    
+    /* Challenge section mobile */
+    .hmw-question {
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+    }
+    
+    .pain-point-card {
+        padding: 20px;
+    }
+    
+    .pain-point-card h4 {
+        font-size: 1rem;
+    }
+    
+    .pain-point-card p {
+        font-size: 0.875rem;
+    }
+    
+    /* Design goals mobile */
+    .goal-item {
+        padding: 20px;
+    }
+    
+    .goal-number {
+        width: 38px;
+        height: 38px;
+        font-size: 0.875rem;
+    }
+    
+    .goal-content h4 {
+        font-size: 0.9375rem;
+    }
+    
+    .goal-content p {
+        font-size: 0.875rem;
+    }
+    
+    /* Research section mobile */
+    .method-card {
+        padding: 20px;
+    }
+    
+    .method-header h4,
+    .method-title {
+        font-size: 1rem;
+    }
+    
+    .method-desc {
+        font-size: 0.875rem;
+    }
+    
+    .finding-stat {
+        font-size: 1.25rem;
+    }
+    
+    .finding-label {
+        font-size: 0.75rem;
+    }
+    
+    /* Insights mobile */
+    .insight-card {
+        padding: 20px;
+    }
+    
+    .insight-card blockquote {
+        font-size: 1rem;
+    }
+    
+    .insight-analysis {
+        font-size: 0.8125rem;
+    }
+    
+    /* Solution section mobile */
+    .solution-overview h3 {
+        font-size: 1.375rem;
+    }
+    
+    .solution-overview p {
+        font-size: 0.9375rem;
+    }
+    
+    .flow-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .flow-content h4 {
+        font-size: 1rem;
+    }
+    
+    .flow-content p {
+        font-size: 0.875rem;
+    }
+    
+    .flow-rationale {
+        font-size: 0.75rem;
+    }
+    
+    /* Design section mobile */
+    .phase-block {
+        padding: 24px;
+    }
+    
+    .phase-header h4 {
+        font-size: 1.25rem;
+    }
+    
+    .phase-desc {
+        font-size: 0.9375rem;
+    }
+    
+    .phase-learnings li {
+        font-size: 0.875rem;
+    }
+    
+    /* Reflection section mobile */
+    .outcome-card {
+        padding: 20px;
+    }
+    
+    .outcome-value {
+        font-size: 1.25rem;
+    }
+    
+    .outcome-label {
+        font-size: 0.6875rem;
+    }
+    
+    .learning-card {
+        padding: 20px;
+    }
+    
+    .learning-card h4 {
+        font-size: 1rem;
+    }
+    
+    .learning-card p {
+        font-size: 0.875rem;
+    }
+    
+    /* Next steps mobile */
+    .next-steps-header h3 {
+        font-size: 1.25rem;
+    }
+    
+    .next-step-title {
+        font-size: 0.9375rem;
+    }
+    
+    .next-step-desc {
+        font-size: 0.8125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title,
+    .cs-title {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+    }
+    
+    .section-title {
+        font-size: clamp(1.375rem, 6vw, 1.75rem);
+    }
+    
+    .hero-content-wrapper,
+    .cs-hero-content,
+    .section-header,
+    .cs-section-header,
+    .section-content,
+    .cs-content-block {
+        padding: 0 1rem;
+    }
+    
+    .hero-mockup,
+    .cs-hero-visual,
+    .hero-tldr,
+    .cs-tldr {
+        padding: 0 1rem;
+    }
+    
+    .cs-hero {
+        padding: 90px 0 40px;
+        gap: 32px;
+    }
+    
+    .hero-tagline,
+    .cs-tagline {
+        font-size: 0.9375rem;
+        margin-bottom: 32px;
+    }
+    
+    .cs-section {
+        padding: 48px 0;
+    }
+    
+    .section-header,
+    .cs-section-header {
+        margin-bottom: 32px;
+    }
+    
     .story-stats {
         flex-direction: column;
         gap: 1.5rem;
+    }
+    
+    /* TL;DR small mobile */
+    .tldr-metrics {
+        gap: 16px;
+    }
+    
+    .tldr-metric {
+        padding: 16px;
+    }
+    
+    .tldr-metric .metric-value {
+        font-size: 1.375rem;
+    }
+    
+    /* Cards small mobile */
+    .pain-point-card,
+    .method-card,
+    .insight-card,
+    .goal-item,
+    .learning-card,
+    .outcome-card,
+    .phase-block {
+        padding: 16px;
+    }
+    
+    .mockup-wrapper {
+        border-radius: 12px;
+    }
+    
+    /* Footer small mobile */
+    .case-footer {
+        padding: 48px 1rem 32px;
+        margin-top: 60px;
+    }
+    
+    .footer-link {
+        padding: 16px;
+    }
+    
+    .footer-link-title {
+        font-size: 1rem;
     }
 }
 

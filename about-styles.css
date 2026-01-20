@@ -202,6 +202,19 @@ body {
     50% { background-position: 100% 50%; }
 }
 
+/* Typing text in polaroid caption */
+.caption-text.typing-text::after {
+    content: '|';
+    margin-left: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 .about-hero-description {
     font-size: clamp(1.0625rem, 2vw, 1.375rem);
     line-height: 1.8;
@@ -1118,47 +1131,71 @@ body {
     }
     
     .about-hero-section {
-        padding: 6rem 0 4rem;
+        padding: 5rem 0 3rem;
         min-height: auto;
     }
     
     .about-hero-content {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         text-align: center;
-        gap: 3rem;
+        gap: 2rem;
     }
     
-    .about-hero-text {
-        order: 2;
-    }
-    
+    /* Polaroid on TOP */
     .about-hero-image {
         order: 1;
-        max-width: 280px;
+        width: 100%;
+        max-width: 240px;
         margin: 0 auto;
     }
     
+    /* Text content BELOW polaroid */
+    .about-hero-text {
+        order: 2;
+        max-width: 100%;
+    }
+    
     .polaroid-stack {
-        max-width: 260px;
+        max-width: 220px;
         margin: 0 auto;
     }
     
     .polaroid-card.back-card {
-        transform: rotate(-6deg) translateX(-12px) translateY(6px);
+        transform: rotate(-5deg) translateX(-10px) translateY(5px);
     }
     
     .polaroid-card.mid-card {
-        transform: rotate(3deg) translateX(10px) translateY(-3px);
+        transform: rotate(3deg) translateX(8px) translateY(-3px);
+    }
+    
+    .polaroid-card.main-card {
+        transform: rotate(-1deg);
     }
     
     .cat-peek {
-        width: 70px;
-        bottom: -20px;
-        left: -20px;
+        width: 60px;
+        bottom: -15px;
+        left: -15px;
     }
     
     .hero-greeting {
         justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .about-hero-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    
+    .title-line {
+        font-size: 0.55em;
+    }
+    
+    .about-hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
     
     .hero-scroll-hint {
@@ -1167,6 +1204,19 @@ body {
     
     .hobby-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hobby-item .hobby-info {
+        margin-top: 1rem;
+    }
+    
+    .hobby-title {
+        font-size: 1.125rem;
+    }
+    
+    .hobby-description {
+        font-size: 0.8125rem;
     }
     
     .principles-grid {
@@ -1174,7 +1224,15 @@ body {
     }
     
     .principle-card.interactive-card {
-        height: 240px;
+        height: 220px;
+    }
+    
+    .principle-title {
+        font-size: 1.25rem;
+    }
+    
+    .principle-description {
+        font-size: 0.9375rem;
     }
     
     .timeline-container {
@@ -1183,6 +1241,28 @@ body {
     
     .timeline-marker {
         left: -2.5rem;
+    }
+    
+    .timeline-title {
+        font-size: 1.25rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .section-description {
+        font-size: 0.9375rem;
+    }
+    
+    /* Spotify section mobile */
+    .spotify-title {
+        font-size: 1.25rem;
+        flex-wrap: wrap;
+    }
+    
+    .sound-waves {
+        margin-left: 0;
     }
 }
 
@@ -1196,7 +1276,19 @@ body {
     }
     
     .about-hero-section {
-        padding: 4rem 0 3rem;
+        padding: 4rem 0 2rem;
+    }
+    
+    .about-hero-content {
+        gap: 1.5rem;
+    }
+    
+    .about-hero-image {
+        max-width: 200px;
+    }
+    
+    .polaroid-stack {
+        max-width: 180px;
     }
     
     .hero-greeting {
@@ -1208,24 +1300,82 @@ body {
     }
     
     .greeting-text {
-        font-size: 0.8125rem;
+        font-size: 0.75rem;
+    }
+    
+    .about-hero-title {
+        font-size: clamp(1.75rem, 10vw, 2.5rem);
+    }
+    
+    .title-line {
+        font-size: 0.5em;
+    }
+    
+    .about-hero-description {
+        font-size: 0.9375rem;
+        line-height: 1.7;
     }
     
     .section-heading {
-        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+    
+    .section-tag {
+        font-size: 0.6875rem;
+        padding: 0.375rem 0.75rem;
     }
     
     .spotify-content {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .spotify-title {
+        font-size: 1.125rem;
+    }
+    
+    .spotify-description {
+        font-size: 0.875rem;
     }
     
     .timeline-card {
         padding: 1rem;
     }
     
+    .timeline-title {
+        font-size: 1.125rem;
+    }
+    
+    .timeline-date {
+        font-size: 0.6875rem;
+    }
+    
     .skill-tag {
         font-size: 0.8125rem;
         padding: 0.625rem 1rem;
+    }
+    
+    .principle-card.interactive-card {
+        height: 200px;
+    }
+    
+    .principle-icon {
+        font-size: 2.5rem;
+    }
+    
+    .principle-title {
+        font-size: 1.125rem;
+    }
+    
+    .card-hint {
+        font-size: 0.6875rem;
+    }
+    
+    .hobby-grid {
+        gap: 1.25rem;
+    }
+    
+    .footer-tagline {
+        font-size: clamp(1.25rem, 5vw, 2rem);
     }
 }
 

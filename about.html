@@ -119,7 +119,7 @@
                                 <img src="/assets/images/branding/profile-portrait.jpg" alt="Jason - Profile Picture" loading="eager">
                             </div>
                             <div class="polaroid-caption">
-                                <span class="caption-text">that's me! 📸</span>
+                                <span class="caption-text typing-text" id="typingText" aria-live="polite">product designer</span>
                             </div>
                         </div>
                     </div>
@@ -337,5 +337,45 @@
 
     <script src="/main.js"></script>
     <script src="/about-interactions.js"></script>
+    <script>
+        // Typing animation
+        const typingText = document.getElementById('typingText');
+        const words = ['product designer', 'volleyball player', 'creative thinker', 'problem solver', 'celcius addict', 'professional sidequester', 'tft addict'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        let deletingSpeed = 50;
+        let pauseTime = 2000;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = deletingSpeed;
+            } else {
+                typingText.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && charIndex === currentWord.length) {
+                typingSpeed = pauseTime;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typingSpeed = 500;
+            }
+            
+            setTimeout(type, typingSpeed);
+        }
+
+        if (typingText) {
+            type();
+        }
+    </script>
 </body>
 </html>
