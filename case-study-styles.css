@@ -2476,6 +2476,30 @@
     }
 }
 
+/* Design System Full (single image) */
+.design-system-full {
+    margin-top: 0;
+}
+
+.design-system-full img {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+}
+
+/* Research visual */
+.research-visual {
+    margin: 2rem 0;
+}
+
+.research-visual img {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+}
+
 /* Design Principles - "App Is / App Is Not" Cards */
 .design-principles {
     display: grid;
