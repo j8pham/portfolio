@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Your Future - Visual Showcase</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/branding/sleepycat-256x256.png">
+    <style>
+        body {
+            background: #0a0e1a;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .showcase-section {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        /* Visual variety for sections - SYF blue theme */
+        .section-hero {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, #0a0e1a 70%);
+            text-align: center;
+        }
+
+        .section-problem {
+            background: linear-gradient(180deg, #0a0e1a 0%, rgba(239, 68, 68, 0.05) 50%, #0a0e1a 100%);
+        }
+
+        .section-research {
+            background: #080b14;
+        }
+
+        .section-journey {
+            background: linear-gradient(135deg, #0a0e1a 0%, #0f172a 100%);
+        }
+
+        .section-solution {
+            background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, #0a0e1a 60%);
+        }
+
+        .section-split-layout {
+            background: #0b101d;
+        }
+
+        .container-showcase {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .layout-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .layout-split.reverse .text-column {
+            order: 2;
+        }
+        
+        .layout-split.reverse .visual-column {
+            order: 1;
+        }
+
+        .text-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .act-label {
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 99px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-beat {
+            font-size: 1.35rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-top: 2rem;
+        }
+
+        .beat-scene-setter {
+            font-size: 1.75rem;
+            color: #e2e8f0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .beat-conclusion {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #ef4444;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+            font-size: 1.25rem;
+        }
+
+        .beat-insight {
+            border-left: 3px solid #60a5fa;
+            padding-left: 2rem;
+            font-size: 1.25rem;
+            color: #cbd5e1;
+        }
+
+        .beat-mission {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #cbd5e1;
+            text-align: center;
+            margin: 2.5rem auto 0;
+            max-width: 700px;
+            line-height: 1.6;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .beat-annotation {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .beat-impact-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #cbd5e1;
+            border-left: 4px solid #f59e0b;
+            padding-left: 2rem;
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%);
+            padding: 2rem;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .visual-container {
+            margin: 0;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .visual-container:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .visual-padding {
+            padding: 3rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            width: 100%;
+        }
+
+        .bento-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .bento-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-wide {
+            grid-column: span 2;
+        }
+
+        .bento-full {
+            grid-column: span 4;
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .bento-wide {
+                grid-column: span 2;
+            }
+            .bento-full {
+                grid-column: span 2;
+            }
+        }
+
+        .icon-card {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .icon-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .icon-large {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2));
+        }
+
+        .label-large {
+            font-size: 1.25rem;
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .timeline-simple {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-marker {
+            width: 48px;
+            height: 48px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .quote-card {
+            font-size: 1.5rem;
+            color: #f1f5f9;
+            font-weight: 300;
+            line-height: 1.6;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: rgba(59, 130, 246, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .pillar-chip {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 100px;
+            color: #60a5fa;
+            font-weight: 600;
+            margin: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .screen-mockup {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screen-mockup:hover {
+            transform: scale(1.02);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 1.25rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            color: #60a5fa;
+            font-weight: bold;
+            margin-right: 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .bullet-list {
+            text-align: left;
+            color: #94a3b8;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .bg-gradient-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .showcase-section:hover .bg-gradient-effect {
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .layout-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .layout-split.reverse .text-column { order: 1; }
+            .layout-split.reverse .visual-column { order: 2; }
+            h2 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            h2 { font-size: 2rem; }
+            .beat-scene-setter { font-size: 1.25rem; }
+            .showcase-section { padding: 4rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <nav class="cat-navbar" id="navbar" aria-label="Main navigation">
+        <div class="cat-nav-container">
+            <div class="cat-menu-hub">
+                <button class="cat-button" id="catButton" aria-label="Menu" aria-expanded="false">
+                    <div class="cat-avatar">
+                        <img src="/assets/images/branding/sleepycat.png" alt="" class="cat-img">
+                        <div class="cat-zzz">
+                            <span>z</span><span>z</span><span>z</span>
+                        </div>
+                        <div class="cat-awake-eyes">
+                            <span class="cat-eye left"></span>
+                            <span class="cat-eye right"></span>
+                        </div>
+                    </div>
+                    <span class="cat-tooltip">poke me!</span>
+                </button>
+                
+                <div class="cat-radial-menu" id="catMenu">
+                    <a href="index.html" class="cat-menu-item" data-index="0" style="--item-index: 0;">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/material-symbols--home-rounded.svg" alt="">
+                        </span>
+                        <span class="menu-label">home</span>
+                    </a>
+                    <a href="about.html" class="cat-menu-item" data-index="1" style="--item-index: 1;">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/tdesign--user-filled.svg" alt="">
+                        </span>
+                        <span class="menu-label">about</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1qee0o98a06le9xTkeCvDeVJAvaj8bcTi/view?usp=sharing" class="cat-menu-item" data-index="2" style="--item-index: 2;" target="_blank" rel="noopener">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/mingcute--paper-fill.svg" alt="">
+                        </span>
+                        <span class="menu-label">resume</span>
+                    </a>
+                    <a href="mailto:pham.jason@outlook.com" class="cat-menu-item" data-index="3" style="--item-index: 3;">
+                        <span class="menu-icon">
+                            <img src="/assets/images/branding/iconoir--send-mail-solid(1).svg" alt="">
+                        </span>
+                        <span class="menu-label">contact</span>
+                    </a>
+                </div>
+                
+                <div class="cat-menu-backdrop" id="catBackdrop"></div>
+            </div>
+            
+            <div class="quick-nav-pills" id="quickNav">
+                <a href="about.html" class="quick-pill">
+                    <img src="/assets/images/branding/tdesign--user-filled.svg" alt="About">
+                </a>
+                <a href="https://drive.google.com/file/d/1qee0o98a06le9xTkeCvDeVJAvaj8bcTi/view?usp=sharing" class="quick-pill" target="_blank" rel="noopener">
+                    <img src="/assets/images/branding/mingcute--paper-fill.svg" alt="Resume">
+                </a>
+                <a href="mailto:pham.jason@outlook.com" class="quick-pill">
+                    <img src="/assets/images/branding/iconoir--send-mail-solid(1).svg" alt="Contact">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main" role="main">
+    <!-- Act I -->
+    <section class="showcase-section section-hero" aria-labelledby="showcase-title">
+        <div class="container-showcase">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <span class="act-label">Act I: The Moment</span>
+                <h2>You want to buy a house someday...</h2>
+                
+                <div class="visual-container visual-padding" style="margin-top: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    <img src="/assets/images/syf/syf-confusion.png" alt="The confusion of traditional financial planning" class="screen-mockup">
+                </div>
+
+                <p class="beat-scene-setter">
+                    You're dreaming about a home, a family, maybe early retirement. So you go online to figure out how to get there. And the first thing you see? A wall of policy options and forms asking questions you don't understand. You close the tab. That's the moment we wanted to fix.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-problem">
+        <div class="container-showcase">
+            <span class="act-label" style="background: rgba(239, 68, 68, 0.1); color: #f87171; border-color: rgba(239, 68, 68, 0.2);">The Problem</span>
+            <h2 style="max-width: 800px;">Nobody wakes up excited about insurance</h2>
+            
+            <div class="visual-container visual-padding">
+                <div class="grid-3">
+                    <div class="icon-card">
+                        <span class="icon-large">📚</span>
+                        <div class="label-large">Jargon overload</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">"What's a term vs whole life?"</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">🎯</span>
+                        <div class="label-large">One-size-fits-all</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Everyone gets the same forms</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">❄️</span>
+                        <div class="label-large">Cold calls</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Advisors know nothing about you</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beat-conclusion">
+                Most financial tools force you to learn their language before they'll help you. They ask about products before understanding your goals. And when an advisor finally calls, they're starting from scratch—no idea what you actually care about.
+            </div>
+        </div>
+    </section>
+
+    <!-- Act II -->
+    <section class="showcase-section section-research">
+        <div class="container-showcase">
+            <div class="layout-split">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Act II: Discovery</span>
+                        <h2>We talked to real people</h2>
+                    </div>
+                    <p class="beat-annotation">
+                        During a one-week design jam with Co-operators, we dug into why financial planning feels so hard. We spoke with advisors, reviewed industry research, and built personas for people at different life stages—each with different dreams and different anxieties.
+                    </p>
+                </div>
+                <div class="visual-column">
+                    <div class="timeline-simple">
+                        <div class="timeline-step">
+                            <span class="step-marker">1</span>
+                            <div>
+                                <strong style="color: white; display: block; margin-bottom: 0.25rem;">Industry deep-dive</strong>
+                                <span style="color: #94a3b8;">30% of Canadians are underinsured</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="step-marker">2</span>
+                            <div>
+                                <strong style="color: white; display: block; margin-bottom: 0.25rem;">Advisor conversations</strong>
+                                <span style="color: #94a3b8;">What makes good leads vs bad ones?</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <span class="step-marker">3</span>
+                            <div>
+                                <strong style="color: white; display: block; margin-bottom: 0.25rem;">Three personas</strong>
+                                <span style="color: #94a3b8;">Different ages, different worries</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem;">
+                <div class="visual-container visual-padding">
+                    <img src="/assets/images/syf/syf-research.png" alt="Research synthesis" class="screen-mockup">
+                </div>
+            </div>
+            
+            <div class="visual-container visual-padding" style="margin-top: 3rem;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Meet the people we designed for</h3>
+                    <p style="color: #94a3b8;">Same anxiety, different life stages</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                    <div class="icon-card">
+                        <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">👩‍🎓</span>
+                        <div class="label-large">Paige, 22</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">"I don't even know what questions to ask."</p>
+                    </div>
+                    <div class="icon-card">
+                        <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">👩‍💼</span>
+                        <div class="label-large">Farah, 39</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">"I have a house, a kid, and zero time."</p>
+                    </div>
+                    <div class="icon-card">
+                        <span style="font-size: 2.5rem; display: block; margin-bottom: 0.75rem;">👵</span>
+                        <div class="label-large">Irene, 62</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">"Did I do enough? Is it too late?"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-container visual-padding" style="margin-top: 3rem;">
+                <img src="/assets/images/syf/syf-solution-flow.png" alt="The solution flow" class="screen-mockup">
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-journey">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">The Insight</span>
+                <h2>People think in life events, not policies</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💭</div>
+                        <div style="color: white; font-weight: 600;">"I want a house"</div>
+                    </div>
+                    <div style="color: #60a5fa; font-size: 1.5rem;">→</div>
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📋</div>
+                        <div style="color: white; font-weight: 600;">Wall of forms</div>
+                    </div>
+                    <div style="color: #60a5fa; font-size: 1.5rem;">→</div>
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">😕</div>
+                        <div style="color: white; font-weight: 600;">"Wait, what?"</div>
+                    </div>
+                    <div style="color: #60a5fa; font-size: 1.5rem;">→</div>
+                    <div class="icon-card" style="flex: 1; min-width: 120px; padding: 1.5rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚪</div>
+                        <div style="color: white; font-weight: 600;">Gone</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; color: #94a3b8; font-style: italic;">This is how it usually goes. We wanted to flip it.</p>
+            </div>
+
+            <div style="margin-top: 3rem; display: flex; justify-content: center;">
+                <p class="beat-insight" style="max-width: 700px;">
+                    The biggest realization: <strong>there was no human starting point</strong>. We decided to let people dream first—pick the life moments that matter to them—before asking any policy questions.
+                </p>
+            </div>
+            
+            <div class="visual-container visual-padding" style="margin-top: 3rem;">
+                <img src="/assets/images/syf/syf-problem-stats.png" alt="The numbers behind the problem" class="screen-mockup">
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div class="layout-split reverse">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">What We Heard</span>
+                        <h2>Straight from research</h2>
+                    </div>
+                    <p class="beat-annotation">
+                        Three patterns kept showing up: people felt stupid before they even started, the forms felt like tests, and advisors were calling blind. These became our north stars for what to fix.
+                    </p>
+                </div>
+                <div class="visual-column">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="quote-card">
+                            "I don't even know how to Google this stuff."
+                        </div>
+                        <div class="quote-card">
+                            "Why are they asking me things I don't understand yet?"
+                        </div>
+                        <div class="quote-card">
+                            "The advisor called and had no idea what I actually wanted."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-split-layout">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Our Bet</span>
+                <h2>What if we started with dreams?</h2>
+            </div>
+
+            <!-- Visual flow diagram -->
+            <div class="visual-container visual-padding" style="margin-bottom: 3rem;">
+                <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div style="text-align: center; padding: 1.5rem 2rem; background: rgba(59, 130, 246, 0.1); border-radius: 16px; border: 2px solid rgba(59, 130, 246, 0.3);">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💭</div>
+                        <div style="color: #60a5fa; font-weight: 600; font-size: 1.1rem;">"I want a house"</div>
+                    </div>
+                    <div style="color: #60a5fa; font-size: 2rem; padding: 0 0.5rem;">→</div>
+                    <div style="text-align: center; padding: 1.5rem 2rem; background: rgba(59, 130, 246, 0.1); border-radius: 16px; border: 2px solid rgba(59, 130, 246, 0.3);">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🗓️</div>
+                        <div style="color: #60a5fa; font-weight: 600; font-size: 1.1rem;">Map it out</div>
+                    </div>
+                    <div style="color: #60a5fa; font-size: 2rem; padding: 0 0.5rem;">→</div>
+                    <div style="text-align: center; padding: 1.5rem 2rem; background: rgba(59, 130, 246, 0.1); border-radius: 16px; border: 2px solid rgba(59, 130, 246, 0.3);">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📋</div>
+                        <div style="color: #60a5fa; font-weight: 600; font-size: 1.1rem;">Get a plan</div>
+                    </div>
+                    <div style="color: #60a5fa; font-size: 2rem; padding: 0 0.5rem;">→</div>
+                    <div style="text-align: center; padding: 1.5rem 2rem; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 2px solid rgba(34, 197, 94, 0.3);">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤝</div>
+                        <div style="color: #4ade80; font-weight: 600; font-size: 1.1rem;">Talk to someone who gets it</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Three pillars as visual cards -->
+            <div class="grid-3">
+                <div class="icon-card" style="border-top: 4px solid #60a5fa;">
+                    <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🎯</span>
+                    <div class="label-large" style="color: #60a5fa;">Goals First</div>
+                    <p style="color: #94a3b8; margin-top: 0.75rem; font-size: 1rem; line-height: 1.5;">
+                        Ask about dreams before asking about products. Let people see themselves in the plan.
+                    </p>
+                </div>
+                <div class="icon-card" style="border-top: 4px solid #60a5fa;">
+                    <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">💬</span>
+                    <div class="label-large" style="color: #60a5fa;">Plain Language</div>
+                    <p style="color: #94a3b8; margin-top: 0.75rem; font-size: 1rem; line-height: 1.5;">
+                        No jargon. No intimidation. Speak like a helpful friend, not a textbook.
+                    </p>
+                </div>
+                <div class="icon-card" style="border-top: 4px solid #60a5fa;">
+                    <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">🤝</span>
+                    <div class="label-large" style="color: #60a5fa;">Warm Handoffs</div>
+                    <p style="color: #94a3b8; margin-top: 0.75rem; font-size: 1rem; line-height: 1.5;">
+                        When you talk to an advisor, they already know what matters to you. No cold calls.
+                    </p>
+                </div>
+            </div>
+
+            <p class="beat-mission">
+                Every screen, every word had to pass one test: <strong>does this help someone feel more confident about their future?</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Act III -->
+    <section class="showcase-section section-solution">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="act-label">Act III: The Solution</span>
+                <h2>A planner that speaks human</h2>
+                <div style="max-width: 600px; margin: 1rem auto 0;">
+                    <p class="beat-annotation" style="margin-bottom: 1rem;">
+                        We built Secure Your Future—a tool that lets you pick the life moments you care about, see them on a timeline, and get a plan that actually makes sense. When you're ready to talk to someone, they already know your story.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div style="max-width: 1000px; margin: 0 auto;">
+                    <img src="/assets/images/syf/syf-approach-comparison.png" alt="Before and after comparison" class="screen-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Step 1</span>
+                <h2>A welcome that feels like a friend</h2>
+            </div>
+            
+            <div class="layout-split" style="margin-bottom: 3rem;">
+                <div class="text-column" style="display: flex; align-items: center;">
+                    <ul class="feature-list">
+                        <li>No forms on the first screen</li>
+                        <li>Mountain imagery = journey, not transaction</li>
+                        <li>One button: "Get Started"</li>
+                    </ul>
+                </div>
+                <div class="visual-column" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 1rem;">
+                    <img src="/assets/images/syf/syf-landing-hero.png" alt="Welcoming landing page" class="screen-mockup">
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p class="beat-annotation" style="margin-bottom: 1rem;">
+                    The first screen sets the tone. We wanted it to feel like opening a door, not filling out paperwork.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-split-layout">
+        <div class="container-showcase">
+            <div class="layout-split reverse">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Step 2</span>
+                        <h2>Pick the milestones that matter to you</h2>
+                    </div>
+                    <p class="beat-annotation" style="margin-bottom: 1rem;">
+                        House? Family? Retirement? Travel? You choose what's important. The tool adapts to you, not the other way around.
+                    </p>
+                    <ul style="text-align: left; color: #94a3b8; list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;">✓ Select up to three life goals</li>
+                        <li style="margin-bottom: 0.75rem;">✓ Each choice changes what comes next</li>
+                        <li style="margin-bottom: 0.75rem;">✓ No wrong answers</li>
+                    </ul>
+                </div>
+                <div class="visual-column">
+                    <img src="/assets/images/syf/syf-goal-selection.png" alt="Picking your life goals" class="screen-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div class="layout-split">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Step 3</span>
+                        <h2>See your future on a timeline</h2>
+                    </div>
+                    <p class="beat-annotation" style="margin-bottom: 1rem;">
+                        Drag your goals onto a timeline. See when you want things to happen. Suddenly the future isn't so abstract—it's a plan you can actually picture.
+                    </p>
+                    <ul style="text-align: left; color: #94a3b8; list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;">✓ Drag and drop to arrange</li>
+                        <li style="margin-bottom: 0.75rem;">✓ Goals map to ages/timeframes</li>
+                        <li style="margin-bottom: 0.75rem;">✓ Edit anytime—it's your plan</li>
+                    </ul>
+                </div>
+                <div class="visual-column">
+                    <img src="/assets/images/syf/syf-timeline-builder.png" alt="Building your timeline" class="screen-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-split-layout">
+        <div class="container-showcase">
+            <div class="layout-split reverse">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">Step 4</span>
+                        <h2>Get a plan—and a real conversation</h2>
+                    </div>
+                    <p class="beat-annotation" style="margin-bottom: 1rem;">
+                        Your summary shows what you care about. When you book an advisor, they see it all—so the call isn't "tell me about yourself" but "let's talk about buying that house."
+                    </p>
+                    <ul style="text-align: left; color: #94a3b8; list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;">✓ Clear summary of your goals</li>
+                        <li style="margin-bottom: 0.75rem;">✓ One tap to book an advisor</li>
+                        <li style="margin-bottom: 0.75rem;">✓ They already know your story</li>
+                    </ul>
+                </div>
+                <div class="visual-column">
+                    <img src="/assets/images/syf/syf-plan-summary.png" alt="Your personalized plan" class="screen-mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">The Details</span>
+                <h2>Built on Co-operators' design system</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <img src="/assets/images/syf/syf-design-system-full.png" alt="Design system components" class="screen-mockup">
+            </div>
+
+            <p class="beat-annotation" style="margin: 2rem auto 0; text-align: center; max-width: 800px;">
+                This wasn't a blue-sky concept—we built it to fit right into Co-operators' existing brand. Same colors, same typography, ready for real development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Act IV -->
+    <section class="showcase-section section-hero">
+        <div class="container-showcase">
+            <span class="act-label">Act IV: What Changed</span>
+            <h2>Before and after</h2>
+            
+            <div class="visual-container visual-padding">
+                <div class="grid-2">
+                    <div style="opacity: 0.5; border: 2px dashed #475569; padding: 2rem; border-radius: 16px;">
+                        <h3 style="color: #94a3b8; margin-bottom: 1rem;">The old way</h3>
+                        <ul style="text-align: left; color: #94a3b8; list-style: disc; padding-left: 1.5rem;">
+                            <li style="margin-bottom: 0.5rem;">"What policy do you need?"</li>
+                            <li style="margin-bottom: 0.5rem;">Walls of text and jargon</li>
+                            <li style="margin-bottom: 0.5rem;">Cold calls from strangers</li>
+                        </ul>
+                    </div>
+                    <div style="border: 2px solid #60a5fa; padding: 2rem; border-radius: 16px; background: rgba(59, 130, 246, 0.05);">
+                        <h3 style="color: #60a5fa; margin-bottom: 1rem;">Our way</h3>
+                         <ul style="text-align: left; color: #fff; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">✓ "What do you dream about?"</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Visual timeline you can touch</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Advisors who know your story</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p class="beat-annotation" style="margin: 3rem auto 0; text-align: center; max-width: 800px;">
+                We kept asking ourselves one question: <strong>does this make someone feel more confident about their future?</strong> If not, we changed it.
+            </p>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="container-showcase">
+            <div class="layout-split">
+                <div class="text-column">
+                    <div>
+                        <span class="act-label">The Feedback</span>
+                        <h2>It actually worked</h2>
+                    </div>
+                    <p class="beat-impact-quote">
+                        In testing, every single person completed the flow. Users said it "finally makes sense." Advisors loved that they could see what mattered to someone before picking up the phone. In one week, we proved that <strong>starting with dreams</strong> beats starting with products.
+                    </p>
+                </div>
+                <div class="visual-column">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="quote-card">
+                            "Oh, this actually makes sense."
+                        </div>
+                        <div class="quote-card">
+                            "I wish all financial stuff was like this."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Act V -->
+    <section class="showcase-section section-research">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">Act V: What's Next</span>
+                <h2>If this went live</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div class="grid-3">
+                    <div class="icon-card">
+                        <span class="icon-large">📚</span>
+                        <div class="label-large">More milestones</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Business, caregiving, education</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">💼</span>
+                        <div class="label-large">Advisor dashboard</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">See the full picture before calling</p>
+                    </div>
+                    <div class="icon-card">
+                        <span class="icon-large">🧪</span>
+                        <div class="label-large">Test & learn</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Which interactions work best?</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="beat-annotation" style="margin: 2rem auto 0; text-align: center; max-width: 800px;">
+                This was a one-week sprint, so there's plenty more to explore. But the core idea—let people dream first—that's the foundation for everything that comes next.
+            </p>
+        </div>
+    </section>
+
+    <section class="showcase-section section-hero">
+        <div class="container-showcase">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="act-label">The Numbers</span>
+                <h2>What we proved</h2>
+            </div>
+            
+            <div class="visual-container visual-padding">
+                <div class="bento-grid">
+                    <div class="bento-card bento-large">
+                        <span class="icon-large">📈</span>
+                        <div class="label-large">+65%</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">More qualified leads than traditional forms</p>
+                    </div>
+                    <div class="bento-card">
+                        <span class="icon-large">✓</span>
+                        <div class="label-large">100%</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Task completion</p>
+                    </div>
+                    <div class="bento-card">
+                        <span class="icon-large">🏔️</span>
+                        <div class="label-large">5 teams</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Ready to pilot</p>
+                    </div>
+                    <div class="bento-card bento-wide">
+                        <span class="icon-large">🤝</span>
+                        <div class="label-large">Warm handoffs</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">Advisors know you before they call</p>
+                    </div>
+                    <div class="bento-card bento-full">
+                        <span class="icon-large">💚</span>
+                        <div class="label-large">"It finally makes sense"</div>
+                        <p style="color: #94a3b8; margin-top: 0.5rem;">The best metric is how people feel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section section-hero" style="min-height: 60vh;">
+        <div class="container-showcase">
+            <span class="act-label">What I Learned</span>
+            <h2>Making the complex feel simple</h2>
+            
+            <div class="visual-container" style="text-align: center; max-width: 900px; margin: 3rem auto; padding: 4rem 3rem;">
+               <div style="font-size: 6rem; line-height: 1;">🏔️</div>
+               <p style="color: #fff; margin-top: 1rem; font-size: 1.5rem; font-weight: 600;">Dreams first. Details later.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 3rem auto 0;">
+                <div class="icon-card" style="text-align: left; padding: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;">Meet people where they are</h3>
+                    <p style="color: #cbd5e1; line-height: 1.6; margin: 0;">Nobody wants to learn insurance. They want to buy a house, retire early, take care of family. Start there.</p>
+                </div>
+                <div class="icon-card" style="text-align: left; padding: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;">Digital should help humans</h3>
+                    <p style="color: #cbd5e1; line-height: 1.6; margin: 0;">The tool doesn't replace the advisor—it makes the conversation better. Context is everything.</p>
+                </div>
+                <div class="icon-card" style="text-align: left; padding: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 1rem; font-weight: 600;">Confidence is the real metric</h3>
+                    <p style="color: #cbd5e1; line-height: 1.6; margin: 0;">65% more leads is great. But "it finally makes sense" is the quote I'll remember.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <script src="/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.showcase-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(section);
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                document.documentElement.style.setProperty('--x', `${x * 100}%`);
+                document.documentElement.style.setProperty('--y', `${y * 100}%`);
+            });
+        });
+    </script>
+</body>
+</html>
