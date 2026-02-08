@@ -515,10 +515,12 @@ body {
 
 .text-highlight-about {
     background: rgba(255, 255, 255, 0.2);
-    padding: 0.125rem 0.5rem;
+    padding: 0.25rem 0.625rem;
     border-radius: 6px;
     font-weight: 600;
     color: white;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .about-highlights {
