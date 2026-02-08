@@ -217,6 +217,49 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Marquee Ticker -->
+            <div class="marquee-strip marquee-reverse" aria-hidden="true">
+                <div class="marquee-track">
+                    <div class="marquee-item">
+                        <span class="marquee-item-icon">🏃</span>
+                        <span class="marquee-item-text">Community Recreation</span>
+                    </div>
+                    <div class="marquee-item">
+                        <span class="marquee-item-icon">🔍</span>
+                        <span class="marquee-item-text">Discovery:</span>
+                        <span class="marquee-item-value">42% faster</span>
+                    </div>
+                    <div class="marquee-item">
+                        <span class="marquee-item-icon">💪</span>
+                        <span class="marquee-item-text">Confidence:</span>
+                        <span class="marquee-item-value">+31%</span>
+                    </div>
+                    <div class="marquee-item">
+                        <span class="marquee-item-icon">🎯</span>
+                        <span class="marquee-item-text">Filters:</span>
+                        <span class="marquee-item-value">+54% usage</span>
+                    </div>
+                    <div class="marquee-item">
+                        <span class="marquee-item-icon">👥</span>
+                        <span class="marquee-item-text">6 People</span>
+                    </div>
+                    <div class="marquee-item">
+                        <span class="marquee-item-icon">🛠️</span>
+                        <span class="marquee-item-text">Figma · Notion</span>
+                    </div>
+                    <div class="marquee-item">
+                        <span class="marquee-item-icon">🗓️</span>
+                        <span class="marquee-item-text">10 Weeks</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Cue -->
+            <div class="hero-scroll-cue">
+                <span class="scroll-text">Scroll to explore</span>
+                <div class="scroll-arrow"></div>
+            </div>
         </section>
 
         <!-- Story Section -->
@@ -613,39 +656,108 @@
                     </div>
                 </div>
 
-                <div class="measurement-methodology" style="margin: 3rem 0; padding: 2rem; background: var(--cs-primary-soft, rgba(14, 165, 233, 0.1)); border-radius: 16px; border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));">
-                    <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem; font-family: var(--font-serif, serif);">How We Measured Impact</h3>
-                    <p style="margin-bottom: 1.5rem; color: var(--color-text-secondary, #666); line-height: 1.7;">
-                        Because Relocate was a new product concept, impact was measured through moderated usability testing 
-                        and comparative task analysis, informed by existing municipal workflows.
-                    </p>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <h4 style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600;">Usability Testing</h4>
-                        <p style="color: var(--color-text-secondary, #666); line-height: 1.7; margin-bottom: 0.5rem;">
-                            Participants rated their experience across three dimensions:
-                        </p>
-                        <ul style="color: var(--color-text-secondary, #666); line-height: 1.7; padding-left: 1.5rem; margin-bottom: 1rem;">
-                            <li>clarity of information</li>
-                            <li>ease of decision-making</li>
-                            <li>confidence in completing a booking</li>
-                        </ul>
-                        <p style="color: var(--color-text-secondary, #666); line-height: 1.7;">
-                            These ratings were used to assess perceived usability and trust.
-                        </p>
+                <div class="impact-measurement">
+                    <h3>How We Measured Impact</h3>
+                    <p>Because Relocate was a new product concept, impact was measured through moderated usability testing and comparative task analysis, informed by existing municipal workflows.</p>
+
+                    <div class="measurement-timeline">
+                        <div class="measurement-step">
+                            <div class="step-marker">
+                                <span class="step-icon">📋</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Baseline Benchmarking</h4>
+                                <p>We audited 4 existing municipal recreation portals and timed how long common tasks took — finding an activity, checking availability, and completing a booking. These benchmarks became our "before" metrics.</p>
+                                <div class="step-details">
+                                    <span class="step-tag">4 portals audited</span>
+                                    <span class="step-tag">Task timing</span>
+                                    <span class="step-tag">Heuristic evaluation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="measurement-step">
+                            <div class="step-marker">
+                                <span class="step-icon">🧪</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Moderated Usability Testing</h4>
+                                <p>Participants completed identical tasks on our Relocate prototype and rated their experience across three dimensions: <strong>clarity of information</strong>, <strong>ease of decision-making</strong>, and <strong>confidence in completing a booking</strong>.</p>
+                                <div class="step-details">
+                                    <span class="step-tag">10 participants</span>
+                                    <span class="step-tag">Think-aloud protocol</span>
+                                    <span class="step-tag">Likert-scale ratings</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="measurement-step">
+                            <div class="step-marker">
+                                <span class="step-icon">📊</span>
+                            </div>
+                            <div class="step-body">
+                                <h4>Comparative Task Analysis</h4>
+                                <p>We compared task completion times and success rates between legacy portals and Relocate. Filter engagement was measured by tracking how often participants interacted with the surfaced filter UI vs. the hidden overflow menus of existing tools.</p>
+                                <div class="step-details">
+                                    <span class="step-tag">Time-on-task</span>
+                                    <span class="step-tag">Success rate</span>
+                                    <span class="step-tag">Filter interaction logs</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div style="padding-top: 1.5rem; border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));">
-                        <h4 style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600;">Result</h4>
-                        <p style="color: var(--color-text-secondary, #666); line-height: 1.7;">
-                            Testing showed that Relocate significantly reduced friction in discovery, improved clarity around 
-                            scheduling and availability, and increased user confidence when booking recreational activities.
-                        </p>
+                    <div class="measurement-result">
+                        <h4>Result</h4>
+                        <p>Testing showed that Relocate significantly reduced friction in discovery, improved clarity around scheduling and availability, and increased user confidence when booking recreational activities.</p>
+                        <p class="result-disclaimer">All metrics reflect projected outcomes based on usability testing and research insights.</p>
                     </div>
+                </div>
 
-                    <p style="margin-top: 1.5rem; font-size: 0.875rem; color: var(--color-text-muted, #999); font-style: italic; padding-top: 1.5rem; border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));">
-                        (All metrics reflect projected outcomes based on usability testing and research insights.)
-                    </p>
+                <!-- TrumpRx-style Comparison Bars -->
+                <div class="comparison-bars">
+                    <div class="comparison-bar-item" style="--bar-before: 100%; --bar-after: 58%;">
+                        <div class="comparison-bar-label">
+                            <span>Activity Discovery Time</span>
+                            <div class="comparison-bar-values">
+                                <span class="bar-value-before">Legacy portals</span>
+                                <span class="bar-value-after">Relocate</span>
+                                <span class="comparison-bar-badge">42% faster</span>
+                            </div>
+                        </div>
+                        <div class="comparison-bar-track">
+                            <div class="comparison-bar-fill-before"></div>
+                            <div class="comparison-bar-fill-after"></div>
+                        </div>
+                    </div>
+                    <div class="comparison-bar-item" style="--bar-before: 50%; --bar-after: 81%;">
+                        <div class="comparison-bar-label">
+                            <span>Booking Confidence</span>
+                            <div class="comparison-bar-values">
+                                <span class="bar-value-before">Hesitant, unsure</span>
+                                <span class="bar-value-after">Confident, informed</span>
+                                <span class="comparison-bar-badge">+31% increase</span>
+                            </div>
+                        </div>
+                        <div class="comparison-bar-track">
+                            <div class="comparison-bar-fill-before"></div>
+                            <div class="comparison-bar-fill-after"></div>
+                        </div>
+                    </div>
+                    <div class="comparison-bar-item" style="--bar-before: 30%; --bar-after: 84%;">
+                        <div class="comparison-bar-label">
+                            <span>Filter Engagement</span>
+                            <div class="comparison-bar-values">
+                                <span class="bar-value-before">Hidden filters</span>
+                                <span class="bar-value-after">Surfaced alongside search</span>
+                                <span class="comparison-bar-badge">+54% usage</span>
+                            </div>
+                        </div>
+                        <div class="comparison-bar-track">
+                            <div class="comparison-bar-fill-before"></div>
+                            <div class="comparison-bar-fill-after"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="learnings-block">

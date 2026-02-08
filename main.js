@@ -448,3 +448,97 @@ if (document.readyState === 'loading') {
     initFadeInAnimations();
 }
 
+// ========================================
+// V2 Homepage — Scroll-triggered Bento Grid Reveal
+// ========================================
+function initBentoReveal() {
+    const bentoItems = document.querySelectorAll('.bento-item');
+    if (!bentoItems.length) return;
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        bentoItems.forEach(item => item.classList.add('bento-revealed'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('bento-revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    bentoItems.forEach(item => observer.observe(item));
+}
+
+// ========================================
+// V2 Homepage — Footer tagline reveal
+// ========================================
+function initFooterReveal() {
+    const tagline = document.querySelector('.footer-tagline');
+    if (!tagline) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        tagline.classList.add('footer-revealed');
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('footer-revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    observer.observe(tagline);
+}
+
+// ========================================
+// V2 Homepage — Magnetic tilt on bento cards
+// ========================================
+function initBentoMagneticTilt() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cards = document.querySelectorAll('.project-card, .featured-large, .about-card, .contact-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -3;
+            const rotateY = ((x - centerX) / centerX) * 3;
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+            card.style.transition = 'transform 0.1s ease';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+    });
+}
+
+// Initialize V2 homepage interactions
+function initHomepageV2() {
+    initBentoReveal();
+    initFooterReveal();
+    initBentoMagneticTilt();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHomepageV2);
+} else {
+    initHomepageV2();
+}
+

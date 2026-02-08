@@ -105,7 +105,8 @@
 .cs-section.visible .outcome-card,
 .cs-section.visible .goal-item,
 .cs-section.visible .flow-step,
-.cs-section.visible .phase-block {
+.cs-section.visible .phase-block,
+.cs-section.visible .reflection-insight-card {
     animation: staggerFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -122,7 +123,8 @@
 .cs-section.visible .learning-card:nth-child(1),
 .cs-section.visible .goal-item:nth-child(1),
 .cs-section.visible .flow-step:nth-child(1),
-.cs-section.visible .phase-block:nth-child(1) { animation-delay: 0.1s; }
+.cs-section.visible .phase-block:nth-child(1),
+.cs-section.visible .reflection-insight-card:nth-child(1) { animation-delay: 0.1s; }
 
 .cs-section.visible .context-card:nth-child(2),
 .cs-section.visible .pain-point-item:nth-child(2),
@@ -137,7 +139,8 @@
 .cs-section.visible .learning-card:nth-child(2),
 .cs-section.visible .goal-item:nth-child(2),
 .cs-section.visible .flow-step:nth-child(2),
-.cs-section.visible .phase-block:nth-child(2) { animation-delay: 0.2s; }
+.cs-section.visible .phase-block:nth-child(2),
+.cs-section.visible .reflection-insight-card:nth-child(2) { animation-delay: 0.2s; }
 
 .cs-section.visible .context-card:nth-child(3),
 .cs-section.visible .pain-point-item:nth-child(3),
@@ -152,14 +155,16 @@
 .cs-section.visible .learning-card:nth-child(3),
 .cs-section.visible .goal-item:nth-child(3),
 .cs-section.visible .flow-step:nth-child(3),
-.cs-section.visible .phase-block:nth-child(3) { animation-delay: 0.3s; }
+.cs-section.visible .phase-block:nth-child(3),
+.cs-section.visible .reflection-insight-card:nth-child(3) { animation-delay: 0.3s; }
 
 .cs-section.visible .context-card:nth-child(4),
 .cs-section.visible .pain-point-item:nth-child(4),
 .cs-section.visible .pain-point-card:nth-child(4),
 .cs-section.visible .feature-card:nth-child(4),
 .cs-section.visible .outcome-card:nth-child(4),
-.cs-section.visible .flow-step:nth-child(4) { animation-delay: 0.4s; }
+.cs-section.visible .flow-step:nth-child(4),
+.cs-section.visible .reflection-insight-card:nth-child(4) { animation-delay: 0.4s; }
 
 .cs-section.visible .feature-card:nth-child(5),
 .cs-section.visible .flow-step:nth-child(5) { animation-delay: 0.5s; }
@@ -3878,5 +3883,2680 @@
     
     .section-number {
         font-weight: 800;
+    }
+}
+
+/* ========================================
+   V2 INTERACTIONS — ENHANCED STYLES
+   Scroll-driven, parallax, magnetic
+   ======================================== */
+
+/* ----------------------------------------
+   TEXT REVEAL ON SCROLL
+   ---------------------------------------- */
+.text-reveal-target .reveal-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px) rotateX(40deg);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--word-i, 0) * 0.03s);
+    transform-origin: bottom center;
+}
+
+.text-reveal-target.text-revealed .reveal-word {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+}
+
+/* ----------------------------------------
+   IMAGE CLIP REVEAL
+   ---------------------------------------- */
+.clip-reveal {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: clip-path;
+}
+
+.clip-reveal.clip-revealed {
+    clip-path: inset(0 0 0% 0);
+}
+
+/* Alternate: horizontal reveal for feature visuals */
+.feature-visual.clip-reveal {
+    clip-path: inset(0 100% 0 0);
+}
+
+.feature-visual.clip-reveal.clip-revealed {
+    clip-path: inset(0 0% 0 0);
+}
+
+.feature-block.reverse .feature-visual.clip-reveal {
+    clip-path: inset(0 0 0 100%);
+}
+
+.feature-block.reverse .feature-visual.clip-reveal.clip-revealed {
+    clip-path: inset(0 0 0 0%);
+}
+
+/* ----------------------------------------
+   CURSOR GLOW — Ambient light
+   ---------------------------------------- */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--cs-primary-glow, rgba(96, 165, 250, 0.08)) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    will-change: transform;
+}
+
+.cursor-glow.cursor-glow-visible {
+    opacity: 1;
+}
+
+/* ----------------------------------------
+   MAGNETIC CARD HOVER — 3D + Shine
+   ---------------------------------------- */
+.pain-point-card,
+.pillar-card,
+.method-card,
+.insight-card,
+.feature-card,
+.learning-card,
+.outcome-card,
+.goal-item,
+.persona-card,
+.next-step-card,
+.cycle-step,
+.tldr-metric,
+.reflection-insight-card {
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+/* Shine overlay for magnetic cards */
+.pain-point-card::after,
+.pillar-card::after,
+.method-card::after,
+.insight-card::after,
+.feature-card::after,
+.learning-card::after,
+.outcome-card::after,
+.goal-item::after,
+.persona-card::after,
+.next-step-card::after,
+.cycle-step::after,
+.tldr-metric::after,
+.reflection-insight-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--shine-x, 50%) 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
+
+.pain-point-card:hover::after,
+.pillar-card:hover::after,
+.method-card:hover::after,
+.insight-card:hover::after,
+.feature-card:hover::after,
+.learning-card:hover::after,
+.outcome-card:hover::after,
+.goal-item:hover::after,
+.persona-card:hover::after,
+.next-step-card:hover::after,
+.cycle-step:hover::after,
+.tldr-metric:hover::after,
+.reflection-insight-card:hover::after {
+    opacity: 1;
+}
+
+/* ----------------------------------------
+   FLOW STEP ACTIVE STATE
+   ---------------------------------------- */
+.flow-step {
+    opacity: 0.4;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flow-step.flow-step-active {
+    opacity: 1;
+}
+
+.flow-visual {
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flow-visual.flow-visual-revealed {
+    transform: none;
+}
+
+/* ----------------------------------------
+   COUNTER ANIMATION ENHANCED
+   ---------------------------------------- */
+.counter-animating {
+    color: var(--cs-primary, var(--color-accent));
+    text-shadow: 0 0 30px var(--cs-primary-glow, rgba(96, 165, 250, 0.3));
+}
+
+.counter-done {
+    animation: counterPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes counterPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* ----------------------------------------
+   ENHANCED SECTION TRANSITIONS
+   ---------------------------------------- */
+.cs-section {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section header — slide in from left */
+.cs-section .section-header,
+.cs-section .cs-section-header {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.cs-section.visible .section-header,
+.cs-section.visible .cs-section-header {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Section content — fade up with delay */
+.cs-section .section-content,
+.cs-section .cs-content-block {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s,
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.cs-section.visible .section-content,
+.cs-section.visible .cs-content-block {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ----------------------------------------
+   ENHANCED HERO STAGGER — Cinematic entrance
+   ---------------------------------------- */
+.cs-loaded .back-button {
+    animation: heroSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.cs-loaded .hero-badge {
+    animation: heroSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.cs-loaded .hero-title {
+    animation: heroTitleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.cs-loaded .hero-tagline {
+    animation: heroSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.cs-loaded .hero-meta-grid {
+    animation: heroSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.cs-loaded .hero-mockup {
+    animation: heroMockupReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.cs-loaded .hero-tldr {
+    animation: heroSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+
+@keyframes heroSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes heroTitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes heroMockupReveal {
+    from {
+        opacity: 0;
+        transform: translateY(80px) scale(0.92);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* ----------------------------------------
+   COMPARISON TABLE — Row-by-row reveal
+   ---------------------------------------- */
+.comparison-row {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comparison-row.header {
+    opacity: 1;
+    transform: none;
+}
+
+.cs-section.visible .comparison-row:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: none; }
+.cs-section.visible .comparison-row:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: none; }
+.cs-section.visible .comparison-row:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: none; }
+.cs-section.visible .comparison-row:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: none; }
+.cs-section.visible .comparison-row:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: none; }
+
+.comparison-row .highlight {
+    position: relative;
+}
+
+.cs-section.visible .comparison-row .highlight {
+    animation: highlightFlash 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+@keyframes highlightFlash {
+    0% { background-color: transparent; }
+    30% { background-color: var(--cs-primary-soft, rgba(96, 165, 250, 0.15)); }
+    100% { background-color: transparent; }
+}
+
+/* ----------------------------------------
+   PROTOTYPE SECTION — Enhanced entrance
+   ---------------------------------------- */
+.prototype-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-section.visible ~ .prototype-section,
+.cs-section.visible .prototype-section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.prototype-embed {
+    transition: box-shadow 0.6s ease, transform 0.6s ease;
+}
+
+.prototype-embed:hover {
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--cs-primary-soft);
+    transform: translateY(-4px);
+}
+
+/* ----------------------------------------
+   SCREENS SHOWCASE — Enhanced grid hover
+   ---------------------------------------- */
+.screen-item {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.screen-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3),
+                0 0 0 1px var(--cs-primary, var(--color-accent));
+    z-index: 2;
+}
+
+.screen-item:hover .screen-image img {
+    transform: scale(1.08);
+}
+
+/* ----------------------------------------
+   STORY QUOTE — Animated border
+   ---------------------------------------- */
+.story-quote {
+    position: relative;
+    overflow: hidden;
+}
+
+.story-quote::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 0;
+    background: linear-gradient(to bottom, var(--cs-primary, var(--color-accent)), transparent);
+    transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-section.visible .story-quote::before {
+    height: 100%;
+}
+
+/* ----------------------------------------
+   REFLECTION QUOTE — Glow effect
+   ---------------------------------------- */
+.reflection-quote blockquote {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reflection-quote blockquote:hover {
+    border-color: var(--cs-primary, var(--color-accent));
+    box-shadow: 0 0 40px var(--cs-primary-soft, rgba(96, 165, 250, 0.15)),
+                inset 0 0 40px var(--cs-primary-soft, rgba(96, 165, 250, 0.05));
+    transform: scale(1.01);
+}
+
+/* ----------------------------------------
+   FOOTER NAVIGATION — Pulse effect
+   ---------------------------------------- */
+.footer-link {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-link:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25),
+                0 0 0 1px var(--cs-primary, var(--color-accent));
+}
+
+/* ----------------------------------------
+   ENHANCED DESIGN PHASES
+   ---------------------------------------- */
+.phase-block {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.phase-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cs-design-accent), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-section.visible .phase-block::before {
+    transform: scaleX(1);
+}
+
+.phase-block:hover {
+    border-color: var(--cs-primary, var(--color-accent));
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ----------------------------------------
+   RESEARCH WHY SECTION — Stagger items
+   ---------------------------------------- */
+.why-item {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-section.visible .why-item:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: none; }
+.cs-section.visible .why-item:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: none; }
+.cs-section.visible .why-item:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: none; }
+.cs-section.visible .why-item:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: none; }
+
+/* ----------------------------------------
+   CHALLENGE HMW — Scale entrance
+   ---------------------------------------- */
+.challenge-statement {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-section.visible .challenge-statement {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ----------------------------------------
+   PAIN POINT CARDS — Glitch border on hover
+   ---------------------------------------- */
+.pain-point-card {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pain-point-card:hover {
+    border-color: var(--cs-challenge-accent);
+    box-shadow: 0 12px 40px rgba(239, 68, 68, 0.12),
+                0 0 0 1px rgba(239, 68, 68, 0.2);
+}
+
+.pain-point-card:hover .pain-icon {
+    animation: iconBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: scale(1); }
+    40% { transform: scale(1.3) rotate(-5deg); }
+    70% { transform: scale(1.1) rotate(3deg); }
+}
+
+/* ----------------------------------------
+   INSIGHT CARDS — Quote float up
+   ---------------------------------------- */
+.insight-card blockquote {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.insight-card:hover blockquote {
+    transform: translateY(-3px);
+}
+
+/* ----------------------------------------
+   NEXT STEP CARDS — Numbered entrance
+   ---------------------------------------- */
+.next-step-card {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.next-step-card:hover .next-step-number {
+    background: var(--cs-primary, var(--color-accent));
+    color: var(--color-bg);
+    transform: scale(1.15) rotate(-3deg);
+    box-shadow: 0 8px 24px var(--cs-primary-glow, rgba(96, 165, 250, 0.3));
+}
+
+/* ----------------------------------------
+   STORY INSIGHT BOX — Animated border
+   ---------------------------------------- */
+.story-insight {
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-section.visible .story-insight {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ----------------------------------------
+   SMOOTH SCROLL SNAP FEEL
+   ---------------------------------------- */
+@media (min-width: 1024px) {
+    .case-study-main {
+        scroll-behavior: smooth;
+    }
+}
+
+/* ----------------------------------------
+   REDUCED MOTION — V2 additions
+   ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .text-reveal-target .reveal-word {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .clip-reveal {
+        clip-path: none;
+        transition: none;
+    }
+    
+    .cursor-glow {
+        display: none;
+    }
+    
+    .flow-step {
+        opacity: 1;
+    }
+    
+    .counter-done {
+        animation: none;
+    }
+    
+    .cs-section .section-header,
+    .cs-section .cs-section-header,
+    .cs-section .section-content,
+    .cs-section .cs-content-block {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .comparison-row {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .why-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .challenge-statement {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .story-insight {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .prototype-section {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .cs-loaded .back-button,
+    .cs-loaded .hero-badge,
+    .cs-loaded .hero-title,
+    .cs-loaded .hero-tagline,
+    .cs-loaded .hero-meta-grid,
+    .cs-loaded .hero-mockup,
+    .cs-loaded .hero-tldr {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+/* ========================================
+   V3 — YC INSPIRED VISUALS
+   Gradient text, comparison bars, marquee,
+   glass cards, before/after, spotlights
+   ======================================== */
+
+/* ----------------------------------------
+   1. ANIMATED GRADIENT SHIMMER TEXT
+   TrumpRx-style bold headline treatment
+   ---------------------------------------- */
+.hero-title .hero-highlight,
+.gradient-text {
+    background: linear-gradient(
+        135deg,
+        var(--cs-primary, #60a5fa) 0%,
+        color-mix(in srgb, var(--cs-primary, #60a5fa) 60%, #fff) 25%,
+        var(--cs-primary, #60a5fa) 50%,
+        color-mix(in srgb, var(--cs-primary, #60a5fa) 60%, #e0d4ff) 75%,
+        var(--cs-primary, #60a5fa) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShimmer 4s ease-in-out infinite;
+}
+
+@keyframes gradientShimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 200% center; }
+}
+
+/* Subtle glow behind the highlight text */
+.hero-title .hero-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -0.1em;
+    left: -0.1em;
+    right: -0.1em;
+    height: 0.5em;
+    background: var(--cs-primary-glow, rgba(96, 165, 250, 0.3));
+    border-radius: 8px;
+    z-index: -1;
+    filter: blur(12px);
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.3; transform: scaleX(0.9); }
+    50% { opacity: 0.6; transform: scaleX(1.05); }
+}
+
+/* Section titles get a subtle gradient on hover */
+.section-title {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-title:hover {
+    background: linear-gradient(
+        135deg,
+        var(--color-text) 0%,
+        var(--cs-primary, #60a5fa) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ----------------------------------------
+   2. COMPARISON BAR COMPONENT
+   TrumpRx price-comparison style bars
+   ---------------------------------------- */
+.comparison-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 48px 0;
+}
+
+.comparison-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comparison-bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comparison-bar-label span:first-child {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.comparison-bar-values {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.bar-value-before {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.bar-value-after {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--cs-primary, var(--color-accent));
+}
+
+.comparison-bar-track {
+    position: relative;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.comparison-bar-fill-before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    width: var(--bar-before, 100%);
+}
+
+.comparison-bar-fill-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--cs-primary, #60a5fa), color-mix(in srgb, var(--cs-primary, #60a5fa) 70%, #fff));
+    border-radius: 100px;
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 20px var(--cs-primary-glow, rgba(96, 165, 250, 0.4));
+}
+
+.comparison-bar-item.bar-animated .comparison-bar-fill-after {
+    width: var(--bar-after, 50%);
+}
+
+.comparison-bar-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: var(--cs-primary-soft, rgba(96, 165, 250, 0.1));
+    color: var(--cs-primary, #60a5fa);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1s;
+}
+
+.comparison-bar-item.bar-animated .comparison-bar-badge {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ----------------------------------------
+   3. HORIZONTAL MARQUEE TICKER
+   YC-style auto-scrolling strip
+   ---------------------------------------- */
+.marquee-strip {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+    margin: 40px -2rem;
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 40px;
+    animation: marqueeScroll 30s linear infinite;
+    width: max-content;
+}
+
+.marquee-strip:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.marquee-item:hover {
+    background: var(--cs-primary-soft, rgba(96, 165, 250, 0.1));
+    border-color: var(--cs-primary, #60a5fa);
+    transform: scale(1.05);
+}
+
+.marquee-item-icon {
+    font-size: 1.25rem;
+}
+
+.marquee-item-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.marquee-item-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--cs-primary, #60a5fa);
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Speed variant */
+.marquee-strip.marquee-fast .marquee-track {
+    animation-duration: 20s;
+}
+
+.marquee-strip.marquee-slow .marquee-track {
+    animation-duration: 45s;
+}
+
+/* Reverse direction */
+.marquee-strip.marquee-reverse .marquee-track {
+    animation-direction: reverse;
+}
+
+/* ----------------------------------------
+   4. GLASS-MORPHISM GLOW STAT CARDS
+   TrumpRx enhanced metrics
+   ---------------------------------------- */
+.tldr-metric,
+.outcome-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        rgba(255, 255, 255, 0.01) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Radial glow that follows the metric accent */
+.tldr-metric::before,
+.outcome-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at 50% 120%,
+        var(--cs-primary-glow, rgba(96, 165, 250, 0.15)) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.tldr-metric:hover::before,
+.outcome-card:hover::before {
+    opacity: 1;
+}
+
+/* Animated border gradient on stat cards */
+.tldr-metric {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+
+.tldr-metric::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        var(--cs-primary, #60a5fa) 0%,
+        transparent 40%,
+        transparent 60%,
+        var(--cs-primary, #60a5fa) 100%
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: borderRotate 4s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tldr-metric:hover::after {
+    opacity: 1;
+}
+
+@keyframes borderRotate {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Big number scale-in on count */
+.tldr-metric .metric-value,
+.outcome-card .outcome-value {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                text-shadow 0.3s ease;
+}
+
+.tldr-metric:hover .metric-value,
+.outcome-card:hover .outcome-value {
+    transform: scale(1.08);
+    text-shadow: 0 0 40px var(--cs-primary-glow, rgba(96, 165, 250, 0.4));
+}
+
+/* ----------------------------------------
+   5. BEFORE / AFTER TOGGLE COMPONENT
+   YC "During YC / Now" inspired
+   ---------------------------------------- */
+.before-after-block {
+    margin: 48px 0;
+}
+
+.ba-toggle {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    width: fit-content;
+    margin-bottom: 32px;
+}
+
+.ba-toggle-btn {
+    padding: 10px 24px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.ba-toggle-btn.active {
+    background: var(--cs-primary, #60a5fa);
+    color: var(--color-bg, #0e0e10);
+    box-shadow: 0 4px 16px var(--cs-primary-glow, rgba(96, 165, 250, 0.3));
+}
+
+.ba-toggle-btn:not(.active):hover {
+    color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ba-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.ba-state {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ba-state.ba-before {
+    opacity: 0.5;
+    filter: grayscale(0.5);
+    transform: scale(0.97);
+}
+
+.ba-state.ba-after {
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+    border-color: var(--cs-primary, #60a5fa);
+    box-shadow: 0 8px 32px var(--cs-primary-glow, rgba(96, 165, 250, 0.15));
+}
+
+.ba-state-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.ba-before .ba-state-label {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-muted);
+}
+
+.ba-after .ba-state-label {
+    background: var(--cs-primary, #60a5fa);
+    color: var(--color-bg, #0e0e10);
+}
+
+.ba-state img {
+    width: 100%;
+    display: block;
+}
+
+.ba-state-caption {
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.ba-state-caption h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.ba-state-caption p {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+/* Slider variant — overlapping images */
+.ba-slider {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    cursor: ew-resize;
+    aspect-ratio: 16 / 10;
+}
+
+.ba-slider-before,
+.ba-slider-after {
+    position: absolute;
+    inset: 0;
+}
+
+.ba-slider-before img,
+.ba-slider-after img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ba-slider-before {
+    clip-path: inset(0 50% 0 0);
+    transition: clip-path 0.05s linear;
+}
+
+.ba-slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: var(--cs-primary, #60a5fa);
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 0 20px var(--cs-primary-glow, rgba(96, 165, 250, 0.5));
+}
+
+.ba-slider-handle::before,
+.ba-slider-handle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background: var(--cs-primary, #60a5fa);
+    border-radius: 50%;
+}
+
+.ba-slider-handle::before {
+    left: -14px;
+    transform: translateY(-50%);
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+.ba-slider-handle::after {
+    right: -14px;
+    transform: translateY(-50%);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.ba-slider-knob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: var(--cs-primary, #60a5fa);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px var(--cs-primary-glow, rgba(96, 165, 250, 0.4));
+    z-index: 4;
+}
+
+.ba-slider-knob svg {
+    color: var(--color-bg, #0e0e10);
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .ba-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ----------------------------------------
+   6. SECTION SPOTLIGHTS & GRADIENT DIVIDERS
+   ---------------------------------------- */
+/* Top-of-section gradient line */
+.cs-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(600px, 80%);
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--cs-primary, #60a5fa) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 1s ease 0.3s;
+}
+
+.cs-section.visible::before {
+    opacity: 0.3;
+}
+
+/* Spotlight radial behind section header */
+.section-header::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+        circle,
+        var(--cs-primary-glow, rgba(96, 165, 250, 0.08)) 0%,
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease 0.2s;
+}
+
+.cs-section.visible .section-header::before {
+    opacity: 1;
+}
+
+/* Animated accent dot next to section number */
+.section-number::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 10px;
+    vertical-align: middle;
+    animation: sectionDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes sectionDotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* ----------------------------------------
+   7. SCROLL-TRIGGERED PROGRESS FILL
+   For metric values with bar backing
+   ---------------------------------------- */
+.metric-bar-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: linear-gradient(
+        to top,
+        var(--cs-primary-soft, rgba(96, 165, 250, 0.1)) 0%,
+        transparent 100%
+    );
+    border-radius: inherit;
+    transition: height 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.tldr-metric.metric-bar-active .metric-bar-fill,
+.outcome-card.metric-bar-active .metric-bar-fill {
+    height: var(--fill-height, 60%);
+}
+
+/* ----------------------------------------
+   8. YC-STYLE STACKED CARD GRID
+   Overlapping cards with depth parallax
+   ---------------------------------------- */
+.stacked-cards {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 48px 0;
+}
+
+.stacked-card {
+    position: relative;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+
+.stacked-card:nth-child(2) {
+    z-index: 2;
+    transform: translateY(-8px);
+}
+
+.stacked-card:nth-child(odd) {
+    transform: translateY(8px);
+}
+
+.stacked-card:hover {
+    z-index: 10;
+    transform: translateY(-16px) scale(1.03);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px var(--cs-primary, #60a5fa);
+}
+
+@media (max-width: 768px) {
+    .stacked-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .stacked-card,
+    .stacked-card:nth-child(2),
+    .stacked-card:nth-child(odd) {
+        transform: none;
+    }
+}
+
+/* ----------------------------------------
+   9. TRUMPRX STRIKETHROUGH SAVINGS
+   Price/metric crossout with new value
+   ---------------------------------------- */
+.savings-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.savings-old {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--cs-challenge-accent, #ef4444);
+    text-decoration-thickness: 2px;
+    opacity: 0.6;
+}
+
+.savings-new {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--cs-primary, #60a5fa);
+}
+
+.savings-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Animated version — strikethrough draws in */
+.savings-old.animated-strike {
+    text-decoration: none;
+    position: relative;
+}
+
+.savings-old.animated-strike::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -2px;
+    right: -2px;
+    height: 2px;
+    background: var(--cs-challenge-accent, #ef4444);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.savings-old.animated-strike.strike-active::after {
+    transform: scaleX(1);
+}
+
+/* ----------------------------------------
+   10. FLOATING ANNOTATION FOOTNOTES
+   YC-style Paul Graham quote [1] markers
+   ---------------------------------------- */
+.footnote-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--cs-primary, #60a5fa);
+    background: var(--cs-primary-soft, rgba(96, 165, 250, 0.1));
+    border-radius: 50%;
+    vertical-align: super;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footnote-marker:hover {
+    background: var(--cs-primary, #60a5fa);
+    color: var(--color-bg);
+    transform: scale(1.2);
+}
+
+.footnote-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 240px;
+    max-width: 320px;
+    padding: 16px;
+    background: rgba(20, 20, 25, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 100;
+}
+
+.footnote-marker:hover .footnote-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.footnote-tooltip p {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+}
+
+.footnote-tooltip cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+    font-style: normal;
+}
+
+/* ----------------------------------------
+   11. HERO SCROLL INDICATOR
+   Animated down-arrow / "scroll" cue
+   ---------------------------------------- */
+.hero-scroll-cue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    opacity: 0;
+    animation: scrollCueFadeIn 1s ease 1.5s both;
+}
+
+.hero-scroll-cue .scroll-text {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.hero-scroll-cue .scroll-arrow {
+    width: 24px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    position: relative;
+}
+
+.hero-scroll-cue .scroll-arrow::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: var(--cs-primary, #60a5fa);
+    border-radius: 100px;
+    animation: scrollDot 2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+    0%, 100% { top: 6px; opacity: 1; }
+    50% { top: 20px; opacity: 0.3; }
+}
+
+@keyframes scrollCueFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hide on scroll */
+.hero-scroll-cue.cue-hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+/* ----------------------------------------
+   12. ENHANCED OUTCOME CARDS — Big number ring
+   TrumpRx style circular progress
+   ---------------------------------------- */
+.outcome-card {
+    position: relative;
+    overflow: visible;
+}
+
+.outcome-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 16px;
+}
+
+.outcome-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.outcome-ring .ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 4;
+}
+
+.outcome-ring .ring-fill {
+    fill: none;
+    stroke: var(--cs-primary, #60a5fa);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 226;
+    stroke-dashoffset: 226;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 8px var(--cs-primary-glow, rgba(96, 165, 250, 0.4)));
+}
+
+.outcome-card.ring-animated .ring-fill {
+    stroke-dashoffset: var(--ring-offset, 56);
+}
+
+.outcome-ring .ring-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--cs-primary, #60a5fa);
+}
+
+/* ----------------------------------------
+   13. HERO META TICKER
+   Animated pills that scroll by 
+   ---------------------------------------- */
+.hero-meta-ticker {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    padding: 24px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.meta-pill:hover {
+    border-color: var(--cs-primary, #60a5fa);
+    background: var(--cs-primary-soft, rgba(96, 165, 250, 0.1));
+}
+
+.meta-pill-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.meta-pill-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* ----------------------------------------
+   V3 — REDUCED MOTION
+   ---------------------------------------- */
+/* ----------------------------------------
+   IMPACT MEASUREMENT TIMELINE
+   Interactive step-by-step methodology
+   ---------------------------------------- */
+.impact-measurement {
+    margin: 3rem 0;
+    position: relative;
+}
+
+.impact-measurement h3 {
+    font-family: var(--font-serif, serif);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.impact-measurement > p {
+    color: var(--color-text-secondary, #999);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 640px;
+}
+
+.measurement-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Vertical connecting line */
+.measurement-timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    background: linear-gradient(
+        180deg,
+        var(--cs-primary, #60a5fa) 0%,
+        var(--cs-primary-glow, rgba(96, 165, 250, 0.3)) 50%,
+        var(--cs-primary, #60a5fa) 100%
+    );
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: opacity 0.6s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.measurement-timeline.timeline-animated::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.measurement-step {
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.measurement-step.step-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.measurement-step:nth-child(1) { transition-delay: 0.2s; }
+.measurement-step:nth-child(2) { transition-delay: 0.4s; }
+.measurement-step:nth-child(3) { transition-delay: 0.6s; }
+.measurement-step:nth-child(4) { transition-delay: 0.8s; }
+
+.step-marker {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: var(--cs-primary-soft, rgba(96, 165, 250, 0.1));
+    border: 2px solid var(--cs-primary, #60a5fa);
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 0 0 var(--cs-primary-glow, rgba(96, 165, 250, 0.3));
+}
+
+.measurement-step:hover .step-marker {
+    transform: scale(1.1);
+    box-shadow: 0 0 24px var(--cs-primary-glow, rgba(96, 165, 250, 0.3));
+    background: var(--cs-primary, #60a5fa);
+}
+
+.measurement-step:hover .step-marker .step-icon {
+    transform: scale(1.1);
+}
+
+.step-icon {
+    transition: transform 0.3s ease;
+}
+
+.step-body {
+    flex: 1;
+    padding-top: 4px;
+}
+
+.step-body h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text-primary, #fff);
+    transition: color 0.3s ease;
+}
+
+.measurement-step:hover .step-body h4 {
+    color: var(--cs-primary, #60a5fa);
+}
+
+.step-body p {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary, #999);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.step-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.step-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary, #999);
+    transition: all 0.3s ease;
+}
+
+.measurement-step:hover .step-tag {
+    background: var(--cs-primary-soft, rgba(96, 165, 250, 0.1));
+    border-color: var(--cs-primary, #60a5fa);
+    color: var(--cs-primary, #60a5fa);
+}
+
+/* Result callout at bottom of timeline */
+.measurement-result {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, var(--cs-primary-soft, rgba(96, 165, 250, 0.1)) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-radius: 16px;
+    border: 1px solid var(--cs-primary, #60a5fa);
+    border-left: 4px solid var(--cs-primary, #60a5fa);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 1s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1s;
+}
+
+.measurement-timeline.timeline-animated + .measurement-result,
+.measurement-timeline.timeline-animated ~ .measurement-result {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.measurement-result::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 0% 50%, var(--cs-primary-glow, rgba(96, 165, 250, 0.15)), transparent 70%);
+    pointer-events: none;
+}
+
+.measurement-result h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--cs-primary, #60a5fa);
+}
+
+.measurement-result p {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary, #999);
+    line-height: 1.7;
+}
+
+.measurement-result .result-disclaimer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--color-text-muted, #666);
+}
+
+/* ----------------------------------------
+   ENHANCED REFLECTION BLOCK
+   Richer reflection with quote + insights
+   ---------------------------------------- */
+.reflection-insight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 2.5rem 0;
+}
+
+.reflection-insight-card {
+    padding: 28px 24px;
+    background: var(--color-bg-card, rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.reflection-insight-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cs-primary, #60a5fa), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.reflection-insight-card:hover {
+    border-color: var(--cs-primary, #60a5fa);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.reflection-insight-card:hover::after {
+    opacity: 1;
+}
+
+.reflection-insight-card .insight-icon {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.reflection-insight-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text-primary, #fff);
+}
+
+.reflection-insight-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary, #999);
+    line-height: 1.7;
+}
+
+.reflection-key-takeaway {
+    margin: 3rem 0;
+    padding: 2.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--cs-primary-soft, rgba(96, 165, 250, 0.08)) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid var(--cs-primary, #60a5fa);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.reflection-key-takeaway::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, var(--cs-primary-glow, rgba(96, 165, 250, 0.08)), transparent 60%);
+    animation: takeawayPulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes takeawayPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 0.6; transform: scale(1); }
+}
+
+.reflection-key-takeaway .takeaway-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: var(--cs-primary-soft, rgba(96, 165, 250, 0.15));
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cs-primary, #60a5fa);
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.reflection-key-takeaway blockquote {
+    font-family: var(--font-serif, serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-text-primary, #fff);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .measurement-timeline::before {
+        left: 20px;
+    }
+    
+    .step-marker {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .measurement-step {
+        gap: 16px;
+    }
+    
+    .reflection-insight-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reflection-key-takeaway blockquote {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .measurement-step {
+        gap: 12px;
+        padding: 16px 0;
+    }
+    
+    .step-marker {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .step-details {
+        gap: 6px;
+    }
+    
+    .step-tag {
+        font-size: 0.6875rem;
+        padding: 3px 8px;
+    }
+}
+
+/* ----------------------------------------
+   V3 — REDUCED MOTION
+   ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .hero-title .hero-highlight,
+    .gradient-text {
+        animation: none;
+        background-size: 100% auto;
+    }
+    
+    .hero-title .hero-highlight::after {
+        animation: none;
+    }
+    
+    .section-number::before {
+        animation: none;
+    }
+    
+    .marquee-track {
+        animation: none;
+    }
+    
+    .hero-scroll-cue .scroll-arrow::after {
+        animation: none;
+    }
+    
+    .hero-scroll-cue {
+        animation: none;
+        opacity: 1;
+    }
+    
+    .comparison-bar-fill-after {
+        transition: none;
+        width: var(--bar-after, 50%);
+    }
+    
+    .tldr-metric::after {
+        animation: none;
+    }
+    
+    .measurement-timeline::before {
+        transition: none;
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    
+    .measurement-step {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .measurement-result {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .reflection-key-takeaway::before {
+        animation: none;
+    }
+    
+    @keyframes takeawayPulse {
+        0%, 100% { opacity: 0.4; }
+    }
+}
+
+/* ========================================
+   SYF — PREMIUM EXCLUSIVE STYLES
+   The flagship case study treatment.
+   Gradient backdrops, mountain silhouette,
+   metric rings, design breakdown cards,
+   and premium visual polish.
+   ======================================== */
+
+/* ----------------------------------------
+   1. IMMERSIVE HERO GRADIENT BACKDROP
+   Multi-orb gradient behind entire hero
+   ---------------------------------------- */
+.syf-hero-backdrop {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.syf-gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.12;
+    animation: syfOrbFloat 20s ease-in-out infinite;
+}
+
+.syf-orb-1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    top: -10%;
+    right: -5%;
+    animation-delay: 0s;
+}
+
+.syf-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    top: 30%;
+    left: -8%;
+    animation-delay: -7s;
+}
+
+.syf-orb-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    bottom: 10%;
+    right: 15%;
+    animation-delay: -14s;
+}
+
+@keyframes syfOrbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(40px, -30px) scale(1.1); }
+    50% { transform: translate(-20px, 40px) scale(0.95); }
+    75% { transform: translate(30px, 20px) scale(1.05); }
+}
+
+/* Mountain Silhouette — bottom of hero */
+.syf-mountain-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, rgba(14, 14, 16, 0.5), transparent);
+    clip-path: polygon(
+        0% 100%,
+        0% 70%,
+        5% 65%,
+        12% 40%,
+        18% 55%,
+        25% 30%,
+        30% 45%,
+        38% 20%,
+        45% 35%,
+        50% 15%,
+        55% 30%,
+        60% 25%,
+        68% 45%,
+        75% 35%,
+        82% 50%,
+        88% 40%,
+        95% 60%,
+        100% 55%,
+        100% 100%
+    );
+    opacity: 0.08;
+}
+
+/* ----------------------------------------
+   2. PREMIUM HERO BADGE WITH LOGO
+   ---------------------------------------- */
+.syf-badge-premium {
+    gap: 10px;
+    padding: 6px 16px 6px 6px;
+}
+
+.syf-badge-logo {
+    height: 24px;
+    width: auto;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+}
+
+/* ----------------------------------------
+   3. DUAL-HIGHLIGHT HERO TITLE
+   Second highlight with different color
+   ---------------------------------------- */
+[data-project="syf"] .hero-highlight-secondary {
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #3b82f6 0%,
+        color-mix(in srgb, #3b82f6 60%, #fff) 25%,
+        #3b82f6 50%,
+        color-mix(in srgb, #3b82f6 60%, #93c5fd) 75%,
+        #3b82f6 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShimmer 4s ease-in-out infinite;
+    animation-delay: -2s;
+}
+
+[data-project="syf"] .hero-highlight-secondary::after {
+    content: '';
+    position: absolute;
+    bottom: -0.1em;
+    left: -0.1em;
+    right: -0.1em;
+    height: 0.5em;
+    background: rgba(59, 130, 246, 0.25);
+    border-radius: 8px;
+    z-index: -1;
+    filter: blur(12px);
+    animation: glowPulse 3s ease-in-out infinite;
+    animation-delay: -1.5s;
+}
+
+/* ----------------------------------------
+   4. PREMIUM METRIC RINGS IN TL;DR
+   SVG circular progress rings
+   ---------------------------------------- */
+.syf-metric-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.syf-metric-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.syf-metric-ring svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.syf-metric-ring .ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 4;
+}
+
+.syf-metric-ring .ring-fill {
+    fill: none;
+    stroke: var(--cs-primary, #3b82f6);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 213.6;
+    stroke-dashoffset: 213.6;
+    transition: stroke-dashoffset 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 6px var(--cs-primary-glow, rgba(59, 130, 246, 0.4)));
+}
+
+.syf-metric-ring .metric-value {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--cs-primary, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animate rings when in view */
+.cs-loaded .syf-metric-hero:nth-child(1) .ring-fill {
+    stroke-dashoffset: var(--ring-offset, 42);
+    transition-delay: 1s;
+}
+
+.cs-loaded .syf-metric-hero:nth-child(2) .ring-fill {
+    stroke-dashoffset: var(--ring-offset, 0);
+    transition-delay: 1.2s;
+}
+
+.cs-loaded .syf-metric-hero:nth-child(3) .ring-fill {
+    stroke-dashoffset: var(--ring-offset, 180);
+    transition-delay: 1.4s;
+}
+
+/* ----------------------------------------
+   5. CONFUSION VISUAL — Emphasized callout
+   ---------------------------------------- */
+.syf-confusion-visual {
+    margin: 2.5rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.04) 0%, transparent 100%);
+    position: relative;
+}
+
+.syf-confusion-visual::before {
+    content: 'THE PROBLEM';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 14px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border-radius: 100px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    z-index: 2;
+}
+
+.syf-confusion-visual img {
+    width: 100%;
+    display: block;
+}
+
+/* ----------------------------------------
+   6. PROBLEM VISUAL — Research data image
+   ---------------------------------------- */
+.syf-problem-visual {
+    margin: 2rem 0 2.5rem;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.syf-problem-visual img {
+    width: 100%;
+    display: block;
+}
+
+/* ----------------------------------------
+   7. APPROACH COMPARISON — Side-by-side visual
+   ---------------------------------------- */
+.syf-approach-comparison {
+    margin-top: 3rem;
+}
+
+.syf-approach-comparison h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.syf-approach-visual {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    position: relative;
+    background: var(--color-bg-card);
+}
+
+.syf-approach-visual img {
+    width: 100%;
+    display: block;
+}
+
+/* ----------------------------------------
+   8. SOLUTION FLOW OVERVIEW IMAGE
+   Full-width hero image for solution
+   ---------------------------------------- */
+.syf-solution-flow-overview {
+    margin: 0 0 3rem;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    position: relative;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, rgba(37, 99, 235, 0.02) 100%);
+}
+
+.syf-solution-flow-overview::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 21px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--cs-primary-soft) 0%, transparent 40%, transparent 60%, rgba(59, 130, 246, 0.1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.syf-solution-flow-overview img {
+    width: 100%;
+    display: block;
+}
+
+/* ----------------------------------------
+   9. SYF-EXCLUSIVE DECORATIVE ELEMENTS
+   Third floating element for depth
+   ---------------------------------------- */
+[data-project="syf"] .cs-decorative-elements .floating-element:nth-child(3) {
+    top: 50%;
+    left: 50%;
+    font-size: 6rem;
+    opacity: 0.02;
+}
+
+/* ----------------------------------------
+   11. ENHANCED SECTION TRANSITIONS FOR SYF
+   More dramatic entrance animations
+   ---------------------------------------- */
+[data-project="syf"] .cs-section {
+    transform: translateY(80px);
+}
+
+[data-project="syf"] .cs-section.visible {
+    transform: translateY(0);
+}
+
+/* Premium section divider glow */
+[data-project="syf"] .cs-section::before {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #3b82f6 30%,
+        #60a5fa 50%,
+        #3b82f6 70%,
+        transparent 100%
+    );
+}
+
+[data-project="syf"] .cs-section.visible::before {
+    opacity: 0.4;
+}
+
+/* ----------------------------------------
+   12. SYF FLOW STEPS — Premium connector
+   Vertical gradient line connecting steps
+   ---------------------------------------- */
+[data-project="syf"] .solution-flow {
+    position: relative;
+}
+
+[data-project="syf"] .solution-flow::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 48px;
+    bottom: 48px;
+    width: 2px;
+    background: linear-gradient(
+        180deg,
+        var(--cs-primary, #3b82f6) 0%,
+        var(--cs-primary-glow, rgba(59, 130, 246, 0.3)) 50%,
+        var(--cs-primary, #3b82f6) 100%
+    );
+    opacity: 0.3;
+    z-index: 0;
+}
+
+[data-project="syf"] .flow-number {
+    background: linear-gradient(135deg, var(--cs-primary-soft) 0%, rgba(59, 130, 246, 0.15) 100%);
+    border-color: var(--cs-primary, #3b82f6);
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+[data-project="syf"] .flow-step.flow-step-active .flow-number {
+    background: var(--cs-primary, #3b82f6);
+    color: white;
+    box-shadow: 0 0 20px var(--cs-primary-glow, rgba(59, 130, 246, 0.4));
+}
+
+/* ----------------------------------------
+   13. SYF PAIN POINT CARDS — Premium glow
+   ---------------------------------------- */
+[data-project="syf"] .pain-point-card {
+    border-left: 3px solid transparent;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-project="syf"] .pain-point-card:nth-child(1) { border-left-color: #ef4444; }
+[data-project="syf"] .pain-point-card:nth-child(2) { border-left-color: #f59e0b; }
+[data-project="syf"] .pain-point-card:nth-child(3) { border-left-color: #3b82f6; }
+
+/* ----------------------------------------
+   14. SYF PERSONA CARDS — Gradient borders
+   ---------------------------------------- */
+[data-project="syf"] .persona-card {
+    position: relative;
+}
+
+[data-project="syf"] .persona-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--cs-primary, #3b82f6), transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+[data-project="syf"] .persona-card:hover::before {
+    opacity: 1;
+}
+
+/* ----------------------------------------
+   15. SYF COMPARISON BARS — Indigo gradient
+   ---------------------------------------- */
+[data-project="syf"] .comparison-bar-fill-after {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    box-shadow: 0 0 24px rgba(59, 130, 246, 0.45);
+}
+
+/* ----------------------------------------
+   16. SYF LEARNING CARDS — Top accent bar
+   ---------------------------------------- */
+[data-project="syf"] .learning-card {
+    position: relative;
+    overflow: hidden;
+}
+
+[data-project="syf"] .learning-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cs-gradient-start, #3b82f6), var(--cs-gradient-end, #2563eb));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-project="syf"] .learning-card:hover::before {
+    transform: scaleX(1);
+}
+
+[data-project="syf"] .learning-card:hover {
+    border-color: var(--cs-primary, #3b82f6);
+    box-shadow: 0 16px 48px rgba(59, 130, 246, 0.1);
+}
+
+/* ----------------------------------------
+   17. SYF NEXT STEPS — Numbered gradient
+   ---------------------------------------- */
+[data-project="syf"] .next-step-number {
+    background: linear-gradient(135deg, var(--cs-primary-soft) 0%, rgba(59, 130, 246, 0.15) 100%);
+}
+
+[data-project="syf"] .next-step-card:hover .next-step-number {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
+}
+
+/* ----------------------------------------
+   18. SYF DESIGN SYSTEM HERO — Extra polish
+   ---------------------------------------- */
+.syf-design-system-hero {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.syf-design-system-hero img {
+    border-radius: 20px;
+}
+
+.syf-design-system-hero::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 21px;
+    padding: 1px;
+    background: linear-gradient(135deg, #3b82f6 0%, transparent 40%, transparent 60%, #2563eb 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ----------------------------------------
+   19. SYF MARQUEE — Premium gradient items
+   ---------------------------------------- */
+[data-project="syf"] .marquee-item:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.08));
+    border-color: #3b82f6;
+}
+
+/* ----------------------------------------
+   20. SYF PROTOTYPE SECTION — Extra glow
+   ---------------------------------------- */
+[data-project="syf"] .prototype-embed {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 60px rgba(59, 130, 246, 0.08);
+}
+
+[data-project="syf"] .prototype-embed:hover {
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5),
+                0 0 80px rgba(59, 130, 246, 0.15),
+                0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+/* ----------------------------------------
+   21. SYF FOOTER LINKS — Gradient accent
+   ---------------------------------------- */
+[data-project="syf"] .footer-link:hover {
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25),
+                0 0 0 1px #3b82f6,
+                0 0 40px rgba(59, 130, 246, 0.1);
+}
+
+/* ----------------------------------------
+   22. SYF MOBILE RESPONSIVE
+   ---------------------------------------- */
+@media (max-width: 768px) {
+    .syf-design-breakdown {
+        grid-template-columns: 1fr;
+    }
+
+    .syf-metric-ring {
+        width: 64px;
+        height: 64px;
+    }
+
+    .syf-metric-ring .metric-value {
+        font-size: 1rem;
+    }
+
+    .syf-mountain-silhouette {
+        height: 120px;
+    }
+
+    .syf-gradient-orb {
+        filter: blur(80px);
+        opacity: 0.08;
+    }
+
+    .syf-orb-1 { width: 300px; height: 300px; }
+    .syf-orb-2 { width: 200px; height: 200px; }
+    .syf-orb-3 { width: 150px; height: 150px; }
+}
+
+@media (max-width: 480px) {
+    .syf-confusion-visual::before {
+        font-size: 0.5625rem;
+        padding: 4px 10px;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+/* ----------------------------------------
+   23. SYF REDUCED MOTION
+   ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .syf-gradient-orb {
+        animation: none;
+    }
+
+    .syf-metric-ring .ring-fill {
+        transition: none;
+        stroke-dashoffset: var(--ring-offset, 42);
+    }
+
+    [data-project="syf"] .hero-highlight-secondary {
+        animation: none;
+        background-size: 100% auto;
+    }
+
+    [data-project="syf"] .hero-highlight-secondary::after {
+        animation: none;
     }
 }

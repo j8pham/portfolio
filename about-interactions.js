@@ -371,38 +371,68 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     // ========================================
-    // SCROLL REVEAL ANIMATIONS (OPTIONAL)
+    // V2 SCROLL REVEAL ANIMATIONS
+    // Smoother, staggered section + child reveals
     // ========================================
     
     function initScrollReveal() {
-        const sections = document.querySelectorAll('section');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Section-level reveals
+        const sections = document.querySelectorAll('.hobby-gallery-section, .spotify-section, .principles-section, .experience-section');
+
+        if (prefersReduced) {
+            sections.forEach(s => s.classList.add('about-revealed'));
+            document.querySelectorAll('.hobby-item, .timeline-item, .principle-card').forEach(el => el.classList.add('about-child-revealed'));
+            return;
+        }
+
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('about-revealed');
+                    sectionObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-        
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
         sections.forEach(section => {
-            // Set initial state
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            
-            observer.observe(section);
+            section.classList.add('about-revealable');
+            sectionObserver.observe(section);
         });
+
+        // Child-level staggered reveals (hobby items, timeline items, principle cards)
+        const staggerTargets = document.querySelectorAll('.hobby-item, .timeline-item, .principle-card');
+        const childObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('about-child-revealed');
+                    childObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        staggerTargets.forEach((el, i) => {
+            el.classList.add('about-child-revealable');
+            el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+            childObserver.observe(el);
+        });
+
+        // Footer tagline reveal (about page version)
+        const footerTag = document.querySelector('.footer-tagline');
+        if (footerTag) {
+            footerTag.classList.add('about-footer-revealable');
+            const footerObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('about-footer-revealed');
+                        footerObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            footerObs.observe(footerTag);
+        }
     }
     
-    // Only enable scroll reveal on desktop
-    if (window.innerWidth > 768) {
-        initScrollReveal();
-    }
+    initScrollReveal();
 });

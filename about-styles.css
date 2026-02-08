@@ -76,6 +76,27 @@ body {
     overflow: hidden;
 }
 
+/* Ensure cat menu follows scroll (stays fixed) on about page */
+.cat-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+}
+
+.cat-nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+    z-index: 10000;
+}
+
 /* Decorative Blobs */
 .blob {
     position: absolute;
@@ -1379,6 +1400,49 @@ body {
     }
 }
 
+/* ========================================
+   V2 SCROLL REVEAL STYLES
+   ======================================== */
+
+/* Section-level reveal */
+.about-revealable {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-revealable.about-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Child-level staggered reveal */
+.about-child-revealable {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-child-revealable.about-child-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Footer tagline reveal on about page */
+.about-footer-revealable {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-footer-revealable.about-footer-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -1387,5 +1451,12 @@ body {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .about-revealable,
+    .about-child-revealable,
+    .about-footer-revealable {
+        opacity: 1;
+        transform: none;
     }
 }

@@ -32,8 +32,12 @@ html {
     width: 100%;
 }
 
-/* Ensure cat menu works with this layout */
+/* Ensure cat menu follows scroll (stays fixed) on home page */
 .cat-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 10000;
 }
 
@@ -1449,5 +1453,101 @@ body {
     
     .quick-nav-pills {
         margin: 0.75rem;
+    }
+}
+
+/* ========================================
+   V2 HOMEPAGE INTERACTION STYLES
+   Scroll-triggered reveals & text effects
+   ======================================== */
+
+/* Bento item scroll reveal */
+.bento-item {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-item.bento-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger delays for bento items */
+.bento-item:nth-child(1) { transition-delay: 0.05s; }
+.bento-item:nth-child(2) { transition-delay: 0.12s; }
+.bento-item:nth-child(3) { transition-delay: 0.19s; }
+.bento-item:nth-child(4) { transition-delay: 0.26s; }
+.bento-item:nth-child(5) { transition-delay: 0.33s; }
+.bento-item:nth-child(6) { transition-delay: 0.40s; }
+.bento-item:nth-child(7) { transition-delay: 0.47s; }
+.bento-item:nth-child(8) { transition-delay: 0.54s; }
+
+/* Hero title entrance */
+.header-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: homeTitleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes homeTitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Enhanced project card hover — lift + glow */
+.project-card:hover .project-thumb img,
+.featured-large:hover .bento-image img {
+    transform: scale(1.06);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover,
+.featured-large:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(96, 165, 250, 0.2);
+}
+
+/* Footer tagline — fade in */
+.footer-tagline {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-tagline.footer-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .bento-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .header-title {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        filter: none;
+    }
+    
+    .footer-tagline {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
