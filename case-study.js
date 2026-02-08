@@ -465,8 +465,9 @@ function initImageClipReveal() {
    Cards subtly follow the cursor
    ======================================== */
 function initMagneticCards() {
+    // Exclude pain-point-card and pillar-card — their icons jump with 3D tilt; use CSS hover only
     const cards = document.querySelectorAll(
-        '.pain-point-card, .pillar-card, .method-card, .insight-card, .feature-card, .learning-card, .outcome-card, .goal-item, .persona-card, .next-step-card, .cycle-step, .tldr-metric, .reflection-insight-card'
+        '.method-card, .insight-card, .feature-card, .learning-card, .outcome-card, .goal-item, .persona-card, .next-step-card, .cycle-step, .tldr-metric, .reflection-insight-card'
     );
 
     if (window.matchMedia('(pointer: coarse)').matches) return;
