@@ -1,6 +1,6 @@
 ## 👋 Hey there!
 
-Welcome to my design portfolio repo! This is where I keep all the work I’m proud of — from UX case studies to product concepts, prototypes, and the random ideas that kept me up at 2AM (the best ones always do).
+Welcome to my design portfolio repo! This is where I keep all the work I’m proud of — from UX case studies to product concepts, prototypes, and the random ideas that kept me up at 2AM (the best ones always do!).
 
 If you’re poking around, you’ll find the code and structure behind my actual portfolio site. The design work itself lives on the site, but the process, structure, and fun bits live here.
 
